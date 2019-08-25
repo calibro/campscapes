@@ -25,7 +25,6 @@ async function simplifyItem(item){
     data[name] =  mapping(elementText.text)
   });
 
-  let files
   if(item.files){
     data.files = await getUrlFromApiResponse(item.files.url)
   }
