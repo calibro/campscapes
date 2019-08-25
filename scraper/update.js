@@ -27,10 +27,10 @@ async function main(options){
     fs.mkdirSync(targetDir)
   }
 
-
   //example: getting camps
-  const data = await api.getItems({item_type: 32})
-  console.log("d", data)
+  const data = await api.getItemsRecursive({item_type: 32})
+  const campsFilename = path.join(targetDir, 'camps.json')
+  fs.writeFileSync(campsFilename, JSON.stringify(data))
 
 
 }
