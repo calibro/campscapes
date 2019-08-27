@@ -53,7 +53,7 @@ async function main(options){
   console.log(colors.yellow(`Getting icons`))
   const icons = await api.getItemsGreedy({ 
     query: {item_type: 34},
-    relations
+    //relations
   })
   const iconsFilename = path.join(targetDir, 'icons.json')
   fs.writeFileSync(iconsFilename, JSON.stringify(icons))
