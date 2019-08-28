@@ -4,7 +4,7 @@ import Menu from "../../components/Menu";
 const Themes = () => {
   return (
     <div>
-      <h2>Camps themes</h2>
+      <h2>Themes page</h2>
       <Menu></Menu>
     </div>
   );

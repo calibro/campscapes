@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import Menu from "../../components/Menu";
@@ -11,9 +11,9 @@ const Camps = () => {
     <div>
       <h2>Camps page</h2>
       {camps.map(camp => (
-        <div key={camp.id}>
+        <p key={camp.id}>
           <Link to={`/camps/${camp.data.siteName}`}>{camp.data.siteName}</Link>
-        </div>
+        </p>
       ))}
       <Menu></Menu>
     </div>

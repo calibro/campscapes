@@ -13,6 +13,7 @@ import Camps from "./pages/Camps";
 import Camp from "./pages/Camp";
 import Icons from "./pages/Icons";
 import Themes from "./pages/Themes";
+import Story from "./pages/Story";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
 
         <StoriesProvider>
           <Route path="/themes" component={Themes} />
+          <Route path="/storie/:slug" component={Story} />
         </StoriesProvider>
       </ThemesProvider>
     </Router>
