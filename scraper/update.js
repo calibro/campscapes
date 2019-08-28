@@ -49,6 +49,10 @@ async function main(options){
   const campsFilename = path.join(targetDir, 'camps.json')
   fs.writeFileSync(campsFilename, JSON.stringify(camps))
 
+  
+  const campsNetworksFilename = path.join(targetDir, 'campsNetworks.json')
+  fs.writeFileSync(campsNetworksFilename, JSON.stringify(camps))
+
   //getting icons
   console.log(colors.yellow(`Getting icons`))
   const icons = await api.getItemsGreedy({ 
@@ -57,6 +61,10 @@ async function main(options){
   })
   const iconsFilename = path.join(targetDir, 'icons.json')
   fs.writeFileSync(iconsFilename, JSON.stringify(icons))
+
+
+  const storiesFilename = path.join(targetDir, 'stories.json')
+  fs.writeFileSync(storiesFilename, JSON.stringify([]))
 
 
   // //getting hyperlinks

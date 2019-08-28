@@ -3,6 +3,7 @@ const API_KEY = 'dd9451bfd7f887f996e82d88677336abd9c910ab'
 const request = require('superagent')
 const queryString = require('query-string');
 const get = require('lodash/get')
+const camelcase = require('camelcase')
 // `http://www.dbportal.ic-access.specs-lab.com/api/items?key=dd9451bfd7f887f996e82d88677336abd9c910ab`
 
 
@@ -22,7 +23,7 @@ async function simplifyItem(item){
   elementTexts.forEach(elementText => {
     const name = elementText.element.name.toLowerCase()
     const mapping  = get(FIELDS_TO_TYPES, name, x => x)
-    data[name] =  mapping(elementText.text)
+    data[camelcase(name)] =  mapping(elementText.text)
   });
 
   if(item.files){
