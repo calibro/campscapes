@@ -21,7 +21,7 @@ function App() {
       <ThemesProvider>
         <Route exact path="/" component={Home} />
 
-        <CampsProvider loadOn={["camps", "icons"]}>
+        <CampsProvider loadOn={["/camps", "/icons"]}>
           <Route path="/camps" component={Camps} exact />
 
           <CampsNetworksProvider loadOn={["/camps/:name"]}>
