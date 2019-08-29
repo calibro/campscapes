@@ -21,19 +21,19 @@ function App() {
       <ThemesProvider>
         <Route exact path="/" component={Home} />
 
-        <CampsProvider>
+        <CampsProvider loadOn={["camps", "icons"]}>
           <Route path="/camps" component={Camps} exact />
 
-          <CampsNetworksProvider>
+          <CampsNetworksProvider loadOn={["/camps/:name"]}>
             <Route path="/camps/:name" component={Camp} />
           </CampsNetworksProvider>
 
           <Route path="/icons" component={Icons} />
         </CampsProvider>
 
-        <StoriesProvider>
+        <StoriesProvider loadOn={["/themes", "/stories/:slug"]}>
           <Route path="/themes" component={Themes} />
-          <Route path="/storie/:slug" component={Story} />
+          <Route path="/stories/:slug" component={Story} />
         </StoriesProvider>
       </ThemesProvider>
     </Router>
