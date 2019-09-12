@@ -1,0 +1,69 @@
+.homeContainer {
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleContainer {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.topContainer {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomContainer {
+  margin-top: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.title {
+  color: var(--red-cs);
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "CeraStencilPRO", sans-serif;
+  font-size: 1.5rem;
+  margin: 15px 0px;
+}
+
+.explore {
+  font-size: 1.5rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.about {
+  font-size: 1.5rem;
+  text-align: center;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.pageLink {
+  color: white;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-weight: normal;
+  font-size: 5rem;
+  border-bottom: 3px solid rgba(255, 255, 255, 0);
+  transition: border-bottom var(--transition);
+}
+
+.pageLink:hover {
+  color: white;
+  text-decoration: none;
+  border-bottom: 3px solid rgba(255, 255, 255, 1);
+}

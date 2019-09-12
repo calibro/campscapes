@@ -1,13 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import {
   CampsProvider,
   CampsNetworksProvider,
   ThemesProvider,
   StoriesProvider
 } from "./dataProviders";
-
+import Intro from "./pages/Intro";
 import Home from "./pages/Home";
 import Camps from "./pages/Camps";
 import Camp from "./pages/Camp";
@@ -19,7 +18,8 @@ function App() {
   return (
     <Router>
       <ThemesProvider>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Intro} />
+        <Route exact path="/home" component={Home} />
 
         <CampsProvider loadOn={["/camps", "/icons"]}>
           <Route path="/camps" component={Camps} exact />
