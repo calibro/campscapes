@@ -5,6 +5,29 @@
   width: 100%;
 }
 
-p {
-  font-family: "Inter", sans-serif;
+.marker {
+  text-align: center;
+  cursor: pointer;
+  p {
+    font-family: "Inter", sans-serif;
+    font-size: 0.875rem;
+
+    a,
+    a:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .innerCircle {
+    transform: scale(1);
+    transform-origin: center center;
+    transition: transform var(--transition);
+  }
+}
+
+.marker:hover {
+  .innerCircle {
+    transform: scale(1.7);
+  }
 }

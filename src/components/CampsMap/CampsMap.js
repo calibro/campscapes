@@ -42,9 +42,15 @@ const CampsMap = ({ camps }) => {
               anchor="center"
               offset={[0, 20]}
             >
-              <div className="text-center">
+              <div className={styles.marker}>
                 <svg width="31" height="31">
-                  <circle cx="50%" cy="50%" fill="white" r="5"></circle>
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    fill="white"
+                    r="5"
+                    className={styles.innerCircle}
+                  ></circle>
                   <circle
                     cx="50%"
                     cy="50%"
@@ -53,7 +59,11 @@ const CampsMap = ({ camps }) => {
                     stroke="white"
                   ></circle>
                 </svg>
-                <p className="mt-2 mb-0">{feature.properties.title}</p>
+                <p className="mt-1 mb-0">
+                  <Link to={`/camps/${feature.properties.siteName}`}>
+                    {feature.properties.title}
+                  </Link>
+                </p>
               </div>
             </Marker>
           );
