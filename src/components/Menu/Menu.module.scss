@@ -1,0 +1,74 @@
+.menuContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  height: var(--menu-height);
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  transition: all var(--transition);
+}
+
+.menuContainer.open {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: "CeraStencilPRO", sans-serif;
+  font-size: 1.5rem;
+  a,
+  a:hover {
+    color: var(--red-cs);
+    text-decoration: none;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.menuButtonsContainer {
+  position: absolute;
+  top: var(--menu-height);
+  width: 100%;
+  z-index: 998;
+  height: var(--menu-height);
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  transform: translateY(-200%);
+  display: flex;
+  align-items: center;
+  transition: all var(--transition);
+}
+
+.menuButtonsContainer.open {
+  background-color: rgba(0, 0, 0, 0.85);
+  transform: translateY(0%);
+}
+
+.menuButtons {
+  a {
+    font-family: "Inter", sans-serif;
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    font-size: 1.375rem;
+    transition: all var(--transition);
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid white;
+  }
+
+  a:last-of-type {
+    font-family: "MessinaSerifWeb", serif;
+    font-style: italic;
+  }
+}

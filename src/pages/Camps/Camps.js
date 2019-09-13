@@ -10,6 +10,7 @@ const Camps = () => {
 
   return (
     <div className={styles.campsContainer}>
+      <Menu></Menu>
       {camps.length > 0 && <CampsMap camps={camps}></CampsMap>}
       <div className="container">
         <div className="row align-items-baseline">

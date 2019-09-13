@@ -1,7 +1,7 @@
 .campsContainer {
   height: 100%;
   position: relative;
-  padding-top: var(--menu-height);
+  padding-top: calc(var(--menu-height) + 15px);
   color: white;
 }
 
