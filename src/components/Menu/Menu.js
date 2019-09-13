@@ -19,7 +19,11 @@ const Menu = () => {
             <div className="col-12">
               <div className="d-flex align-items-center justify-content-center h-100">
                 <div className={styles.icon} onClick={() => setOpen(!open)}>
-                  {open ? <MdClose></MdClose> : <MdMenu></MdMenu>}
+                  {open ? (
+                    <MdClose color="white"></MdClose>
+                  ) : (
+                    <MdMenu color="white"></MdMenu>
+                  )}
                 </div>
                 <div className={styles.title}>
                   <Link to="/">Accessing Campscapes</Link>
