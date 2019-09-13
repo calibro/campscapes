@@ -1,0 +1,54 @@
+.name {
+  text-transform: capitalize;
+  a,
+  a:hover {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid white;
+  }
+  margin-bottom: 20px;
+}
+
+.metadata {
+  h5 {
+    text-transform: uppercase;
+    color: var(--red-cs);
+    font-weight: normal;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+  }
+  padding-bottom: 15px;
+}
+
+.iconContainer {
+  display: flex;
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.iconImage {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.image {
+  border-radius: 999px;
+  height: 55px;
+  width: 55px;
+  object-fit: cover;
+}
+
+.iconTitle {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-left: 10px;
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+}

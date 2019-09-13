@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 import classNames from "classnames";
 import styles from "./Menu.module.scss";
@@ -42,10 +42,10 @@ const Menu = () => {
           <div className="row">
             <div className="col-12">
               <div className="d-flex align-items-center justify-content-between">
-                <Link to="/camps">Camps</Link>
-                <Link to="/icons">Icons</Link>
-                <Link to="/themes">Themes</Link>
-                <Link to="/about">About the project</Link>
+                <NavLink to="/camps">Camps</NavLink>
+                <NavLink to="/icons">Icons</NavLink>
+                <NavLink to="/themes">Themes</NavLink>
+                <NavLink to="/about">About the project</NavLink>
               </div>
             </div>
           </div>
