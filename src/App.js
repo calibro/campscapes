@@ -17,20 +17,19 @@ import Story from "./pages/Story";
 function App() {
   return (
     <Router>
-      <ThemesProvider>
-        <Route exact path="/" component={Intro} />
-        <Route exact path="/home" component={Home} />
+      <Route exact path="/" component={Intro} />
+      <Route exact path="/home" component={Home} />
 
-        <CampsProvider loadOn={["/camps", "/icons"]}>
-          <Route path="/camps" component={Camps} exact />
+      <CampsProvider loadOn={["/camps", "/icons"]}>
+        <Route path="/camps" component={Camps} exact />
 
-          <CampsNetworksProvider loadOn={["/camps/:name"]}>
-            <Route path="/camps/:name" component={Camp} />
-          </CampsNetworksProvider>
+        <CampsNetworksProvider loadOn={["/camps/:name"]}>
+          <Route path="/camps/:name" component={Camp} />
+        </CampsNetworksProvider>
 
-          <Route path="/icons" component={Icons} />
-        </CampsProvider>
-
+        <Route path="/icons" component={Icons} />
+      </CampsProvider>
+      <ThemesProvider loadOn={["/themes"]}>
         <StoriesProvider loadOn={["/themes", "/stories/:slug"]}>
           <Route path="/themes" component={Themes} />
           <Route path="/stories/:slug" component={Story} />
