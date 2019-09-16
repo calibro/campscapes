@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { CampsContext } from "../../dataProviders";
-import { Link } from "react-router-dom";
 import Menu from "../../components/Menu";
 import CampsMap from "../../components/CampsMap";
 import styles from "./Camps.module.scss";

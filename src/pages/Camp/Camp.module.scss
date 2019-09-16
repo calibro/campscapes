@@ -1,0 +1,32 @@
+.campContainer {
+  color: white;
+  position: relative;
+  height: 100%;
+}
+
+.topContainer {
+  height: 60vh;
+  padding-top: var(--menu-height);
+  position: relative;
+}
+
+.title {
+  font-weight: normal;
+  text-transform: capitalize;
+  margin-top: 20px;
+}
+
+.metadata {
+  h6 {
+    text-transform: uppercase;
+    color: var(--red-cs);
+    font-weight: normal;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+  }
+  padding-bottom: 15px;
+}
+
+.description {
+  font-size: 1.25rem;
+}

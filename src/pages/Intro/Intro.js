@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
-import { Text } from "@vx/text";
+// import { Text } from "@vx/text";
 import styles from "./Intro.module.scss";
 
 const Intro = () => {

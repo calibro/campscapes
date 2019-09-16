@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
 import TimelineStripes from "../../components/TimelineStripes";
 import styles from "./TimelineIcons.module.scss";
 
