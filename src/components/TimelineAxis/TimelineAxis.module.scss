@@ -1,0 +1,14 @@
+.ticks {
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.tick {
+  position: absolute;
+  display: inline-flex;
+  transform: translateX(-50%);
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}

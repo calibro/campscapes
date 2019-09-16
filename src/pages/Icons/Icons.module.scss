@@ -11,3 +11,10 @@
     font-size: 1.25rem;
   }
 }
+
+.stickyAxis {
+  z-index: 2;
+  position: sticky;
+  top: 0;
+  background-color: var(--dark-cs);
+}

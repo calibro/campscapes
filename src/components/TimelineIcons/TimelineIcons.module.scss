@@ -1,3 +1,5 @@
+$icons-width: 56px;
+
 .name {
   text-transform: capitalize;
   a,
@@ -7,10 +9,11 @@
     border-bottom: 2px solid white;
   }
   margin-bottom: 20px;
+  margin-top: 15px;
 }
 
 .metadata {
-  h5 {
+  h6 {
     text-transform: uppercase;
     color: var(--red-cs);
     font-weight: normal;
@@ -22,8 +25,9 @@
 
 .iconContainer {
   display: flex;
-  width: 250px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transform: translateX(-$icons-width/2);
 }
 
 .iconImage {
@@ -33,22 +37,36 @@
 
 .image {
   border-radius: 999px;
-  height: 55px;
-  width: 55px;
+  height: $icons-width;
+  width: $icons-width;
   object-fit: cover;
+  transition: border-radius var(--transition);
+}
+
+.image:hover {
+  border-radius: 0px;
 }
 
 .iconTitle {
-  flex-grow: 1;
-  flex-shrink: 1;
   margin-left: 10px;
-  font-size: 0.875rem;
-  white-space: pre-wrap;
-  font-family: "Inter", sans-serif;
+  min-width: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
-  p {
+  .desc {
+    font-size: 0.875rem;
+    font-family: "Inter", sans-serif;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+}
+
+.inceptionLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right: 1px dashed rgba(255, 255, 255, 0.5);
 }

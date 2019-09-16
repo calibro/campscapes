@@ -1,0 +1,16 @@
+.stripes {
+  top: 0px;
+  bottom: 0px;
+  left: 15px;
+  right: 15px;
+  position: absolute;
+  display: flex;
+}
+.stripe:nth-child(odd) {
+  background-color: #d8d8d8;
+  opacity: 0.05;
+}
+
+.stripe:nth-child(even) {
+  background-color: transparent;
+}
