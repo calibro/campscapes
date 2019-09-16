@@ -1,0 +1,83 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.top {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.nextButton {
+  align-self: center;
+  border-radius: 999px;
+  border: 1px solid white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fillingHtml 1s linear 10s forwards;
+}
+
+.skip {
+  margin-top: auto;
+  margin-bottom: 15px;
+  opacity: 0;
+
+  a {
+    font-family: "Inter", sans-serif;
+    color: white;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+
+  animation: fillingHtml 1s linear 10s forwards;
+}
+
+.svg {
+  width: 100%;
+  // height: 100%;
+}
+
+.title {
+  font-size: 5rem;
+  font-family: "CeraStencilPRO", sans-serif;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke: var(--red-cs);
+  stroke-width: 2px;
+  fill-opacity: 0;
+  fill: var(--red-cs);
+  animation: dash 20s linear forwards, filling 1s linear 9s forwards;
+}
+
+@keyframes dash {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes filling {
+  100% {
+    fill-opacity: 1;
+    stroke-width: 0px;
+  }
+}
+
+@keyframes fillingHtml {
+  100% {
+    opacity: 1;
+  }
+}

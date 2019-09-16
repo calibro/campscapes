@@ -1386,7 +1386,7 @@
     d3-shape "^1.2.0"
     prop-types "^15.5.10"
 
-"@vx/text@0.0.191":
+"@vx/text@0.0.191", "@vx/text@^0.0.191":
   version "0.0.191"
   resolved "https://registry.yarnpkg.com/@vx/text/-/text-0.0.191.tgz#d2eb556c9d85a2375e451023474017d79a0e0921"
   integrity sha512-MEnJSigPF2igLV5Ff2slIuNwr+N3owIv5N9JQ7DifTnf3Hhiv0Usex4BYzeJDx8ifduILBwCpgaiv3uB+XNUCg==
