@@ -1,0 +1,15 @@
+.ThemesCircles {
+    width: 100%;
+    height: 800px;
+    
+    .circle {
+        fill: none;
+        stroke: #fff;
+    }
+
+    .label{
+        fill: #fff;
+        alignment-baseline: middle;
+        text-anchor: middle;
+    }
+}

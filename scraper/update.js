@@ -100,7 +100,8 @@ async function main(options){
     const pages = allPages.filter(page => get(page, 'exhibit.id') === exhibit.id)
     const pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
     exhibit.pages = pagesWithAttachments
-    exhibit.tags = exhibit.credits ? exhibit.credits.split(",") : []
+    const tags = exhibit.credits ? exhibit.credits.split(",") : []
+    exhibit.tags = tags.map(tag => tag.trim())
     return exhibit
   })
 
