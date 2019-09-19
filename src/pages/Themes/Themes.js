@@ -13,13 +13,12 @@ const Themes = () => {
 
   console.log(themes, stories);
 
-  const weightedThemes = themes.map(theme => ({
+  const themesWithStories = themes.map(theme => ({
     name: theme.name,
     stories: stories
       .filter(story => get(story, "tags", []).indexOf(theme.name) !== -1)
       .map(story => story.id)
   }));
-  console.log("weightedThemes", weightedThemes);
 
   return (
     <div className={styles.themesContainer}>
@@ -42,7 +41,7 @@ const Themes = () => {
 
         <div className="row">
           <div className="col-12 col-md-9">
-            <ThemesCircles themes={weightedThemes} />
+            <ThemesCircles themes={themesWithStories} />
           </div>
           <div className="col-12 col-md-3">
             {stories.length > 0 &&
