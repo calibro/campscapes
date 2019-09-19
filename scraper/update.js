@@ -4,6 +4,7 @@ const colors = require('colors/safe')
 const program = require('commander')
 const api = require('./api')
 const keyBy = require('lodash/keyBy')
+const get = require('lodash/get')
 
 const CAMPSCAPES_DATA_DIRNAME = 'campscapes-data'
 
@@ -42,6 +43,10 @@ async function main(options){
 
   const allItemsById = keyBy(allItems, 'id')
 
+
+  //getting all files
+  const allFiles = await api.getFiles() 
+  const allFilesById = keyBy(allFiles, 'id')
 
   //getting relations
   console.log(colors.yellow(`Getting relations`))
@@ -86,9 +91,21 @@ async function main(options){
   const iconsFilename = path.join(targetDir, 'icons.json')
   fs.writeFileSync(iconsFilename, JSON.stringify(icons))
 
+  console.log(colors.yellow(`Getting stories`))
+  const allPages =  await api.getPages()
+  const allExhibits =  await api.getExhibits()
+  // const allExhibitsById = keyBy(allExhibits, 'id')
+  
+  const stories = allExhibits.map(exhibit => {
+    const pages = allPages.filter(page => get(page, 'exhibit.id') === exhibit.id)
+    const pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
+    exhibit.pages = pagesWithAttachments
+    exhibit.tags = exhibit.credits ? exhibit.credits.split(",") : []
+    return exhibit
+  })
 
   const storiesFilename = path.join(targetDir, 'stories.json')
-  fs.writeFileSync(storiesFilename, JSON.stringify([]))
+  fs.writeFileSync(storiesFilename, JSON.stringify(stories))
 
 
   // //getting hyperlinks

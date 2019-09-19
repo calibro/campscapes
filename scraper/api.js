@@ -185,6 +185,84 @@ async function getItemRelations(q={}) {
   return response
 }
 
+async function getStories(q={}) {
+  try {
+    var response = await request
+    .get(`${BASE_URL}/exhibits`)
+    .query({key: API_KEY, ...q})
+    .then(({body}) => body)
+  //  
+  } catch (err) {
+    // do something with err...
+  }
+  return response
+}
+
+async function getPages(q={}) {
+  try {
+    var response = await request
+    .get(`${BASE_URL}/exhibit_pages`)
+    .query({key: API_KEY, ...q})
+    .then(({body}) => body)
+  //  
+  } catch (err) {
+    // do something with err...
+  }
+  return response
+}
+
+async function getExhibits(q={}) {
+  try {
+    var response = await request
+    .get(`${BASE_URL}/exhibits`)
+    .query({key: API_KEY, ...q})
+    .then(({body}) => body)
+  //  
+  } catch (err) {
+    // do something with err...
+  }
+  return response
+}
+
+async function getFiles(q={}) {
+  try {
+    var response = await request
+    .get(`${BASE_URL}/files`)
+    .query({key: API_KEY, ...q})
+    .then(({body}) => body)
+  //  
+  } catch (err) {
+    // do something with err...
+  }
+  return response
+}
+
+
+function makeAttachment(attachment, allItems, allFiles){
+  return {
+    caption: attachment.caption,
+    item: get(allItems, get(attachment, 'item.id')),
+    file: get(allFiles, get(attachment, 'file.id')),
+  }
+
+}
+
+function addPageAttachments(page, allItems, allFiles){
+  const pageBlocks = get(page, 'page_blocks', [])
+  const pageBlocksWithAttachments = pageBlocks.map(
+    pageBlock => (
+      {...pageBlock, attachments: get(pageBlock, 'attachments', []).map(attachment => makeAttachment(attachment, allItems, allFiles))}
+    )
+  )
+
+  return {
+    ...page,
+    page_blocks: pageBlocksWithAttachments
+  }
+
+
+}
+
 
 module.exports.getItems = getItems
 module.exports.getItemsGreedy = greedyAPIMaker(getItems)
@@ -192,6 +270,7 @@ module.exports.getTags = getTags
 module.exports.getItemRelations = getItemRelations
 
 module.exports.enrichWithRelations = enrichWithRelations
-
-
-
+module.exports.getPages = getPages
+module.exports.getExhibits = getExhibits
+module.exports.getFiles = getFiles
+module.exports.addPageAttachments = addPageAttachments
