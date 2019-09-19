@@ -3,6 +3,8 @@ const API_KEY = 'dd9451bfd7f887f996e82d88677336abd9c910ab'
 const request = require('superagent')
 const queryString = require('query-string');
 const get = require('lodash/get')
+const keyBy = require('lodash/keyBy')
+const groupBy = require('lodash/groupBy')
 const camelcase = require('camelcase')
 // `http://www.dbportal.ic-access.specs-lab.com/api/items?key=dd9451bfd7f887f996e82d88677336abd9c910ab`
 
@@ -40,23 +42,30 @@ async function simplifyItem(item){
 
 
 
-async function enrichWithRelations(item, relations){
+async function enrichWithRelations(item, relations, itemsById){
+  
   // TODO: understand if we should use this, object_item_id or both
   const subjectRelations = relations.filter(relation => relation.subject_item_id === item.id)
   const objectRelations = relations.filter(relation => relation.object_item_id === item.id)
   
   const objects = await Promise.all(objectRelations.map(async function(relation){
-    return await getItem(relation.subject_item_id)
+    // return await getItem(relation.subject_item_id)
+    return get(itemsById, relation.subject_item_id)
   }))
+
+  const objectsByType = groupBy(objects, 'item_type')
   
-  const subjects = await Promise.all(subjectRelations.map(async function(relation){
-    return await getItem(relation.object_item_id)
-  }))
+  // const subjects = await Promise.all(subjectRelations.map(async function(relation){
+  //   // return await getItem(relation.object_item_id)
+  //   return get(itemsById, relation.object_item_id)
+  // }))
   
   return {
     ...item,
     relations: {
-      objects, subjects
+      ...objectsByType,
+      // objects, 
+      // subjects,
     }
     
   }
@@ -66,29 +75,34 @@ async function enrichWithRelations(item, relations){
 function greedyAPIMaker(apFn){
 
   return async function innerCallable(options = {
-    query: {},
+    query: { },
     greedy: true,
     relations: [],
+    allItems: [],
   }) {
     let out = []
     const query = options.query || {}
     const page = query.page || 1
+
+    const itemsById = keyBy(options.allItems, 'id')
+
     try {
       const pageData = await apFn(options.query)
       const lastUrlAndQuery = queryString.parseUrl(pageData.links.last)
       const lastPage = lastUrlAndQuery.query.page
       let itemsList = await Promise.all(pageData.body.map(simplifyItem))
+
       if(options.relations && options.relations.length) {
         itemsList= await Promise.all(
           itemsList.map(async function(item){
-            return await enrichWithRelations(item, options.relations)
+            return await enrichWithRelations(item, options.relations, itemsById)
           })
         )
       }
       out = out.concat(itemsList)
   
       if(options.greedy && page < lastPage){
-        const nextPage = await innerCallable({ ...options.query, page: page+1})
+        const nextPage = await innerCallable({ ...options, query: { ...options.query, page: page+1}})
         out = out.concat(nextPage)
       }
   
@@ -134,6 +148,7 @@ async function getItem(id) {
 
 async function getItems(q={}) {
   try {
+    console.log("getItems", q)
     var response = await request
     .get(`${BASE_URL}/items`)
     .query({key: API_KEY, ...q})
@@ -175,6 +190,8 @@ module.exports.getItems = getItems
 module.exports.getItemsGreedy = greedyAPIMaker(getItems)
 module.exports.getTags = getTags
 module.exports.getItemRelations = getItemRelations
+
+module.exports.enrichWithRelations = enrichWithRelations
 
 
 
