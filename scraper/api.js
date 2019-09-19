@@ -238,6 +238,20 @@ async function getFiles(q={}) {
 }
 
 
+async function getSimplePages(q={}) {
+  try {
+    var response = await request
+    .get(`${BASE_URL}/simple_pages`)
+    .query({key: API_KEY, ...q})
+    .then(({body}) => body)
+  //  
+  } catch (err) {
+    // do something with err...
+  }
+  return response
+}
+
+
 function makeAttachment(attachment, allItems, allFiles){
   return {
     caption: attachment.caption,
@@ -270,7 +284,9 @@ module.exports.getTags = getTags
 module.exports.getItemRelations = getItemRelations
 
 module.exports.enrichWithRelations = enrichWithRelations
+module.exports.addPageAttachments = addPageAttachments
+
 module.exports.getPages = getPages
 module.exports.getExhibits = getExhibits
 module.exports.getFiles = getFiles
-module.exports.addPageAttachments = addPageAttachments
+module.exports.getSimplePages = getSimplePages

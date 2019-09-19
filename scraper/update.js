@@ -108,6 +108,13 @@ async function main(options){
   fs.writeFileSync(storiesFilename, JSON.stringify(stories))
 
 
+  console.log(colors.yellow(`Getting simple pages`))
+
+  const simplePages =  await api.getSimplePages()
+  const simplePagesFilename = path.join(targetDir, 'simplePages.json')
+  fs.writeFileSync(simplePagesFilename, JSON.stringify(simplePages))
+
+
   // //getting hyperlinks
   // console.log(colors.yellow(`Getting hyperlinks`))
   // const hyperlinks = await api.getItemsGreedy({ 
