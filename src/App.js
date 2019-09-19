@@ -4,7 +4,8 @@ import {
   CampsProvider,
   CampsNetworksProvider,
   ThemesProvider,
-  StoriesProvider
+  StoriesProvider,
+  SimplePagesProvider
 } from "./dataProviders";
 import Intro from "./pages/Intro";
 import Home from "./pages/Home";
@@ -17,24 +18,26 @@ import Story from "./pages/Story";
 function App() {
   return (
     <Router>
-      <Route exact path="/" component={Intro} />
-      <Route exact path="/home" component={Home} />
+      <SimplePagesProvider>
+        <Route exact path="/" component={Intro} />
+        <Route exact path="/home" component={Home} />
 
-      <CampsProvider loadOn={["/camps", "/icons"]}>
-        <Route path="/camps" component={Camps} exact />
+        <CampsProvider loadOn={["/camps", "/icons"]}>
+          <Route path="/camps" component={Camps} exact />
 
-        <CampsNetworksProvider loadOn={["/camps/:name"]}>
-          <Route path="/camps/:name" component={Camp} />
-        </CampsNetworksProvider>
+          <CampsNetworksProvider loadOn={["/camps/:name"]}>
+            <Route path="/camps/:name" component={Camp} />
+          </CampsNetworksProvider>
 
-        <Route path="/icons" component={Icons} />
-      </CampsProvider>
-      <ThemesProvider loadOn={["/themes"]}>
-        <StoriesProvider loadOn={["/themes", "/stories/:slug"]}>
-          <Route path="/themes" component={Themes} />
-          <Route path="/stories/:slug" component={Story} />
-        </StoriesProvider>
-      </ThemesProvider>
+          <Route path="/icons" component={Icons} />
+        </CampsProvider>
+        <ThemesProvider loadOn={["/themes"]}>
+          <StoriesProvider loadOn={["/themes", "/stories/:slug"]}>
+            <Route path="/themes" component={Themes} />
+            <Route path="/stories/:slug" component={Story} />
+          </StoriesProvider>
+        </ThemesProvider>
+      </SimplePagesProvider>
     </Router>
   );
 }

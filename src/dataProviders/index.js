@@ -71,3 +71,14 @@ export const StoriesProvider = ({ children, loadOn }) => {
     </StoriesContext.Provider>
   );
 };
+
+export const SimplePagesContext = React.createContext([]);
+
+export const SimplePagesProvider = ({ children, loadOn }) => {
+  const data = useLoadJSON("/campscapes-data/simplePages.json", loadOn);
+  return (
+    <SimplePagesContext.Provider value={data || emptyList}>
+      {children}
+    </SimplePagesContext.Provider>
+  );
+};
