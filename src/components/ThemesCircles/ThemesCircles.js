@@ -12,11 +12,9 @@ export default function ThemesCircles({ themes = [] }) {
       .padding(20);
   }, [height, width]);
 
-  //# TODO: drop random!
-
   const packedThemes = useMemo(() => {
     const root = hierarchy({ name: "root", children: themes }).sum(
-      d => d.stories && (d.stories.length || Math.random() * 10)
+      d => d.stories && d.stories.length
     );
     return packGenerator(root)
       .descendants()
