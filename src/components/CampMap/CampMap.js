@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ReactMapboxGl, { Marker } from "react-mapbox-gl";
+import ReactMapboxGl, { Marker, GeoJSONLayer, Popup } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import Bbox from "@turf/bbox";
 import styles from "./CampMap.module.scss";
+import geojsontest from "./westerbork.json";
 
 const ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 const Map = ReactMapboxGl({
@@ -23,6 +24,25 @@ const CampMap = ({ camp }) => {
   // const bbox = Bbox(geojson);
   //
   // console.log(camps, features);
+  const campCenter = [camp.data.longitude, camp.data.latitude];
+
+  const [element, setElement] = useState(false);
+  const [center, setCenter] = useState(campCenter);
+  const [zoom, setZoom] = useState([14]);
+
+  const geojsonOnMouseMove = (cursor, map) => {
+    map.getCanvas().style.cursor = cursor;
+  };
+
+  const geojsonOnMouseLeave = (cursor, map) => {
+    map.getCanvas().style.cursor = cursor;
+  };
+
+  const geojsonOnClick = (element, zoom) => {
+    setElement(element);
+    setCenter(element.coordinates);
+    setZoom([zoom]);
+  };
 
   return (
     <div className={styles.mapContainer}>
@@ -32,43 +52,50 @@ const CampMap = ({ camp }) => {
           height: "100%",
           width: "100%"
         }}
-        center={[camp.data.longitude, camp.data.latitude]}
-        zoom={[14]}
+        center={center}
+        zoom={zoom}
       >
-        {/*features.map(feature => {
-          return (
-            <Marker
-              key={feature.properties.id}
-              coordinates={feature.geometry.coordinates}
-              anchor="center"
-              offset={[0, 20]}
-            >
-              <div className={styles.marker}>
-                <svg width="31" height="31">
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    fill="white"
-                    r="5"
-                    className={styles.innerCircle}
-                  ></circle>
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    fill="none"
-                    r="15"
-                    stroke="white"
-                  ></circle>
-                </svg>
-                <p className="mt-1 mb-0">
-                  <Link to={`/camps/${feature.properties.siteName}`}>
-                    {feature.properties.title}
-                  </Link>
-                </p>
+        <GeoJSONLayer
+          data={geojsontest}
+          fillExtrusionLayout={{
+            visibility: "visible"
+          }}
+          fillExtrusionPaint={{
+            "fill-extrusion-height": 4,
+            "fill-extrusion-opacity": 0.8,
+            "fill-extrusion-color": "#c82727"
+          }}
+          fillExtrusionOnMouseMove={e => {
+            geojsonOnMouseMove("pointer", e.target);
+          }}
+          fillExtrusionOnMouseLeave={e => {
+            geojsonOnMouseLeave("", e.target);
+          }}
+          fillExtrusionOnClick={e => {
+            geojsonOnClick(
+              {
+                coordinates: e.lngLat,
+                properties: e.features[0].properties
+              },
+              e.target.getZoom()
+            );
+          }}
+          layerOptions={{ filter: ["==", "complextype", "bouwput"] }}
+        />
+        {element && (
+          <Popup key={element.properties.ID} coordinates={element.coordinates}>
+            <div style={{ color: "black" }}>
+              <p>{element.properties.complextype}</p>
+              <div
+                onClick={() => {
+                  setElement(false);
+                }}
+              >
+                CLOSE
               </div>
-            </Marker>
-          );
-        })*/}
+            </div>
+          </Popup>
+        )}
       </Map>
     </div>
   );
