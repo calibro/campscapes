@@ -7,7 +7,7 @@ import styles from "./CampsMap.module.scss";
 
 const ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 const Map = ReactMapboxGl({
-  accessToken: ACCESS_TOKEN,
+  accessToken: ACCESS_TOKEN || "NO-TOKEN??",
   maxZoom: 7,
   minZoom: 2
 });

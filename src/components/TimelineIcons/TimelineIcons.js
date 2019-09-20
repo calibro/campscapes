@@ -4,7 +4,7 @@ import TimelineStripes from "../../components/TimelineStripes";
 import styles from "./TimelineIcons.module.scss";
 
 const TimelineIcons = ({ camp, scale }) => {
-  const icons = camp.relations.objects
+  const icons = camp.relations.icon
     .sort((a, b) => {
       return (
         new Date(a.data.startDate).getTime() -
