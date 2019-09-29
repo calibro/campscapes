@@ -28,10 +28,13 @@ const StoryParagraph = ({ page, index, wayPointCallback, style }) => {
   );
 };
 
-const PageDots = ({ page }) => {
+const PageDots = ({ page, index, currentParagraph }) => {
   const attachments = get(page, "page_blocks[0].attachments", []);
   return (
-    <div className={styles.dotsRect}>
+    <div
+      className={styles.dotsRect}
+      style={{ background: index === currentParagraph ? "black" : undefined }}
+    >
       {attachments.length > 0 &&
         attachments.map((a, i) => <div key={i} className={styles.dot}></div>)}
     </div>
@@ -101,8 +104,13 @@ const Story = ({ match }) => {
             </div>
             <div className={styles.dots}>
               {pages.length > 0 &&
-                pages.map(page => (
-                  <PageDots key={page.order} page={page}></PageDots>
+                pages.map((page, i) => (
+                  <PageDots
+                    key={page.order}
+                    page={page}
+                    index={i}
+                    currentParagraph={currentParagraph}
+                  ></PageDots>
                 ))}
             </div>
             <div className={styles.attachments}></div>
