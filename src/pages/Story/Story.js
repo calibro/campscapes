@@ -1,4 +1,11 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useContext,
+  useMemo,
+  useState,
+  useRef,
+  createRef
+} from "react";
 import { StoriesContext } from "../../dataProviders";
 import find from "lodash/find";
 import get from "lodash/get";
@@ -7,11 +14,11 @@ import Menu from "../../components/Menu";
 import { Waypoint } from "react-waypoint";
 import styles from "./Story.module.scss";
 
-const StoryParagraph = ({ page, index, wayPointCallback, style }) => {
-  const text = get(page, "page_blocks[0].text", null);
-  return (
-    text && (
-      <>
+const StoryParagraph = React.forwardRef(
+  ({ page, index, wayPointCallback, style }, ref) => {
+    const text = get(page, "page_blocks[0].text", null);
+    return (
+      <div ref={ref}>
         <Waypoint
           bottomOffset={"80%"}
           onEnter={e => {
@@ -21,17 +28,20 @@ const StoryParagraph = ({ page, index, wayPointCallback, style }) => {
             wayPointCallback && wayPointCallback(index, false, e);
           }}
         />
-        <div dangerouslySetInnerHTML={{ __html: text }} style={style} />
-      </>
-    )
-  );
-};
+        {text && (
+          <div dangerouslySetInnerHTML={{ __html: text }} style={style} />
+        )}
+      </div>
+    );
+  }
+);
 
-const PageDots = ({ page, index, currentParagraph }) => {
+const PageDots = ({ page, index, currentParagraph, onClick }) => {
   const attachments = get(page, "page_blocks[0].attachments", []);
   return (
     <div
       className={styles.dotsRect}
+      onClick={onClick}
       style={{ background: index === currentParagraph ? "black" : undefined }}
     >
       {attachments.length > 0 &&
@@ -53,7 +63,11 @@ const Story = ({ match }) => {
 
   const [currentParagraph, setCurrentParagraph] = useState(1);
 
-  console.log(story);
+  const containerRef = useRef();
+  let pagesRef = useRef([]);
+  useEffect(() => {
+    pagesRef.current = pages.map(createRef);
+  }, [pages]);
 
   return (
     <div className={styles.storyContainer}>
@@ -80,10 +94,11 @@ const Story = ({ match }) => {
 
           {/* story content */}
           <div className={`container ${styles.contentContainer}`}>
-            <div className={styles.paragraphs}>
+            <div className={styles.paragraphs} ref={containerRef}>
               {pages.length > 0 &&
                 pages.map((page, i) => (
                   <StoryParagraph
+                    ref={pagesRef.current[i]}
                     style={{
                       backgroundColor:
                         i === currentParagraph ? "yellow" : undefined
@@ -109,6 +124,15 @@ const Story = ({ match }) => {
                     page={page}
                     index={i}
                     currentParagraph={currentParagraph}
+                    onClick={() => {
+                      const node = pagesRef.current[i].current;
+                      console.log("node", node);
+                      // node.scrollIntoView()
+                      containerRef.current.scrollTo({
+                        top: node.offsetTop,
+                        behavior: "smooth"
+                      });
+                    }}
                   ></PageDots>
                 ))}
             </div>
