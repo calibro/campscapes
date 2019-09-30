@@ -13,7 +13,6 @@ const StoryParagraph = ({ page, index, wayPointCallback, style }) => {
     text && (
       <>
         <Waypoint
-          topOffset={"10%"}
           bottomOffset={"80%"}
           onEnter={e => {
             wayPointCallback && wayPointCallback(index, true, e);
