@@ -5,6 +5,9 @@ const program = require('commander')
 const api = require('./api')
 const keyBy = require('lodash/keyBy')
 const get = require('lodash/get')
+const sortBy = require('lodash/sortBy')
+const tail = require('lodash/tail')
+
 
 const CAMPSCAPES_DATA_DIRNAME = 'campscapes-data'
 
@@ -98,8 +101,18 @@ async function main(options){
   
   const stories = allExhibits.map(exhibit => {
     const pages = allPages.filter(page => get(page, 'exhibit.id') === exhibit.id)
-    const pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
-    exhibit.pages = pagesWithAttachments
+    let pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
+    
+    pagesWithAttachments = sortBy(pagesWithAttachments, page => page.order)
+    // the first page is used for linking a camp to a story (first attachment of first page)
+    if(pagesWithAttachments.length > 0){
+      exhibit.camp = get(pagesWithAttachments[0], 'page_blocks[0].attachments[0].item', null)
+      exhibit.pages = tail(pagesWithAttachments)
+    } else {
+      exhibit.pages = []
+      exhibit.camp = null
+    }
+    
     const tags = exhibit.credits ? exhibit.credits.split(",") : []
     exhibit.tags = tags.map(tag => tag.trim())
     return exhibit
