@@ -5,6 +5,7 @@ import Menu from "../../components/Menu";
 import ThemesCircles from "../../components/ThemesCircles";
 import styles from "./Themes.module.scss";
 import keyBy from "lodash/keyBy";
+import { Link } from "react-router-dom";
 import get from "lodash/get";
 
 const Themes = () => {
@@ -47,7 +48,7 @@ const Themes = () => {
             {stories.length > 0 &&
               stories.map(story => (
                 <div key={story.id} className="mb-2">
-                  {story.title}
+                  <Link to={`/stories/${story.slug}`}>{story.title}</Link>
                 </div>
               ))}
           </div>

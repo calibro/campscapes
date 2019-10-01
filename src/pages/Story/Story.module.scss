@@ -1,0 +1,87 @@
+.storyContainer {
+    height: 100%;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    padding-top: calc(var(--menu-height));
+
+    
+    // color: black;
+    // background-color: white;
+    // h1, h2 {
+    //   font-weight: normal;
+    // }
+  
+    // p {
+    //   font-size: 1.25rem;
+    // }
+
+}
+
+
+.titleContainer {
+    border-bottom: solid #ccc 1px;
+    border-top: solid #666 1px;
+    position: sticky;
+    top: calc(var(--menu-height));
+}
+
+.storyTag {
+    background: #C82727;
+    color: #fff;
+    padding: 6px 8px;
+    font-size: 14px;
+    border-radius: 100px;
+    margin: 4px;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.paragraphs {
+    flex:1;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 20%;
+    overflow-y: auto;
+}
+
+.dots {
+  width: 22px;
+  padding-top: 20px;
+  background: #fff;
+  position: relative;
+  overflow-y: auto;
+
+  .dotsRect {
+      height: 60px;
+      background: #ccc;
+      margin: 4px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 10px;
+          margin: 2px;
+          background: #C82727;
+      }
+  }
+ 
+}
+.attachments {
+ padding-left: 30px;
+ flex:1;
+}
