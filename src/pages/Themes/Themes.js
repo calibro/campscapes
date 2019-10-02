@@ -1,18 +1,49 @@
-import React, { useContext } from "react";
-import { ThemesContext } from "../../dataProviders";
-import { StoriesContext } from "../../dataProviders";
+import React, { useContext, useState, useMemo, useEffect } from "react";
+import {
+  ThemesContext,
+  SimplePagesContext,
+  StoriesContext
+} from "../../dataProviders";
+import keyBy from "lodash/keyBy";
+import { Link } from "react-router-dom";
+import { MdAdd } from "react-icons/md";
+import get from "lodash/get";
+import find from "lodash/find";
 import Menu from "../../components/Menu";
 import ThemesCircles from "../../components/ThemesCircles";
 import styles from "./Themes.module.scss";
-import keyBy from "lodash/keyBy";
-import { Link } from "react-router-dom";
-import get from "lodash/get";
 
 const Themes = () => {
   const themes = useContext(ThemesContext);
   const stories = useContext(StoriesContext);
+  const simplePages = useContext(SimplePagesContext);
 
-  console.log(themes, stories);
+  const page = useMemo(() => {
+    return find(simplePages, item => item.slug === "themes");
+  }, [simplePages]);
+
+  const pageText = get(page, "text");
+
+  const [selected, setSelected] = useState(null);
+  const [filteredStories, setFilteredStories] = useState([]);
+
+  const setSelectedClick = ids => {
+    setSelected(prev => {
+      if (JSON.stringify(prev) === JSON.stringify(ids)) {
+        return null;
+      } else {
+        return ids;
+      }
+    });
+  };
+
+  useMemo(() => {
+    if (selected) {
+      setFilteredStories(stories.filter(d => selected.includes(d.id)));
+    } else {
+      setFilteredStories(stories);
+    }
+  }, [selected, stories]);
 
   const themesWithStories = themes.map(theme => ({
     name: theme.name,
@@ -31,26 +62,41 @@ const Themes = () => {
             <h1>Themes</h1>
           </div>
           <div className="col-12 col-md-9">
-            <p>
-              Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Vivamus sagittis
-              lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis
-              consectetur purus sit amet fermentum.
-            </p>
+            <div
+              className={styles.pageText}
+              dangerouslySetInnerHTML={{ __html: pageText }}
+            ></div>
           </div>
         </div>
 
-        <div className="row flex-fill">
-          <div className="col-12 col-md-9">
-            <ThemesCircles themes={themesWithStories} />
+        <div className={`${styles.rowFill} row`}>
+          <div className="col-12 col-md-8">
+            <ThemesCircles
+              themes={themesWithStories}
+              setSelected={setSelectedClick}
+              selected={selected}
+            />
           </div>
-          <div className="col-12 col-md-3">
-            {stories.length > 0 &&
-              stories.map(story => (
-                <div key={story.id} className="mb-2">
-                  <Link to={`/stories/${story.slug}`}>{story.title}</Link>
-                </div>
-              ))}
+          <div className="col-12 col-md-4 d-flex flex-column overflow-hidden">
+            <h6 className={styles.storiesTitle}>
+              stories ({filteredStories.length}/{stories.length})
+            </h6>
+            <div className={styles.storiesScroll}>
+              {filteredStories.length > 0 &&
+                filteredStories.map(story => (
+                  <div key={story.id} className="mb-2">
+                    <Link
+                      to={`/stories/${story.slug}`}
+                      className={`${styles.link} d-flex align-items-center`}
+                    >
+                      <div>
+                        <MdAdd size="1.5rem" className={styles.plus}></MdAdd>
+                      </div>
+                      <p className={styles.storyTitle}>{story.title}</p>
+                    </Link>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       </div>

@@ -10,16 +10,19 @@
     transition: fill var(--transition);
   }
 
-  .circle:hover {
+  .circle:hover,
+  .circle.active {
     fill: #fff;
   }
 
-  .circle:hover + rect {
+  .circle:hover + rect,
+  .circle.active + rect {
     fill: #fff;
     stroke: #fff;
   }
 
-  .circle:hover + rect + text {
+  .circle:hover + rect + text,
+  .circle.active + rect + text {
     fill: var(--dark-cs);
   }
 }
