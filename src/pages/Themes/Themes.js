@@ -25,7 +25,7 @@ const Themes = () => {
     <div className={styles.themesContainer}>
       <Menu></Menu>
 
-      <div className="container">
+      <div className="container h-100 d-flex flex-column">
         <div className="row align-items-baseline">
           <div className="col-12 col-md-3">
             <h1>Themes</h1>
@@ -40,7 +40,7 @@ const Themes = () => {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row flex-fill">
           <div className="col-12 col-md-9">
             <ThemesCircles themes={themesWithStories} />
           </div>

@@ -1,0 +1,17 @@
+.label {
+  fill: #fff;
+  alignment-baseline: middle;
+  text-anchor: middle;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  pointer-events: none;
+  transition: all var(--transition);
+}
+
+.background {
+  fill: var(--dark-cs);
+  stroke: var(--dark-cs);
+  stroke-width: 5px;
+  transition: all var(--transition);
+  pointer-events: none;
+}

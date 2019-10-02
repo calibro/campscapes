@@ -2,9 +2,10 @@ import React, { useMemo } from "react";
 import styles from "./ThemesCircles.module.scss";
 import { pack, hierarchy } from "d3-hierarchy";
 import useDimensions from "react-use-dimensions";
+import ThemesCirclesLabel from "../ThemesCirclesLabel";
 
 export default function ThemesCircles({ themes = [] }) {
-  const [ref, { x, y, width, height }] = useDimensions({ liveMeasure: false });
+  const [ref, { width, height }] = useDimensions({ liveMeasure: false });
 
   const packGenerator = useMemo(() => {
     return pack()
@@ -32,9 +33,7 @@ export default function ThemesCircles({ themes = [] }) {
               cy={theme.y}
               r={theme.r}
             ></circle>
-            <text className={styles.label} x={theme.x} y={theme.y}>
-              {theme.data.name}
-            </text>
+            <ThemesCirclesLabel theme={theme} />
           </g>
         ))}
     </svg>
