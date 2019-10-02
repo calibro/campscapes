@@ -33,7 +33,7 @@
 }
 
 .menuButtonsContainer {
-  position: absolute;
+  position: fixed;
   top: var(--menu-height);
   width: 100%;
   z-index: 998;
