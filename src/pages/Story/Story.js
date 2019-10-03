@@ -11,37 +11,38 @@ import { StoriesContext } from "../../dataProviders";
 import find from "lodash/find";
 import get from "lodash/get";
 import sortBy from "lodash/sortBy";
-import Menu from "../../components/Menu";
 import { Waypoint } from "react-waypoint";
+import Menu from "../../components/Menu";
+import StoryItem from "../../components/StoryItem";
 import styles from "./Story.module.scss";
 
-const StoryItem = ({ attachment }) => {
-  const item = attachment.item;
-  const imageSrc = get(attachment.file, "file_urls.original");
-  return (
-    item && (
-      <div>
-        {item && (
-          <div className="border">
-            title: {item.data.title}
-            <br />
-            type: {item.item_type}
-            <br />
-            {imageSrc && (
-              <div>
-                <img
-                  src={imageSrc}
-                  style={{ width: 200, height: "auto" }}
-                ></img>
-              </div>
-            )}
-            caption: {attachment.caption}
-          </div>
-        )}
-      </div>
-    )
-  );
-};
+// const StoryItem = ({ attachment }) => {
+//   const item = attachment.item;
+//   const imageSrc = get(attachment.file, "file_urls.original");
+//   return (
+//     item && (
+//       <div>
+//         {item && (
+//           <div className="border">
+//             title: {item.data.title}
+//             <br />
+//             type: {item.item_type}
+//             <br />
+//             {imageSrc && (
+//               <div>
+//                 <img
+//                   src={imageSrc}
+//                   style={{ width: 200, height: "auto" }}
+//                 ></img>
+//               </div>
+//             )}
+//             caption: {attachment.caption}
+//           </div>
+//         )}
+//       </div>
+//     )
+//   );
+// };
 
 const StoryParagraph = React.forwardRef(
   ({ page, index, wayPointCallback, style }, ref) => {
@@ -106,7 +107,7 @@ const Story = ({ match }) => {
     return get(currentPage, "page_blocks[0].attachments", []);
   });
 
-  console.log("currentAttachments", currentAttachments, pages);
+  //console.log("currentAttachments", currentAttachments, pages);
 
   return (
     <div className={styles.storyContainer}>
