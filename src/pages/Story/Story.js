@@ -74,70 +74,98 @@ const Story = ({ match }) => {
       <Menu light></Menu>
 
       {story && (
-        <>
+        <React.Fragment>
           <div className={styles.titleContainer}>
-            <div className="container py-3">
-              <h2>{story.title}</h2>
-              {story.tags && (
-                <div>
-                  {story.tags.length > 0 &&
-                    story.tags.map(tag => (
-                      <span key={tag} className={styles.storyTag}>
-                        {tag}
-                      </span>
-                    ))}
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <h2>{story.title}</h2>
+                  {story.tags && (
+                    <div>
+                      {story.tags.length > 0 &&
+                        story.tags.map(tag => (
+                          <span key={tag} className={styles.storyTag}>
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
           </div>
 
           {/* story content */}
           <div className={`container ${styles.contentContainer}`}>
-            <div className={styles.paragraphs} ref={containerRef}>
-              {pages.length > 0 &&
-                pages.map((page, i) => (
-                  <StoryParagraph
-                    ref={pagesRef.current[i]}
-                    style={{
-                      backgroundColor:
-                        i === currentParagraph ? "yellow" : undefined
-                    }}
-                    wayPointCallback={(index, enter, e) => {
-                      if (enter) {
-                        setCurrentParagraph(index);
-                      } else if (!enter && e.currentPosition === "below") {
-                        setCurrentParagraph(index - 1);
-                      }
-                    }}
-                    index={i}
-                    key={page.order}
-                    page={page}
-                  />
-                ))}
+            {/*<div className={styles.titleContainer}>
+              <div className={`row`}>
+                <div className="col-12">
+                  <h2>{story.title}</h2>
+                  {story.tags && (
+                    <div>
+                      {story.tags.length > 0 &&
+                        story.tags.map(tag => (
+                          <span key={tag} className={styles.storyTag}>
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>*/}
+            <div className={`${styles.rowFill} row`}>
+              <div className="col-6 d-flex flex-column overflow-hidden">
+                <div className={styles.paragraphs} ref={containerRef}>
+                  {pages.length > 0 &&
+                    pages.map((page, i) => (
+                      <StoryParagraph
+                        ref={pagesRef.current[i]}
+                        style={{
+                          opacity: i === currentParagraph ? 1 : 0.5
+                        }}
+                        wayPointCallback={(index, enter, e) => {
+                          if (enter) {
+                            setCurrentParagraph(index);
+                          } else if (!enter && e.currentPosition === "below") {
+                            setCurrentParagraph(index - 1);
+                          }
+                        }}
+                        index={i}
+                        key={page.order}
+                        page={page}
+                      />
+                    ))}
+                </div>
+              </div>
+              <div className="col-1 d-flex flex-column overflow-hidden align-items-center">
+                <div className={styles.dots}>
+                  {pages.length > 0 &&
+                    pages.map((page, i) => (
+                      <PageDots
+                        key={page.order}
+                        page={page}
+                        index={i}
+                        currentParagraph={currentParagraph}
+                        onClick={() => {
+                          const node = pagesRef.current[i].current;
+                          console.log("node", node);
+                          // node.scrollIntoView()
+                          containerRef.current.scrollTo({
+                            top: node.offsetTop,
+                            behavior: "smooth"
+                          });
+                        }}
+                      ></PageDots>
+                    ))}
+                </div>
+              </div>
+              <div className="col-5">
+                <div className={styles.attachments}></div>
+              </div>
             </div>
-            <div className={styles.dots}>
-              {pages.length > 0 &&
-                pages.map((page, i) => (
-                  <PageDots
-                    key={page.order}
-                    page={page}
-                    index={i}
-                    currentParagraph={currentParagraph}
-                    onClick={() => {
-                      const node = pagesRef.current[i].current;
-                      console.log("node", node);
-                      // node.scrollIntoView()
-                      containerRef.current.scrollTo({
-                        top: node.offsetTop,
-                        behavior: "smooth"
-                      });
-                    }}
-                  ></PageDots>
-                ))}
-            </div>
-            <div className={styles.attachments}></div>
           </div>
-        </>
+        </React.Fragment>
       )}
     </div>
   );
