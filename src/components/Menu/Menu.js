@@ -4,14 +4,15 @@ import { MdMenu, MdClose } from "react-icons/md";
 import classNames from "classnames";
 import styles from "./Menu.module.scss";
 
-const Menu = () => {
+const Menu = ({ light }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <React.Fragment>
       <div
         className={classNames(styles.menuContainer, {
-          [styles.open]: open
+          [styles.open]: open,
+          [styles.light]: light
         })}
       >
         <div className="container h-100">
@@ -20,9 +21,9 @@ const Menu = () => {
               <div className="d-flex align-items-center justify-content-center h-100">
                 <div className={styles.icon} onClick={() => setOpen(!open)}>
                   {open ? (
-                    <MdClose color="white"></MdClose>
+                    <MdClose color={light ? "black" : "white"}></MdClose>
                   ) : (
-                    <MdMenu color="white"></MdMenu>
+                    <MdMenu color={light ? "black" : "white"}></MdMenu>
                   )}
                 </div>
                 <div className={styles.title}>
