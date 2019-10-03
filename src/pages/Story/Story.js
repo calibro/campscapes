@@ -16,34 +16,6 @@ import Menu from "../../components/Menu";
 import StoryItem from "../../components/StoryItem";
 import styles from "./Story.module.scss";
 
-// const StoryItem = ({ attachment }) => {
-//   const item = attachment.item;
-//   const imageSrc = get(attachment.file, "file_urls.original");
-//   return (
-//     item && (
-//       <div>
-//         {item && (
-//           <div className="border">
-//             title: {item.data.title}
-//             <br />
-//             type: {item.item_type}
-//             <br />
-//             {imageSrc && (
-//               <div>
-//                 <img
-//                   src={imageSrc}
-//                   style={{ width: 200, height: "auto" }}
-//                 ></img>
-//               </div>
-//             )}
-//             caption: {attachment.caption}
-//           </div>
-//         )}
-//       </div>
-//     )
-//   );
-// };
-
 const StoryParagraph = React.forwardRef(
   ({ page, index, wayPointCallback, style }, ref) => {
     const text = get(page, "page_blocks[0].text", null);
@@ -72,7 +44,7 @@ const PageDots = ({ page, index, currentParagraph, onClick }) => {
     <div
       className={styles.dotsRect}
       onClick={onClick}
-      style={{ background: index === currentParagraph ? "black" : undefined }}
+      style={{ opacity: index === currentParagraph ? 1 : 0.5 }}
     >
       {attachments.length > 0 &&
         attachments.map((a, i) => <div key={i} className={styles.dot}></div>)}
@@ -180,7 +152,7 @@ const Story = ({ match }) => {
                         currentParagraph={currentParagraph}
                         onClick={() => {
                           const node = pagesRef.current[i].current;
-                          console.log("node", node);
+                          // console.log("node", node);
                           // node.scrollIntoView()
                           containerRef.current.scrollTo({
                             top: node.offsetTop,

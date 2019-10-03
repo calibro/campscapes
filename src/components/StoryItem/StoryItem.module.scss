@@ -5,6 +5,10 @@
   padding: 15px 0px;
 }
 
+.cont:first-of-type {
+  border-top: 1px solid var(--gray-cs);
+}
+
 .referenceContainer {
   display: flex;
   align-items: flex-start;

@@ -6,9 +6,9 @@ export const StoryItemResource = ({ attachment }) => {
   const caption = attachment.caption;
   const title = attachment.item.data.title;
   const mime = attachment.file.mime_type;
-
+  console.log(attachment);
   return (
-    <div className={styles.resourceContainer}>
+    <div className={`${styles.resourceContainer} ${styles.cont}`}>
       <div className={styles.fileContainer}>
         {mime === "image/jpeg" && (
           <img
@@ -31,7 +31,7 @@ export const StoryItemHyperlink = ({ attachment }) => {
   const link = attachment.item.data.url;
   const title = attachment.item.data.title;
   return (
-    <div className={styles.hyperlinkContainer}>
+    <div className={`${styles.hyperlinkContainer} ${styles.cont}`}>
       <a
         href={link}
         target="_blank"
@@ -48,10 +48,10 @@ export const StoryItemHyperlink = ({ attachment }) => {
 export const StoryItemReference = ({ attachment }) => {
   const citation = attachment.item.data;
   return (
-    <div className={styles.referenceContainer}>
+    <div className={`${styles.referenceContainer} ${styles.cont}`}>
       <MdLibraryBooks
-        size="1.5rem"
-        style={{ color: "var(--red-cs)" }}
+        size="1rem"
+        style={{ color: "var(--red-cs)", flex: "0 0 1rem", marginTop: 2 }}
       ></MdLibraryBooks>
       {/*// TODO: format citation*/}
       <p className={styles.cite}>
