@@ -78,9 +78,17 @@ const Themes = () => {
             />
           </div>
           <div className="col-12 col-md-4 d-flex flex-column overflow-hidden">
-            <h6 className={styles.storiesTitle}>
-              stories ({filteredStories.length}/{stories.length})
-            </h6>
+            <div className="d-flex">
+              <h6 className={styles.storiesTitle}>
+                stories ({filteredStories.length}/{stories.length})
+              </h6>
+              {selected && (
+                <div className={styles.reset} onClick={() => setSelected(null)}>
+                  Reset
+                </div>
+              )}
+            </div>
+
             <div className={styles.storiesScroll}>
               {filteredStories.length > 0 &&
                 filteredStories.map(story => (

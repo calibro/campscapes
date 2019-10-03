@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import styles from "./ThemesCircles.module.scss";
 import { pack, hierarchy } from "d3-hierarchy";
 import useDimensions from "react-use-dimensions";
@@ -35,6 +35,12 @@ const ThemesCircles = ({ themes = [], setSelected, selected }) => {
       .descendants()
       .filter(node => node.depth === 1 && node.r);
   }, [packGenerator, themes]);
+
+  useEffect(() => {
+    if (!selected) {
+      setThemeSelected(null);
+    }
+  }, [selected]);
 
   return (
     <svg ref={ref} className={styles.ThemesCircles}>

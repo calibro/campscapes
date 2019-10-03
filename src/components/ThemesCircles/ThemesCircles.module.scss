@@ -21,8 +21,11 @@
     stroke: #fff;
   }
 
-  .circle:hover + rect + text,
-  .circle.active + rect + text {
+  .circle:hover + rect + text {
     fill: var(--dark-cs);
+  }
+
+  .circle.active + rect + text {
+    fill: var(--red-cs);
   }
 }
