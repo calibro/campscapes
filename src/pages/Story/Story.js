@@ -15,6 +15,34 @@ import Menu from "../../components/Menu";
 import { Waypoint } from "react-waypoint";
 import styles from "./Story.module.scss";
 
+const StoryItem = ({ attachment }) => {
+  const item = attachment.item;
+  const imageSrc = get(attachment.file, "file_urls.original");
+  return (
+    item && (
+      <div>
+        {item && (
+          <div className="border">
+            title: {item.data.title}
+            <br />
+            type: {item.item_type}
+            <br />
+            {imageSrc && (
+              <div>
+                <img
+                  src={imageSrc}
+                  style={{ width: 200, height: "auto" }}
+                ></img>
+              </div>
+            )}
+            caption: {attachment.caption}
+          </div>
+        )}
+      </div>
+    )
+  );
+};
+
 const StoryParagraph = React.forwardRef(
   ({ page, index, wayPointCallback, style }, ref) => {
     const text = get(page, "page_blocks[0].text", null);
@@ -69,6 +97,16 @@ const Story = ({ match }) => {
   useEffect(() => {
     pagesRef.current = pages.map(createRef);
   }, [pages]);
+
+  const currentAttachments = useMemo(() => {
+    const currentPage = pages[currentParagraph];
+    if (!currentPage) {
+      return null;
+    }
+    return get(currentPage, "page_blocks[0].attachments", []);
+  });
+
+  console.log("currentAttachments", currentAttachments, pages);
 
   return (
     <div className={styles.storyContainer}>
@@ -153,7 +191,13 @@ const Story = ({ match }) => {
                 </div>
               </div>
               <div className="col-5 d-flex flex-column overflow-hidden">
-                <div className={styles.attachments}></div>
+                <div className={styles.attachments}>
+                  {currentAttachments &&
+                    currentAttachments.length > 0 &&
+                    currentAttachments.map((attachment, i) => (
+                      <StoryItem key={i} attachment={attachment} />
+                    ))}
+                </div>
               </div>
             </div>
           </div>
