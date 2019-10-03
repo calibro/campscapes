@@ -90,10 +90,11 @@ const Story = ({ match }) => {
     return sortBy(get(story, "pages", []), "order");
   }, [story]);
 
-  const [currentParagraph, setCurrentParagraph] = useState(1);
+  const [currentParagraph, setCurrentParagraph] = useState(null);
 
   const containerRef = useRef();
   let pagesRef = useRef([]);
+
   useEffect(() => {
     pagesRef.current = pages.map(createRef);
   }, [pages]);
@@ -104,9 +105,7 @@ const Story = ({ match }) => {
       return null;
     }
     return get(currentPage, "page_blocks[0].attachments", []);
-  });
-
-  console.log("currentAttachments", currentAttachments, pages);
+  }, [pages, currentParagraph]);
 
   return (
     <div className={styles.storyContainer}>
@@ -180,7 +179,6 @@ const Story = ({ match }) => {
                         onClick={() => {
                           const node = pagesRef.current[i].current;
                           console.log("node", node);
-                          // node.scrollIntoView()
                           containerRef.current.scrollTo({
                             top: node.offsetTop,
                             behavior: "smooth"
