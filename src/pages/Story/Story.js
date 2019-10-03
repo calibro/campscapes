@@ -6,6 +6,7 @@ import React, {
   useRef,
   createRef
 } from "react";
+import { MdArrowBack } from "react-icons/md";
 import { StoriesContext } from "../../dataProviders";
 import find from "lodash/find";
 import get from "lodash/get";
@@ -79,7 +80,15 @@ const Story = ({ match }) => {
             <div className="container">
               <div className="row">
                 <div className="col-12">
-                  <h2>{story.title}</h2>
+                  <h2>
+                    <span className="d-flex mr-2">
+                      <MdArrowBack
+                        style={{ color: "var(--dark-cs)" }}
+                        size="1.5rem"
+                      ></MdArrowBack>
+                    </span>
+                    <span>{story.title}</span>
+                  </h2>
                   {story.tags && (
                     <div>
                       {story.tags.length > 0 &&
@@ -97,23 +106,6 @@ const Story = ({ match }) => {
 
           {/* story content */}
           <div className={`container ${styles.contentContainer}`}>
-            {/*<div className={styles.titleContainer}>
-              <div className={`row`}>
-                <div className="col-12">
-                  <h2>{story.title}</h2>
-                  {story.tags && (
-                    <div>
-                      {story.tags.length > 0 &&
-                        story.tags.map(tag => (
-                          <span key={tag} className={styles.storyTag}>
-                            {tag}
-                          </span>
-                        ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>*/}
             <div className={`${styles.rowFill} row`}>
               <div className="col-6 d-flex flex-column overflow-hidden">
                 <div className={styles.paragraphs} ref={containerRef}>
@@ -160,7 +152,7 @@ const Story = ({ match }) => {
                     ))}
                 </div>
               </div>
-              <div className="col-5">
+              <div className="col-5 d-flex flex-column overflow-hidden">
                 <div className={styles.attachments}></div>
               </div>
             </div>
