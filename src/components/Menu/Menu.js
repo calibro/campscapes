@@ -36,7 +36,8 @@ const Menu = ({ light }) => {
       </div>
       <div
         className={classNames(styles.menuButtonsContainer, {
-          [styles.open]: open
+          [styles.open]: open,
+          [styles.light]: light
         })}
       >
         <div className={`${styles.menuButtons} container`}>

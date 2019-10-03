@@ -71,8 +71,7 @@ const Story = ({ match }) => {
 
   return (
     <div className={styles.storyContainer}>
-      {/* #TODO: menu should be white */}
-      <Menu></Menu>
+      <Menu light></Menu>
 
       {story && (
         <>

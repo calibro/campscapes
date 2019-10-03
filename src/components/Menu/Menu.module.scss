@@ -9,8 +9,16 @@
   transition: all var(--transition);
 }
 
+.menuContainer.light {
+  border-bottom: 1px solid var(--dark-cs);
+}
+
 .menuContainer.open {
   background-color: rgba(0, 0, 0, 0.85);
+}
+
+.menuContainer.open.light {
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .title {
@@ -46,14 +54,17 @@
   transition: all var(--transition);
 }
 
+.menuButtonsContainer.light {
+  border-bottom: 1px solid var(--dark-cs);
+}
+
 .menuButtonsContainer.open {
   background-color: rgba(0, 0, 0, 0.85);
   transform: translateY(0%);
 }
 
 .menuButtonsContainer.open.light {
-  background-color: rgba(255, 255, 255, 0.85);
-  transform: translateY(0%);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .menuButtons {
