@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import ReactMapboxGl, { Marker, GeoJSONLayer, Popup } from "react-mapbox-gl";
+import ReactMapboxGl, {
+  Marker,
+  GeoJSONLayer,
+  Popup,
+  MapContext
+} from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import Bbox from "@turf/bbox";
 import styles from "./CampMap.module.scss";
@@ -13,22 +18,23 @@ const Map = ReactMapboxGl({
   // minZoom: 2
 });
 
-const CampMap = ({ camp }) => {
-  // const features = camps.map(camp =>
-  //   point([camp.data.longitude, camp.data.latitude], {
-  //     id: camp.id,
-  //     ...camp.data
-  //   })
-  // );
-  // const geojson = featureCollection(features);
-  // const bbox = Bbox(geojson);
-  //
-  // console.log(camps, features);
+const CampMap = ({ camp, selectedIcon }) => {
+  const iconsFeatures = camp.relations.icon
+    .filter(icon => icon.data.longitude && icon.data.latitude)
+    .map(icon =>
+      point([icon.data.longitude, icon.data.latitude], {
+        id: icon.id,
+        ...icon.data
+      })
+    );
+  const geojsonFeatures = featureCollection(iconsFeatures);
+
   const campCenter = [camp.data.longitude, camp.data.latitude];
 
   const [element, setElement] = useState(false);
   const [center, setCenter] = useState(campCenter);
   const [zoom, setZoom] = useState([14]);
+  const [mapInstance, setMapInstance] = useState(null);
 
   const geojsonOnMouseMove = (cursor, map) => {
     map.getCanvas().style.cursor = cursor;
@@ -44,6 +50,17 @@ const CampMap = ({ camp }) => {
     setZoom([zoom]);
   };
 
+  useMemo(() => {
+    if (selectedIcon) {
+      console.log(
+        mapInstance.project([
+          selectedIcon.data.longitude,
+          selectedIcon.data.latitude
+        ])
+      );
+    }
+  }, [selectedIcon, mapInstance]);
+
   return (
     <div className={styles.mapContainer}>
       <Map
@@ -55,6 +72,13 @@ const CampMap = ({ camp }) => {
         center={center}
         zoom={zoom}
       >
+        <MapContext.Consumer>
+          {map => {
+            setMapInstance(map);
+          }}
+        </MapContext.Consumer>
+
+        {/*layerOptions={{ filter: ["==", "complextype", "bouwput"] }}*/}
         <GeoJSONLayer
           data={geojsontest}
           fillExtrusionLayout={{
@@ -80,8 +104,22 @@ const CampMap = ({ camp }) => {
               e.target.getZoom()
             );
           }}
-          layerOptions={{ filter: ["==", "complextype", "bouwput"] }}
         />
+        <GeoJSONLayer
+          circleLayout={{ visibility: "visible" }}
+          circlePaint={{ "circle-color": "white", "circle-radius": 8 }}
+          data={geojsonFeatures}
+        ></GeoJSONLayer>
+
+        <GeoJSONLayer
+          circleLayout={{ visibility: "visible" }}
+          circlePaint={{
+            "circle-color": "white",
+            "circle-radius": 6,
+            "circle-stroke-width": 1
+          }}
+          data={geojsonFeatures}
+        ></GeoJSONLayer>
         {element && (
           <Popup key={element.properties.ID} coordinates={element.coordinates}>
             <div style={{ color: "black" }}>
