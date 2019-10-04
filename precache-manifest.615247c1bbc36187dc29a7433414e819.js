@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d16cf8d61ebb718669128116b23a62c7",
+    "revision": "efea56dc051c91a2a687cf63aa34ccc7",
     "url": "/campscapes/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/campscapes/static/css/2.e71d8db5.chunk.css"
   },
   {
-    "revision": "84473e40a674180d777b",
+    "revision": "59a87a361bc9f90ae3f5",
     "url": "/campscapes/static/css/main.d1860b7f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/campscapes/static/js/2.2d9f3e87.chunk.js"
   },
   {
-    "revision": "84473e40a674180d777b",
-    "url": "/campscapes/static/js/main.be173694.chunk.js"
+    "revision": "59a87a361bc9f90ae3f5",
+    "url": "/campscapes/static/js/main.630af5a0.chunk.js"
   },
   {
     "revision": "50c95511b94db07b3887",
