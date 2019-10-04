@@ -30,7 +30,10 @@ const useLoadJSON = (url, loadOn) => {
 export const CampsContext = React.createContext([]);
 
 export const CampsProvider = ({ children, loadOn }) => {
-  const data = useLoadJSON("/campscapes-data/camps.json", loadOn);
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/camps.json`,
+    loadOn
+  );
   return (
     <CampsContext.Provider value={data || emptyList}>
       {children}
