@@ -5,15 +5,19 @@ import {
   CampsNetworksProvider,
   ThemesProvider,
   StoriesProvider,
-  SimplePagesProvider
+  SimplePagesProvider,
+  IconsProvider,
+  ItemsProvider
 } from "./dataProviders";
 import Intro from "./pages/Intro";
 import Home from "./pages/Home";
 import Camps from "./pages/Camps";
 import Camp from "./pages/Camp";
 import Icons from "./pages/Icons";
+import Icon from "./pages/Icon";
 import Themes from "./pages/Themes";
 import Story from "./pages/Story";
+import Item from "./pages/Item";
 
 function App() {
   return (
@@ -29,8 +33,16 @@ function App() {
             <Route path="/camps/:name" component={Camp} />
           </CampsNetworksProvider>
 
-          <Route path="/icons" component={Icons} />
+          <IconsProvider loadOn={["/icons"]}>
+            <Route path="/icons" component={Icons} exact />
+            <Route path="/icons/:name" component={Icon} />
+          </IconsProvider>
+
+          <ItemsProvider loadOn={["/items"]}>
+            <Route path="/items/:id" component={Item} />
+          </ItemsProvider>
         </CampsProvider>
+
         <ThemesProvider loadOn={["/themes"]}>
           <StoriesProvider loadOn={["/themes", "/stories/:slug"]}>
             <Route path="/themes" component={Themes} />

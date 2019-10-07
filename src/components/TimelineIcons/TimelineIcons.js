@@ -15,6 +15,7 @@ const TimelineIcons = ({ camp, scale }) => {
       d.data.startDate = d.data.startDate ? new Date(d.data.startDate) : null;
       return d;
     });
+
   return (
     <div className="row">
       <div className="col-12 col-md-3">
@@ -39,31 +40,33 @@ const TimelineIcons = ({ camp, scale }) => {
         {icons.map(icon => {
           return (
             <div className="w-100 position-relative" key={icon.id}>
-              <div
-                className={styles.iconContainer}
-                style={{ marginLeft: `${scale(icon.data.startDate)}%` }}
-              >
-                <div className={styles.iconImage}>
-                  {/* fix this */}
-                  {icon.data.files[0].mime_type !== "video/mp4" ? (
-                    <img
-                      className={styles.image}
-                      src={icon.data.files[0].file_urls.original}
-                      alt={icon.data.title}
-                    ></img>
-                  ) : (
-                    <div className={styles.image}></div>
-                  )}
+              <Link to={`/icons/${icon.data.timelineLabel}`}>
+                <div
+                  className={styles.iconContainer}
+                  style={{ marginLeft: `${scale(icon.data.startDate)}%` }}
+                >
+                  <div className={styles.iconImage}>
+                    {/* fix this */}
+                    {icon.data.files[0].mime_type !== "video/mp4" ? (
+                      <img
+                        className={styles.image}
+                        src={icon.data.files[0].file_urls.original}
+                        alt={icon.data.title}
+                      ></img>
+                    ) : (
+                      <div className={styles.image}></div>
+                    )}
+                  </div>
+                  <div className={styles.iconTitle}>
+                    <p className={styles.desc}>{icon.data.timelineLabel}</p>
+                    <p className={styles.desc}>
+                      {icon.data.startDate
+                        ? icon.data.startDate.getFullYear()
+                        : "undefined"}
+                    </p>
+                  </div>
                 </div>
-                <div className={styles.iconTitle}>
-                  <p className={styles.desc}>{icon.data.timelineLabel}</p>
-                  <p className={styles.desc}>
-                    {icon.data.startDate
-                      ? icon.data.startDate.getFullYear()
-                      : "undefined"}
-                  </p>
-                </div>
-              </div>
+              </Link>
             </div>
           );
         })}

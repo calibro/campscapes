@@ -1,12 +1,14 @@
 import React from "react";
 import { MdLink, MdLibraryBooks } from "react-icons/md";
+import { Link } from "react-router-dom";
 import styles from "./StoryItem.module.scss";
 
 export const StoryItemResource = ({ attachment }) => {
   const caption = attachment.caption;
   const title = attachment.item.data.title;
   const mime = attachment.file.mime_type;
-  console.log(attachment);
+  const id = attachment.item.id;
+
   return (
     <div className={`${styles.resourceContainer} ${styles.cont}`}>
       <div className={styles.fileContainer}>
@@ -18,9 +20,12 @@ export const StoryItemResource = ({ attachment }) => {
         )}
       </div>
       <div className={styles.infoContainer}>
-        <div>
-          <p className={styles.caption}>{caption ? caption : title}</p>
-        </div>
+         
+        <Link to={`/items/${id}`}>
+          <div>
+            <p className={styles.caption}>{caption ? caption : title}</p>
+          </div>
+        </Link>
         {/*<div>link to other storyes</div>*/}
       </div>
     </div>
@@ -30,6 +35,7 @@ export const StoryItemResource = ({ attachment }) => {
 export const StoryItemHyperlink = ({ attachment }) => {
   const link = attachment.item.data.url;
   const title = attachment.item.data.title;
+
   return (
     <div className={`${styles.hyperlinkContainer} ${styles.cont}`}>
       <a

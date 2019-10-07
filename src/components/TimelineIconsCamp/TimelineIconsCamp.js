@@ -31,27 +31,28 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon }) => {
                 key={icon.id}
                 style={{ left: `${scale(icon.data.startDate)}%` }}
               >
-                <div
-                  className={styles.iconContainer}
-                  onMouseOver={e => {
-                    //console.log(e);
-                    setSelectedIcon(icon);
-                  }}
-                  onMouseOut={() => setSelectedIcon(null)}
-                >
-                  <div className={styles.iconImage}>
-                    {/* fix this */}
-                    {icon.data.files[0].mime_type !== "video/mp4" ? (
-                      <img
-                        className={styles.image}
-                        src={icon.data.files[0].file_urls.original}
-                        alt={icon.data.title}
-                      ></img>
-                    ) : (
-                      <div className={styles.image}></div>
-                    )}
-                  </div>
-                  {/*<div className={styles.iconTitle}>
+                <Link to={`/icons/${icon.data.timelineLabel}?camp=${camp.id}`}>
+                  <div
+                    className={styles.iconContainer}
+                    onMouseOver={e => {
+                      //console.log(e);
+                      setSelectedIcon(icon);
+                    }}
+                    onMouseOut={() => setSelectedIcon(null)}
+                  >
+                    <div className={styles.iconImage}>
+                      {/* fix this */}
+                      {icon.data.files[0].mime_type !== "video/mp4" ? (
+                        <img
+                          className={styles.image}
+                          src={icon.data.files[0].file_urls.original}
+                          alt={icon.data.title}
+                        ></img>
+                      ) : (
+                        <div className={styles.image}></div>
+                      )}
+                    </div>
+                    {/*<div className={styles.iconTitle}>
                   <p className={styles.desc}>{icon.data.timelineLabel}</p>
                   <p className={styles.desc}>
                   {icon.data.startDate
@@ -59,7 +60,8 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon }) => {
                   : "undefined"}
                   </p>
                   </div>*/}
-                </div>
+                  </div>
+                </Link>
               </div>
             );
           })}

@@ -97,3 +97,31 @@ export const SimplePagesProvider = ({ children, loadOn }) => {
     </SimplePagesContext.Provider>
   );
 };
+
+export const IconsContext = React.createContext([]);
+
+export const IconsProvider = ({ children, loadOn }) => {
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/icons.json`,
+    loadOn
+  );
+  return (
+    <IconsContext.Provider value={data || emptyList}>
+      {children}
+    </IconsContext.Provider>
+  );
+};
+
+export const ItemsContext = React.createContext([]);
+
+export const ItemsProvider = ({ children, loadOn }) => {
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/allItems.json`,
+    loadOn
+  );
+  return (
+    <ItemsContext.Provider value={data || emptyList}>
+      {children}
+    </ItemsContext.Provider>
+  );
+};
