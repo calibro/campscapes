@@ -22,7 +22,7 @@ const Icons = () => {
   console.log("camps data", camps);
   const timelineDomainMin = min(camps, camp => {
     return min(camp.relations.icon, icon =>
-      min([new Date(icon.data.startDate), new Date(icon.data.inceptionDate)])
+      min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
     );
   });
 

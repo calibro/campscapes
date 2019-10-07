@@ -1,0 +1,60 @@
+.resourceContainer,
+.hyperlinkContainer,
+.referenceContainer {
+  border-bottom: 1px solid var(--gray-cs);
+  padding: 15px 0px;
+}
+
+.cont:first-of-type {
+  border-top: 1px solid var(--gray-cs);
+}
+
+.referenceContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.fileContainer {
+  width: 100%;
+
+  img {
+    max-height: 40vh;
+    width: 100%;
+    object-fit: contain;
+    object-position: left;
+  }
+}
+
+.infoContainer {
+  display: flex;
+  margin-top: 10px;
+}
+
+.caption {
+  font-family: "Inter", sans-serif;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+}
+
+.link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  color: var(--dark-cs);
+  text-decoration: underline;
+  display: block;
+}
+
+.link:hover {
+  color: var(--dark-cs);
+  text-decoration: underline;
+}
+
+.cite {
+  font-family: "Inter", sans-serif;
+  margin-bottom: 0;
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+}

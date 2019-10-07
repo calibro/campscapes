@@ -30,7 +30,10 @@ const useLoadJSON = (url, loadOn) => {
 export const CampsContext = React.createContext([]);
 
 export const CampsProvider = ({ children, loadOn }) => {
-  const data = useLoadJSON("/campscapes-data/camps.json", loadOn);
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/camps.json`,
+    loadOn
+  );
   return (
     <CampsContext.Provider value={data || emptyList}>
       {children}
@@ -41,7 +44,10 @@ export const CampsProvider = ({ children, loadOn }) => {
 export const CampsNetworksContext = React.createContext([]);
 
 export const CampsNetworksProvider = ({ children, loadOn }) => {
-  const data = useLoadJSON("/campscapes-data/campsNetworks.json", loadOn);
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/campsNetworks.json`,
+    loadOn
+  );
 
   return (
     <CampsNetworksContext.Provider value={data || emptyList}>
@@ -53,7 +59,10 @@ export const CampsNetworksProvider = ({ children, loadOn }) => {
 export const ThemesContext = React.createContext([]);
 
 export const ThemesProvider = ({ children, loadOn }) => {
-  const data = useLoadJSON("/campscapes-data/themes.json", loadOn);
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/themes.json`,
+    loadOn
+  );
   return (
     <ThemesContext.Provider value={data || emptyList}>
       {children}
@@ -64,7 +73,10 @@ export const ThemesProvider = ({ children, loadOn }) => {
 export const StoriesContext = React.createContext([]);
 
 export const StoriesProvider = ({ children, loadOn }) => {
-  const data = useLoadJSON("/campscapes-data/stories.json", loadOn);
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/stories.json`,
+    loadOn
+  );
   return (
     <StoriesContext.Provider value={data || emptyList}>
       {children}
@@ -75,7 +87,10 @@ export const StoriesProvider = ({ children, loadOn }) => {
 export const SimplePagesContext = React.createContext([]);
 
 export const SimplePagesProvider = ({ children, loadOn }) => {
-  const data = useLoadJSON("/campscapes-data/simplePages.json", loadOn);
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/simplePages.json`,
+    loadOn
+  );
   return (
     <SimplePagesContext.Provider value={data || emptyList}>
       {children}

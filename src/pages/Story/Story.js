@@ -11,37 +11,10 @@ import { StoriesContext } from "../../dataProviders";
 import find from "lodash/find";
 import get from "lodash/get";
 import sortBy from "lodash/sortBy";
-import Menu from "../../components/Menu";
 import { Waypoint } from "react-waypoint";
+import Menu from "../../components/Menu";
+import StoryItem from "../../components/StoryItem";
 import styles from "./Story.module.scss";
-
-const StoryItem = ({ attachment }) => {
-  const item = attachment.item;
-  const imageSrc = get(attachment.file, "file_urls.original");
-  return (
-    item && (
-      <div>
-        {item && (
-          <div className="border">
-            title: {item.data.title}
-            <br />
-            type: {item.item_type}
-            <br />
-            {imageSrc && (
-              <div>
-                <img
-                  src={imageSrc}
-                  style={{ width: 200, height: "auto" }}
-                ></img>
-              </div>
-            )}
-            caption: {attachment.caption}
-          </div>
-        )}
-      </div>
-    )
-  );
-};
 
 const StoryParagraph = React.forwardRef(
   ({ page, index, wayPointCallback, style }, ref) => {
@@ -71,7 +44,7 @@ const PageDots = ({ page, index, currentParagraph, onClick }) => {
     <div
       className={styles.dotsRect}
       onClick={onClick}
-      style={{ background: index === currentParagraph ? "black" : undefined }}
+      style={{ opacity: index === currentParagraph ? 1 : 0.5 }}
     >
       {attachments.length > 0 &&
         attachments.map((a, i) => <div key={i} className={styles.dot}></div>)}
@@ -178,7 +151,6 @@ const Story = ({ match }) => {
                         currentParagraph={currentParagraph}
                         onClick={() => {
                           const node = pagesRef.current[i].current;
-                          console.log("node", node);
                           containerRef.current.scrollTo({
                             top: node.offsetTop,
                             behavior: "smooth"

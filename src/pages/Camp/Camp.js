@@ -1,22 +1,40 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import find from "lodash/find";
+import { scaleTime } from "d3-scale";
+import { min } from "d3-array";
 import CampMap from "../../components/CampMap";
 import Menu from "../../components/Menu";
+import TimelineIconsCamp from "../../components/TimelineIconsCamp";
+import TimelineAxis from "../../components/TimelineAxis";
 import styles from "./Camp.module.scss";
 
 const Camp = ({ match }) => {
   const camps = useContext(CampsContext);
 
   const { params } = match;
+  const [selectedIcon, setSelectedIcon] = useState(null);
+  const [selectedIconMapPosition, setSelectedIconMapPosition] = useState(null);
+  const [
+    selectedIconTimelinePosition,
+    setSelectedIconTimelinePosition
+  ] = useState(null);
 
   const camp = useMemo(() => {
     return find(camps, item => item.data.siteName === params.name);
   }, [camps, params.name]);
 
-  console.log("camp data", camp);
+  const timelineDomainMin = useMemo(() => {
+    return min(camp ? camp.relations.icon : [], icon =>
+      min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
+    );
+  }, [camp]);
+
+  const timelineScale = scaleTime()
+    .domain([timelineDomainMin, Date.now()])
+    .range([0, 100]);
 
   return (
     <div className={styles.campContainer}>
@@ -24,7 +42,7 @@ const Camp = ({ match }) => {
       {camp && (
         <React.Fragment>
           <div className={styles.topContainer}>
-            <CampMap camp={camp}></CampMap>
+            <CampMap camp={camp} selectedIcon={selectedIcon}></CampMap>
             <div className="container">
               <div className="row">
                 <div className="col-auto">
@@ -38,7 +56,20 @@ const Camp = ({ match }) => {
               </div>
             </div>
           </div>
-          <div className={styles.iconsContainer}></div>
+          <div className={styles.iconsContainer}>
+            <div className="container">
+              <TimelineIconsCamp
+                camp={camp}
+                scale={timelineScale}
+                setSelectedIcon={setSelectedIcon}
+              ></TimelineIconsCamp>
+              <div className="row">
+                <div className="col-12">
+                  <TimelineAxis scale={timelineScale}></TimelineAxis>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className={styles.infoContainer}>
             <div className="container">
               <div className="row">
@@ -55,6 +86,7 @@ const Camp = ({ match }) => {
                 <div className="col-12 col-md-9">
                   <div className={styles.metadata}>
                     <h6>about the camp</h6>
+
                     <p className={styles.description}>
                       {camp.data.description}
                     </p>
