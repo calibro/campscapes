@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import TimelineStripes from "../../components/TimelineStripes";
 import styles from "./TimelineIconsCamp.module.scss";
 
-const TimelineIcons = ({ camp, scale, setSelectedIcon }) => {
+const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
   const icons = camp.relations.icon
     .sort((a, b) => {
       return (
@@ -31,7 +31,13 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon }) => {
                 key={icon.id}
                 style={{ left: `${scale(icon.data.startDate)}%` }}
               >
-                <Link to={`/icons/${icon.data.timelineLabel}?camp=${camp.id}`}>
+                <Link
+                  to={{
+                    pathname: `/icons/${icon.data.timelineLabel}`,
+                    search: `camp=${camp.id}`,
+                    state: { from: location.pathname }
+                  }}
+                >
                   <div
                     className={styles.iconContainer}
                     onMouseOver={e => {
@@ -71,4 +77,4 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon }) => {
   );
 };
 
-export default TimelineIcons;
+export default withRouter(TimelineIcons);

@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import TimelineStripes from "../../components/TimelineStripes";
 import styles from "./TimelineIcons.module.scss";
 
-const TimelineIcons = ({ camp, scale }) => {
+const TimelineIcons = ({ camp, scale, location }) => {
   const icons = camp.relations.icon
     .sort((a, b) => {
       return (
@@ -40,7 +40,12 @@ const TimelineIcons = ({ camp, scale }) => {
         {icons.map(icon => {
           return (
             <div className="w-100 position-relative" key={icon.id}>
-              <Link to={`/icons/${icon.data.timelineLabel}`}>
+              <Link
+                to={{
+                  pathname: `/icons/${icon.data.timelineLabel}`,
+                  state: { from: location.pathname }
+                }}
+              >
                 <div
                   className={styles.iconContainer}
                   style={{ marginLeft: `${scale(icon.data.startDate)}%` }}
@@ -78,4 +83,4 @@ const TimelineIcons = ({ camp, scale }) => {
   );
 };
 
-export default TimelineIcons;
+export default withRouter(TimelineIcons);
