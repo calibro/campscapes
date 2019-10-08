@@ -47,8 +47,12 @@ export default function useQueryParam(
         },
         options
       );
-      const url = `${location.pathname}?${queryString}`;
-      history[historyMethod](url);
+
+      history[historyMethod]({
+        pathname: location.pathname,
+        search: queryString,
+        state: location.state
+      });
     },
     [location.search, location.pathname, name, options, history]
   );
