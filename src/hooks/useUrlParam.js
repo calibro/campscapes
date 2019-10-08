@@ -35,9 +35,9 @@ export default function useQueryParam(
       if (isFunction(nextValue)) {
         nextValue = nextValue(queryParams);
       }
-      if (encode(nextValue) === encode(queryParams)) {
-        return;
-      }
+      // if (encode(nextValue) === encode(queryParams)) {
+      //   return;
+      // }
 
       const currentQueryParams = qs.parse(location.search);
       const queryString = qs.stringify(
