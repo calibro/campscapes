@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactMapboxGl, {
   Marker,
@@ -50,7 +50,7 @@ const CampMap = ({ camp, selectedIcon }) => {
     setZoom([zoom]);
   };
 
-  useMemo(() => {
+  useEffect(() => {
     if (selectedIcon) {
       console.log(
         mapInstance.project([

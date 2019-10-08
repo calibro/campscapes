@@ -36,15 +36,11 @@ $icons-width: 56px;
 }
 
 .image {
-  border-radius: 999px;
+  border-radius: 100%;
   height: $icons-width;
   width: $icons-width;
   object-fit: cover;
   transition: border-radius var(--transition);
-}
-
-.image:hover {
-  border-radius: 0px;
 }
 
 .iconTitle {
@@ -61,6 +57,11 @@ $icons-width: 56px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
   }
 }
 

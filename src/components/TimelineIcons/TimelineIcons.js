@@ -40,38 +40,40 @@ const TimelineIcons = ({ camp, scale, location }) => {
         {icons.map(icon => {
           return (
             <div className="w-100 position-relative" key={icon.id}>
-              <Link
-                to={{
-                  pathname: `/icons/${icon.data.timelineLabel}`,
-                  state: { from: location.pathname }
-                }}
+              <div
+                className={styles.iconContainer}
+                style={{ marginLeft: `${scale(icon.data.startDate)}%` }}
               >
-                <div
-                  className={styles.iconContainer}
-                  style={{ marginLeft: `${scale(icon.data.startDate)}%` }}
-                >
-                  <div className={styles.iconImage}>
-                    {/* fix this */}
-                    {icon.data.files[0].mime_type !== "video/mp4" ? (
-                      <img
-                        className={styles.image}
-                        src={icon.data.files[0].file_urls.original}
-                        alt={icon.data.title}
-                      ></img>
-                    ) : (
-                      <div className={styles.image}></div>
-                    )}
-                  </div>
-                  <div className={styles.iconTitle}>
-                    <p className={styles.desc}>{icon.data.timelineLabel}</p>
-                    <p className={styles.desc}>
-                      {icon.data.startDate
-                        ? icon.data.startDate.getFullYear()
-                        : "undefined"}
-                    </p>
-                  </div>
+                <div className={styles.iconImage}>
+                  {/* fix this */}
+                  {icon.data.files[0].mime_type !== "video/mp4" ? (
+                    <img
+                      className={styles.image}
+                      src={icon.data.files[0].file_urls.original}
+                      alt={icon.data.title}
+                    ></img>
+                  ) : (
+                    <div className={styles.image}></div>
+                  )}
                 </div>
-              </Link>
+                <div className={styles.iconTitle}>
+                  <p className={styles.desc}>
+                    <Link
+                      to={{
+                        pathname: `/icons/${icon.data.timelineLabel}`,
+                        state: { from: location.pathname }
+                      }}
+                    >
+                      {icon.data.timelineLabel}
+                    </Link>
+                  </p>
+                  <p className={styles.desc}>
+                    {icon.data.startDate
+                      ? icon.data.startDate.getFullYear()
+                      : "undefined"}
+                  </p>
+                </div>
+              </div>
             </div>
           );
         })}
