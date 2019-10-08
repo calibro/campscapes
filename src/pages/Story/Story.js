@@ -6,6 +6,7 @@ import React, {
   useRef,
   createRef
 } from "react";
+import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import { StoriesContext } from "../../dataProviders";
 import find from "lodash/find";
@@ -52,7 +53,7 @@ const PageDots = ({ page, index, currentParagraph, onClick }) => {
   );
 };
 
-const Story = ({ match }) => {
+const Story = ({ match, location }) => {
   const stories = useContext(StoriesContext);
   const { params } = match;
   const story = useMemo(() => {
@@ -80,6 +81,12 @@ const Story = ({ match }) => {
     return get(currentPage, "page_blocks[0].attachments", []);
   }, [pages, currentParagraph]);
 
+  const backLink = useMemo(() => {
+    return location.state && location.state.from
+      ? location.state.from
+      : "/themes";
+  }, [location.state]);
+
   return (
     <div className={styles.storyContainer}>
       <Menu light></Menu>
@@ -92,10 +99,12 @@ const Story = ({ match }) => {
                 <div className="col-12">
                   <h2>
                     <span className="d-flex mr-2">
-                      <MdArrowBack
-                        style={{ color: "var(--dark-cs)" }}
-                        size="1.5rem"
-                      ></MdArrowBack>
+                      <Link to={backLink}>
+                        <MdArrowBack
+                          style={{ color: "var(--dark-cs)" }}
+                          size="1.5rem"
+                        ></MdArrowBack>
+                      </Link>
                     </span>
                     <span>{story.title}</span>
                   </h2>

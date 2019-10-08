@@ -5,7 +5,7 @@ import {
   StoriesContext
 } from "../../dataProviders";
 import keyBy from "lodash/keyBy";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import get from "lodash/get";
 import find from "lodash/find";
@@ -13,7 +13,7 @@ import Menu from "../../components/Menu";
 import ThemesCircles from "../../components/ThemesCircles";
 import styles from "./Themes.module.scss";
 
-const Themes = () => {
+const Themes = ({ location }) => {
   const themes = useContext(ThemesContext);
   const stories = useContext(StoriesContext);
   const simplePages = useContext(SimplePagesContext);
@@ -94,7 +94,12 @@ const Themes = () => {
                 filteredStories.map(story => (
                   <div key={story.id} className="mb-2">
                     <Link
-                      to={`/stories/${story.slug}`}
+                      to={{
+                        pathname: `/stories/${story.slug}`,
+                        state: {
+                          from: location.pathname + "?" + location.search
+                        }
+                      }}
                       className={`${styles.link} d-flex align-items-center`}
                     >
                       <div>
@@ -112,4 +117,4 @@ const Themes = () => {
   );
 };
 
-export default Themes;
+export default withRouter(Themes);
