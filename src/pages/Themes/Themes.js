@@ -34,7 +34,8 @@ const Themes = ({ location, history }) => {
     "theme",
     null,
     encodeArray,
-    decodeArray
+    decodeArray,
+    { encode: false }
   );
   const [filteredStories, setFilteredStories] = useState([]);
 

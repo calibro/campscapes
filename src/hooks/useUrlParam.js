@@ -28,12 +28,15 @@ export default function useQueryParam(
     } else {
       return defaultValue;
     }
-  }, [defaultValue, location.search, name, decode]);
+  }, [defaultValue, location.search, name]);
 
   const setQueryParams = useCallback(
     (nextValue, historyMethod = "push") => {
       if (isFunction(nextValue)) {
         nextValue = nextValue(queryParams);
+      }
+      if (encode(nextValue) === encode(queryParams)) {
+        return;
       }
 
       const currentQueryParams = qs.parse(location.search);
@@ -47,7 +50,7 @@ export default function useQueryParam(
       const url = `${location.pathname}?${queryString}`;
       history[historyMethod](url);
     },
-    [location.search, location.pathname, name, encode, options, history]
+    [location.search, location.pathname, name, options, history]
   );
 
   return [queryParams, setQueryParams];
