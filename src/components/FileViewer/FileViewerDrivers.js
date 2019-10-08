@@ -1,4 +1,5 @@
 import React from "react";
+import ReactPlayer from "react-player";
 import styles from "./FileViewer.module.scss";
 
 export const DriverImage = ({ item }) => {
@@ -16,5 +17,15 @@ export const DriverAudio = ({ item }) => {
 };
 
 export const DriverVideo = ({ item }) => {
-  return <div>video</div>;
+  return (
+    <div className={styles.playerWrapper}>
+      <ReactPlayer
+        url={item.file_urls.original}
+        width="100%"
+        height="100%"
+        className={styles.reactPlayer}
+        controls
+      />
+    </div>
+  );
 };
