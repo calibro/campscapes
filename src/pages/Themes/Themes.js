@@ -4,7 +4,7 @@ import {
   SimplePagesContext,
   StoriesContext
 } from "../../dataProviders";
-import keyBy from "lodash/keyBy";
+import useUrlParam from "../../hooks/useUrlParam";
 import { Link, withRouter } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import get from "lodash/get";
@@ -13,7 +13,7 @@ import Menu from "../../components/Menu";
 import ThemesCircles from "../../components/ThemesCircles";
 import styles from "./Themes.module.scss";
 
-const Themes = ({ location }) => {
+const Themes = ({ location, history }) => {
   const themes = useContext(ThemesContext);
   const stories = useContext(StoriesContext);
   const simplePages = useContext(SimplePagesContext);
@@ -24,7 +24,18 @@ const Themes = ({ location }) => {
 
   const pageText = get(page, "text");
 
-  const [selected, setSelected] = useState(null);
+  //const [selected, setSelected] = useState(null);
+
+  const encodeArray = v => (v ? v.join(",") : "");
+  const decodeArray = v => (v ? v.split(",").map(x => +x) : null);
+  const [selected, setSelected] = useUrlParam(
+    location,
+    history,
+    "theme",
+    null,
+    encodeArray,
+    decodeArray
+  );
   const [filteredStories, setFilteredStories] = useState([]);
 
   const setSelectedClick = ids => {
@@ -37,7 +48,7 @@ const Themes = ({ location }) => {
     });
   };
 
-  useMemo(() => {
+  useEffect(() => {
     if (selected) {
       setFilteredStories(stories.filter(d => selected.includes(d.id)));
     } else {
@@ -51,6 +62,8 @@ const Themes = ({ location }) => {
       .filter(story => get(story, "tags", []).indexOf(theme.name) !== -1)
       .map(story => story.id)
   }));
+
+  console.log("selected", selected);
 
   return (
     <div className={styles.themesContainer}>
@@ -97,7 +110,10 @@ const Themes = ({ location }) => {
                       to={{
                         pathname: `/stories/${story.slug}`,
                         state: {
-                          from: location.pathname + "?" + location.search
+                          from: {
+                            pathname: location.pathname,
+                            search: location.search
+                          }
                         }
                       }}
                       className={`${styles.link} d-flex align-items-center`}

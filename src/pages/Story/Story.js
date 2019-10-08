@@ -14,8 +14,10 @@ import get from "lodash/get";
 import sortBy from "lodash/sortBy";
 import { Waypoint } from "react-waypoint";
 import Menu from "../../components/Menu";
+import useUrlParam from "../../hooks/useUrlParam";
 import StoryItem from "../../components/StoryItem";
 import styles from "./Story.module.scss";
+import { validate } from "@babel/types";
 
 const StoryParagraph = React.forwardRef(
   ({ page, index, wayPointCallback, style }, ref) => {
@@ -53,7 +55,7 @@ const PageDots = ({ page, index, currentParagraph, onClick }) => {
   );
 };
 
-const Story = ({ match, location }) => {
+const Story = ({ match, location, history }) => {
   const stories = useContext(StoriesContext);
   const { params } = match;
   const story = useMemo(() => {
@@ -64,7 +66,18 @@ const Story = ({ match, location }) => {
     return sortBy(get(story, "pages", []), "order");
   }, [story]);
 
-  const [currentParagraph, setCurrentParagraph] = useState(null);
+  //const [currentParagraph, setCurrentParagraph] = useState(null);
+  const validateUrl = x => pages && Number.isInteger(x) && x < pages.length;
+  const [currentParagraph, setCurrentParagraph] = useUrlParam(
+    location,
+    history,
+    "paragraph",
+    0,
+    x => x,
+    x => +x,
+    {},
+    validateUrl
+  );
 
   const containerRef = useRef();
   let pagesRef = useRef([]);
