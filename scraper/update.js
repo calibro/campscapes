@@ -99,7 +99,7 @@ async function main(options){
   const allExhibits =  await api.getExhibits()
   // const allExhibitsById = keyBy(allExhibits, 'id')
   
-  const stories = allExhibits.map(exhibit => {
+  const allStories = allExhibits.map(exhibit => {
     const pages = allPages.filter(page => get(page, 'exhibit.id') === exhibit.id)
     let pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
     
@@ -118,8 +118,18 @@ async function main(options){
     return exhibit
   })
 
+  const stories = allStories.filter(item => !item.featured)
   const storiesFilename = path.join(targetDir, 'stories.json')
   fs.writeFileSync(storiesFilename, JSON.stringify(stories))
+
+  const featStories = allStories.filter(item => item.featured)
+  let introSteps = []
+  if(featStories.length){
+    const intro = featStories[0]
+    introSteps = get(intro, "pages", []).map(page => get(page, 'page_blocks[0].text'))
+  }
+  const introStepsFilename = path.join(targetDir, 'introSteps.json')
+  fs.writeFileSync(introStepsFilename, JSON.stringify(introSteps))
 
 
   console.log(colors.yellow(`Getting simple pages`))
