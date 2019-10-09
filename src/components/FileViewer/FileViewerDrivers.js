@@ -1,9 +1,12 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import ZoomAndPanMedia from "../ZoomAndPanMedia";
 import styles from "./FileViewer.module.scss";
 
-export const DriverImage = ({ item }) => {
-  return (
+export const DriverImage = ({ item, zoom }) => {
+  return zoom ? (
+    <ZoomAndPanMedia src={item.file_urls.original}></ZoomAndPanMedia>
+  ) : (
     <img className={styles.image} src={item.file_urls.original} alt={"doc"} />
   );
 };
