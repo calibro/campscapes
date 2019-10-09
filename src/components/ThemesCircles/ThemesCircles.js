@@ -8,17 +8,12 @@ import ThemesCirclesLabel from "../ThemesCirclesLabel";
 const ThemesCircles = ({ themes = [], setSelected, selected }) => {
   const [ref, { width, height }] = useDimensions({ liveMeasure: false });
 
-  const [themeSelected, setThemeSelected] = useState(null);
-
   const themeClick = theme => {
-    setSelected(theme.data.stories);
-    setThemeSelected(prev => {
-      if (prev === theme.data.name) {
-        return null;
-      } else {
-        return theme.data.name;
-      }
-    });
+    if (selected === theme.data.name) {
+      setSelected(null);
+    } else {
+      setSelected(theme.data.name);
+    }
   };
 
   const packGenerator = useMemo(() => {
@@ -36,12 +31,6 @@ const ThemesCircles = ({ themes = [], setSelected, selected }) => {
       .filter(node => node.depth === 1 && node.r);
   }, [packGenerator, themes]);
 
-  useEffect(() => {
-    if (!selected) {
-      setThemeSelected(null);
-    }
-  }, [selected]);
-
   return (
     <svg ref={ref} className={styles.ThemesCircles}>
       {packedThemes.length > 0 &&
@@ -49,7 +38,7 @@ const ThemesCircles = ({ themes = [], setSelected, selected }) => {
           <g key={theme.data.name}>
             <circle
               className={classNames(styles.circle, {
-                [styles.active]: theme.data.name === themeSelected
+                [styles.active]: theme.data.name === selected
               })}
               cx={theme.x}
               cy={theme.y}

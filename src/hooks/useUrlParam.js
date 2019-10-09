@@ -7,6 +7,9 @@ function isFunction(functionToCheck) {
   );
 }
 
+export const encodeArray = v => (v ? v.join(",") : "");
+export const decodeArray = v => (v ? v.split(",").map(x => +x) : null);
+
 export default function useQueryParam(
   location,
   history,
@@ -39,11 +42,15 @@ export default function useQueryParam(
       //   return;
       // }
 
+      const encodedValue = encode(nextValue);
       const currentQueryParams = qs.parse(location.search);
       const queryString = qs.stringify(
         {
           ...currentQueryParams,
-          [name]: encode(nextValue)
+          [name]:
+            encodedValue !== "" && encodedValue !== null
+              ? encodedValue
+              : undefined
         },
         options
       );

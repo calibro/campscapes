@@ -24,34 +24,19 @@ const Themes = ({ location, history }) => {
 
   const pageText = get(page, "text");
 
-  //const [selected, setSelected] = useState(null);
-
-  const encodeArray = v => (v ? v.join(",") : "");
-  const decodeArray = v => (v ? v.split(",").map(x => +x) : null);
   const [selected, setSelected] = useUrlParam(
     location,
     history,
     "theme",
     null,
-    encodeArray,
-    decodeArray,
-    { encode: false }
+    x => x,
+    x => x
   );
   const [filteredStories, setFilteredStories] = useState([]);
 
-  const setSelectedClick = ids => {
-    setSelected(prev => {
-      if (JSON.stringify(prev) === JSON.stringify(ids)) {
-        return null;
-      } else {
-        return ids;
-      }
-    });
-  };
-
   useEffect(() => {
     if (selected) {
-      setFilteredStories(stories.filter(d => selected.includes(d.id)));
+      setFilteredStories(stories.filter(d => d.tags.includes(selected)));
     } else {
       setFilteredStories(stories);
     }
@@ -63,8 +48,6 @@ const Themes = ({ location, history }) => {
       .filter(story => get(story, "tags", []).indexOf(theme.name) !== -1)
       .map(story => story.id)
   }));
-
-  console.log("selected", selected);
 
   return (
     <div className={styles.themesContainer}>
@@ -87,7 +70,7 @@ const Themes = ({ location, history }) => {
           <div className="col-12 col-md-8">
             <ThemesCircles
               themes={themesWithStories}
-              setSelected={setSelectedClick}
+              setSelected={setSelected}
               selected={selected}
             />
           </div>
