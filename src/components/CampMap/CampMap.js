@@ -51,7 +51,7 @@ const CampMap = ({ camp, selectedIcon }) => {
   };
 
   useEffect(() => {
-    if (selectedIcon) {
+    if (selectedIcon && mapInstance) {
       console.log(
         mapInstance.project([
           selectedIcon.data.longitude,
