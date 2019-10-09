@@ -125,3 +125,17 @@ export const ItemsProvider = ({ children, loadOn }) => {
     </ItemsContext.Provider>
   );
 };
+
+export const IntroContext = React.createContext([]);
+
+export const IntroProvider = ({ children, loadOn }) => {
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/introSteps.json`,
+    loadOn
+  );
+  return (
+    <IntroContext.Provider value={data || emptyList}>
+      {children}
+    </IntroContext.Provider>
+  );
+};

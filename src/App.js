@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
 import {
+  IntroProvider,
   CampsProvider,
   CampsNetworksProvider,
   ThemesProvider,
@@ -23,7 +24,10 @@ function App() {
   return (
     <Router>
       <SimplePagesProvider>
-        <Route exact path="/" component={Intro} />
+        <IntroProvider loadOn={["/"]}>
+          <Route exact path="/" component={Intro} />
+        </IntroProvider>
+
         <Route exact path="/home" component={Home} />
 
         <CampsProvider loadOn={["/camps", "/icons"]}>

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
 // import { Text } from "@vx/text";
 import styles from "./Intro.module.scss";
+import { IntroContext } from "../../dataProviders";
 
 const Intro = () => {
+  const introSteps = useContext(IntroContext);
+
+  console.log("introSteps", introSteps);
+
   return (
     <div className="w-100 h-100 position-relative">
       <div className={styles.container}>
