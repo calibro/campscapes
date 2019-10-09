@@ -1,0 +1,38 @@
+.zoom-and-pan-media {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  overflow: hidden;
+  position: relative;
+  .zoom-and-pan-media-container {
+    flex: 1 1 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: grab;
+    flex-basis: 0;
+  }
+
+  .zoom-and-pan-media-container:active {
+    cursor: grabbing;
+  }
+  .zoom-and-pan-media-container .zoomable {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    vertical-align: middle;
+    user-select: none;
+  }
+}
+
+.controls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}

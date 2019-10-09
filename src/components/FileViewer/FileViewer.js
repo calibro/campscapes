@@ -6,15 +6,15 @@ import {
   DriverAudio
 } from "./FileViewerDrivers";
 
-const FileViewer = ({ item }) => {
+const FileViewer = ({ item, zoom }) => {
   const mime_type = item.mime_type;
 
   const renderSwitch = mime_type => {
     switch (mime_type) {
       case "image/jpeg":
-        return <DriverImage item={item}></DriverImage>;
+        return <DriverImage item={item} zoom></DriverImage>;
       case "image/png":
-        return <DriverImage item={item}></DriverImage>;
+        return <DriverImage item={item} zoom></DriverImage>;
       case "application/pdf":
         return <DriverPdf item={item}></DriverPdf>;
       case "audio/mpeg":

@@ -3,6 +3,7 @@ import { ItemsContext } from "../../dataProviders";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import find from "lodash/find";
+import FileViewer from "../../components/FileViewer";
 import styles from "./Item.module.scss";
 
 const ItemDate = ({ item }) => {
@@ -58,7 +59,9 @@ export default function Item({ match, location }) {
             <div className="container">
               <div className="row">
                 <div className="col-12">
-                  <div className={styles.itemViewerContainer}></div>
+                  <div className={styles.itemViewerContainer}>
+                    <FileViewer item={item.data.files[0]} zoom></FileViewer>
+                  </div>
                 </div>
               </div>
             </div>
