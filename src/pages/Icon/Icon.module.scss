@@ -56,8 +56,14 @@
   text-indent: 30px;
 }
 
-.imageContainer {
+.fileContainer {
+  flex: 1 1 1px;
+  overflow-y: scroll;
+}
+
+.fileViewerContainer {
   max-height: 60%;
+  width: 100%;
   margin-bottom: 15px;
-  overflow: hidden;
+  display: flex;
 }

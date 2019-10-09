@@ -61,15 +61,17 @@ export default function Icon({ match, location }) {
               </Link>
             </div>
             <div className="col-4 d-flex flex-column overflow-hidden">
-              <div className={styles.imageContainer}>
-                <FileViewer item={icon.data.files[0]}></FileViewer>
-              </div>
-              {icon.data.provenance && (
-                <div>
-                  <h6 className={styles.metadata}>provenance</h6>
-                  <h6 className={styles.subtitle}>{icon.data.provenance}</h6>
+              <div className={styles.fileContainer}>
+                <div className={styles.fileViewerContainer}>
+                  <FileViewer item={icon.data.files[0]}></FileViewer>
                 </div>
-              )}
+                {icon.data.provenance && (
+                  <div>
+                    <h6 className={styles.metadata}>provenance</h6>
+                    <h6 className={styles.subtitle}>{icon.data.provenance}</h6>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="col-6 d-flex flex-column overflow-hidden">
               <div>
