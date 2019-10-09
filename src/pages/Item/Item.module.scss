@@ -1,12 +1,58 @@
 .itemContainer {
-    height: 100%;
-    color: var(--dark-cs);
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    
+  height: 100%;
+  color: var(--dark-cs);
+  background-color: white;
+  position: relative;
+  overflow-y: scroll;
 }
-  
-  
-  
+
+.titleContainer {
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+
+.circleButton {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 1px solid black;
+  color: black;
+}
+
+.circleButton:hover {
+  color: black;
+}
+
+.title {
+  font-family: "MessinaSerifWeb", serif;
+  font-weight: normal;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.itemViewerBg {
+  background-color: #eeeeee;
+  margin-bottom: 15px;
+}
+
+.itemViewerContainer {
+  height: 500px;
+  min-height: 65vh;
+}
+
+.metadata {
+  text-transform: uppercase;
+  color: var(--red-cs);
+  font-weight: normal;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.metadataContainer {
+}
