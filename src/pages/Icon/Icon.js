@@ -3,14 +3,14 @@ import { IconsContext, CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import find from "lodash/find";
 import get from "lodash/get";
+import sortBy from "lodash/sortBy";
+import findIndex from "lodash/findIndex";
 import { MdClose, MdArrowBack, MdArrowForward } from "react-icons/md";
-import qs from "query-string";
 import FileViewer from "../../components/FileViewer";
 import styles from "./Icon.module.scss";
 
 export default function Icon({ match, location }) {
   const { params } = match;
-  const qsParams = qs.parse(location.search);
 
   const icons = useContext(IconsContext);
   const camps = useContext(CampsContext);
@@ -23,15 +23,33 @@ export default function Icon({ match, location }) {
     if (!icon) {
       return null;
     }
-    return get(icon, "subjectsRelations.site[0]");
-  }, [icon]);
+    const campId = get(icon, "subjectsRelations.site[0].id");
+    // getting the camp from camps as the camp on icon is not complete (no relations)
+    return campId && find(camps, item => item.id === campId);
+  }, [icon, camps]);
 
-  const campIcons = useMemo(() => {
-    if (camp) {
-      return [];
+  const prevNextIcons = useMemo(() => {
+    if (!camp || !icon) {
+      return {};
     }
-    return get(camp, "relations.icon", []);
-  }, [camp]);
+    const allCampIcons = sortBy(
+      get(camp, "relations.icon", []),
+      "data.startDate"
+    );
+    const currentIndex = findIndex(allCampIcons, item => item.id === icon.id);
+    // this should never happen ... no links anyway
+    if (currentIndex === -1) {
+      return {};
+    }
+
+    return {
+      prevIcon: currentIndex > 0 ? allCampIcons[currentIndex - 1] : undefined,
+      nextIcon:
+        currentIndex < allCampIcons.length - 1
+          ? allCampIcons[currentIndex + 1]
+          : undefined
+    };
+  }, [camp, icon]);
 
   const backLink = useMemo(() => {
     return location.state && location.state.from
@@ -39,7 +57,6 @@ export default function Icon({ match, location }) {
       : "/icons";
   }, [location.state]);
 
-  console.log(campIcons, icon, camp);
   return (
     <div className={styles.iconContainer}>
       {icon && (
@@ -60,9 +77,14 @@ export default function Icon({ match, location }) {
           </div>
           <div className={`row ${styles.rowFill} mt-3`}>
             <div className="col-1 d-flex align-items-center">
-              <Link to={backLink} className={styles.circleButton}>
-                <MdArrowBack size="1.5rem"></MdArrowBack>
-              </Link>
+              {prevNextIcons.prevIcon && (
+                <Link
+                  to={`/icons/${prevNextIcons.prevIcon.id}`}
+                  className={styles.circleButton}
+                >
+                  <MdArrowBack size="1.5rem"></MdArrowBack>
+                </Link>
+              )}
             </div>
             <div className="col-4 d-flex flex-column overflow-hidden">
               <div className={styles.fileContainer}>
@@ -101,9 +123,14 @@ export default function Icon({ match, location }) {
               </div>
             </div>
             <div className="col-1 d-flex align-items-center">
-              <Link to={backLink} className={styles.circleButton}>
-                <MdArrowForward size="1.5rem"></MdArrowForward>
-              </Link>
+              {prevNextIcons.nextIcon && (
+                <Link
+                  to={`/icons/${prevNextIcons.nextIcon.id}`}
+                  className={styles.circleButton}
+                >
+                  <MdArrowForward size="1.5rem"></MdArrowForward>
+                </Link>
+              )}
             </div>
           </div>
         </div>
