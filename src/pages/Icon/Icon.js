@@ -16,8 +16,8 @@ export default function Icon({ match, location }) {
   const camps = useContext(CampsContext);
 
   const icon = useMemo(() => {
-    return find(icons, item => item.data.timelineLabel === params.name);
-  }, [icons, params.name]);
+    return find(icons, item => item.id === +params.id);
+  }, [icons, params.id]);
 
   const camp = useMemo(() => {
     if (!icon) {

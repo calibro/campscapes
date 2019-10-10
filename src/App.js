@@ -39,7 +39,7 @@ function App() {
 
           <IconsProvider loadOn={["/icons"]}>
             <Route path="/icons" component={Icons} exact />
-            <Route path="/icons/:name" component={Icon} />
+            <Route path="/icons/:id" component={Icon} />
           </IconsProvider>
 
           <ItemsProvider loadOn={["/items"]}>

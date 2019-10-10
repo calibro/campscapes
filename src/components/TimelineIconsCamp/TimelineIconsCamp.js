@@ -34,8 +34,7 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
               >
                 <Link
                   to={{
-                    pathname: `/icons/${icon.data.timelineLabel}`,
-                    search: `camp=${camp.id}`,
+                    pathname: `/icons/${icon.id}`,
                     state: { from: location.pathname }
                   }}
                 >
