@@ -8,7 +8,15 @@ export const DriverImage = ({ item, zoom }) => {
   return zoom ? (
     <ZoomAndPanMedia src={item.file_urls.original}></ZoomAndPanMedia>
   ) : (
-    <img className={styles.image} src={item.file_urls.original} alt={"doc"} />
+    <img
+      className={styles.image}
+      src={
+        item.file_urls.fullsize
+          ? item.file_urls.fullsize
+          : item.file_urls.original
+      }
+      alt={"doc"}
+    />
   );
 };
 

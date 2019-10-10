@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import TimelineStripes from "../../components/TimelineStripes";
+import FallbackPreview from "../../components/FallbackPreview";
 import styles from "./TimelineIconsCamp.module.scss";
 
 const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
@@ -47,15 +48,20 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
                     onMouseOut={() => setSelectedIcon(null)}
                   >
                     <div className={styles.iconImage}>
-                      {/* fix this */}
-                      {icon.data.files[0].mime_type !== "video/mp4" ? (
+                      {icon.data.files[0].file_urls.square_thumbnail ? (
                         <img
                           className={styles.image}
-                          src={icon.data.files[0].file_urls.original}
+                          src={icon.data.files[0].file_urls.square_thumbnail}
                           alt={icon.data.title}
                         ></img>
                       ) : (
-                        <div className={styles.image}></div>
+                        <div className={styles.itemFallback}>
+                          <FallbackPreview
+                            mimetype={icon.data.files[0].mime_type}
+                            color="black"
+                            size="1.3rem"
+                          ></FallbackPreview>
+                        </div>
                       )}
                     </div>
                     {/*<div className={styles.iconTitle}>

@@ -12,9 +12,9 @@ const FileViewer = ({ item, zoom }) => {
   const renderSwitch = mime_type => {
     switch (mime_type) {
       case "image/jpeg":
-        return <DriverImage item={item} zoom></DriverImage>;
+        return <DriverImage item={item} zoom={zoom}></DriverImage>;
       case "image/png":
-        return <DriverImage item={item} zoom></DriverImage>;
+        return <DriverImage item={item} zoom={zoom}></DriverImage>;
       case "application/pdf":
         return <DriverPdf item={item}></DriverPdf>;
       case "audio/mpeg":
