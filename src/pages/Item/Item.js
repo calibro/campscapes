@@ -98,6 +98,17 @@ export default function Item({ match, location }) {
               </div>
               <div className="col-4">
                 <h6 className={styles.metadata}>related storylines</h6>
+                {item.linkedPages.map((page, i) => (
+                  <div key={i}>
+                    <Link
+                      to={`/stories/${
+                        page.exhibitSlug
+                      }?paragraph=${page.paragraph - 1}`}
+                    >
+                      {page.exhibitTitle}
+                    </Link>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

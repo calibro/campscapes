@@ -83,26 +83,61 @@ async function main(options){
 
   //getting icons
   console.log(colors.yellow(`Getting icons`))
-  // const icons = await api.getItemsGreedy({ 
-  //   query: {item_type: 34},
-  //   //relations
-  // })
   const rawIcons = allItems.filter(item => item.item_type === 'icon')
-  const icons = await Promise.all(rawIcons.map(async function(icon){
+  let icons = await Promise.all(rawIcons.map(async function(icon){
     return await api.enrichWithRelations(icon, relations, allItemsById)
   }))
   const iconsFilename = path.join(targetDir, 'icons.json')
-  fs.writeFileSync(iconsFilename, JSON.stringify(icons))
+  
 
   console.log(colors.yellow(`Getting stories`))
-  const allPages =  await api.getPages()
+  let allPages =  await api.getPages()
   const allExhibits =  await api.getExhibits()
-  // const allExhibitsById = keyBy(allExhibits, 'id')
-  
-  const allStories = allExhibits.map(exhibit => {
-    const pages = allPages.filter(page => get(page, 'exhibit.id') === exhibit.id)
-    let pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
+  const allExhibitsById = keyBy(allExhibits, 'id')
+
+  const allPagesWithAttachments = allPages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
+  const allPagesWithAttachmentsById = keyBy(allPagesWithAttachments, 'id')
+ 
+  //fixing items and icons now that we have pages with attachments
+  const addRelatedPagesToItem = item => {
+    let linkedPages = get(item, 'extended_resources.exhibit_pages')
+    linkedPages = Array.isArray(linkedPages) ? linkedPages : [linkedPages]
+    item.linkedPages = linkedPages.map(
+      linkedPage => {
+        const extendedResourceId = get(linkedPage, 'id')
+        if(!extendedResourceId){
+          return undefined
+        }
+        const paragraph =  get(allPagesWithAttachmentsById, extendedResourceId)
+        if(paragraph && paragraph.exhibit){
+          const exhibit = get(allExhibitsById, paragraph.exhibit.id)
+          return exhibit && {
+            paragraph: paragraph.order,
+            exhibitId: exhibit.id,
+            exhibitSlug: exhibit.slug,
+            exhibitTitle: exhibit.title,
+          }  
+        }
+
+      }
+    ).filter(x => x !== undefined)
+
     
+    return item
+    
+  }
+  allItems = allItems.map(addRelatedPagesToItem)
+  fs.writeFileSync(allItemsFilename, JSON.stringify(allItems))  
+
+  icons = icons.map(addRelatedPagesToItem)
+  fs.writeFileSync(iconsFilename, JSON.stringify(icons))
+  
+
+
+  const allStories = allExhibits.map(exhibit => {
+    // const pages = allPages.filter(page => get(page, 'exhibit.id') === exhibit.id)
+    // let pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
+    let pagesWithAttachments = allPagesWithAttachments.filter(page => get(page, 'exhibit.id') === exhibit.id)
     pagesWithAttachments = sortBy(pagesWithAttachments, page => page.order)
     // the first page is used for linking a camp to a story (first attachment of first page)
     if(pagesWithAttachments.length > 0){
