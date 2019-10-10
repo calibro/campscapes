@@ -42,7 +42,7 @@ async function simplifyItem(item){
 
 
 
-async function enrichWithRelations(item, relations, itemsById){
+async function enrichWithRelations(item, relations, itemsById, withSubjects=false){
   
   // TODO: understand if we should use this, object_item_id or both
   const subjectRelations = relations.filter(relation => relation.subject_item_id === item.id)
@@ -55,10 +55,16 @@ async function enrichWithRelations(item, relations, itemsById){
 
   const objectsByType = groupBy(objects, 'item_type')
   
-  // const subjects = await Promise.all(subjectRelations.map(async function(relation){
-  //   // return await getItem(relation.object_item_id)
-  //   return get(itemsById, relation.object_item_id)
-  // }))
+  let subjectsByType
+  if(withSubjects){
+    const subjects = await Promise.all(subjectRelations.map(async function(relation){
+      // return await getItem(relation.object_item_id)
+      return get(itemsById, relation.object_item_id)
+    }))
+    subjectsByType = groupBy(subjects, 'item_type')
+  }
+  
+  
   
   return {
     ...item,
@@ -66,6 +72,9 @@ async function enrichWithRelations(item, relations, itemsById){
       ...objectsByType,
       // objects, 
       // subjects,
+    },
+    subjectsRelations: {
+      ...subjectsByType
     }
     
   }

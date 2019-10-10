@@ -19,16 +19,19 @@ export default function Icon({ match, location }) {
     return find(icons, item => item.data.timelineLabel === params.name);
   }, [icons, params.name]);
 
-  const campIcons = useMemo(() => {
-    if (!qsParams.camp) {
-      return [];
+  const camp = useMemo(() => {
+    if (!icon) {
+      return null;
     }
-    const camp = find(camps, item => item.id === +qsParams.camp);
-    if (!camp) {
+    return get(icon, "subjectsRelations.site[0]");
+  }, [icon]);
+
+  const campIcons = useMemo(() => {
+    if (camp) {
       return [];
     }
     return get(camp, "relations.icon", []);
-  }, [camps, qsParams.camp]);
+  }, [camp]);
 
   const backLink = useMemo(() => {
     return location.state && location.state.from
@@ -36,7 +39,7 @@ export default function Icon({ match, location }) {
       : "/icons";
   }, [location.state]);
 
-  console.log(campIcons, icon);
+  console.log(campIcons, icon, camp);
   return (
     <div className={styles.iconContainer}>
       {icon && (
@@ -44,7 +47,8 @@ export default function Icon({ match, location }) {
           <div className="row">
             <div className="col-10 offset-1">
               <h6 className={styles.subtitle}>
-                Nome del camp - {new Date(icon.data.startDate).getFullYear()}
+                {camp && camp.data.title} -{" "}
+                {new Date(icon.data.startDate).getFullYear()}
               </h6>
               <h1 className={styles.title}> {icon.data.timelineLabel}</h1>
             </div>

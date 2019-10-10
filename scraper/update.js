@@ -85,7 +85,7 @@ async function main(options){
   console.log(colors.yellow(`Getting icons`))
   const rawIcons = allItems.filter(item => item.item_type === 'icon')
   let icons = await Promise.all(rawIcons.map(async function(icon){
-    return await api.enrichWithRelations(icon, relations, allItemsById)
+    return await api.enrichWithRelations(icon, relations, allItemsById, true)
   }))
   const iconsFilename = path.join(targetDir, 'icons.json')
   
