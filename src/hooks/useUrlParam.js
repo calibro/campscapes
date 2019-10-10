@@ -31,7 +31,7 @@ export default function useQueryParam(
     } else {
       return defaultValue;
     }
-  }, [defaultValue, location.search, name]);
+  }, [decode, defaultValue, location.search, name, validator]);
 
   const setQueryParams = useCallback(
     (nextValue, historyMethod = "push") => {
@@ -61,7 +61,16 @@ export default function useQueryParam(
         state: location.state
       });
     },
-    [location.search, location.pathname, name, options, history]
+    [
+      encode,
+      location.search,
+      location.pathname,
+      location.state,
+      name,
+      options,
+      history,
+      queryParams
+    ]
   );
 
   return [queryParams, setQueryParams];
