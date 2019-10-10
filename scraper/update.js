@@ -106,8 +106,13 @@ async function main(options){
     pagesWithAttachments = sortBy(pagesWithAttachments, page => page.order)
     // the first page is used for linking a camp to a story (first attachment of first page)
     if(pagesWithAttachments.length > 0){
-      exhibit.camp = get(pagesWithAttachments[0], 'page_blocks[0].attachments[0].item', null)
-      exhibit.pages = tail(pagesWithAttachments)
+      if(!exhibit.featured){
+        exhibit.camp = get(pagesWithAttachments[0], 'page_blocks[0].attachments[0].item', null)
+        exhibit.pages = tail(pagesWithAttachments)
+      } else {
+        exhibit.pages = pagesWithAttachments
+      }
+      
     } else {
       exhibit.pages = []
       exhibit.camp = null
