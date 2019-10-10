@@ -60,7 +60,11 @@ export default function Item({ match, location }) {
               <div className="row">
                 <div className="col-12">
                   <div className={styles.itemViewerContainer}>
-                    <FileViewer item={item.data.files[0]} zoom></FileViewer>
+                    <FileViewer
+                      item={item.data.files[0]}
+                      zoom
+                      alt={item.data.title}
+                    ></FileViewer>
                   </div>
                 </div>
               </div>
