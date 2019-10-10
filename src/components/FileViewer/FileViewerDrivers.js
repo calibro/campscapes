@@ -1,6 +1,7 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import ZoomAndPanMedia from "../ZoomAndPanMedia";
+import PdfViewer from "../PdfViewer";
 import styles from "./FileViewer.module.scss";
 
 export const DriverImage = ({ item, zoom }) => {
@@ -12,7 +13,7 @@ export const DriverImage = ({ item, zoom }) => {
 };
 
 export const DriverPdf = ({ item }) => {
-  return <div>pdf</div>;
+  return <PdfViewer file={item.file_urls.original} />;
 };
 
 export const DriverAudio = ({ item }) => {
