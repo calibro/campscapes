@@ -82,9 +82,26 @@ const Story = ({ match, location, history }) => {
   const containerRef = useRef();
   let pagesRef = useRef([]);
 
+  // useEffect(() => {
+  //   pagesRef.current = []//pages.map(createRef);
+  //   console.log("p", pages)
+  // }, [pages]);
+
   useEffect(() => {
-    pagesRef.current = pages.map(createRef);
-  }, [pages]);
+    // if(pages !== null){
+    //   return
+    // }
+    console.log("xxxx", pages, currentParagraph, pagesRef.current);
+    if (currentParagraph) {
+      const node = pagesRef.current[currentParagraph];
+
+      console.log(1, node);
+      containerRef.current.scrollTo({
+        top: node.offsetTop
+        // behavior: "smooth"
+      });
+    }
+  }, [pages, pagesRef]);
 
   const currentAttachments = useMemo(() => {
     const currentPage = pages[currentParagraph];
@@ -148,7 +165,8 @@ const Story = ({ match, location, history }) => {
                   {pages.length > 0 &&
                     pages.map((page, i) => (
                       <StoryParagraph
-                        ref={pagesRef.current[i]}
+                        // ref={pagesRef.current[i]}
+                        ref={node => (pagesRef.current[i] = node)}
                         style={{
                           opacity: i === currentParagraph ? 1 : 0.5
                         }}
@@ -176,7 +194,7 @@ const Story = ({ match, location, history }) => {
                         index={i}
                         currentParagraph={currentParagraph}
                         onClick={() => {
-                          const node = pagesRef.current[i].current;
+                          const node = pagesRef.current[i];
                           containerRef.current.scrollTo({
                             top: node.offsetTop,
                             behavior: "smooth"
