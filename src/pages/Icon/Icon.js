@@ -107,20 +107,22 @@ export default function Icon({ match, location }) {
               <div className={styles.descriptionContainer}>
                 <p className={styles.description}>{icon.data.description}</p>
               </div>
-              <div>
-                <h6 className={styles.metadata}>related storylines</h6>
-                {icon.linkedPages.map((page, i) => (
-                  <div key={i}>
-                    <Link
-                      to={`/stories/${
-                        page.exhibitSlug
-                      }?paragraph=${page.paragraph - 1}`}
-                    >
-                      {page.exhibitTitle}
-                    </Link>
-                  </div>
-                ))}
-              </div>
+              {icon.linkedPages.length > 0 && (
+                <div>
+                  <h6 className={styles.metadata}>related storylines</h6>
+                  {icon.linkedPages.map((page, i) => (
+                    <div key={i}>
+                      <Link
+                        to={`/stories/${
+                          page.exhibitSlug
+                        }?paragraph=${page.paragraph - 1}`}
+                      >
+                        {page.exhibitTitle}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="col-1 d-flex align-items-center">
               {prevNextIcons.nextIcon && (
