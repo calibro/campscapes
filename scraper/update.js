@@ -65,11 +65,11 @@ async function main(options){
   //   allItems,
   // })
   const rawCamps = allItems.filter(item => item.item_type === 'site')
-  const camps = await Promise.all(rawCamps.map(async function(camp){
+  let camps = await Promise.all(rawCamps.map(async function(camp){
     return await api.enrichWithRelations(camp, relations, allItemsById)
   }))
   const campsFilename = path.join(targetDir, 'camps.json')
-  fs.writeFileSync(campsFilename, JSON.stringify(camps))
+  
 
   //getting themes (tags)
   console.log(colors.yellow(`Getting themes`))
@@ -132,6 +132,8 @@ async function main(options){
   icons = icons.map(addRelatedPagesToItem)
   fs.writeFileSync(iconsFilename, JSON.stringify(icons))
   
+  camps = camps.map(addRelatedPagesToItem)
+  fs.writeFileSync(campsFilename, JSON.stringify(camps))
 
 
   const allStories = allExhibits.map(exhibit => {
