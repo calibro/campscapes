@@ -1,0 +1,28 @@
+.pdf-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  .pdf-container {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    overflow: auto;
+  }
+  .pdf-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .page-input {
+      width: 50px;
+      background: white;
+      border: 1px solid #343a40;
+      outline: none;
+      height: 38px;
+      padding-left: 6px;
+      border-radius: 0.25rem;
+    }
+  }
+}
