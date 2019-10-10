@@ -39,17 +39,9 @@ const Icons = () => {
             <h1>Icons</h1>
           </div>
           <div className="col-12 col-md-9">
-            {pageText ? (
+            {pageText && (
               <div dangerouslySetInnerHTML={{ __html: pageText }}></div>
-            ) : (
-              <p>
-                Nullam quis risus eget urna mollis ornare vel eu leo. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                Cras mattis consectetur purus sit amet fermentum.
-              </p>
             )}
-            {}
           </div>
         </div>
         <div className={`row ${styles.stickyAxis}`}>

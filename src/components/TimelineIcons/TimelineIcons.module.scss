@@ -43,6 +43,17 @@ $icons-width: 56px;
   transition: border-radius var(--transition);
 }
 
+.itemFallback {
+  border-radius: 100%;
+  height: $icons-width;
+  width: $icons-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  transition: border-radius var(--transition);
+}
+
 .iconTitle {
   margin-left: 10px;
   min-width: 0;

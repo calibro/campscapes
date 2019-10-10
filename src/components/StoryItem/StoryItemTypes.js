@@ -1,36 +1,36 @@
 import React from "react";
 import { MdLink, MdLibraryBooks } from "react-icons/md";
 import { Link, withRouter } from "react-router-dom";
+import FileViewer from "../FileViewer";
 import styles from "./StoryItem.module.scss";
 
 export const StoryItemResource = withRouter(({ attachment, location }) => {
   const caption = attachment.caption;
   const title = attachment.item.data.title;
-  const mime = attachment.file.mime_type;
   const id = attachment.item.id;
 
   return (
     <div className={`${styles.resourceContainer} ${styles.cont}`}>
       <div className={styles.fileContainer}>
-        {mime === "image/jpeg" && (
-          <img
-            src={attachment.file.file_urls.original}
-            alt={caption ? caption : title}
-          ></img>
-        )}
+        <FileViewer
+          item={attachment.file}
+          alt={caption ? caption : title}
+        ></FileViewer>
       </div>
       <div className={styles.infoContainer}>
          
-        <Link
-          to={{
-            pathname: `/items/${id}`,
-            state: { from: location.pathname }
-          }}
-        >
-          <div>
-            <p className={styles.caption}>{caption ? caption : title}</p>
-          </div>
-        </Link>
+        <div>
+          <p className={styles.caption}>
+            <Link
+              to={{
+                pathname: `/items/${id}`,
+                state: { from: location.pathname }
+              }}
+            >
+              {caption ? caption : title}{" "}
+            </Link>
+          </p>
+        </div>
         {/*<div>link to other storyes</div>*/}
       </div>
     </div>
