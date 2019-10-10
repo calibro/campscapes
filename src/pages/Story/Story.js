@@ -125,9 +125,13 @@ const Story = ({ match, location, history }) => {
                     <div>
                       {story.tags.length > 0 &&
                         story.tags.map(tag => (
-                          <span key={tag} className={styles.storyTag}>
+                          <Link
+                            to={`/themes?theme=${tag}`}
+                            key={tag}
+                            className={styles.storyTag}
+                          >
                             {tag}
-                          </span>
+                          </Link>
                         ))}
                     </div>
                   )}
