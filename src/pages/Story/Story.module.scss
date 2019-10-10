@@ -38,6 +38,11 @@
   margin-right: 5px;
 }
 
+.storyTag:hover {
+  color: white;
+  text-decoration: underline;
+}
+
 .contentContainer {
   display: flex;
   flex-direction: column;
