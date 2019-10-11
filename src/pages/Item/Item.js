@@ -103,9 +103,7 @@ export default function Item({ match, location }) {
                     {item.linkedPages.map((page, i) => (
                       <div key={i}>
                         <Link
-                          to={`/stories/${
-                            page.exhibitSlug
-                          }?paragraph=${page.paragraph - 1}`}
+                          to={`/stories/${page.exhibitSlug}?paragraph=${page.paragraph}`}
                         >
                           {page.exhibitTitle}
                         </Link>
