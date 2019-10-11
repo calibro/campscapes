@@ -24,7 +24,12 @@ export const StoryItemResource = withRouter(({ attachment, location }) => {
             <Link
               to={{
                 pathname: `/items/${id}`,
-                state: { from: location.pathname }
+                state: {
+                  from: {
+                    pathname: location.pathname,
+                    search: location.search
+                  }
+                }
               }}
             >
               {caption ? caption : title}{" "}
