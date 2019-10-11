@@ -7,7 +7,7 @@ const keyBy = require('lodash/keyBy')
 const get = require('lodash/get')
 const sortBy = require('lodash/sortBy')
 const tail = require('lodash/tail')
-
+const findIndex = require('lodash/findIndex')
 
 const CAMPSCAPES_DATA_DIRNAME = 'campscapes-data'
 
@@ -100,8 +100,19 @@ async function main(options){
  
   //fixing items and icons now that we have pages with attachments
   const addRelatedPagesToItem = item => {
-    let linkedPages = get(item, 'extended_resources.exhibit_pages')
-    linkedPages = Array.isArray(linkedPages) ? linkedPages : [linkedPages]
+    // let linkedPages = get(item, 'extended_resources.exhibit_pages')
+
+
+    //finding all pages with this item in attachment
+    const linkedPages = allPagesWithAttachments.filter(
+      page => {
+        const attachs = get(page, 'page_blocks[0].attachments')
+        return findIndex(attachs, attachment => get(attachment, 'item.id') === item.id) !== -1
+      }
+    )
+
+
+    // linkedPages = Array.isArray(linkedPages) ? linkedPages : [linkedPages]
     item.linkedPages = linkedPages.map(
       linkedPage => {
         const extendedResourceId = get(linkedPage, 'id')
