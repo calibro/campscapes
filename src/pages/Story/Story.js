@@ -83,6 +83,7 @@ const Story = ({ match, location, history }) => {
 
   const containerRef = useRef();
   let pagesRef = useRef([]);
+  const firstScroll = useRef(false);
 
   useEffect(() => {
     if (currentParagraph) {
@@ -161,6 +162,13 @@ const Story = ({ match, location, history }) => {
                           opacity: i === currentParagraph ? 1 : 0.5
                         }}
                         wayPointCallback={(index, enter, e) => {
+                          if (!firstScroll.current) {
+                            if (currentParagraph === index) {
+                              firstScroll.current = true;
+                            }
+                            return;
+                          }
+
                           if (enter) {
                             setCurrentParagraph(index);
                           } else if (!enter && e.currentPosition === "below") {
