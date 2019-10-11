@@ -19,7 +19,6 @@ const Icons = () => {
   const pageText = get(page, "text");
 
   const camps = useContext(CampsContext);
-  console.log("camps data", camps);
   const timelineDomainMin = min(camps, camp => {
     return min(camp.relations.icon, icon =>
       min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])

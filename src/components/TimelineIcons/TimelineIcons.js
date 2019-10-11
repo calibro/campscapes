@@ -66,7 +66,7 @@ const TimelineIcons = ({ camp, scale, location }) => {
                   <p className={styles.desc}>
                     <Link
                       to={{
-                        pathname: `/icons/${icon.data.timelineLabel}`,
+                        pathname: `/icons/${icon.id}`,
                         state: { from: location.pathname }
                       }}
                     >

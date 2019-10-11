@@ -1,11 +1,4 @@
-import React, {
-  useEffect,
-  useContext,
-  useMemo,
-  useState,
-  useRef,
-  createRef
-} from "react";
+import React, { useEffect, useContext, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import { StoriesContext } from "../../dataProviders";
@@ -17,7 +10,6 @@ import Menu from "../../components/Menu";
 import useUrlParam from "../../hooks/useUrlParam";
 import StoryItem from "../../components/StoryItem";
 import styles from "./Story.module.scss";
-import { validate } from "@babel/types";
 
 const StoryParagraph = React.forwardRef(
   ({ page, index, wayPointCallback, style }, ref) => {
@@ -66,36 +58,35 @@ const Story = ({ match, location, history }) => {
     return sortBy(get(story, "pages", []), "order");
   }, [story]);
 
-  //const [currentParagraph, setCurrentParagraph] = useState(null);
-  const validateUrl = x => pages && Number.isInteger(x) && x < pages.length;
+  /*
+    Using our custom "useUrlParam" hook
+    to manage currentParagraph state from url
+  */
+  const validateUrl = x =>
+    pages && Number.isInteger(x) && x <= pages.length && x > 0;
   const [currentParagraph, setCurrentParagraph] = useUrlParam(
     location,
     history,
+    // param name in url
     "paragraph",
+    // default value
     0,
-    x => x,
-    x => +x,
+    // encoding currentParagraph to url: index + 1
+    x => x + 1,
+    // decoding currentParagraph from url : paragraph query parameter - 1
+    x => +x - 1,
+    // query-string stringify options
     {},
+    // validation function to get param from url. if not valid it's set to default value
     validateUrl
   );
 
   const containerRef = useRef();
   let pagesRef = useRef([]);
 
-  // useEffect(() => {
-  //   pagesRef.current = []//pages.map(createRef);
-  //   console.log("p", pages)
-  // }, [pages]);
-
   useEffect(() => {
-    // if(pages !== null){
-    //   return
-    // }
-    console.log("xxxx", pages, currentParagraph, pagesRef.current);
     if (currentParagraph) {
       const node = pagesRef.current[currentParagraph];
-
-      console.log(1, node);
       containerRef.current.scrollTo({
         top: node.offsetTop
         // behavior: "smooth"
@@ -165,7 +156,6 @@ const Story = ({ match, location, history }) => {
                   {pages.length > 0 &&
                     pages.map((page, i) => (
                       <StoryParagraph
-                        // ref={pagesRef.current[i]}
                         ref={node => (pagesRef.current[i] = node)}
                         style={{
                           opacity: i === currentParagraph ? 1 : 0.5
