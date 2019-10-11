@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from "react";
 import { ItemsContext } from "../../dataProviders";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdAdd } from "react-icons/md";
 import { Link } from "react-router-dom";
 import find from "lodash/find";
 import FileViewer from "../../components/FileViewer";
@@ -101,11 +101,20 @@ export default function Item({ match, location }) {
                   <div>
                     <h6 className={styles.metadata}>related storylines</h6>
                     {item.linkedPages.map((page, i) => (
-                      <div key={i}>
+                      <div key={i} className="mb-2">
                         <Link
                           to={`/stories/${page.exhibitSlug}?paragraph=${page.paragraph}`}
+                          className={`${styles.link} d-flex align-items-center`}
                         >
-                          {page.exhibitTitle}
+                          <div>
+                            <MdAdd
+                              size="1.5rem"
+                              className={styles.plus}
+                            ></MdAdd>
+                          </div>
+                          <p className={styles.storyTitle}>
+                            {page.exhibitTitle}
+                          </p>
                         </Link>
                       </div>
                     ))}
