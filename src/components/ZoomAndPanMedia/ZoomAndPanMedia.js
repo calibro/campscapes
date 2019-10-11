@@ -55,6 +55,11 @@ class ZoomAndPanMedia extends Component {
     });
   };
 
+  handleWheel = e => {
+    e.preventDefault();
+    this.handleZoomNew(e.deltaY * -0.01)();
+  };
+
   resetZoom = () => {
     const { deltaX, deltaY } = this.state;
     const zoom = 1;
@@ -139,11 +144,32 @@ class ZoomAndPanMedia extends Component {
     });
   };
 
+  componentDidMount() {
+    if (this.containerRef) {
+      this.containerRef.addEventListener("wheel", this.handleWheel, {
+        passive: false
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.containerRef) {
+      this.containerRef.removeEventListener("wheel", this.handleWheel, {
+        passive: false
+      });
+    }
+  }
+
   render() {
     const { src } = this.props;
     return (
       <div className={styles["zoom-and-pan-media"]}>
-        <div className={styles["zoom-and-pan-media-container"]}>
+        <div
+          className={styles["zoom-and-pan-media-container"]}
+          ref={c => {
+            this.containerRef = c;
+          }}
+        >
           <ReactHammer
             options={{
               recognizers: {
@@ -163,9 +189,6 @@ class ZoomAndPanMedia extends Component {
           >
             <img
               alt="Zoom and pan"
-              onWheel={e => {
-                this.handleZoomNew(e.deltaY * -0.01)();
-              }}
               onDragStart={e => {
                 e.preventDefault();
                 return false;
