@@ -196,15 +196,15 @@ const Camp = ({ match }) => {
                       {camp.data.description}
                     </p>
                   </div>
-
-                  {annotatedGraph && (
-                    <CampNet annotatedGraph={annotatedGraph}></CampNet>
-                  )}
                 </div>
               </div>
             </div>
           </div>
-          <div className={styles.networkContainer}></div>
+          <div className={styles.networkContainer}>
+            {annotatedGraph && (
+              <CampNet annotatedGraph={annotatedGraph}></CampNet>
+            )}
+          </div>
         </React.Fragment>
       )}
     </div>
