@@ -12,6 +12,70 @@ import Menu from "../../components/Menu";
 import TimelineIconsCamp from "../../components/TimelineIconsCamp";
 import TimelineAxis from "../../components/TimelineAxis";
 import styles from "./Camp.module.scss";
+import {
+  forceSimulation,
+  forceLink,
+  forceManyBody,
+  forceCenter,
+  forceCollide
+} from "d3-force";
+
+const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
+  const [hoverNode, setHoverNode] = useState(null);
+
+  const sim = useMemo(() => {
+    if (!annotatedGraph) {
+      return null;
+    }
+    console.log("annotatedGraph", annotatedGraph);
+    return forceSimulation(annotatedGraph.nodes)
+      .force("link", forceLink(annotatedGraph.links).id(d => d.id))
+      .force("charge", forceManyBody())
+      .force("center", forceCenter(width / 2, height / 2))
+      .tick(20)
+      .stop();
+  }, [annotatedGraph, height, width]);
+
+  if (!annotatedGraph) {
+    return null;
+  }
+
+  console.log(sim);
+  console.log(annotatedGraph);
+
+  return (
+    <svg height={height} width={width} className={"border"}>
+      {annotatedGraph.links.map((link, i) => (
+        <line
+          key={i}
+          x1={link.source.x}
+          y1={link.source.y}
+          x2={link.target.x}
+          y2={link.target.y}
+          stroke="#fff"
+        ></line>
+      ))}
+      {annotatedGraph.nodes.map(node => (
+        <g key={node.id}>
+          <circle
+            onMouseEnter={() => {
+              setHoverNode(node.id);
+            }}
+            cx={node.x}
+            cy={node.y}
+            r={10}
+            style={{
+              fill: node.data.itemType === "story" ? "turquoise" : "hotpink"
+            }}
+          ></circle>
+          <text fill="#fff" x={node.x} y={node.y}>
+            {node.id}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+};
 
 const Camp = ({ match }) => {
   const camps = useContext(CampsContext);
@@ -56,15 +120,22 @@ const Camp = ({ match }) => {
 
   console.log("campGraph", campGraph);
 
-  // const annotatedGraph = useMemo(() => {
-  //   if(!campGraph){
-  //     return null
-  //   }
+  const annotatedGraph = useMemo(() => {
+    if (!campGraph) {
+      return null;
+    }
+    const nodes = campGraph.nodes().map(node => {
+      return {
+        id: +node,
+        data: campGraph.getNodeAttributes(node),
+        degree: campGraph.degree(node),
+        neighbors: campGraph.neighbors(node)
+      };
+    });
+    const links = camp.storiesNetwork.links;
 
-  //   return {
-
-  //   }
-  // })
+    return { nodes, links };
+  }, [camp, campGraph]);
 
   const timelineScale = scaleTime()
     .domain([timelineDomainMin, Date.now()])
@@ -125,6 +196,10 @@ const Camp = ({ match }) => {
                       {camp.data.description}
                     </p>
                   </div>
+
+                  {annotatedGraph && (
+                    <CampNet annotatedGraph={annotatedGraph}></CampNet>
+                  )}
                 </div>
               </div>
             </div>

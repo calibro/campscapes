@@ -13,6 +13,7 @@
     "camelcase": "^5.3.1",
     "classnames": "^2.2.6",
     "d3-array": "^2.3.1",
+    "d3-force": "^2.0.1",
     "d3-hierarchy": "^1.1.8",
     "d3-scale": "^3.1.0",
     "graphology": "^0.14.1",
