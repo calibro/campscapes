@@ -5,7 +5,7 @@ import find from "lodash/find";
 import get from "lodash/get";
 import sortBy from "lodash/sortBy";
 import findIndex from "lodash/findIndex";
-import { MdClose, MdArrowBack, MdArrowForward } from "react-icons/md";
+import { MdClose, MdArrowBack, MdArrowForward, MdAdd } from "react-icons/md";
 import FileViewer from "../../components/FileViewer";
 import styles from "./Icon.module.scss";
 
@@ -108,10 +108,10 @@ export default function Icon({ match, location }) {
                 <p className={styles.description}>{icon.data.description}</p>
               </div>
               {icon.linkedPages.length > 0 && (
-                <div>
+                <div className={styles.storylinesContainer}>
                   <h6 className={styles.metadata}>related storylines</h6>
                   {icon.linkedPages.map((page, i) => (
-                    <div key={i}>
+                    <div key={i} className="mb-2">
                       <Link
                         to={{
                           pathname: `/stories/${page.exhibitSlug}`,
@@ -123,8 +123,12 @@ export default function Icon({ match, location }) {
                             }
                           }
                         }}
+                        className={`${styles.link} d-flex align-items-center`}
                       >
-                        {page.exhibitTitle}
+                        <div>
+                          <MdAdd size="1.5rem" className={styles.plus}></MdAdd>
+                        </div>
+                        <p className={styles.storyTitle}>{page.exhibitTitle}</p>
                       </Link>
                     </div>
                   ))}
