@@ -207,7 +207,11 @@ const Story = ({ match, location, history }) => {
                   {currentAttachments &&
                     currentAttachments.length > 0 &&
                     currentAttachments.map((attachment, i) => (
-                      <StoryItem key={i} attachment={attachment} />
+                      <StoryItem
+                        key={i}
+                        attachment={attachment}
+                        slug={params.slug}
+                      />
                     ))}
                 </div>
               </div>
