@@ -3,6 +3,7 @@ import { CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import find from "lodash/find";
+import omit from "lodash/omit";
 import { scaleTime } from "d3-scale";
 import { min } from "d3-array";
 import Graph from "graphology";
@@ -33,14 +34,15 @@ const Camp = ({ match }) => {
     );
   }, [camp]);
 
-  const graphtest = useMemo(() => {
+  const campGraph = useMemo(() => {
     if (!camp) {
-      return [];
+      return null;
     }
     const graph = new Graph({ multi: true });
     const nodes = camp.storiesNetwork.nodes.map(node => {
       return {
-        key: node.id
+        key: node.id,
+        attributes: omit(node, "id")
       };
     });
 
@@ -49,9 +51,20 @@ const Camp = ({ match }) => {
       nodes: nodes,
       edges: camp.storiesNetwork.links
     });
-    console.log(graph);
-    return [];
+    return graph;
   }, [camp]);
+
+  console.log("campGraph", campGraph);
+
+  // const annotatedGraph = useMemo(() => {
+  //   if(!campGraph){
+  //     return null
+  //   }
+
+  //   return {
+
+  //   }
+  // })
 
   const timelineScale = scaleTime()
     .domain([timelineDomainMin, Date.now()])
