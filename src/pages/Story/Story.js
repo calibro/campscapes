@@ -93,7 +93,7 @@ const Story = ({ match, location, history }) => {
         // behavior: "smooth"
       });
     }
-  }, [pages, pagesRef]);
+  }, [pages, pagesRef, location.pathname]);
 
   const currentAttachments = useMemo(() => {
     const currentPage = pages[currentParagraph];
