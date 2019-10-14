@@ -113,7 +113,16 @@ export default function Icon({ match, location }) {
                   {icon.linkedPages.map((page, i) => (
                     <div key={i}>
                       <Link
-                        to={`/stories/${page.exhibitSlug}?paragraph=${page.paragraph}`}
+                        to={{
+                          pathname: `/stories/${page.exhibitSlug}`,
+                          search: `paragraph=${page.paragraph}`,
+                          state: {
+                            from: {
+                              pathname: location.pathname,
+                              search: location.search
+                            }
+                          }
+                        }}
                       >
                         {page.exhibitTitle}
                       </Link>

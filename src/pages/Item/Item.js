@@ -103,7 +103,16 @@ export default function Item({ match, location }) {
                     {item.linkedPages.map((page, i) => (
                       <div key={i} className="mb-2">
                         <Link
-                          to={`/stories/${page.exhibitSlug}?paragraph=${page.paragraph}`}
+                          to={{
+                            pathname: `/stories/${page.exhibitSlug}`,
+                            search: `paragraph=${page.paragraph}`,
+                            state: {
+                              from: {
+                                pathname: location.pathname,
+                                search: location.search
+                              }
+                            }
+                          }}
                           className={`${styles.link} d-flex align-items-center`}
                         >
                           <div>

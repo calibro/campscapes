@@ -8,6 +8,7 @@ const get = require('lodash/get')
 const sortBy = require('lodash/sortBy')
 const tail = require('lodash/tail')
 const findIndex = require('lodash/findIndex')
+const find = require('lodash/find')
 
 const CAMPSCAPES_DATA_DIRNAME = 'campscapes-data'
 
@@ -57,13 +58,7 @@ async function main(options){
   const relationsFilename = path.join(targetDir, 'relations.json')
   fs.writeFileSync(relationsFilename, JSON.stringify(relations))
 
-  //getting camps
   console.log(colors.yellow(`Getting camps`))
-  // const camps = await api.getItemsGreedy({ 
-  //   query: {item_type: 32},
-  //   relations,
-  //   allItems,
-  // })
   const rawCamps = allItems.filter(item => item.item_type === 'site')
   let camps = await Promise.all(rawCamps.map(async function(camp){
     return await api.enrichWithRelations(camp, relations, allItemsById)
@@ -144,12 +139,10 @@ async function main(options){
   fs.writeFileSync(iconsFilename, JSON.stringify(icons))
   
   camps = camps.map(addRelatedPagesToItem)
-  fs.writeFileSync(campsFilename, JSON.stringify(camps))
+  // we wait to write camps, we still need to add networks
 
 
   const allStories = allExhibits.map(exhibit => {
-    // const pages = allPages.filter(page => get(page, 'exhibit.id') === exhibit.id)
-    // let pagesWithAttachments = pages.map(page => api.addPageAttachments(page, allItemsById, allFilesById))
     let pagesWithAttachments = allPagesWithAttachments.filter(page => get(page, 'exhibit.id') === exhibit.id)
     pagesWithAttachments = sortBy(pagesWithAttachments, page => page.order)
     // the first page is used for linking a camp to a story (first attachment of first page)
@@ -191,34 +184,56 @@ async function main(options){
   const simplePagesFilename = path.join(targetDir, 'simplePages.json')
   fs.writeFileSync(simplePagesFilename, JSON.stringify(simplePages))
 
+  const addNetworkToCamp = camp => {
+    const nodesById = {}
+    const links = []
+    
+    camp.linkedPages.map(page => {
+      const story = find(allStories, s => s.slug === page.exhibitSlug)
+      if(story){
+        if(!nodesById[story.id]){
+          nodesById[story.id] = { id: story.id, slug: story.slug, title: story.title}
+        }
+        const currentPage = find(story.pages, p => p.order === page.paragraph+1)
+        
+        if(currentPage){
+          get(currentPage, 'page_blocks', []).forEach(pageBlock => {
+            pageBlock.attachments.forEach(
+              attach => {
+                if(!nodesById[attach.item.id]){
+                  nodesById[attach.item.id] = {
+                    id: attach.item.id,
+                    title: attach.item.data.title,
+                    file: get(attach.item, 'data.files[0].file_urls.original'),
+                  }
+                }
+                links.push({
+                  source: story.id,
+                  target: attach.item.id,
+                  paragraph: page.paragraph+1
+                })
 
-  // //getting hyperlinks
-  // console.log(colors.yellow(`Getting hyperlinks`))
-  // const hyperlinks = await api.getItemsGreedy({ 
-  //   query: {item_type: 11},
-  //   relations
-  // })
-  // const hyperlinksFilename = path.join(targetDir, 'hyperlinks.json')
-  // fs.writeFileSync(hyperlinksFilename, JSON.stringify(hyperlinks))
+              }
+            )
+          })
+        }
+      }
+    })
+    const nodes = Object.values(nodesById)
+    const storiesNetwork = {
+      links,
+      nodes,
+    }
 
-  // //getting resources
-  // console.log(colors.yellow(`Getting resourcess`))
-  // const resources = await api.getItemsGreedy({ 
-  //   query: {item_type: 33},
-  //   relations
-  // })
-  // const resourcesFilename = path.join(targetDir, 'resources.json')
-  // fs.writeFileSync(resourcesFilename, JSON.stringify(resources))
-
-  // //getting references
-  // console.log(colors.yellow(`Getting references`))
-  // const references = await api.getItemsGreedy({ 
-  //   query: {item_type: 33},
-  //   relations
-  // })
-  // const referencesFilename = path.join(targetDir, 'references.json')
-  // fs.writeFileSync(referencesFilename, JSON.stringify(references))
-
+    return {
+      ...camp,
+      storiesNetwork
+    }
+  }
+  // getting networks for each camps
+  const campsWithNetworks = camps.map(camp => addNetworkToCamp(camp, allItemsById, allStories))
+  fs.writeFileSync(campsFilename, JSON.stringify(campsWithNetworks))
+  
 
 }
 
