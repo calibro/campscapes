@@ -192,7 +192,7 @@ async function main(options){
       const story = find(allStories, s => s.slug === page.exhibitSlug)
       if(story){
         if(!nodesById[story.id]){
-          nodesById[story.id] = { id: story.id, slug: story.slug, title: story.title}
+          nodesById[story.id] = { id: story.id, slug: story.slug, title: story.title, itemType: 'story'}
         }
         const currentPage = find(story.pages, p => p.order === page.paragraph+1)
         
@@ -203,8 +203,9 @@ async function main(options){
                 if(!nodesById[attach.item.id]){
                   nodesById[attach.item.id] = {
                     id: attach.item.id,
+                    itemType: attach.item.item_type,
                     title: attach.item.data.title,
-                    file: get(attach.item, 'data.files[0].file_urls.original'),
+                    fileUrls: get(attach.item, 'data.files[0].fileUrls'),
                   }
                 }
                 links.push({
