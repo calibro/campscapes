@@ -4,14 +4,34 @@ import { Link, withRouter } from "react-router-dom";
 import FileViewer from "../FileViewer";
 import styles from "./StoryItem.module.scss";
 
+const LinkedPages = ({ linkedPages }) => {
+  return (
+    <div className="col-7 pr-0">
+      <h6 className={styles.metadata}>Jump to storylines</h6>
+      {linkedPages.map((page, i) => (
+        <div key={i} className="mb-2">
+          <Link
+            to={`/stories/${page.exhibitSlug}?paragraph=${page.paragraph}`}
+            className={`${styles.linkStory} d-flex align-items-center`}
+          >
+            <div>
+              <MdAdd size="1.5rem" className={styles.plus}></MdAdd>
+            </div>
+            <p className={styles.storyTitle}>{page.exhibitTitle}</p>
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export const StoryItemResource = withRouter(
-  ({ attachment, location, match }) => {
+  ({ attachment, location, slug }) => {
     const caption = attachment.caption;
     const title = attachment.item.data.title;
     const id = attachment.item.id;
-    const { params } = match;
     const linkedPages = attachment.item.linkedPages.filter(
-      d => d.exhibitSlug !== params.slug
+      d => d.exhibitSlug !== slug
     );
 
     return (
@@ -43,22 +63,7 @@ export const StoryItemResource = withRouter(
             </p>
           </div>
           {attachment.item && linkedPages.length > 0 && (
-            <div className="col-7 pr-0">
-              <h6 className={styles.metadata}>Jump to storylines</h6>
-              {linkedPages.map((page, i) => (
-                <div key={i} className="mb-2">
-                  <Link
-                    to={`/stories/${page.exhibitSlug}?paragraph=${page.paragraph}`}
-                    className={`${styles.linkStory} d-flex align-items-center`}
-                  >
-                    <div>
-                      <MdAdd size="1.5rem" className={styles.plus}></MdAdd>
-                    </div>
-                    <p className={styles.storyTitle}>{page.exhibitTitle}</p>
-                  </Link>
-                </div>
-              ))}
-            </div>
+            <LinkedPages linkedPages={linkedPages}></LinkedPages>
           )}
         </div>
       </div>
@@ -66,9 +71,12 @@ export const StoryItemResource = withRouter(
   }
 );
 
-export const StoryItemHyperlink = ({ attachment }) => {
+export const StoryItemHyperlink = ({ attachment, slug }) => {
   const link = attachment.item.data.url;
   const title = attachment.item.data.title;
+  const linkedPages = attachment.item.linkedPages.filter(
+    d => d.exhibitSlug !== slug
+  );
 
   return (
     <div className={`${styles.hyperlinkContainer} ${styles.cont}`}>
@@ -81,12 +89,18 @@ export const StoryItemHyperlink = ({ attachment }) => {
         <MdLink style={{ color: "var(--red-cs)" }}></MdLink>
         <span className="ml-1">{title}</span>
       </a>
+      {attachment.item && linkedPages.length > 0 && (
+        <LinkedPages linkedPages={linkedPages}></LinkedPages>
+      )}
     </div>
   );
 };
 
-export const StoryItemReference = ({ attachment }) => {
+export const StoryItemReference = ({ attachment, slug }) => {
   const citation = attachment.item.data;
+  const linkedPages = attachment.item.linkedPages.filter(
+    d => d.exhibitSlug !== slug
+  );
   return (
     <div className={`${styles.referenceContainer} ${styles.cont}`}>
       <MdLibraryBooks
@@ -117,6 +131,9 @@ export const StoryItemReference = ({ attachment }) => {
         {citation.dateOfAccess && <span>{citation.dateOfAccess} </span>}
         {citation.urlOrDOI && <span>{citation.urlOrDOI}.</span>}
       </p>
+      {attachment.item && linkedPages.length > 0 && (
+        <LinkedPages linkedPages={linkedPages}></LinkedPages>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { IntroContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
@@ -19,9 +19,8 @@ const Intro = () => {
   };
 
   const next = () => {
-    if (animating) return;
-    const nextIndex =
-      activeIndex === introSteps.length + 1 - 1 ? 0 : activeIndex + 1;
+    if (animating || activeIndex === introSteps.length) return;
+    const nextIndex = activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
@@ -83,7 +82,13 @@ const Intro = () => {
             </Carousel>
           )}
           <div className={styles.nextButton} onClick={next}>
-            <MdArrowForward color="white" size="1.5rem"></MdArrowForward>
+            {activeIndex === introSteps.length ? (
+              <Link to="/home">
+                <MdArrowForward color="white" size="1.5rem"></MdArrowForward>
+              </Link>
+            ) : (
+              <MdArrowForward color="white" size="1.5rem"></MdArrowForward>
+            )}
           </div>
         </div>
         <div className={styles.skip}>
