@@ -5,6 +5,7 @@ import { MdArrowBack } from "react-icons/md";
 import find from "lodash/find";
 import { scaleTime } from "d3-scale";
 import { min } from "d3-array";
+import Graph from "graphology";
 import CampMap from "../../components/CampMap";
 import Menu from "../../components/Menu";
 import TimelineIconsCamp from "../../components/TimelineIconsCamp";
@@ -30,6 +31,26 @@ const Camp = ({ match }) => {
     return min(camp ? camp.relations.icon : [], icon =>
       min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
     );
+  }, [camp]);
+
+  const graphtest = useMemo(() => {
+    if (!camp) {
+      return [];
+    }
+    const graph = new Graph({ multi: true });
+    const nodes = camp.storiesNetwork.nodes.map(node => {
+      return {
+        key: node.id
+      };
+    });
+
+    graph.import({
+      attributes: { name: "My Graph" },
+      nodes: nodes,
+      edges: camp.storiesNetwork.links
+    });
+    console.log(graph);
+    return [];
   }, [camp]);
 
   const timelineScale = scaleTime()
