@@ -52,12 +52,15 @@ const CampMap = ({ camp, selectedIcon }) => {
 
   useEffect(() => {
     if (selectedIcon && mapInstance) {
-      console.log(
-        mapInstance.project([
-          selectedIcon.data.longitude,
-          selectedIcon.data.latitude
-        ])
-      );
+      // console.log(
+      //   mapInstance.project([
+      //     selectedIcon.data.longitude,
+      //     selectedIcon.data.latitude
+      //   ])
+      // );
+
+      setCenter([selectedIcon.data.longitude, selectedIcon.data.latitude]);
+      setZoom([18]);
     }
   }, [selectedIcon, mapInstance]);
 
