@@ -18,16 +18,34 @@ const Icons = () => {
 
   const pageText = get(page, "text");
 
-  const camps = useContext(CampsContext);
-  const timelineDomainMin = min(camps, camp => {
-    return min(camp.relations.icon, icon =>
-      min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
-    );
-  });
+  const campsAll = useContext(CampsContext);
 
-  const timelineScale = scaleTime()
-    .domain([timelineDomainMin, Date.now()])
-    .range([0, 100]);
+  const camps = useMemo(() => {
+    if (!campsAll) {
+      return [];
+    }
+    return campsAll.filter(d => d.relations.icon);
+  }, [campsAll]);
+
+  const timelineDomainMin = useMemo(() => {
+    if (!camps) {
+      return null;
+    }
+    return min(camps, camp => {
+      return min(camp.relations.icon, icon =>
+        min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
+      );
+    });
+  }, [camps]);
+
+  const timelineScale = useMemo(() => {
+    if (!timelineDomainMin) {
+      return null;
+    }
+    return scaleTime()
+      .domain([timelineDomainMin, Date.now()])
+      .range([0, 100]);
+  }, [timelineDomainMin]);
 
   return (
     <div className={styles.iconsContainer}>
