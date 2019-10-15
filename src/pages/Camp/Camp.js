@@ -26,27 +26,12 @@ import {
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
 
-  const d3Graph = useMemo(() => {
-    const outGraph = cloneDeep(annotatedGraph);
-    if (!outGraph.nodes || !outGraph.links) {
-      return null;
-    }
-    forceSimulation(outGraph.nodes)
-      .force("link", forceLink(outGraph.links).id(d => d.id))
-      .force("charge", forceManyBody())
-      .force("center", forceCenter(width / 2, height / 2))
-      .tick(10)
-      .stop();
-
-    return outGraph;
-  }, [annotatedGraph, height, width]);
-
   const nodeScale = useMemo(() => {
-    if (!d3Graph.nodes) {
+    if (!annotatedGraph.nodes) {
       return;
     }
-    console.log("xxx", d3Graph.nodes);
-    const degrees = d3Graph.nodes
+    console.log("xxx", annotatedGraph.nodes);
+    const degrees = annotatedGraph.nodes
       .filter(item => item.data.itemType !== "story")
       .map(item => item.degree);
     const minDegree = min(degrees);
@@ -55,7 +40,33 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
     return scaleLinear()
       .domain([minDegree, maxDegree])
       .range([4, 10]);
-  }, [d3Graph]);
+  }, [annotatedGraph]);
+
+  const d3Graph = useMemo(() => {
+    if (!nodeScale) {
+      return null;
+    }
+    const outGraph = cloneDeep(annotatedGraph);
+    if (!outGraph.nodes || !outGraph.links) {
+      return null;
+    }
+    forceSimulation(outGraph.nodes)
+      .force("link", forceLink(outGraph.links).id(d => d.id))
+      .force("charge", forceManyBody())
+      .force(
+        "collide",
+        forceCollide(node =>
+          get(node, "data.itemType") === "story"
+            ? 8
+            : nodeScale(node.degree) * 2
+        )
+      )
+      .force("center", forceCenter(width / 2, height / 2))
+      .tick(30)
+      .stop();
+
+    return outGraph;
+  }, [annotatedGraph, height, width, nodeScale]);
 
   if (!d3Graph) {
     return null;
@@ -90,9 +101,9 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
               fill: node.data.itemType === "story" ? "turquoise" : "hotpink"
             }}
           ></circle>
-          <text fill="#fff" x={node.x} y={node.y}>
+          {/* <text fill="#fff" x={node.x} y={node.y}>
             {node.id}
-          </text>
+          </text> */}
         </g>
       ))}
     </svg>
