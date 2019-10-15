@@ -94,10 +94,7 @@ async function main(options){
   const allPagesWithAttachmentsById = keyBy(allPagesWithAttachments, 'id')
  
   //fixing items and icons now that we have pages with attachments
-  const addRelatedPagesToItem = item => {
-    // let linkedPages = get(item, 'extended_resources.exhibit_pages')
-
-
+  const addRelatedPagesToItem = (item) => {
     //finding all pages with this item in attachment
     const linkedPages = allPagesWithAttachments.filter(
       page => {
@@ -105,9 +102,6 @@ async function main(options){
         return findIndex(attachs, attachment => get(attachment, 'item.id') === item.id) !== -1
       }
     )
-
-
-    // linkedPages = Array.isArray(linkedPages) ? linkedPages : [linkedPages]
     item.linkedPages = linkedPages.map(
       linkedPage => {
         const extendedResourceId = get(linkedPage, 'id')
@@ -141,15 +135,20 @@ async function main(options){
   camps = camps.map(addRelatedPagesToItem)
   // we wait to write camps, we still need to add networks
 
-
   const allStories = allExhibits.map(exhibit => {
     let pagesWithAttachments = allPagesWithAttachments.filter(page => get(page, 'exhibit.id') === exhibit.id)
     pagesWithAttachments = sortBy(pagesWithAttachments, page => page.order)
     // the first page is used for linking a camp to a story (first attachment of first page)
     if(pagesWithAttachments.length > 0){
       if(!exhibit.featured){
-        exhibit.camp = get(pagesWithAttachments[0], 'page_blocks[0].attachments[0].item', null)
-        exhibit.pages = tail(pagesWithAttachments)
+        const firstPage = pagesWithAttachments[0]
+        exhibit.camp = get(firstPage, 'page_blocks[0].attachments[0].item', null)
+        if(firstPage.page_blocks && firstPage.page_blocks.length > 1){
+          firstPage.page_blocks = [firstPage.page_blocks[1]]
+          exhibit.pages = pagesWithAttachments
+        } else {
+          exhibit.pages = tail(pagesWithAttachments)
+        }
       } else {
         exhibit.pages = pagesWithAttachments
       }
