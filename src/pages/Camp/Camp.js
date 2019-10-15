@@ -52,14 +52,14 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
     }
     forceSimulation(outGraph.nodes)
       .force("link", forceLink(outGraph.links).id(d => d.id))
-      .force("charge", forceManyBody())
+      .force("charge", forceManyBody().strength(-20))
       .force(
         "collide",
         forceCollide(node =>
           get(node, "data.itemType") === "story"
             ? 8
             : nodeScale(node.degree) * 2
-        )
+        ).iterations(3)
       )
       .force("center", forceCenter(width / 2, height / 2))
       .tick(30)
@@ -98,7 +98,7 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
                 : nodeScale(node.degree)
             }
             style={{
-              fill: node.data.itemType === "story" ? "turquoise" : "hotpink"
+              fill: node.data.itemType === "story" ? "#c82727" : "#fff"
             }}
           ></circle>
           {/* <text fill="#fff" x={node.x} y={node.y}>
