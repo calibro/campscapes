@@ -8,7 +8,7 @@ import omit from "lodash/omit";
 import cloneDeep from "lodash/cloneDeep";
 import get from "lodash/get";
 import { scaleTime, scaleLinear } from "d3-scale";
-import { min } from "d3-array";
+import { min, max } from "d3-array";
 import Graph from "graphology";
 import CampMap from "../../components/CampMap";
 import Menu from "../../components/Menu";
@@ -22,10 +22,6 @@ import {
   forceCenter,
   forceCollide
 } from "d3-force";
-
-const nodeScale = scaleLinear()
-  .domain([1, 30])
-  .range([10, 50]);
 
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
@@ -44,6 +40,22 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
 
     return outGraph;
   }, [annotatedGraph, height, width]);
+
+  const nodeScale = useMemo(() => {
+    if (!d3Graph.nodes) {
+      return;
+    }
+    console.log("xxx", d3Graph.nodes);
+    const degrees = d3Graph.nodes
+      .filter(item => item.data.itemType !== "story")
+      .map(item => item.degree);
+    const minDegree = min(degrees);
+    const maxDegree = max(degrees);
+
+    return scaleLinear()
+      .domain([minDegree, maxDegree])
+      .range([4, 10]);
+  }, [d3Graph]);
 
   if (!d3Graph) {
     return null;
@@ -69,7 +81,11 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
             }}
             cx={node.x}
             cy={node.y}
-            r={nodeScale(node.degree)}
+            r={
+              get(node, "data.itemType") === "story"
+                ? "4"
+                : nodeScale(node.degree)
+            }
             style={{
               fill: node.data.itemType === "story" ? "turquoise" : "hotpink"
             }}
