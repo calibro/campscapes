@@ -194,9 +194,7 @@ async function main(options){
         if(!nodesById[story.id]){
           nodesById[story.id] = { id: story.id, slug: story.slug, title: story.title, itemType: 'story'}
         }
-        const currentPage = find(story.pages, p => p.order === page.paragraph+1)
-        
-        if(currentPage){
+        get(story, 'pages', []).map(currentPage => {
           get(currentPage, 'page_blocks', []).forEach(pageBlock => {
             pageBlock.attachments.forEach(
               attach => {
@@ -217,7 +215,7 @@ async function main(options){
               }
             )
           })
-        }
+        })
       }
     })
     const nodes = Object.values(nodesById)
