@@ -33,6 +33,7 @@ const CampsMap = ({ camps }) => {
           width: "100%"
         }}
         fitBounds={[[bbox[0], bbox[1]], [bbox[2], bbox[3]]]}
+        fitBoundsOptions={{ padding: 100 }}
       >
         {features.map(feature => {
           return (

@@ -18,6 +18,13 @@ const StoryItem = ({ attachment, slug }) => {
             slug={slug}
           ></StoryItemResource>
         );
+      case "icon":
+        return (
+          <StoryItemResource
+            attachment={attachment}
+            slug={slug}
+          ></StoryItemResource>
+        );
       case "hyperlink":
         return (
           <StoryItemHyperlink

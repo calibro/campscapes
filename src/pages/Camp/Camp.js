@@ -194,10 +194,11 @@ const Camp = ({ match }) => {
                 <div className="col-12 col-md-9">
                   <div className={styles.metadata}>
                     <h6>about the camp</h6>
-
-                    <p className={styles.description}>
-                      {camp.data.description}
-                    </p>
+                    <div className={styles.descriptionContainer}>
+                      <p className={styles.description}>
+                        {camp.data.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

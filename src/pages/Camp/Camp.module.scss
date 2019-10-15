@@ -32,6 +32,11 @@
   padding-bottom: 15px;
 }
 
+.descriptionContainer {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
 .description {
   font-size: 1.25rem;
 }
