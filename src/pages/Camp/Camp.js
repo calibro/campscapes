@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import find from "lodash/find";
 import omit from "lodash/omit";
+import cloneDeep from "lodash/cloneDeep";
+import get from "lodash/get";
 import { scaleTime } from "d3-scale";
 import { min } from "d3-array";
 import Graph from "graphology";
@@ -24,29 +26,28 @@ import {
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
 
-  const sim = useMemo(() => {
-    if (!annotatedGraph) {
+  const d3Graph = useMemo(() => {
+    const outGraph = cloneDeep(annotatedGraph);
+    if (!outGraph.nodes || !outGraph.links) {
       return null;
     }
-    console.log("annotatedGraph", annotatedGraph);
-    return forceSimulation(annotatedGraph.nodes)
-      .force("link", forceLink(annotatedGraph.links).id(d => d.id))
+    forceSimulation(outGraph.nodes)
+      .force("link", forceLink(outGraph.links).id(d => d.id))
       .force("charge", forceManyBody())
       .force("center", forceCenter(width / 2, height / 2))
       .tick(10)
       .stop();
+
+    return outGraph;
   }, [annotatedGraph, height, width]);
 
-  if (!annotatedGraph) {
+  if (!d3Graph) {
     return null;
   }
 
-  console.log(sim);
-  console.log(annotatedGraph);
-
   return (
     <svg height={height} width={width} className={"border"}>
-      {annotatedGraph.links.map((link, i) => (
+      {d3Graph.links.map((link, i) => (
         <line
           key={i}
           x1={link.source.x}
@@ -56,7 +57,7 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
           stroke="#fff"
         ></line>
       ))}
-      {annotatedGraph.nodes.map(node => (
+      {d3Graph.nodes.map(node => (
         <g key={node.id}>
           <circle
             onMouseEnter={() => {
@@ -83,15 +84,17 @@ const Camp = ({ match }) => {
 
   const { params } = match;
   const [selectedIcon, setSelectedIcon] = useState(null);
-  const [selectedIconMapPosition, setSelectedIconMapPosition] = useState(null);
-  const [
-    selectedIconTimelinePosition,
-    setSelectedIconTimelinePosition
-  ] = useState(null);
+  // const [selectedIconMapPosition, setSelectedIconMapPosition] = useState(null);
+  // const [
+  //   selectedIconTimelinePosition,
+  //   setSelectedIconTimelinePosition
+  // ] = useState(null);
 
   const camp = useMemo(() => {
     return find(camps, item => item.data.siteName === params.name);
   }, [camps, params.name]);
+
+  console.log(123, camp, get(camp, "storiesNetwork"));
 
   const timelineDomainMin = useMemo(() => {
     return min(camp ? camp.relations.icon : [], icon =>
@@ -100,7 +103,7 @@ const Camp = ({ match }) => {
   }, [camp]);
 
   const campGraph = useMemo(() => {
-    if (!camp) {
+    if (!camp || !camp.storiesNetwork) {
       return null;
     }
     const graph = new Graph({ multi: true });
@@ -112,14 +115,12 @@ const Camp = ({ match }) => {
     });
 
     graph.import({
-      attributes: { name: "My Graph" },
+      attributes: { name: "a graph" },
       nodes: nodes,
-      edges: camp.storiesNetwork.links
+      edges: cloneDeep(camp.storiesNetwork.links)
     });
     return graph;
   }, [camp]);
-
-  console.log("campGraph", campGraph);
 
   const annotatedGraph = useMemo(() => {
     if (!campGraph) {
@@ -133,7 +134,7 @@ const Camp = ({ match }) => {
         neighbors: campGraph.neighbors(node)
       };
     });
-    const links = camp.storiesNetwork.links;
+    const links = cloneDeep(camp.storiesNetwork.links);
 
     return { nodes, links };
   }, [camp, campGraph]);
