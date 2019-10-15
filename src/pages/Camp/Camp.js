@@ -1,4 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
+import useDimensions from "react-use-dimensions";
 import { CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
@@ -32,7 +33,7 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
       .force("link", forceLink(annotatedGraph.links).id(d => d.id))
       .force("charge", forceManyBody())
       .force("center", forceCenter(width / 2, height / 2))
-      .tick(20)
+      .tick(10)
       .stop();
   }, [annotatedGraph, height, width]);
 
@@ -137,6 +138,8 @@ const Camp = ({ match }) => {
     return { nodes, links };
   }, [camp, campGraph]);
 
+  const [ref, { width, height }] = useDimensions({ liveMeasure: false });
+
   const timelineScale = scaleTime()
     .domain([timelineDomainMin, Date.now()])
     .range([0, 100]);
@@ -200,9 +203,13 @@ const Camp = ({ match }) => {
               </div>
             </div>
           </div>
-          <div className={styles.networkContainer}>
+          <div className={styles.networkContainer} ref={ref}>
             {annotatedGraph && (
-              <CampNet annotatedGraph={annotatedGraph}></CampNet>
+              <CampNet
+                width={width}
+                height={600}
+                annotatedGraph={annotatedGraph}
+              ></CampNet>
             )}
           </div>
         </React.Fragment>
