@@ -28,6 +28,7 @@ const StoryParagraph = React.forwardRef(
         {text && (
           <div dangerouslySetInnerHTML={{ __html: text }} style={style} />
         )}
+        {!text && <div style={style}>sorry no text here</div>}
       </div>
     );
   }
@@ -84,6 +85,10 @@ const Story = ({ match, location, history }) => {
   const containerRef = useRef();
   let pagesRef = useRef([]);
   const firstScroll = useRef(false);
+
+  useEffect(() => {
+    firstScroll.current = false;
+  }, [location.pathname]);
 
   useEffect(() => {
     if (currentParagraph) {

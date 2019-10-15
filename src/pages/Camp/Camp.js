@@ -7,7 +7,7 @@ import find from "lodash/find";
 import omit from "lodash/omit";
 import cloneDeep from "lodash/cloneDeep";
 import get from "lodash/get";
-import { scaleTime } from "d3-scale";
+import { scaleTime, scaleLinear } from "d3-scale";
 import { min } from "d3-array";
 import Graph from "graphology";
 import CampMap from "../../components/CampMap";
@@ -22,6 +22,10 @@ import {
   forceCenter,
   forceCollide
 } from "d3-force";
+
+const nodeScale = scaleLinear()
+  .domain([1, 30])
+  .range([10, 50]);
 
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
@@ -65,7 +69,7 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
             }}
             cx={node.x}
             cy={node.y}
-            r={10}
+            r={nodeScale(node.degree)}
             style={{
               fill: node.data.itemType === "story" ? "turquoise" : "hotpink"
             }}
