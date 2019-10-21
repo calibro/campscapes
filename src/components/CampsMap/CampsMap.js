@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
-import ReactMapboxGl, { Marker, GeoJSONLayer } from "react-mapbox-gl";
+import React from "react";
+import { withRouter } from "react-router-dom";
+import ReactMapboxGl, { GeoJSONLayer } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import Bbox from "@turf/bbox";
 import styles from "./CampsMap.module.scss";
