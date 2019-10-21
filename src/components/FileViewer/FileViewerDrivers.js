@@ -23,7 +23,11 @@ export const DriverImage = ({ item, zoom, alt }) => {
 
 export const DriverPdf = ({ item, zoom, alt }) => {
   return zoom ? (
-    <PdfViewer file={item.file_urls.original} />
+    <PdfViewer
+      file={{
+        url: item.file_urls.original
+      }}
+    />
   ) : item.file_urls.fullsize ? (
     <img className={styles.image} src={item.file_urls.fullsize} alt={alt} />
   ) : (
