@@ -4,6 +4,7 @@ import ZoomAndPanMedia from "../ZoomAndPanMedia";
 import PdfViewer from "../PdfViewer";
 import FallbackPreview from "../FallbackPreview";
 import AudioPlayer from "../AudioPlayer";
+import MarkdownViewer from "../MarkdownViewer";
 import styles from "./FileViewer.module.scss";
 import { proxyDevUrl } from "../../utils";
 
@@ -38,7 +39,6 @@ export const DriverPdf = ({ item, zoom, alt }) => {
 };
 
 export const DriverAudio = ({ item }) => {
-  console.log("driveraudio", item);
   return (
     <div>
       <AudioPlayer
@@ -59,6 +59,17 @@ export const DriverVideo = ({ item }) => {
         className={styles.reactPlayer}
         controls
       />
+    </div>
+  );
+};
+
+export const DriverMarkdown = ({ item }) => {
+  console.log("DriverMarkdown", item);
+  return (
+    <div className={styles.playerWrapper}>
+      <MarkdownViewer
+        url={proxyDevUrl(item.file_urls.original)}
+      ></MarkdownViewer>
     </div>
   );
 };
