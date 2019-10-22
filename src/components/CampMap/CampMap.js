@@ -142,96 +142,61 @@ const CampMap = ({
     }
   }, [mapInstance, yearRaster, rasterLayers]);
   return (
-    <React.Fragment>
-      <div className={styles.mapContainer}>
-        <Map
-          style="mapbox://styles/mapbox/satellite-v9"
-          containerStyle={{
-            height: "100%",
-            width: "100%"
+    <div className={styles.mapContainer}>
+      <Map
+        style="mapbox://styles/mapbox/satellite-v9"
+        containerStyle={{
+          height: "100%",
+          width: "100%"
+        }}
+        center={center}
+        zoom={zoom}
+      >
+        <MapContext.Consumer>
+          {map => {
+            setMapInstance(map);
           }}
-          center={center}
-          zoom={zoom}
-        >
-          <MapContext.Consumer>
-            {map => {
-              setMapInstance(map);
-            }}
-          </MapContext.Consumer>
+        </MapContext.Consumer>
 
-          {vectorLayers &&
-            vectorLayers.length > 0 &&
-            vectorLayers.map((layer, i) => {
-              return (
-                <GeoJSONLayer
-                  key={i}
-                  data={layer.url}
-                  fillExtrusionLayout={{
-                    visibility: layer.year === yearVector ? "visible" : "none"
-                  }}
-                  fillExtrusionPaint={{
-                    "fill-extrusion-height": 4,
-                    "fill-extrusion-opacity": 1,
-                    "fill-extrusion-color": "#c82727"
-                  }}
-                />
-              );
-            })}
-          {geojsonFeatures && (
-            <React.Fragment>
+        {vectorLayers &&
+          vectorLayers.length > 0 &&
+          vectorLayers.map((layer, i) => {
+            return (
               <GeoJSONLayer
-                circleLayout={{ visibility: "visible" }}
-                circlePaint={{ "circle-color": "white", "circle-radius": 8 }}
-                data={geojsonFeatures}
-              ></GeoJSONLayer>
-
-              <GeoJSONLayer
-                circleLayout={{ visibility: "visible" }}
-                circlePaint={{
-                  "circle-color": "white",
-                  "circle-radius": 6,
-                  "circle-stroke-width": 1
+                key={i}
+                data={layer.url}
+                fillExtrusionLayout={{
+                  visibility: layer.year === yearVector ? "visible" : "none"
                 }}
-                data={geojsonFeatures}
-              ></GeoJSONLayer>
-            </React.Fragment>
-          )}
+                fillExtrusionPaint={{
+                  "fill-extrusion-height": 4,
+                  "fill-extrusion-opacity": 1,
+                  "fill-extrusion-color": "#c82727"
+                }}
+              />
+            );
+          })}
+        {geojsonFeatures && (
+          <React.Fragment>
+            <GeoJSONLayer
+              circleLayout={{ visibility: "visible" }}
+              circlePaint={{ "circle-color": "white", "circle-radius": 8 }}
+              data={geojsonFeatures}
+            ></GeoJSONLayer>
 
-          {/*{element && (
-            <Popup key={element.properties.ID} coordinates={element.coordinates}>
-            <div style={{ color: "black" }}>
-            <p>{element.properties.complextype}</p>
-            <div
-            onClick={() => {
-            setElement(false);
-          }}
-          >
-          CLOSE
-        </div>
-      </div>
-    </Popup>
-  )}*/}
-        </Map>
-      </div>
-      {/*<div className="container">
-        <div className="row">
-          <div className="col">
-            <DdLayers
-              year={yearRaster}
-              setYear={setYearRaster}
-              layers={rasterLayers}
-            ></DdLayers>
-          </div>
-          <div className="col">
-            <DdLayers
-              year={yearVector}
-              setYear={setYearVector}
-              layers={vectorLayers}
-            ></DdLayers>
-          </div>
-        </div>
-      </div>*/}
-    </React.Fragment>
+            <GeoJSONLayer
+              circleLayout={{ visibility: "visible" }}
+              circlePaint={{
+                "circle-color": "white",
+                "circle-radius": 6,
+                "circle-stroke-width": 1
+              }}
+              data={geojsonFeatures}
+            ></GeoJSONLayer>
+          </React.Fragment>
+        )}
+      </Map>
+    </div>
   );
 };
 
