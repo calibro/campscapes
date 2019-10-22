@@ -1,24 +1,24 @@
-import React, { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
-import ReactMapboxGl, {
-  Marker,
-  GeoJSONLayer,
-  Popup,
-  MapContext
-} from "react-mapbox-gl";
+import React, { useState, useEffect } from "react";
+import ReactMapboxGl, { GeoJSONLayer, MapContext } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
-import Bbox from "@turf/bbox";
 import styles from "./CampMap.module.scss";
-import geojsontest from "./westerbork.json";
 
 const ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 const Map = ReactMapboxGl({
-  accessToken: ACCESS_TOKEN
-  // maxZoom: 7,
-  // minZoom: 2
+  accessToken: ACCESS_TOKEN,
+  maxZoom: 17,
+  minZoom: 10
 });
 
-const CampMap = ({ camp, selectedIcon }) => {
+const CampMap = ({
+  camp,
+  selectedIcon,
+  yearRaster,
+  yearVector,
+  vectorLayers,
+  rasterLayers,
+  opacity
+}) => {
   const iconsFeatures = camp.relations.icon
     .filter(icon => icon.data.longitude && icon.data.latitude)
     .map(icon =>
@@ -28,7 +28,6 @@ const CampMap = ({ camp, selectedIcon }) => {
       })
     );
   const geojsonFeatures = featureCollection(iconsFeatures);
-
   const campCenter = [camp.data.longitude, camp.data.latitude];
 
   const [element, setElement] = useState(false);
@@ -36,19 +35,19 @@ const CampMap = ({ camp, selectedIcon }) => {
   const [zoom, setZoom] = useState([14]);
   const [mapInstance, setMapInstance] = useState(null);
 
-  const geojsonOnMouseMove = (cursor, map) => {
-    map.getCanvas().style.cursor = cursor;
-  };
-
-  const geojsonOnMouseLeave = (cursor, map) => {
-    map.getCanvas().style.cursor = cursor;
-  };
-
-  const geojsonOnClick = (element, zoom) => {
-    setElement(element);
-    setCenter(element.coordinates);
-    setZoom([zoom]);
-  };
+  // const geojsonOnMouseMove = (cursor, map) => {
+  //   map.getCanvas().style.cursor = cursor;
+  // };
+  //
+  // const geojsonOnMouseLeave = (cursor, map) => {
+  //   map.getCanvas().style.cursor = cursor;
+  // };
+  //
+  // const geojsonOnClick = (element, zoom) => {
+  //   setElement(element);
+  //   setCenter(element.coordinates);
+  //   setZoom([zoom]);
+  // };
 
   useEffect(() => {
     if (selectedIcon && mapInstance) {
@@ -58,12 +57,90 @@ const CampMap = ({ camp, selectedIcon }) => {
       //     selectedIcon.data.latitude
       //   ])
       // );
-
       setCenter([selectedIcon.data.longitude, selectedIcon.data.latitude]);
       setZoom([18]);
     }
   }, [selectedIcon, mapInstance]);
 
+  useEffect(() => {
+    if (mapInstance && rasterLayers) {
+      const layers = mapInstance.getStyle().layers;
+      let beforeLayerId = "";
+      for (let i = 0; i < layers.length; i++) {
+        if (layers[i].id !== "background" && layers[i].id !== "satellite") {
+          beforeLayerId = layers[i].id;
+          break;
+        }
+      }
+
+      rasterLayers.forEach(layer => {
+        if (!mapInstance.getSource(`source-${layer.year}`)) {
+          mapInstance.addSource(`source-${layer.year}`, {
+            type: "image",
+            url: layer.url,
+            coordinates: layer.boundingbox
+          });
+
+          mapInstance.addLayer(
+            {
+              id: `aereal-${layer.year}`,
+              type: "raster",
+              source: `source-${layer.year}`,
+              layout: {
+                visibility: "none"
+              },
+              paint: {
+                "raster-opacity": opacity
+              }
+            },
+            beforeLayerId
+          );
+        }
+      });
+    }
+  }, [mapInstance, rasterLayers]);
+
+  useEffect(() => {
+    if (mapInstance && opacity >= 0 && rasterLayers) {
+      rasterLayers.forEach(layer => {
+        mapInstance.setPaintProperty(
+          `aereal-${layer.year}`,
+          "raster-opacity",
+          opacity
+        );
+      });
+    }
+  }, [mapInstance, opacity, rasterLayers, yearRaster]);
+
+  useEffect(() => {
+    if (mapInstance && yearRaster) {
+      if (yearRaster === "none") {
+        rasterLayers.forEach(layer => {
+          mapInstance.setLayoutProperty(
+            `aereal-${layer.year}`,
+            "visibility",
+            "none"
+          );
+        });
+      } else {
+        rasterLayers.forEach(layer => {
+          if (yearRaster === layer.year) {
+            mapInstance.setLayoutProperty(
+              `aereal-${layer.year}`,
+              "visibility",
+              "visible"
+            );
+          } else {
+            mapInstance.setLayoutProperty(
+              `aereal-${layer.year}`,
+              "visibility",
+              "none"
+            );
+          }
+        });
+      }
+    }
+  }, [mapInstance, yearRaster, rasterLayers]);
   return (
     <div className={styles.mapContainer}>
       <Map
@@ -81,61 +158,42 @@ const CampMap = ({ camp, selectedIcon }) => {
           }}
         </MapContext.Consumer>
 
-        {/*layerOptions={{ filter: ["==", "complextype", "bouwput"] }}*/}
-        <GeoJSONLayer
-          data={geojsontest}
-          fillExtrusionLayout={{
-            visibility: "visible"
-          }}
-          fillExtrusionPaint={{
-            "fill-extrusion-height": 4,
-            "fill-extrusion-opacity": 0.8,
-            "fill-extrusion-color": "#c82727"
-          }}
-          fillExtrusionOnMouseMove={e => {
-            geojsonOnMouseMove("pointer", e.target);
-          }}
-          fillExtrusionOnMouseLeave={e => {
-            geojsonOnMouseLeave("", e.target);
-          }}
-          fillExtrusionOnClick={e => {
-            geojsonOnClick(
-              {
-                coordinates: e.lngLat,
-                properties: e.features[0].properties
-              },
-              e.target.getZoom()
-            );
-          }}
-        />
-        <GeoJSONLayer
-          circleLayout={{ visibility: "visible" }}
-          circlePaint={{ "circle-color": "white", "circle-radius": 8 }}
-          data={geojsonFeatures}
-        ></GeoJSONLayer>
-
-        <GeoJSONLayer
-          circleLayout={{ visibility: "visible" }}
-          circlePaint={{
-            "circle-color": "white",
-            "circle-radius": 6,
-            "circle-stroke-width": 1
-          }}
-          data={geojsonFeatures}
-        ></GeoJSONLayer>
-        {element && (
-          <Popup key={element.properties.ID} coordinates={element.coordinates}>
-            <div style={{ color: "black" }}>
-              <p>{element.properties.complextype}</p>
-              <div
-                onClick={() => {
-                  setElement(false);
+        {vectorLayers &&
+          vectorLayers.length > 0 &&
+          vectorLayers.map((layer, i) => {
+            return (
+              <GeoJSONLayer
+                key={i}
+                data={layer.url}
+                fillExtrusionLayout={{
+                  visibility: layer.year === yearVector ? "visible" : "none"
                 }}
-              >
-                CLOSE
-              </div>
-            </div>
-          </Popup>
+                fillExtrusionPaint={{
+                  "fill-extrusion-height": 4,
+                  "fill-extrusion-opacity": 1,
+                  "fill-extrusion-color": "#c82727"
+                }}
+              />
+            );
+          })}
+        {geojsonFeatures && (
+          <React.Fragment>
+            <GeoJSONLayer
+              circleLayout={{ visibility: "visible" }}
+              circlePaint={{ "circle-color": "white", "circle-radius": 8 }}
+              data={geojsonFeatures}
+            ></GeoJSONLayer>
+
+            <GeoJSONLayer
+              circleLayout={{ visibility: "visible" }}
+              circlePaint={{
+                "circle-color": "white",
+                "circle-radius": 6,
+                "circle-stroke-width": 1
+              }}
+              data={geojsonFeatures}
+            ></GeoJSONLayer>
+          </React.Fragment>
         )}
       </Map>
     </div>
