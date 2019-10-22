@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapboxGl, { GeoJSONLayer, MapContext } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
+import { proxyDevUrl } from "../../utils";
 import styles from "./CampMap.module.scss";
 
 const ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -77,7 +78,7 @@ const CampMap = ({
         if (!mapInstance.getSource(`source-${layer.year}`)) {
           mapInstance.addSource(`source-${layer.year}`, {
             type: "image",
-            url: layer.url,
+            url: proxyDevUrl(layer.url),
             coordinates: layer.boundingbox
           });
 
@@ -164,7 +165,7 @@ const CampMap = ({
             return (
               <GeoJSONLayer
                 key={i}
-                data={layer.url}
+                data={proxyDevUrl(layer.url)}
                 fillExtrusionLayout={{
                   visibility: layer.year === yearVector ? "visible" : "none"
                 }}
