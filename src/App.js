@@ -19,6 +19,9 @@ import Icon from "./pages/Icon";
 import Themes from "./pages/Themes";
 import Story from "./pages/Story";
 import Item from "./pages/Item";
+import About from "./pages/About";
+import Publications from "./pages/Publications";
+import Educational from "./pages/Educational";
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
         </IntroProvider>
 
         <Route exact path="/home" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/publications" component={Publications} />
+        <Route exact path="/educational" component={Educational} />
 
         <CampsProvider loadOn={["/camps", "/icons"]}>
           <Route path="/camps" component={Camps} exact />
