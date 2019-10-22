@@ -228,4 +228,9 @@ const Story = ({ match, location, history }) => {
   );
 };
 
-export default Story;
+const StoryRemountable = props => {
+  const pathname = props.location.pathname;
+  return <Story key={pathname} {...props} />;
+};
+
+export default StoryRemountable;
