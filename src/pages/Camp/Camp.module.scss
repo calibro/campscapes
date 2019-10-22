@@ -11,8 +11,13 @@
 }
 
 .iconsContainer {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   margin-bottom: 25px;
+}
+
+.ddContainer {
+  padding: 15px 0px;
 }
 
 .title {
@@ -39,4 +44,17 @@
 
 .description {
   font-size: 1.25rem;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.dropdownLabel {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+  margin-right: 10px;
 }

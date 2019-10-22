@@ -10,11 +10,6 @@ import get from "lodash/get";
 import { scaleTime, scaleLinear } from "d3-scale";
 import { min, max } from "d3-array";
 import Graph from "graphology";
-import CampMap from "../../components/CampMap";
-import Menu from "../../components/Menu";
-import TimelineIconsCamp from "../../components/TimelineIconsCamp";
-import TimelineAxis from "../../components/TimelineAxis";
-import styles from "./Camp.module.scss";
 import {
   forceSimulation,
   forceLink,
@@ -22,6 +17,12 @@ import {
   forceCenter,
   forceCollide
 } from "d3-force";
+import CampMap from "../../components/CampMap";
+import Menu from "../../components/Menu";
+import TimelineIconsCamp from "../../components/TimelineIconsCamp";
+import TimelineAxis from "../../components/TimelineAxis";
+import DdLayers from "../../components/DdLayers";
+import styles from "./Camp.module.scss";
 
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
@@ -121,16 +122,58 @@ const Camp = ({ match }) => {
   //   setSelectedIconTimelinePosition
   // ] = useState(null);
 
+  const [yearVector, setYearVector] = useState("none");
+  const [yearRaster, setYearRaster] = useState("none");
+  const [opacity, setOpacity] = useState(1);
+
+  const handleOnOpacityChange = e => setOpacity(+e.target.value);
+
   const camp = useMemo(() => {
     return find(camps, item => item.data.siteName === params.name);
   }, [camps, params.name]);
-
-  console.log(123, camp, get(camp, "storiesNetwork"));
 
   const timelineDomainMin = useMemo(() => {
     return min(camp ? camp.relations.icon : [], icon =>
       min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
     );
+  }, [camp]);
+
+  const vectorLayers = useMemo(() => {
+    if (camp) {
+      return camp.relations.geolayer_vector
+        .filter(l => {
+          return l.data.startDate && l.data.files && l.data.files.length > 0;
+        })
+        .map(l => {
+          const startDate = new Date(l.data.startDate);
+          return {
+            url: l.data.files[0].file_urls.original,
+            year: startDate.getFullYear()
+          };
+        });
+    }
+  }, [camp]);
+
+  const rasterLayers = useMemo(() => {
+    if (camp) {
+      return camp.relations.geolayer_raster
+        .filter(l => {
+          return (
+            l.data.startDate &&
+            l.data.boundingbox &&
+            l.data.files &&
+            l.data.files.length > 0
+          );
+        })
+        .map(l => {
+          const startDate = new Date(l.data.startDate);
+          return {
+            url: l.data.files[0].file_urls.original,
+            boundingbox: JSON.parse("[" + l.data.boundingbox + "]"),
+            year: startDate.getFullYear()
+          };
+        });
+    }
   }, [camp]);
 
   const campGraph = useMemo(() => {
@@ -182,7 +225,15 @@ const Camp = ({ match }) => {
       {camp && (
         <React.Fragment>
           <div className={styles.topContainer}>
-            <CampMap camp={camp} selectedIcon={selectedIcon}></CampMap>
+            <CampMap
+              camp={camp}
+              selectedIcon={selectedIcon}
+              yearRaster={yearRaster}
+              yearVector={yearVector}
+              vectorLayers={vectorLayers}
+              rasterLayers={rasterLayers}
+              opacity={opacity}
+            ></CampMap>
             <div className="container">
               <div className="row">
                 <div className="col-auto">
@@ -193,6 +244,51 @@ const Camp = ({ match }) => {
                     {camp.data.siteName}
                   </h1>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.ddContainer}>
+            <div className="container">
+              <div className="row">
+                {vectorLayers.length > 0 && (
+                  <div className="col-auto">
+                    <div className={styles.dropdown}>
+                      <span className={styles.dropdownLabel}>
+                        Buildings footprints
+                      </span>
+                      <DdLayers
+                        year={yearVector}
+                        setYear={setYearVector}
+                        layers={vectorLayers}
+                      ></DdLayers>
+                    </div>
+                  </div>
+                )}
+                {rasterLayers.length > 0 && (
+                  <div className="col-auto">
+                    <div className={styles.dropdown}>
+                      <span className={styles.dropdownLabel}>Aerial view</span>
+                      <DdLayers
+                        year={yearRaster}
+                        setYear={setYearRaster}
+                        layers={rasterLayers}
+                      ></DdLayers>
+                      {yearRaster !== "none" && (
+                        <div className="d-flex align-items-center ml-3">
+                          <span className="mr-3">opacity</span>
+                          <input
+                            onChange={handleOnOpacityChange}
+                            value={opacity}
+                            type="range"
+                            min={0}
+                            max={1}
+                            step={0.1}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
