@@ -27,7 +27,7 @@ export const DriverPdf = ({ item, zoom, alt }) => {
   return zoom ? (
     <PdfViewer
       file={{
-        url: item.file_urls.original
+        url: proxyDevUrl(item.file_urls.original)
       }}
     />
   ) : item.file_urls.fullsize ? (
