@@ -24,14 +24,7 @@ const Themes = ({ location, history }) => {
 
   const pageText = get(page, "text");
 
-  const [selected, setSelected] = useUrlParam(
-    location,
-    history,
-    "theme",
-    null,
-    x => x,
-    x => x
-  );
+  const [selected, setSelected] = useUrlParam("theme", null, x => x, x => x);
   const [filteredStories, setFilteredStories] = useState([]);
 
   useEffect(() => {
