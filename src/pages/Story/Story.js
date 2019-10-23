@@ -58,16 +58,16 @@ const Story = ({ match, location, history }) => {
   const pages = useMemo(() => {
     return sortBy(get(story, "pages", []), "order");
   }, [story]);
+  console.log(pages);
 
   /*
     Using our custom "useUrlParam" hook
     to manage currentParagraph state from url
   */
-  const validateUrl = x =>
-    pages && Number.isInteger(x) && x <= pages.length && x > 0;
+  const validateUrl = x => {
+    return pages && Number.isInteger(x) && x <= pages.length && x > 0;
+  };
   const [currentParagraph, setCurrentParagraph] = useUrlParam(
-    location,
-    history,
     // param name in url
     "paragraph",
     // default value

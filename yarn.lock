@@ -6712,6 +6712,13 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+magik-react-hooks@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/magik-react-hooks/-/magik-react-hooks-1.0.2.tgz#44837cc214049fefddaf35e82846a5b83f5e7364"
+  integrity sha512-ujummEy5/ER7wyLwg29RxDsBXTb4tipqg8J5YCuUhthWWdYm8G5Uxjl8kNbx9ec4II4oShK0W+LptleSizlE+Q==
+  dependencies:
+    memoize-one "^5.0.5"
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -6835,6 +6842,11 @@ mem@^4.0.0:
     map-age-cleaner "^0.1.1"
     mimic-fn "^2.0.0"
     p-is-promise "^2.0.0"
+
+memoize-one@^5.0.5:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.1.1.tgz#047b6e3199b508eaec03504de71229b8eb1d75c0"
+  integrity sha512-HKeeBpWvqiVJD57ZUAsJNm71eHTykffzcLZVYWiVfQeI1rJtuEaS7hQiEpWfVVk18donPwJEcFKIkCmPJNOhHA==
 
 memory-fs@^0.4.0, memory-fs@^0.4.1:
   version "0.4.1"

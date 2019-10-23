@@ -1,5 +1,4 @@
-import { useCallback, useMemo } from "react";
-import qs from "query-string";
+import useRouterQueryParam from "magik-react-hooks/useRouterQueryParam";
 
 function isFunction(functionToCheck) {
   return (
@@ -10,9 +9,7 @@ function isFunction(functionToCheck) {
 export const encodeArray = v => (v ? v.join(",") : "");
 export const decodeArray = v => (v ? v.split(",").map(x => +x) : null);
 
-export default function useQueryParam(
-  location,
-  history,
+export default function useUrlParam(
   name,
   defaultValue,
   encode = JSON.stringify,
@@ -20,58 +17,22 @@ export default function useQueryParam(
   options = {},
   validator
 ) {
-  const queryParams = useMemo(() => {
-    const allParams = qs.parse(location.search);
-    if (allParams[name] !== undefined) {
-      const out = decode(allParams[name]);
-      if (isFunction(validator)) {
-        return validator(out) ? out : defaultValue;
-      }
-      return out;
-    } else {
-      return defaultValue;
-    }
-  }, [decode, defaultValue, location.search, name, validator]);
+  const encDec = {
+    encode,
+    decode
+  };
 
-  const setQueryParams = useCallback(
-    (nextValue, historyMethod = "push") => {
-      if (isFunction(nextValue)) {
-        nextValue = nextValue(queryParams);
-      }
-      // if (encode(nextValue) === encode(queryParams)) {
-      //   return;
-      // }
-
-      const encodedValue = encode(nextValue);
-      const currentQueryParams = qs.parse(location.search);
-      const queryString = qs.stringify(
-        {
-          ...currentQueryParams,
-          [name]:
-            encodedValue !== "" && encodedValue !== null
-              ? encodedValue
-              : undefined
-        },
-        options
-      );
-
-      history[historyMethod]({
-        pathname: location.pathname,
-        search: queryString,
-        state: location.state
-      });
-    },
-    [
-      encode,
-      location.search,
-      location.pathname,
-      location.state,
-      name,
-      options,
-      history,
-      queryParams
-    ]
+  const [param, setParam] = useRouterQueryParam(
+    name,
+    defaultValue,
+    encDec,
+    options
   );
 
-  return [queryParams, setQueryParams];
+  let realParam = param;
+  if (isFunction(validator)) {
+    realParam = validator(param) ? param : defaultValue;
+  }
+
+  return [realParam, setParam];
 }
