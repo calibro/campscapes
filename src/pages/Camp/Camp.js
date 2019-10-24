@@ -40,7 +40,7 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
 
     return scaleLinear()
       .domain([minDegree, maxDegree])
-      .range([5, 12]);
+      .range([6, 12]);
   }, [annotatedGraph]);
 
   const simulation = useRef(null);
@@ -73,7 +73,7 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
         "collide",
         forceCollide(node =>
           get(node, "data.itemType") === "story"
-            ? 50
+            ? 40
             : nodeScale(node.degree) * 4
         ).iterations(3)
       )
@@ -353,7 +353,7 @@ const Camp = ({ match }) => {
               {annotatedGraph && (
                 <CampNet
                   width={width}
-                  height={600}
+                  height={700}
                   annotatedGraph={annotatedGraph}
                 ></CampNet>
               )}
