@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useMemo, useState, useEffect, useRef } from "react";
 import useDimensions from "react-use-dimensions";
 import { CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
@@ -15,7 +15,8 @@ import {
   forceLink,
   forceManyBody,
   forceCenter,
-  forceCollide
+  forceCollide,
+  forceX
 } from "d3-force";
 import CampMap from "../../components/CampMap";
 import Menu from "../../components/Menu";
@@ -27,11 +28,15 @@ import styles from "./Camp.module.scss";
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
 
+  const [links, setLinks] = useState(null);
+  const [nodes, setNodes] = useState(null);
+  const [nodesAndLinks, setNodesAndLinks] = useState({});
+
   const nodeScale = useMemo(() => {
     if (!annotatedGraph.nodes) {
       return;
     }
-    console.log("xxx", annotatedGraph.nodes);
+    // console.log("xxx", annotatedGraph.nodes);
     const degrees = annotatedGraph.nodes
       .filter(item => item.data.itemType !== "story")
       .map(item => item.degree);
@@ -40,73 +45,99 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
 
     return scaleLinear()
       .domain([minDegree, maxDegree])
-      .range([4, 10]);
+      .range([5, 12]);
   }, [annotatedGraph]);
 
-  const d3Graph = useMemo(() => {
-    if (!nodeScale) {
-      return null;
+  const simulation = useRef(null);
+
+  useEffect(() => {
+    console.log(annotatedGraph);
+    if (simulation.current) {
+      simulation.current.stop();
     }
     const outGraph = cloneDeep(annotatedGraph);
     if (!outGraph.nodes || !outGraph.links) {
-      return null;
+      return;
     }
-    forceSimulation(outGraph.nodes)
+
+    // Custom force to put all nodes in a box
+    function boxingForce() {
+      outGraph.nodes.forEach(node => {
+        console.log(node);
+        // Of the positions exceed the box, set them to the boundary position.
+        // You may want to include your nodes width to not overlap with the box.
+        node.x = max([min([node.x, width - 30]), 30]);
+        node.y = max([min([node.y, height - 30]), 30]);
+        // node.y = Math.max(height - 10, Math.min(10, node.y));
+      });
+    }
+
+    simulation.current = forceSimulation(outGraph.nodes)
+      .force(
+        "charge",
+        forceManyBody()
+          .strength(-100)
+          .distanceMax(150)
+      )
       .force("link", forceLink(outGraph.links).id(d => d.id))
-      .force("charge", forceManyBody().strength(-20))
       .force(
         "collide",
         forceCollide(node =>
           get(node, "data.itemType") === "story"
-            ? 8
-            : nodeScale(node.degree) * 2
+            ? 2
+            : nodeScale(node.degree) * 4
         ).iterations(3)
       )
       .force("center", forceCenter(width / 2, height / 2))
-      .tick(30)
-      .stop();
+      // .force("center", forceCenter(width / 3, height / 2))
+      // .force("center", forceCenter(width / 3 * 2, height / 2))
+      .force("box", boxingForce)
 
-    return outGraph;
-  }, [annotatedGraph, height, width, nodeScale]);
+      .on("tick", () => {
+        const { links, nodes } = outGraph;
 
-  if (!d3Graph) {
-    return null;
-  }
+        setNodesAndLinks({ nodes, links });
+      });
+  }, [annotatedGraph, height, nodeScale, width]);
 
   return (
-    <svg height={height} width={width} className={"border"}>
-      {d3Graph.links.map((link, i) => (
-        <line
-          key={i}
-          x1={link.source.x}
-          y1={link.source.y}
-          x2={link.target.x}
-          y2={link.target.y}
-          stroke="#fff"
-        ></line>
-      ))}
-      {d3Graph.nodes.map(node => (
-        <g key={node.id}>
-          <circle
-            onMouseEnter={() => {
-              setHoverNode(node.id);
-            }}
-            cx={node.x}
-            cy={node.y}
-            r={
-              get(node, "data.itemType") === "story"
-                ? "4"
-                : nodeScale(node.degree)
-            }
-            style={{
-              fill: node.data.itemType === "story" ? "#c82727" : "#fff"
-            }}
-          ></circle>
-          {/* <text fill="#fff" x={node.x} y={node.y}>
+    <svg height={height} width={width}>
+      {nodesAndLinks.nodes && (
+        <>
+          {nodesAndLinks.links.map((link, i) => (
+            <line
+              key={i}
+              x1={link.source.x}
+              y1={link.source.y}
+              x2={link.target.x}
+              y2={link.target.y}
+              stroke="#fff"
+            ></line>
+          ))}
+          {nodesAndLinks.nodes.map(node => (
+            <g key={node.id}>
+              <circle
+                onMouseEnter={() => {
+                  setHoverNode(node.id);
+                }}
+                cx={node.x}
+                cy={node.y}
+                r={
+                  get(node, "data.itemType") === "story"
+                    ? "4"
+                    : nodeScale(node.degree)
+                }
+                style={{
+                  fill: node.data.itemType === "story" ? "#c82727" : "#fff"
+                }}
+              ></circle>
+              {/* <text fill="#fff" x={node.x} y={node.y}>
             {node.id}
           </text> */}
-        </g>
-      ))}
+            </g>
+          ))}
+        </>
+      )}
     </svg>
   );
 };
