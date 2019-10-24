@@ -73,7 +73,7 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
         "collide",
         forceCollide(node =>
           get(node, "data.itemType") === "story"
-            ? 2
+            ? 50
             : nodeScale(node.degree) * 4
         ).iterations(3)
       )
