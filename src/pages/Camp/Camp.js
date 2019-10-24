@@ -15,8 +15,7 @@ import {
   forceLink,
   forceManyBody,
   forceCenter,
-  forceCollide,
-  forceX
+  forceCollide
 } from "d3-force";
 import CampMap from "../../components/CampMap";
 import Menu from "../../components/Menu";
@@ -27,16 +26,12 @@ import styles from "./Camp.module.scss";
 
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
-
-  const [links, setLinks] = useState(null);
-  const [nodes, setNodes] = useState(null);
   const [nodesAndLinks, setNodesAndLinks] = useState({});
 
   const nodeScale = useMemo(() => {
     if (!annotatedGraph.nodes) {
       return;
     }
-    // console.log("xxx", annotatedGraph.nodes);
     const degrees = annotatedGraph.nodes
       .filter(item => item.data.itemType !== "story")
       .map(item => item.degree);
@@ -51,7 +46,6 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const simulation = useRef(null);
 
   useEffect(() => {
-    console.log(annotatedGraph);
     if (simulation.current) {
       simulation.current.stop();
     }
@@ -63,21 +57,16 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
     // Custom force to put all nodes in a box
     function boxingForce() {
       outGraph.nodes.forEach(node => {
-        console.log(node);
-        // Of the positions exceed the box, set them to the boundary position.
-        // You may want to include your nodes width to not overlap with the box.
         node.x = max([min([node.x, width - 30]), 30]);
         node.y = max([min([node.y, height - 30]), 30]);
-        // node.y = Math.max(height - 10, Math.min(10, node.y));
       });
     }
 
     simulation.current = forceSimulation(outGraph.nodes)
       .force(
         "charge",
-        forceManyBody()
-          .strength(-100)
-          .distanceMax(150)
+        forceManyBody().strength(-30)
+        // .distanceMax(120)
       )
       .force("link", forceLink(outGraph.links).id(d => d.id))
       .force(
@@ -89,13 +78,9 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
         ).iterations(3)
       )
       .force("center", forceCenter(width / 2, height / 2))
-      // .force("center", forceCenter(width / 3, height / 2))
-      // .force("center", forceCenter(width / 3 * 2, height / 2))
       .force("box", boxingForce)
-
       .on("tick", () => {
         const { links, nodes } = outGraph;
-
         setNodesAndLinks({ nodes, links });
       });
   }, [annotatedGraph, height, nodeScale, width]);
@@ -363,14 +348,16 @@ const Camp = ({ match }) => {
               </div>
             </div>
           </div>
-          <div className={styles.networkContainer} ref={ref}>
-            {annotatedGraph && (
-              <CampNet
-                width={width}
-                height={600}
-                annotatedGraph={annotatedGraph}
-              ></CampNet>
-            )}
+          <div className="text-center container">
+            <div className={styles.networkContainer} ref={ref}>
+              {annotatedGraph && (
+                <CampNet
+                  width={width}
+                  height={600}
+                  annotatedGraph={annotatedGraph}
+                ></CampNet>
+              )}
+            </div>
           </div>
         </React.Fragment>
       )}
