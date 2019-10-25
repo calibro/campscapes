@@ -49,7 +49,7 @@ async function main(options) {
     allItems = JSON.parse(allItemsData);
   } else {
     allItems = await api.getItemsGreedy({
-      query: { per_page: 50 },
+      query: { per_page: options.perPage },
       greedy: true
     });
     fs.writeFileSync(allItemsFilename, JSON.stringify(allItems));
@@ -260,6 +260,11 @@ async function main(options) {
   fs.writeFileSync(campsFilename, JSON.stringify(campsWithNetworks));
 }
 
+function myParseInt(value, dummyPrevious) {
+  // parseInt takes a string and an optional radix
+  return parseInt(value);
+}
+
 if (require.main === module) {
   program
     .version("0.1.0")
@@ -268,6 +273,7 @@ if (require.main === module) {
       `Output directory. A subdir "${CAMPSCAPES_DATA_DIRNAME}" will be created if not exisiting`
     )
     .option("--no-something", "Skip something")
+    .option('--pagesize <number>', 'Items per page', myParseInt)
     .option("--example <dir>", "Example param.")
     .option("--no-items", "use existing items")
     .parse(process.argv);
@@ -288,7 +294,8 @@ if (require.main === module) {
     {
       targetDir,
       downloadItems: program.items,
-      something: program.something
+      something: program.something,
+      perPage: program.pagesize || 50,
     },
     console,
     colors

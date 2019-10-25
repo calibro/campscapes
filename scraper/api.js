@@ -16,6 +16,8 @@ const FIELDS_TO_TYPES = {
   // ...
 }
 
+const ARRAY_FIELDS = ["creator", "externalUrl"]
+
 
 async function simplifyItem(item){
   const elementTexts = get(item, 'element_texts', [])
@@ -23,9 +25,17 @@ async function simplifyItem(item){
   let data = {}
 
   elementTexts.forEach(elementText => {
-    const name = elementText.element.name.toLowerCase()
+    const name = camelcase(elementText.element.name)
     const mapping  = get(FIELDS_TO_TYPES, name, x => x)
-    data[camelcase(name)] =  mapping(elementText.text)
+    const value = mapping(elementText.text)
+    if(ARRAY_FIELDS.indexOf(name) !== -1){
+      if(!data[name]){
+        data[name] = []
+      }
+      data[name].push(value)
+    } else {
+      data[name] = value
+    }
   });
 
   if(item.files){
