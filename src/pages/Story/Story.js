@@ -58,8 +58,6 @@ const Story = ({ match, location, history }) => {
   const pages = useMemo(() => {
     return sortBy(get(story, "pages", []), "order");
   }, [story]);
-  console.log(pages);
-
   /*
     Using our custom "useUrlParam" hook
     to manage currentParagraph state from url
@@ -83,6 +81,7 @@ const Story = ({ match, location, history }) => {
   );
 
   const containerRef = useRef();
+  const itemsContainerRef = useRef();
   let pagesRef = useRef([]);
   const firstScroll = useRef(false);
 
@@ -113,6 +112,15 @@ const Story = ({ match, location, history }) => {
       ? location.state.from
       : "/themes";
   }, [location.state]);
+
+  //reset items section scroll after paragraph change
+  useEffect(() => {
+    if (itemsContainerRef.current) {
+      //itemsContainerRef.current.scrollTo(0);
+      console.log(itemsContainerRef.current);
+      itemsContainerRef.current.scrollTo(0, 0);
+    }
+  }, [currentParagraph]);
 
   return (
     <div className={styles.storyContainer}>
@@ -208,7 +216,7 @@ const Story = ({ match, location, history }) => {
                 </div>
               </div>
               <div className="col-5 d-flex flex-column overflow-hidden">
-                <div className={styles.attachments}>
+                <div className={styles.attachments} ref={itemsContainerRef}>
                   {currentAttachments &&
                     currentAttachments.length > 0 &&
                     currentAttachments.map((attachment, i) => (
