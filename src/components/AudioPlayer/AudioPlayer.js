@@ -17,8 +17,27 @@ class AudioPlayer extends React.Component {
     const { audioFile, title } = this.props;
     return (
       <div className={styles.audioContainer}>
+        {/* wave */}
+        <ReactWaves
+          audioFile={audioFile}
+          className={styles.objectContentAudio}
+          options={{
+            fillParent: true,
+            barHeight: 2,
+            barWidth: 3,
+            cursorWidth: 10,
+            cursorColor: "rgba(0,0,0,0.2)",
+            hideScrollbar: true,
+            progressColor: "#c82727",
+            responsive: true,
+            waveColor: "#D1D6DA"
+          }}
+          volume={this.state.volume}
+          zoom={1}
+          playing={this.state.playing}
+        />
         {/* play button */}
-        <div className="d-flex align-items-center p-2 bg-white">
+        <div className="d-flex align-items-center">
           <div
             onClick={() => {
               this.setState({ playing: !this.state.playing });
@@ -37,28 +56,7 @@ class AudioPlayer extends React.Component {
           >
             {this.state.volume ? <MdVolumeOff /> : <MdVolumeUp />}
           </div>
-          <div className={`${styles.audioTitle} text-truncate`}>{title}</div>
         </div>
-
-        {/* wave */}
-        <ReactWaves
-          audioFile={audioFile}
-          className={styles.objectContentAudio}
-          options={{
-            fillParent: true,
-            barHeight: 2,
-            barWidth: 3,
-            cursorWidth: 10,
-            cursorColor: "rgba(0,0,0,0.2)",
-            hideScrollbar: true,
-            progressColor: "#00041b",
-            responsive: true,
-            waveColor: "#D1D6DA"
-          }}
-          volume={this.state.volume}
-          zoom={1}
-          playing={this.state.playing}
-        />
       </div>
     );
   }

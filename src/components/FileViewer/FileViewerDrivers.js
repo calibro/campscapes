@@ -39,14 +39,7 @@ export const DriverPdf = ({ item, zoom, alt }) => {
 };
 
 export const DriverAudio = ({ item }) => {
-  return (
-    <div>
-      <AudioPlayer
-        audioFile={proxyDevUrl(item.file_urls.original)}
-        // title={}
-      />
-    </div>
-  );
+  return <AudioPlayer audioFile={proxyDevUrl(item.file_urls.original)} />;
 };
 
 export const DriverVideo = ({ item }) => {
