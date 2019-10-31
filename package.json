@@ -1,7 +1,8 @@
 {
   "name": "campscapes",
   "version": "0.1.0",
-  "homepage": "https://calibro.github.io/campscapes",
+  "xhomepage": "https://calibro.github.io/campscapes",
+  "hompage": "https://platform.campscapes.org",
   "private": true,
   "dependencies": {
     "@dschoon/react-waves": "^1.0.15",
@@ -13,6 +14,7 @@
     "bootstrap": "^4.3.1",
     "camelcase": "^5.3.1",
     "classnames": "^2.2.6",
+    "d3": "^5.5.0",
     "d3-array": "^2.3.1",
     "d3-force": "^2.0.1",
     "d3-hierarchy": "^1.1.8",
@@ -25,6 +27,7 @@
     "markdown-to-jsx": "^6.10.3",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
+    "react-d3-graph": "^2.3.0",
     "react-dom": "^16.9.0",
     "react-hammerjs": "^1.0.1",
     "react-icons": "^3.7.0",

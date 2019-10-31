@@ -23,6 +23,7 @@ import TimelineIconsCamp from "../../components/TimelineIconsCamp";
 import TimelineAxis from "../../components/TimelineAxis";
 import DdLayers from "../../components/DdLayers";
 import styles from "./Camp.module.scss";
+import { Graph as D3Graph } from "react-d3-graph";
 
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   const [hoverNode, setHoverNode] = useState(null);
@@ -43,88 +44,168 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
       .range([6, 12]);
   }, [annotatedGraph]);
 
-  const simulation = useRef(null);
-
-  useEffect(() => {
-    if (simulation.current) {
-      simulation.current.stop();
+  const myConfig = {
+    automaticRearrangeAfterDropNode: true,
+    collapsible: false,
+    directed: false,
+    focusAnimationDuration: 0.75,
+    focusZoom: 1,
+    height: 400,
+    highlightDegree: 1,
+    highlightOpacity: 1,
+    linkHighlightBehavior: false,
+    maxZoom: 8,
+    minZoom: 0.1,
+    nodeHighlightBehavior: false,
+    panAndZoom: false,
+    staticGraph: false,
+    staticGraphWithDragAndDrop: false,
+    width: 800,
+    d3: {
+      alphaTarget: 0.05,
+      gravity: -100,
+      linkLength: 100,
+      linkStrength: 1
+    },
+    node: {
+      color: "#d3d3d3",
+      fontColor: "black",
+      fontSize: 8,
+      fontWeight: "normal",
+      highlightColor: "SAME",
+      highlightFontSize: 8,
+      highlightFontWeight: "normal",
+      highlightStrokeColor: "SAME",
+      highlightStrokeWidth: "SAME",
+      labelProperty: "id",
+      mouseCursor: "pointer",
+      opacity: 1,
+      renderLabel: true,
+      size: 200,
+      strokeColor: "none",
+      strokeWidth: 1.5,
+      svg: "",
+      symbolType: "circle"
+    },
+    link: {
+      color: "#d3d3d3",
+      fontColor: "black",
+      fontSize: 8,
+      fontWeight: "normal",
+      highlightColor: "#d3d3d3",
+      highlightFontSize: 8,
+      highlightFontWeight: "normal",
+      labelProperty: "label",
+      mouseCursor: "pointer",
+      opacity: 1,
+      renderLabel: false,
+      semanticStrokeWidth: false,
+      strokeWidth: 1.5
     }
-    const outGraph = cloneDeep(annotatedGraph);
-    if (!outGraph.nodes || !outGraph.links) {
-      return;
-    }
-
-    // Custom force to put all nodes in a box
-    function boxingForce() {
-      outGraph.nodes.forEach(node => {
-        node.x = max([min([node.x, width - 30]), 30]);
-        node.y = max([min([node.y, height - 30]), 30]);
-      });
-    }
-
-    simulation.current = forceSimulation(outGraph.nodes)
-      .force(
-        "charge",
-        forceManyBody().strength(-30)
-        // .distanceMax(120)
-      )
-      .force("link", forceLink(outGraph.links).id(d => d.id))
-      .force(
-        "collide",
-        forceCollide(node =>
-          get(node, "data.itemType") === "story"
-            ? 40
-            : nodeScale(node.degree) * 4
-        ).iterations(3)
-      )
-      .force("center", forceCenter(width / 2, height / 2))
-      .force("box", boxingForce)
-      .on("tick", () => {
-        const { links, nodes } = outGraph;
-        setNodesAndLinks({ nodes, links });
-      });
-  }, [annotatedGraph, height, nodeScale, width]);
-
+  };
+  console.log("annotatedGraph", annotatedGraph);
   return (
-    <svg height={height} width={width}>
-      {nodesAndLinks.nodes && (
-        <>
-          {nodesAndLinks.links.map((link, i) => (
-            <line
-              key={i}
-              x1={link.source.x}
-              y1={link.source.y}
-              x2={link.target.x}
-              y2={link.target.y}
-              stroke="#fff"
-            ></line>
-          ))}
-          {nodesAndLinks.nodes.map(node => (
-            <g key={node.id}>
-              <circle
-                onMouseEnter={() => {
-                  setHoverNode(node.id);
-                }}
-                cx={node.x}
-                cy={node.y}
-                r={
-                  get(node, "data.itemType") === "story"
-                    ? "4"
-                    : nodeScale(node.degree)
-                }
-                style={{
-                  fill: node.data.itemType === "story" ? "#c82727" : "#fff"
-                }}
-              ></circle>
-              {/* <text fill="#fff" x={node.x} y={node.y}>
-            {node.id}
-          </text> */}
-            </g>
-          ))}
-        </>
-      )}
-    </svg>
+    annotatedGraph && (
+      <D3Graph
+        id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
+        data={cloneDeep({ nodes: annotatedGraph.nodes, links: [] })}
+        config={myConfig}
+        // onClickNode={onClickNode}
+        // onRightClickNode={onRightClickNode}
+        // onClickGraph={onClickGraph}
+        // onClickLink={onClickLink}
+        // onRightClickLink={onRightClickLink}
+        // onMouseOverNode={onMouseOverNode}
+        // onMouseOutNode={onMouseOutNode}
+        // onMouseOverLink={onMouseOverLink}
+        // onMouseOutLink={onMouseOutLink}
+        // onNodePositionChange={onNodePositionChange}
+      />
+    )
   );
+
+  // const simulation = useRef(null);
+
+  // useEffect(() => {
+  //   if (simulation.current) {
+  //     simulation.current.stop();
+  //   }
+  //   const outGraph = cloneDeep(annotatedGraph);
+  //   if (!outGraph.nodes || !outGraph.links) {
+  //     return;
+  //   }
+
+  //   // Custom force to put all nodes in a box
+  //   function boxingForce() {
+  //     outGraph.nodes.forEach(node => {
+  //       node.x = max([min([node.x, width - 30]), 30]);
+  //       node.y = max([min([node.y, height - 30]), 30]);
+  //     });
+  //   }
+
+  //   simulation.current = forceSimulation(outGraph.nodes)
+  //     .force(
+  //       "charge",
+  //       forceManyBody().strength(-30)
+  //       // .distanceMax(120)
+  //     )
+  //     .force("link", forceLink(outGraph.links).id(d => d.id))
+  //     .force(
+  //       "collide",
+  //       forceCollide(node =>
+  //         get(node, "data.itemType") === "story"
+  //           ? 40
+  //           : nodeScale(node.degree) * 4
+  //       ).iterations(3)
+  //     )
+  //     .force("center", forceCenter(width / 2, height / 2))
+  //     .force("box", boxingForce)
+  //     .on("tick", () => {
+  //       const { links, nodes } = outGraph;
+  //       setNodesAndLinks({ nodes, links });
+  //     });
+  // }, [annotatedGraph, height, nodeScale, width]);
+
+  // return (
+  //   <svg height={height} width={width}>
+  //     {nodesAndLinks.nodes && (
+  //       <>
+  //         {nodesAndLinks.links.map((link, i) => (
+  //           <line
+  //             key={i}
+  //             x1={link.source.x}
+  //             y1={link.source.y}
+  //             x2={link.target.x}
+  //             y2={link.target.y}
+  //             stroke="#fff"
+  //           ></line>
+  //         ))}
+  //         {nodesAndLinks.nodes.map(node => (
+  //           <g key={node.id}>
+  //             <circle
+  //               onMouseEnter={() => {
+  //                 setHoverNode(node.id);
+  //               }}
+  //               cx={node.x}
+  //               cy={node.y}
+  //               r={
+  //                 get(node, "data.itemType") === "story"
+  //                   ? "4"
+  //                   : nodeScale(node.degree)
+  //               }
+  //               style={{
+  //                 fill: node.data.itemType === "story" ? "#c82727" : "#fff"
+  //               }}
+  //             ></circle>
+  //             {/* <text fill="#fff" x={node.x} y={node.y}>
+  //           {node.id}
+  //         </text> */}
+  //           </g>
+  //         ))}
+  //       </>
+  //     )}
+  //   </svg>
+  // );
 };
 
 const Camp = ({ match }) => {
