@@ -1,11 +1,12 @@
 import React, { useEffect, useContext, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack, MdAddCircle } from "react-icons/md";
 import { StoriesContext } from "../../dataProviders";
 import find from "lodash/find";
 import get from "lodash/get";
 import sortBy from "lodash/sortBy";
 import { Waypoint } from "react-waypoint";
+import useDimensions from "react-use-dimensions";
 import Menu from "../../components/Menu";
 import useUrlParam from "../../hooks/useUrlParam";
 import StoryItem from "../../components/StoryItem";
@@ -35,15 +36,46 @@ const StoryParagraph = React.forwardRef(
 );
 
 const PageDots = ({ page, index, currentParagraph, onClick }) => {
+  const [ref, { height }] = useDimensions();
   const attachments = get(page, "page_blocks[0].attachments", []);
+  const dotHeight = 8;
+  const dotMargin = 2;
+
+  const maxDots = useMemo(() => {
+    if (height) {
+      return Math.floor(height / (dotHeight + dotMargin * 2));
+    } else {
+      return 0;
+    }
+  }, [height]);
+
   return (
     <div
       className={styles.dotsRect}
       onClick={onClick}
       style={{ opacity: index === currentParagraph ? 1 : 0.5 }}
+      ref={ref}
     >
       {attachments.length > 0 &&
-        attachments.map((a, i) => <div key={i} className={styles.dot}></div>)}
+        maxDots &&
+        attachments.slice(0, maxDots).map((a, i) => {
+          if (i + 1 === maxDots) {
+            return (
+              <div
+                key={i}
+                className="d-flex align-items-center justify-center"
+                style={{ height: "8px", marginBottom: "1px" }}
+              >
+                <MdAddCircle
+                  size="12px"
+                  style={{ color: "var(--red-cs)" }}
+                ></MdAddCircle>
+              </div>
+            );
+          } else {
+            return <div key={i} className={styles.dot}></div>;
+          }
+        })}
     </div>
   );
 };
@@ -117,7 +149,6 @@ const Story = ({ match, location, history }) => {
   useEffect(() => {
     if (itemsContainerRef.current) {
       //itemsContainerRef.current.scrollTo(0);
-      console.log(itemsContainerRef.current);
       itemsContainerRef.current.scrollTo(0, 0);
     }
   }, [currentParagraph]);
@@ -195,7 +226,7 @@ const Story = ({ match, location, history }) => {
                     ))}
                 </div>
               </div>
-              <div className="col-1 d-flex flex-column overflow-hidden align-items-center">
+              <div className="col-1 d-flex flex-column align-items-center">
                 <div className={styles.dots}>
                   {pages.length > 0 &&
                     pages.map((page, i) => (

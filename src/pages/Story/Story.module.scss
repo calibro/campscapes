@@ -58,38 +58,37 @@
   overflow-y: auto;
 
   p {
-    font-size: 1.375rem;
+    font-size: 1.325rem;
     text-indent: 30px;
   }
 }
 
 .dots {
   width: 100%;
-  padding-top: 20px;
+  padding: 20px 0px;
   background: #fff;
   position: relative;
-  overflow-y: auto;
-  flex: 1 1 1px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 
   .dotsRect {
     width: 22px;
-    min-height: 60px;
     background: #ccc;
     margin: 4px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     cursor: pointer;
     transition: opacity var(--transition);
+    flex: 1 1 10px;
+    overflow: hidden;
     .dot {
       width: 8px;
       height: 8px;
       border-radius: 10px;
-      margin: 2px;
       background: #c82727;
     }
   }
