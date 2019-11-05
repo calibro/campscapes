@@ -170,7 +170,12 @@ const CampMap = ({
                   visibility: layer.year === yearVector ? "visible" : "none"
                 }}
                 fillExtrusionPaint={{
-                  "fill-extrusion-height": 4,
+                  "fill-extrusion-height": [
+                    "case",
+                    ["boolean", ["has", "height"], true],
+                    ["get", "height"],
+                    3
+                  ],
                   "fill-extrusion-opacity": 0.8,
                   "fill-extrusion-color": "#c82727"
                 }}
