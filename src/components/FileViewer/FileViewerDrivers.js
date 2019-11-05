@@ -57,12 +57,10 @@ export const DriverVideo = ({ item }) => {
 };
 
 export const DriverMarkdown = ({ item }) => {
-  console.log("DriverMarkdown", item);
   return (
-    <div className={styles.playerWrapper}>
-      <MarkdownViewer
-        url={proxyDevUrl(item.file_urls.original)}
-      ></MarkdownViewer>
-    </div>
+    <MarkdownViewer
+      url={proxyDevUrl(item.file_urls.original)}
+      fullHeight
+    ></MarkdownViewer>
   );
 };
