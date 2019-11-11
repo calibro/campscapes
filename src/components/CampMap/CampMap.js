@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ReactMapboxGl, { GeoJSONLayer, MapContext } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import { proxyDevUrl } from "../../utils";
@@ -20,14 +20,21 @@ const CampMap = ({
   rasterLayers,
   opacity
 }) => {
-  const iconsFeatures = camp.relations.icon
-    .filter(icon => icon.data.longitude && icon.data.latitude)
-    .map(icon =>
-      point([icon.data.longitude, icon.data.latitude], {
-        id: icon.id,
-        ...icon.data
-      })
-    );
+  const iconsFeatures = useMemo(() => {
+    if (camp && camp.relations.icon) {
+      return camp.relations.icon
+        .filter(icon => icon.data.longitude && icon.data.latitude)
+        .map(icon =>
+          point([icon.data.longitude, icon.data.latitude], {
+            id: icon.id,
+            ...icon.data
+          })
+        );
+    } else {
+      return [];
+    }
+  }, [camp]);
+
   const geojsonFeatures = featureCollection(iconsFeatures);
   const campCenter = [camp.data.longitude, camp.data.latitude];
 

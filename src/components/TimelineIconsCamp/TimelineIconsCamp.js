@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link, withRouter } from "react-router-dom";
 import TimelineStripes from "../../components/TimelineStripes";
 import FallbackPreview from "../../components/FallbackPreview";
 import styles from "./TimelineIconsCamp.module.scss";
 
 const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
-  const icons = camp.relations.icon
-    .sort((a, b) => {
-      return (
-        new Date(a.data.startDate).getTime() -
-        new Date(b.data.startDate).getTime()
-      );
-    })
-    .map(d => {
-      d.data.startDate = d.data.startDate ? new Date(d.data.startDate) : null;
-      return d;
-    });
+  const icons = useMemo(() => {
+    if (camp && camp.relations.icon) {
+      return camp.relations.icon
+        .sort((a, b) => {
+          return (
+            new Date(a.data.startDate).getTime() -
+            new Date(b.data.startDate).getTime()
+          );
+        })
+        .map(d => {
+          d.data.startDate = d.data.startDate
+            ? new Date(d.data.startDate)
+            : null;
+          return d;
+        });
+    } else {
+      return [];
+    }
+  }, [camp]);
 
   return (
     <div className="row">

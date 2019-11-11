@@ -149,13 +149,17 @@ const Camp = ({ match }) => {
   }, [camps, params.name]);
 
   const timelineDomainMin = useMemo(() => {
-    return min(camp ? camp.relations.icon : [], icon =>
-      min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
-    );
+    if (camp && camp.relations.icon) {
+      return min(camp.relations.icon, icon =>
+        min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
+      );
+    } else {
+      return null;
+    }
   }, [camp]);
 
   const vectorLayers = useMemo(() => {
-    if (camp) {
+    if (camp && camp.relations.geolayer_vector) {
       return camp.relations.geolayer_vector
         .filter(l => {
           return l.data.startDate && l.data.files && l.data.files.length > 0;
@@ -167,11 +171,13 @@ const Camp = ({ match }) => {
             year: startDate.getFullYear()
           };
         });
+    } else {
+      return [];
     }
   }, [camp]);
 
   const rasterLayers = useMemo(() => {
-    if (camp) {
+    if (camp && camp.relations.geolayer_raster) {
       return camp.relations.geolayer_raster
         .filter(l => {
           return (
@@ -189,6 +195,8 @@ const Camp = ({ match }) => {
             year: startDate.getFullYear()
           };
         });
+    } else {
+      return [];
     }
   }, [camp]);
 
