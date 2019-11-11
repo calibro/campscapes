@@ -39,11 +39,28 @@
 
 .descriptionContainer {
   max-height: 300px;
-  overflow-y: scroll;
+  display: flex;
+  position: relative;
+}
+
+.descriptionContainer:after {
+  content: "";
+  pointer-events: none;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(16, 16, 18, 1) 0%,
+    rgba(16, 16, 18, 0) 100%
+  );
 }
 
 .description {
   font-size: 1.25rem;
+  padding-bottom: 50px;
 }
 
 .dropdown {
@@ -60,6 +77,6 @@
 }
 
 .networkContainer {
-    // max-width: 800px;
-    margin: 0 auto;
+  // max-width: 800px;
+  margin: 0 auto;
 }

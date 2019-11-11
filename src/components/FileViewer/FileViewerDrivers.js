@@ -39,14 +39,7 @@ export const DriverPdf = ({ item, zoom, alt }) => {
 };
 
 export const DriverAudio = ({ item }) => {
-  return (
-    <div>
-      <AudioPlayer
-        audioFile={proxyDevUrl(item.file_urls.original)}
-        // title={}
-      />
-    </div>
-  );
+  return <AudioPlayer audioFile={proxyDevUrl(item.file_urls.original)} />;
 };
 
 export const DriverVideo = ({ item }) => {
@@ -64,12 +57,10 @@ export const DriverVideo = ({ item }) => {
 };
 
 export const DriverMarkdown = ({ item }) => {
-  console.log("DriverMarkdown", item);
   return (
-    <div className={styles.playerWrapper}>
-      <MarkdownViewer
-        url={proxyDevUrl(item.file_urls.original)}
-      ></MarkdownViewer>
-    </div>
+    <MarkdownViewer
+      url={proxyDevUrl(item.file_urls.original)}
+      fullHeight
+    ></MarkdownViewer>
   );
 };

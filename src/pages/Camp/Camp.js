@@ -339,9 +339,11 @@ const Camp = ({ match }) => {
                   <div className={styles.metadata}>
                     <h6>about the camp</h6>
                     <div className={styles.descriptionContainer}>
-                      <p className={styles.description}>
-                        {camp.data.description}
-                      </p>
+                      <div className="overflow-auto">
+                        <p className={styles.description}>
+                          {camp.data.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

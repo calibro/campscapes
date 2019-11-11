@@ -171,7 +171,7 @@ const CampMap = ({
                 }}
                 fillExtrusionPaint={{
                   "fill-extrusion-height": 4,
-                  "fill-extrusion-opacity": 1,
+                  "fill-extrusion-opacity": 0.8,
                   "fill-extrusion-color": "#c82727"
                 }}
               />

@@ -1,7 +1,6 @@
 {
   "name": "campscapes",
   "version": "0.1.0",
-  "homepage": "https://calibro.github.io/campscapes",
   "private": true,
   "dependencies": {
     "@dschoon/react-waves": "^1.0.15",
