@@ -8,7 +8,8 @@ import {
   StoriesProvider,
   SimplePagesProvider,
   IconsProvider,
-  ItemsProvider
+  ItemsProvider,
+  HomeImagesProvider
 } from "./dataProviders";
 import Intro from "./pages/Intro";
 import Home from "./pages/Home";
@@ -28,7 +29,9 @@ function App() {
     <Router>
       <SimplePagesProvider>
         <IntroProvider loadOn={["/"]}>
-          <Route exact path="/" component={Intro} />
+          <HomeImagesProvider loadOn={["/"]}>
+            <Route exact path="/" component={Intro} />
+          </HomeImagesProvider>
         </IntroProvider>
 
         <Route exact path="/home" component={Home} />
