@@ -41,8 +41,9 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
                   <div
                     className={styles.iconContainer}
                     onMouseOver={e => {
-                      //console.log(e);
-                      setSelectedIcon(icon);
+                      if (icon.data.latitude && icon.data.longitude) {
+                        setSelectedIcon(icon);
+                      }
                     }}
                     onMouseOut={() => setSelectedIcon(null)}
                   >
