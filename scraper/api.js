@@ -29,10 +29,11 @@ async function simplifyItem(item){
     const mapping  = get(FIELDS_TO_TYPES, name, x => x)
     const value = mapping(elementText.text)
     if(ARRAY_FIELDS.indexOf(name) !== -1){
+      const arrayValue = value.split(",")
       if(!data[name]){
         data[name] = []
       }
-      data[name].push(value)
+      data[name] = data[name].concat(arrayValue)
     } else {
       data[name] = value
     }
@@ -173,7 +174,9 @@ async function getItems(q={}) {
     .query({key: API_KEY, ...q})
   //  
   } catch (err) {
+    console.error("Error getting items")
     // do something with err...
+    throw(err)
   }
   return response
 }
@@ -186,6 +189,7 @@ async function getTags(q={}) {
     .then(({body}) => body)
   //  
   } catch (err) {
+    console.error("Error getting tags")
     // do something with err...
   }
   return response
@@ -199,6 +203,7 @@ async function getItemRelations(q={}) {
     .then(({body}) => body)
   //  
   } catch (err) {
+    console.error("Error getting item relations")
     // do something with err...
   }
   return response
@@ -213,6 +218,7 @@ async function getStories(q={}) {
   //  
   } catch (err) {
     // do something with err...
+    console.error("Error getting stories")
   }
   return response
 }
@@ -226,6 +232,7 @@ async function getPages(q={}) {
   //  
   } catch (err) {
     // do something with err...
+    console.error("Error getting pages")
   }
   return response
 }
@@ -238,6 +245,7 @@ async function getExhibits(q={}) {
     .then(({body}) => body)
   //  
   } catch (err) {
+    console.error("Error getting exhibits")
     // do something with err...
   }
   return response
@@ -251,6 +259,7 @@ async function getFiles(q={}) {
     .then(({body}) => body)
   //  
   } catch (err) {
+    console.error("Error getting files")
     // do something with err...
   }
   return response

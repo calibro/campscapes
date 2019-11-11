@@ -139,3 +139,17 @@ export const IntroProvider = ({ children, loadOn }) => {
     </IntroContext.Provider>
   );
 };
+
+export const HomeImagesContext = React.createContext([]);
+
+export const HomeImagesProvider = ({ children, loadOn }) => {
+  const data = useLoadJSON(
+    `${process.env.PUBLIC_URL}/campscapes-data/homeImages.json`,
+    loadOn
+  );
+  return (
+    <HomeImagesContext.Provider value={data || emptyList}>
+      {children}
+    </HomeImagesContext.Provider>
+  );
+};

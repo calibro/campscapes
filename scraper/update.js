@@ -7,6 +7,7 @@ const keyBy = require("lodash/keyBy");
 const get = require("lodash/get");
 const sortBy = require("lodash/sortBy");
 const tail = require("lodash/tail");
+const flatten = require("lodash/flatten");
 const findIndex = require("lodash/findIndex");
 const find = require("lodash/find");
 
@@ -171,7 +172,9 @@ async function main(options) {
           exhibit.pages = tail(pagesWithAttachments);
         }
       } else {
-        exhibit.pages = pagesWithAttachments;
+        //we still discard the first page as it contains background images for home page 
+        // exhibit.pages = pagesWithAttachments;
+        exhibit.pages = tail(pagesWithAttachments);
       }
     } else {
       exhibit.pages = [];
@@ -182,6 +185,24 @@ async function main(options) {
     exhibit.tags = tags.map(tag => tag.trim());
     return exhibit;
   });
+
+  //creating home page images file
+  const homeImagesFilename = path.join(targetDir, "homeImages.json");
+  let homeImages = []
+  const featuredExhibit = find(allExhibits, item => item.featured === true)
+  if(featuredExhibit){
+    let pagesWithAttachments = allPagesWithAttachments.filter(
+      page => get(page, "exhibit.id") === featuredExhibit.id
+    );
+    if(pagesWithAttachments.length){
+      const firstPage = pagesWithAttachments[0];
+      const pageBlocks = get(firstPage, 'page_blocks', [])
+      homeImages = flatten(pageBlocks.map(b => get(b, 'attachments', [])))
+    }
+  }
+  homeImages = homeImages.map(homeImage => get(homeImage, "file")).filter(item => !!item)
+  fs.writeFileSync(homeImagesFilename, JSON.stringify(homeImages));
+
 
   const stories = allStories.filter(item => !item.featured);
   const storiesFilename = path.join(targetDir, "stories.json");
