@@ -29,10 +29,11 @@ async function simplifyItem(item){
     const mapping  = get(FIELDS_TO_TYPES, name, x => x)
     const value = mapping(elementText.text)
     if(ARRAY_FIELDS.indexOf(name) !== -1){
+      const arrayValue = value.split(",")
       if(!data[name]){
         data[name] = []
       }
-      data[name].push(value)
+      data[name] = data[name].concat(arrayValue)
     } else {
       data[name] = value
     }
