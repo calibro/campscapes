@@ -163,6 +163,11 @@ const Story = ({ match, location, history }) => {
             <div className="container">
               <div className="row">
                 <div className="col-12">
+                  <h6 className={styles.campLink}>
+                    <Link to={`/camps/${story.camp.data.siteName}`}>
+                      {story.camp.data.title}
+                    </Link>
+                  </h6>
                   <h2>
                     <span className="d-flex mr-2">
                       <Link to={backLink}>

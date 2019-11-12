@@ -23,6 +23,15 @@
     display: flex;
     align-items: center;
   }
+
+  .campLink {
+    font-weight: normal;
+    margin: 0;
+
+    a {
+      color: black;
+    }
+  }
 }
 
 .storyTag {
