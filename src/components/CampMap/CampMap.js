@@ -257,8 +257,10 @@ const CampMap = ({
                         .map((values, i) => {
                           return (
                             <tr key={i}>
-                              <td>{values[0]}</td>
-                              <td>{values[1]}</td>
+                              <td>{values[0]}:</td>
+                              <td>
+                                <b>{values[1]}</b>
+                              </td>
                             </tr>
                           );
                         })}
