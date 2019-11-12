@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
-import ReactMapboxGl, { GeoJSONLayer, MapContext } from "react-mapbox-gl";
+import ReactMapboxGl, {
+  GeoJSONLayer,
+  MapContext,
+  Popup
+} from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
+import { MdClose } from "react-icons/md";
 import { proxyDevUrl } from "../../utils";
 import styles from "./CampMap.module.scss";
 
@@ -38,33 +43,47 @@ const CampMap = ({
   const geojsonFeatures = featureCollection(iconsFeatures);
   const campCenter = [camp.data.longitude, camp.data.latitude];
 
-  const [element, setElement] = useState(false);
+  const [overFeature, setOverFeature] = useState(false);
   const [center, setCenter] = useState(campCenter);
   const [zoom, setZoom] = useState([14]);
   const [mapInstance, setMapInstance] = useState(null);
 
-  // const geojsonOnMouseMove = (cursor, map) => {
-  //   map.getCanvas().style.cursor = cursor;
-  // };
-  //
-  // const geojsonOnMouseLeave = (cursor, map) => {
-  //   map.getCanvas().style.cursor = cursor;
-  // };
-  //
-  // const geojsonOnClick = (element, zoom) => {
-  //   setElement(element);
-  //   setCenter(element.coordinates);
-  //   setZoom([zoom]);
-  // };
+  const geojsonOnMouseMove = (cursor, map, features) => {
+    if (
+      features.length &&
+      features[0].properties &&
+      Object.keys(features[0].properties).length > 0
+    ) {
+      map.getCanvas().style.cursor = cursor;
+    } else {
+      map.getCanvas().style.cursor = "";
+    }
+  };
+
+  const geojsonOnMouseLeave = (cursor, map) => {
+    map.getCanvas().style.cursor = cursor;
+  };
+
+  const geojsonOnClick = e => {
+    if (
+      e.features.length &&
+      e.features[0].properties &&
+      Object.keys(e.features[0].properties).length > 0
+    ) {
+      setOverFeature({
+        coordinates: e.lngLat,
+        properties: e.features[0].properties,
+        id: e.features[0].id
+      });
+    }
+  };
+
+  const closePopup = () => {
+    setOverFeature(false);
+  };
 
   useEffect(() => {
     if (selectedIcon && mapInstance) {
-      // console.log(
-      //   mapInstance.project([
-      //     selectedIcon.data.longitude,
-      //     selectedIcon.data.latitude
-      //   ])
-      // );
       setCenter([selectedIcon.data.longitude, selectedIcon.data.latitude]);
       setZoom([18]);
     }
@@ -179,13 +198,21 @@ const CampMap = ({
                 fillExtrusionPaint={{
                   "fill-extrusion-height": [
                     "case",
-                    ["boolean", ["has", "height"], true],
-                    ["get", "height"],
+                    ["boolean", ["has", "Height"], true],
+                    ["get", "Height"],
                     3
                   ],
                   "fill-extrusion-opacity": 0.8,
                   "fill-extrusion-color": "#c82727"
                 }}
+                fillExtrusionOnClick={geojsonOnClick}
+                fillExtrusionOnMouseMove={e => {
+                  geojsonOnMouseMove("pointer", e.target, e.features);
+                }}
+                fillExtrusionOnMouseLeave={e => {
+                  geojsonOnMouseLeave("", e.target);
+                }}
+                sourceOptions={{ generateId: true }}
               />
             );
           })}
@@ -207,6 +234,38 @@ const CampMap = ({
               data={geojsonFeatures}
             ></GeoJSONLayer>
           </React.Fragment>
+        )}
+        {overFeature && (
+          <Popup key={overFeature.id} coordinates={overFeature.coordinates}>
+            <div className="d-flex justify-content-end mb-2">
+              <MdClose
+                color="black"
+                size="1.2rem"
+                onClick={closePopup}
+              ></MdClose>
+            </div>
+            <div className={styles.tableContainer}>
+              <div className="table-responsive">
+                <table className="table table-sm table-striped">
+                  <tbody>
+                    {overFeature.properties &&
+                      Object.entries(overFeature.properties)
+                        .filter(
+                          (values, i) => values[1] !== "null" && values[1]
+                        )
+                        .map((values, i) => {
+                          return (
+                            <tr key={i}>
+                              <td>{values[0]}</td>
+                              <td>{values[1]}</td>
+                            </tr>
+                          );
+                        })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Popup>
         )}
       </Map>
     </div>

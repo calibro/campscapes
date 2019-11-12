@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+.tableContainer {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
 .marker {
   text-align: center;
   cursor: pointer;
