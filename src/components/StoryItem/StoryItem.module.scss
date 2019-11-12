@@ -1,12 +1,17 @@
 .resourceContainer,
 .hyperlinkContainer,
 .referenceContainer {
-  border-bottom: 1px solid var(--gray-cs);
+  border-bottom: 1px solid white;
   padding: 15px 0px;
+  margin-left: 36px;
+}
+
+.resourceContainer {
+  display: flex;
 }
 
 .cont:first-of-type {
-  border-top: 1px solid var(--gray-cs);
+  border-top: 1px solid white;
 }
 
 .referenceContainer {

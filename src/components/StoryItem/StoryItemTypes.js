@@ -26,7 +26,7 @@ const LinkedPages = ({ linkedPages }) => {
 };
 
 export const StoryItemResource = withRouter(
-  ({ attachment, location, slug }) => {
+  ({ attachment, location, slug, index }) => {
     const caption = attachment.caption;
     const title = attachment.item.data.title;
     const id = attachment.item.id;
@@ -36,36 +36,40 @@ export const StoryItemResource = withRouter(
 
     return (
       <div className={`${styles.resourceContainer} ${styles.cont}`}>
-        <div className={styles.fileContainer}>
-          {attachment.file && (
-            <FileViewer
-              item={attachment.file}
-              alt={caption ? caption : title}
-            ></FileViewer>
-          )}
-        </div>
-        <div className={styles.infoContainer}>
-          <div className="col pl-0">
-            <p className={styles.caption}>
-              <Link
-                to={{
-                  pathname: `/items/${id}`,
-                  state: {
-                    from: {
-                      pathname: location.pathname,
-                      search: location.search
-                    }
-                  }
-                }}
-              >
-                {caption ? caption : title}{" "}
-              </Link>
-            </p>
+        <div>{index}</div>
+        <div>
+          <div className={styles.fileContainer}>
+            {attachment.file && (
+              <FileViewer
+                item={attachment.file}
+                alt={caption ? caption : title}
+              ></FileViewer>
+            )}
           </div>
-          {attachment.item && linkedPages.length > 0 && (
-            <LinkedPages linkedPages={linkedPages}></LinkedPages>
-          )}
+          <div className={styles.infoContainer}>
+            <div className="col pl-0">
+              <p className={styles.caption}>
+                <Link
+                  to={{
+                    pathname: `/items/${id}`,
+                    state: {
+                      from: {
+                        pathname: location.pathname,
+                        search: location.search
+                      }
+                    }
+                  }}
+                >
+                  {caption ? caption : title}{" "}
+                </Link>
+              </p>
+            </div>
+            {attachment.item && linkedPages.length > 0 && (
+              <LinkedPages linkedPages={linkedPages}></LinkedPages>
+            )}
+          </div>
         </div>
+        <div>go</div>
       </div>
     );
   }

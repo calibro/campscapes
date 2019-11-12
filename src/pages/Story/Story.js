@@ -167,6 +167,9 @@ const Story = ({ match, location, history }) => {
                     <Link to={`/camps/${story.camp.data.siteName}`}>
                       {story.camp.data.title}
                     </Link>
+                    {story.creator && (
+                      <span> - authors: story.creator.join(", ")</span>
+                    )}
                   </h6>
                   <h2>
                     <span className="d-flex mr-2">
@@ -201,7 +204,33 @@ const Story = ({ match, location, history }) => {
           {/* story content */}
           <div className={`container ${styles.contentContainer}`}>
             <div className={`${styles.rowFill} row`}>
-              <div className="col-6 d-flex flex-column overflow-hidden">
+              <div className="col-1 d-flex flex-column align-items-center border-left border-right position-relative">
+                <div className={styles.vertLabel}>
+                  <h6>index</h6>
+                </div>
+                <div className={styles.dots}>
+                  {pages.length > 0 &&
+                    pages.map((page, i) => (
+                      <PageDots
+                        key={page.order}
+                        page={page}
+                        index={i}
+                        currentParagraph={currentParagraph}
+                        onClick={() => {
+                          const node = pagesRef.current[i];
+                          containerRef.current.scrollTo({
+                            top: node.offsetTop,
+                            behavior: "smooth"
+                          });
+                        }}
+                      ></PageDots>
+                    ))}
+                </div>
+              </div>
+              <div className="col-6 d-flex flex-column overflow-hidden position-relative">
+                <div className={styles.vertLabel}>
+                  <h6>story</h6>
+                </div>
                 <div className={styles.paragraphs} ref={containerRef}>
                   {pages.length > 0 &&
                     pages.map((page, i) => (
@@ -231,33 +260,17 @@ const Story = ({ match, location, history }) => {
                     ))}
                 </div>
               </div>
-              <div className="col-1 d-flex flex-column align-items-center">
-                <div className={styles.dots}>
-                  {pages.length > 0 &&
-                    pages.map((page, i) => (
-                      <PageDots
-                        key={page.order}
-                        page={page}
-                        index={i}
-                        currentParagraph={currentParagraph}
-                        onClick={() => {
-                          const node = pagesRef.current[i];
-                          containerRef.current.scrollTo({
-                            top: node.offsetTop,
-                            behavior: "smooth"
-                          });
-                        }}
-                      ></PageDots>
-                    ))}
+              <div className="col-5 d-flex flex-column overflow-hidden position-relative px-0">
+                <div className={styles.vertLabel}>
+                  <h6>items</h6>
                 </div>
-              </div>
-              <div className="col-5 d-flex flex-column overflow-hidden">
                 <div className={styles.attachments} ref={itemsContainerRef}>
                   {currentAttachments &&
                     currentAttachments.length > 0 &&
                     currentAttachments.map((attachment, i) => (
                       <StoryItem
                         key={i}
+                        index={i + 1}
                         attachment={attachment}
                         slug={params.slug}
                       />
