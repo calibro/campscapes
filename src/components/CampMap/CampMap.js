@@ -213,6 +213,7 @@ const CampMap = ({
                   geojsonOnMouseLeave("", e.target);
                 }}
                 sourceOptions={{ generateId: true }}
+                layerOptions={{ filter: ["==", "$type", "Polygon"] }}
               />
             );
           })}
