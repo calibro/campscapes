@@ -3,6 +3,7 @@ import { IntroContext, HomeImagesContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
 import { Carousel, CarouselItem } from "reactstrap";
+import IntroPictures from "./IntroPictures";
 import styles from "./Intro.module.scss";
 
 const Intro = () => {
@@ -32,8 +33,6 @@ const Intro = () => {
       activeIndex === 0 ? introSteps.length + 1 - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
-
-  console.log("introImages:", introImages);
 
   return (
     <div className="w-100 h-100 position-relative">
@@ -98,6 +97,9 @@ const Intro = () => {
         <div className={styles.skip}>
           <Link to="/home">Skip</Link>
         </div>
+      </div>
+      <div className={styles.introPictures}>
+        <IntroPictures pictures={introImages} />
       </div>
     </div>
   );

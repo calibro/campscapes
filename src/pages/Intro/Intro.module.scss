@@ -1,9 +1,13 @@
 .container {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2;
+  position: absolute;
+  pointer-events: none;
 }
 
 .top {
@@ -51,12 +55,14 @@
   opacity: 0;
   cursor: pointer;
   animation: fillingHtml 1s linear 10s forwards;
+  pointer-events: all;
 }
 
 .skip {
   margin-top: auto;
   margin-bottom: 15px;
   opacity: 0;
+  pointer-events: all;
 
   a {
     font-family: "Inter", sans-serif;
@@ -107,3 +113,43 @@
     opacity: 1;
   }
 }
+
+
+//images related
+.introPictures {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+
+    .pictureContainer {
+        opacity: 0;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fillingImages 10s linear forwards;
+
+        &:hover {
+            //#TODO: this conflicts with animation..
+            // opacity: 1.0 !important;
+            transform: scale(1.2);
+        }
+    }
+
+    img  {
+        max-width: 200px;
+        max-height: 200px;
+        // width: auto;
+        // height: auto;
+    }
+}
+
+@keyframes fillingImages {
+    100% {
+      opacity: 0.4;
+    }
+  }
+
