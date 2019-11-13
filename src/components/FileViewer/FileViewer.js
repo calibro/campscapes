@@ -7,7 +7,7 @@ import {
   DriverMarkdown
 } from "./FileViewerDrivers";
 
-const FileViewer = ({ item, zoom, alt }) => {
+const FileViewer = ({ item, zoom, alt, fullHeight }) => {
   const mime_type = item.mime_type;
 
   const renderSwitch = mime_type => {
@@ -23,7 +23,9 @@ const FileViewer = ({ item, zoom, alt }) => {
       case "video/mp4":
         return <DriverVideo item={item}></DriverVideo>;
       case "text/plain":
-        return <DriverMarkdown item={item}></DriverMarkdown>;
+        return (
+          <DriverMarkdown item={item} fullHeight={fullHeight}></DriverMarkdown>
+        );
       default:
         return <div>Missing mime type {mime_type}</div>;
     }

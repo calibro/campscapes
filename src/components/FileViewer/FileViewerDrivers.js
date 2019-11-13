@@ -56,11 +56,11 @@ export const DriverVideo = ({ item }) => {
   );
 };
 
-export const DriverMarkdown = ({ item }) => {
+export const DriverMarkdown = ({ item, fullHeight }) => {
   return (
     <MarkdownViewer
       url={proxyDevUrl(item.file_urls.original)}
-      fullHeight
+      fullHeight={fullHeight}
     ></MarkdownViewer>
   );
 };
