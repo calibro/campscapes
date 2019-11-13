@@ -5,6 +5,7 @@ import PdfViewer from "../PdfViewer";
 import FallbackPreview from "../FallbackPreview";
 import AudioPlayer from "../AudioPlayer";
 import MarkdownViewer from "../MarkdownViewer";
+import Cite from "citation-js";
 import styles from "./FileViewer.module.scss";
 import { proxyDevUrl } from "../../utils";
 

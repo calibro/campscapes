@@ -4,6 +4,17 @@ import { Link, withRouter } from "react-router-dom";
 import classNames from "classnames";
 import FileViewer from "../FileViewer";
 import styles from "./StoryItem.module.scss";
+import Cite from "citation-js";
+
+const Citation = ({ bibTeX }) => {
+  const citation = new Cite(bibTeX);
+  const citationHtml = citation.format("bibliography", {
+    format: "html",
+    template: "citation-apa",
+    lang: "en-US"
+  });
+  return <p dangerouslySetInnerHTML={{ __html: citationHtml }}></p>;
+};
 
 const LinkedPages = withRouter(({ linkedPages, location }) => {
   const [open, setOpen] = useState(false);
@@ -148,6 +159,7 @@ export const StoryItemReference = ({ attachment, slug, index }) => {
   const linkedPages = attachment.item.linkedPages.filter(
     d => d.exhibitSlug !== slug && d.exhibitSlug !== "intro--do-not-remove-"
   );
+
   return (
     <div className={`${styles.wrapper}`}>
       <div className={`${styles.referenceContainer}`}>
@@ -161,29 +173,33 @@ export const StoryItemReference = ({ attachment, slug, index }) => {
             style={{ color: "var(--red-cs)", flex: "0 0 1rem", marginTop: 2 }}
           ></MdLibraryBooks>
           {/*// TODO: format citation*/}
-          <p className={styles.cite}>
-            <span>{citation.author}. </span>
-            <span>“{citation.titleOfBookOrArticle}”, </span>
-            {citation.titleOfNewspaper && (
-              <span>
-                <i>{citation.titleOfNewspaper}</i>{" "}
-              </span>
-            )}
-            {citation.publicationYear && (
-              <span>
-                ({citation.publicationYear}
-                {citation.monthAndDay})
-              </span>
-            )}
-            {citation.pageNumbers && <span>:{citation.pageNumbers}. </span>}
-            {citation.publisher && <span> {citation.publisher} </span>}
-            {citation.editor && <span>{citation.editor} </span>}
-            {citation.cityOfPublication && (
-              <span>. {citation.cityOfPublication} </span>
-            )}
-            {citation.dateOfAccess && <span>{citation.dateOfAccess} </span>}
-            {citation.urlOrDOI && <span>{citation.urlOrDOI}.</span>}
-          </p>
+          {citation.bibTeX ? (
+            <Citation bibTeX={citation.bibTeX}></Citation>
+          ) : (
+            <p className={styles.cite}>
+              <span>{citation.author}. </span>
+              <span>“{citation.titleOfBookOrArticle}”, </span>
+              {citation.titleOfNewspaper && (
+                <span>
+                  <i>{citation.titleOfNewspaper}</i>{" "}
+                </span>
+              )}
+              {citation.publicationYear && (
+                <span>
+                  ({citation.publicationYear}
+                  {citation.monthAndDay})
+                </span>
+              )}
+              {citation.pageNumbers && <span>:{citation.pageNumbers}. </span>}
+              {citation.publisher && <span> {citation.publisher} </span>}
+              {citation.editor && <span>{citation.editor} </span>}
+              {citation.cityOfPublication && (
+                <span>. {citation.cityOfPublication} </span>
+              )}
+              {citation.dateOfAccess && <span>{citation.dateOfAccess} </span>}
+              {citation.urlOrDOI && <span>{citation.urlOrDOI}.</span>}
+            </p>
+          )}
         </div>
         <div className={styles.linkedPages}>
           {attachment.item && linkedPages.length > 0 && (

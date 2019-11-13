@@ -1,4 +1,5 @@
 import React from "react";
+import get from "lodash/get";
 import {
   DriverPdf,
   DriverImage,
@@ -8,7 +9,7 @@ import {
 } from "./FileViewerDrivers";
 
 const FileViewer = ({ item, zoom, alt, fullHeight }) => {
-  const mime_type = item.mime_type;
+  const mime_type = get(item, "mime_type");
 
   const renderSwitch = mime_type => {
     switch (mime_type) {
@@ -30,6 +31,7 @@ const FileViewer = ({ item, zoom, alt, fullHeight }) => {
         return <div>Missing mime type {mime_type}</div>;
     }
   };
+
   return renderSwitch(mime_type);
 };
 
