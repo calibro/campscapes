@@ -89,10 +89,7 @@ export default function Icon({ match, location }) {
             <div className="col-4 d-flex flex-column overflow-hidden">
               <div className={styles.fileContainer}>
                 <div className={styles.fileViewerContainer}>
-                  <FileViewer
-                    item={icon}
-                    file={icon.data.files[0]}
-                  ></FileViewer>
+                  <FileViewer item={icon.data.files[0]}></FileViewer>
                 </div>
                 {icon.data.provenance && (
                   <div>

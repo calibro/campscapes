@@ -57,21 +57,11 @@ export const DriverVideo = ({ item }) => {
   );
 };
 
-export const DriverMarkdown = ({ item }) => {
+export const DriverMarkdown = ({ item, fullHeight }) => {
   return (
     <MarkdownViewer
       url={proxyDevUrl(item.file_urls.original)}
-      fullHeight
+      fullHeight={fullHeight}
     ></MarkdownViewer>
   );
-};
-
-export const DriverCitation = ({ bibTeX }) => {
-  const citation = new Cite(bibTeX);
-  const citationHtml = citation.format("bibliography", {
-    format: "html",
-    template: "citation-apa",
-    lang: "en-US"
-  });
-  return <div dangerouslySetInnerHTML={{ __html: citationHtml }}></div>;
 };

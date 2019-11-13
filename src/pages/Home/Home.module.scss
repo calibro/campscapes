@@ -42,13 +42,14 @@
 .about {
   font-size: 1.5rem;
   text-align: center;
+  margin-bottom: 5px;
   a {
     color: white;
     text-decoration: none;
   }
   a:hover {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
   }
 }
 
