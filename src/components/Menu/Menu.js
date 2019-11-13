@@ -47,7 +47,15 @@ const Menu = ({ light }) => {
                 <NavLink to="/camps">Camps</NavLink>
                 <NavLink to="/icons">Icons</NavLink>
                 <NavLink to="/themes">Themes</NavLink>
-                <NavLink to="/about">About the project</NavLink>
+                <NavLink to="/about" className={styles.secondary}>
+                  About
+                </NavLink>
+                <NavLink to="/publications" className={styles.secondary}>
+                  Publications
+                </NavLink>
+                <NavLink to="/educational" className={styles.secondary}>
+                  Educational
+                </NavLink>
               </div>
             </div>
           </div>
