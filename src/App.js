@@ -23,6 +23,7 @@ import Item from "./pages/Item";
 import About from "./pages/About";
 import Publications from "./pages/Publications";
 import Educational from "./pages/Educational";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
