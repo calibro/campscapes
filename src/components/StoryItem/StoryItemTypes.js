@@ -5,7 +5,7 @@ import classNames from "classnames";
 import FileViewer from "../FileViewer";
 import styles from "./StoryItem.module.scss";
 
-const LinkedPages = ({ linkedPages }) => {
+const LinkedPages = withRouter(({ linkedPages, location }) => {
   const [open, setOpen] = useState(false);
   return (
     <React.Fragment>
@@ -33,7 +33,16 @@ const LinkedPages = ({ linkedPages }) => {
         {linkedPages.map((page, i) => (
           <div key={i} className="mb-2">
             <Link
-              to={`/stories/${page.exhibitSlug}?paragraph=${page.paragraph}`}
+              to={{
+                pathname: `/stories/${page.exhibitSlug}`,
+                search: `paragraph=${page.paragraph}`,
+                state: {
+                  from: {
+                    pathname: location.pathname,
+                    search: location.search
+                  }
+                }
+              }}
               className={`${styles.linkStory} d-flex align-items-center`}
             >
               <p className={styles.storyTitle}>{page.exhibitTitle}</p>
@@ -43,7 +52,7 @@ const LinkedPages = ({ linkedPages }) => {
       </div>
     </React.Fragment>
   );
-};
+});
 
 export const StoryItemResource = withRouter(
   ({ attachment, location, slug, index }) => {
