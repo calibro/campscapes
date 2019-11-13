@@ -4,3 +4,7 @@
     text-transform: uppercase !important;
   }
 }
+
+.dropdownItem:active {
+  background-color: var(--red-cs) !important;
+}
