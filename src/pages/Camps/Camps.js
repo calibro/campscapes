@@ -25,8 +25,6 @@ const Camps = () => {
         <div className="row align-items-baseline">
           <div className="col-12 col-md-3">
             <h1>Camps</h1>
-          </div>
-          <div className="col-12 col-md-9">
             {pageText && (
               <div dangerouslySetInnerHTML={{ __html: pageText }}></div>
             )}
