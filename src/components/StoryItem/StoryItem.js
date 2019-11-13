@@ -7,7 +7,7 @@ import {
 
 const StoryItem = ({ attachment, slug, index }) => {
   const item = attachment.item;
-  const item_type = item.item_type;
+  const item_type = item ? item.item_type : null;
 
   const renderSwitch = item_type => {
     switch (item_type) {
