@@ -5,6 +5,7 @@ import PdfViewer from "../PdfViewer";
 import FallbackPreview from "../FallbackPreview";
 import AudioPlayer from "../AudioPlayer";
 import MarkdownViewer from "../MarkdownViewer";
+import Cite from "citation-js";
 import styles from "./FileViewer.module.scss";
 import { proxyDevUrl } from "../../utils";
 
@@ -63,4 +64,14 @@ export const DriverMarkdown = ({ item }) => {
       fullHeight
     ></MarkdownViewer>
   );
+};
+
+export const DriverCitation = ({ bibTeX }) => {
+  const citation = new Cite(bibTeX);
+  const citationHtml = citation.format("bibliography", {
+    format: "html",
+    template: "citation-apa",
+    lang: "en-US"
+  });
+  return <div dangerouslySetInnerHTML={{ __html: citationHtml }}></div>;
 };

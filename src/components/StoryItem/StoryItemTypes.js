@@ -4,6 +4,17 @@ import { Link, withRouter } from "react-router-dom";
 import classNames from "classnames";
 import FileViewer from "../FileViewer";
 import styles from "./StoryItem.module.scss";
+import Cite from "citation-js";
+
+const Citation = ({ bibTeX }) => {
+  const citation = new Cite(bibTeX);
+  const citationHtml = citation.format("bibliography", {
+    format: "html",
+    template: "citation-apa",
+    lang: "en-US"
+  });
+  return <p dangerouslySetInnerHTML={{ __html: citationHtml }}></p>;
+};
 
 const LinkedPages = withRouter(({ linkedPages, location }) => {
   const [open, setOpen] = useState(false);
@@ -73,7 +84,8 @@ export const StoryItemResource = withRouter(
             <div className={styles.fileContainer}>
               {attachment.file && (
                 <FileViewer
-                  item={attachment.file}
+                  item={attachment.item}
+                  file={attachment.file}
                   alt={caption ? caption : title}
                 ></FileViewer>
               )}
@@ -148,6 +160,7 @@ export const StoryItemReference = ({ attachment, slug, index }) => {
   const linkedPages = attachment.item.linkedPages.filter(
     d => d.exhibitSlug !== slug && d.exhibitSlug !== "intro--do-not-remove-"
   );
+  console.log(1, citation, attachment.item);
   return (
     <div className={`${styles.wrapper}`}>
       <div className={`${styles.referenceContainer}`}>
