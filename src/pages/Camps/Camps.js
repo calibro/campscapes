@@ -21,13 +21,15 @@ const Camps = () => {
     <div className={styles.campsContainer}>
       <Menu></Menu>
       {camps.length > 0 && <CampsMap camps={camps}></CampsMap>}
-      <div className="container">
-        <div className="row align-items-baseline">
-          <div className="col-12 col-md-3">
-            <h1>Camps</h1>
-            {pageText && (
-              <div dangerouslySetInnerHTML={{ __html: pageText }}></div>
-            )}
+      <div className={styles.bkg}>
+        <div className="container">
+          <div className="row align-items-baseline">
+            <div className={`col-12 col-md-3`}>
+              <h1>Camps</h1>
+              {pageText && (
+                <div dangerouslySetInnerHTML={{ __html: pageText }}></div>
+              )}
+            </div>
           </div>
         </div>
       </div>
