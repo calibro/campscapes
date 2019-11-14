@@ -124,18 +124,17 @@
     overflow: hidden;
 
     .pictureContainer {
-        opacity: 0;
+        opacity: 0.4;
         width: 200px;
         height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
-        animation: fillingImages 10s linear forwards;
+        // animation: fillingImages 10s linear forwards;
 
         &:hover {
-            //#TODO: this conflicts with animation..
-            // opacity: 1.0 !important;
             transform: scale(1.2);
+            opacity: 1;
         }
     }
 
@@ -148,8 +147,11 @@
 }
 
 @keyframes fillingImages {
+    0% {
+        opacity:0;
+      }
     100% {
-      opacity: 0.4;
+      opacity:1;
     }
   }
 

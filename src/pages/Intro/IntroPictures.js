@@ -16,38 +16,28 @@ export default function IntroPictures({ pictures = [] }) {
   const [ref, { width, height }] = useDimensions({ liveMeasure: false });
   const [renderNodes, setRenderNodes] = useState(null);
 
+  console.log("render intro pictures");
+
   const nodes = useMemo(() => {
     return pictures
       .map(picture => ({
         id: picture.id,
         data: {
-          width: get(picture, "metadata.video.resolution_x"),
-          heigth: get(picture, "metadata.video.resolution_y"),
           url: get(picture, "file_urls.original")
         }
       }))
-      .concat([
-        {
-          id: "centerleft",
-          fx: width / 2 - 200,
-          fy: height / 2,
-          fixed: true
-        },
-        {
-          id: "centerright",
-          fx: width / 2 + 200,
-          fy: height / 2,
-          fixed: true
-        }
-      ]);
-  }, [height, pictures, width]);
+      .filter(item => item.data.url.indexOf(".pdf") === -1);
+  }, [pictures]);
 
   const simulation = useRef(null);
 
   useEffect(() => {
-    if (simulation.current) {
-      simulation.current.stop();
-    }
+    if (!height || !width || !nodes.length)
+      if (simulation.current) {
+        simulation.current.restart();
+        // simulation.current = null;
+      }
+    console.log("here");
 
     const nodesCloned = cloneDeep(nodes);
 
@@ -60,19 +50,22 @@ export default function IntroPictures({ pictures = [] }) {
     }
 
     simulation.current = forceSimulation(nodesCloned)
-      .force("charge", forceManyBody().strength(-1))
+      .force("charge", forceManyBody().strength(-0.5))
       .force(
         "collide",
-        forceCollide(node => (node.fixed ? 140 : 170)).iterations(3)
+        forceCollide(node => (node.fixed ? 140 : 170))
+          .iterations(3)
+          .strength(0.01)
       )
       .force("center", forceCenter(width / 2, height / 2))
       .force("box", boxingForce)
-      .alphaDecay(0.2)
+      // .alphaDecay(0.2)
       .velocityDecay(0.5)
-      .on("end", () => {
+      .on("tick", () => {
         setRenderNodes(nodesCloned);
-      })
-      .tick(200);
+      });
+
+    // .tick(200);
   }, [width, height, nodes]);
 
   return (
@@ -88,7 +81,7 @@ export default function IntroPictures({ pictures = [] }) {
                 <img
                   className={styles.picture}
                   src={node.data.url}
-                  alt={"image"}
+                  alt={"intro pic"}
                 ></img>
               </div>
             )}
