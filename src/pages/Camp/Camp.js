@@ -258,15 +258,17 @@ const Camp = ({ match }) => {
               rasterLayers={rasterLayers}
               opacity={opacity}
             ></CampMap>
-            <div className="container">
-              <div className="row">
-                <div className="col-auto">
-                  <h1 className={styles.title}>
-                    <Link to="/camps">
-                      <MdArrowBack color="white" size="2rem"></MdArrowBack>
-                    </Link>{" "}
-                    {camp.data.siteName}
-                  </h1>
+            <div className={styles.titleWrapper}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-auto">
+                    <h1 className={styles.title}>
+                      <Link to="/camps">
+                        <MdArrowBack color="white" size="2rem"></MdArrowBack>
+                      </Link>{" "}
+                      {camp.data.siteName}
+                    </h1>
+                  </div>
                 </div>
               </div>
             </div>

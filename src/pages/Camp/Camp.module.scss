@@ -20,10 +20,21 @@
   padding: 15px 0px;
 }
 
+.titleWrapper {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  position: relative;
+  padding-bottom: 20px;
+  pointer-events: none;
+}
 .title {
   font-weight: normal;
   text-transform: capitalize;
   margin-top: 20px;
+  pointer-events: all;
 }
 
 .metadata {
