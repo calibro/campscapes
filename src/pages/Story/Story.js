@@ -168,7 +168,12 @@ const Story = ({ match, location, history }) => {
                       {story.camp.data.title}
                     </Link>
                     {story.creator && (
-                      <span> - authors: story.creator.join(", ")</span>
+                      <span className={styles.authorsCont}>
+                        {" • "}
+                        <span className={styles.authorsLabel}>
+                          authors
+                        </span>: {story.creator.join(", ")}
+                      </span>
                     )}
                   </h6>
                   <h2>

@@ -31,7 +31,18 @@
 
     a {
       color: black;
+      text-decoration: underline;
     }
+  }
+
+  .authorsCont {
+    font-size: 0.875rem;
+  }
+
+  .authorsLabel {
+    color: var(--red-cs);
+    text-transform: uppercase;
+    font-size: 0.75rem;
   }
 }
 
