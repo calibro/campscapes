@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState, useEffect, useRef } from "react";
 import useDimensions from "react-use-dimensions";
 import { CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack, MdLayers } from "react-icons/md";
 import find from "lodash/find";
 import omit from "lodash/omit";
 import cloneDeep from "lodash/cloneDeep";
@@ -274,6 +274,12 @@ const Camp = ({ match }) => {
             </div>
           </div>
           <div className={styles.ddContainer}>
+            <div className={styles.vertLogo}>
+              <MdLayers
+                style={{ color: "var(--red-cs)" }}
+                size="20px"
+              ></MdLayers>
+            </div>
             <div className="container">
               <div className="row">
                 {vectorLayers.length > 0 && (
@@ -319,6 +325,9 @@ const Camp = ({ match }) => {
             </div>
           </div>
           <div className={styles.iconsContainer}>
+            <div className={styles.vertLabel}>
+              <h6>icons</h6>
+            </div>
             <div className="container">
               <TimelineIconsCamp
                 camp={camp}
