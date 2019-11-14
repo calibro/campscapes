@@ -202,9 +202,24 @@ async function main(options) {
   }
   homeImages = homeImages.map(homeImage => get(homeImage, "file")).filter(item => !!item)
   fs.writeFileSync(homeImagesFilename, JSON.stringify(homeImages));
-
-
-  const stories = allStories.filter(item => !item.featured);
+  
+  // stories writing
+  // adding "creator" field with creators of all attachments
+  let stories = allStories.filter(item => !item.featured);
+  stories = stories.map(story => {
+    const pages = get(story, 'pages', [])
+    const creator = pages.reduce((creators, page, idx) => {
+      const blocks = get(page, 'page_blocks', [])
+      let pageAttachments =  flatten(blocks.map(block => get(block, 'attachments', [])))
+      let attachmentsCreators = flatten(pageAttachments.map(attachment => get(attachment, 'item.data.creator', [])))
+      return creators.concat(attachmentsCreators)
+    }, [])
+    return {
+      ...story,
+      creator: creator,
+    }
+  })
+  
   const storiesFilename = path.join(targetDir, "stories.json");
   fs.writeFileSync(storiesFilename, JSON.stringify(stories));
 
