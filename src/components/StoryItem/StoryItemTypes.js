@@ -56,6 +56,9 @@ const LinkedPages = withRouter(({ linkedPages, location }) => {
               }}
               className={`${styles.linkStory} d-flex align-items-center`}
             >
+              <div>
+                <MdAdd size="1rem" className={styles.plus}></MdAdd>
+              </div>
               <p className={styles.storyTitle}>{page.exhibitTitle}</p>
             </Link>
           </div>

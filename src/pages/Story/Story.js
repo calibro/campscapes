@@ -167,7 +167,7 @@ const Story = ({ match, location, history }) => {
                     <Link to={`/camps/${story.camp.data.siteName}`}>
                       {story.camp.data.title}
                     </Link>
-                    {story.creator && (
+                    {story.creator.length > 0 && (
                       <span className={styles.authorsCont}>
                         {" • "}
                         <span className={styles.authorsLabel}>
