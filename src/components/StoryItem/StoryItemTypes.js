@@ -13,7 +13,12 @@ const Citation = ({ bibTeX }) => {
     template: "citation-apa",
     lang: "en-US"
   });
-  return <p dangerouslySetInnerHTML={{ __html: citationHtml }}></p>;
+  return (
+    <div
+      className="pl-1"
+      dangerouslySetInnerHTML={{ __html: citationHtml }}
+    ></div>
+  );
 };
 
 const LinkedPages = withRouter(({ linkedPages, location }) => {
