@@ -6,6 +6,7 @@ import { min } from "d3-array";
 import TimelineAxis from "../../components/TimelineAxis";
 import Menu from "../../components/Menu";
 import TimelineIcons from "../../components/TimelineIcons";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Icons.module.scss";
 import get from "lodash/get";
 import find from "lodash/find";
@@ -49,6 +50,7 @@ const Icons = () => {
 
   return (
     <div className={styles.iconsContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu></Menu>
       <div className="container">
         <div className="row align-items-baseline">

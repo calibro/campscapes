@@ -10,6 +10,7 @@ import useDimensions from "react-use-dimensions";
 import Menu from "../../components/Menu";
 import useUrlParam from "../../hooks/useUrlParam";
 import StoryItem from "../../components/StoryItem";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Story.module.scss";
 
 const StoryParagraph = React.forwardRef(
@@ -155,6 +156,7 @@ const Story = ({ match, location, history }) => {
 
   return (
     <div className={styles.storyContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu light></Menu>
 
       {story && (

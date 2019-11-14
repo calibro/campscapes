@@ -11,6 +11,7 @@ import get from "lodash/get";
 import find from "lodash/find";
 import Menu from "../../components/Menu";
 import ThemesCircles from "../../components/ThemesCircles";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Themes.module.scss";
 
 const Themes = ({ location, history }) => {
@@ -44,6 +45,7 @@ const Themes = ({ location, history }) => {
 
   return (
     <div className={styles.themesContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu></Menu>
 
       <div className="container h-100 d-flex flex-column">

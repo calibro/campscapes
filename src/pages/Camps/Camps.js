@@ -4,6 +4,7 @@ import Menu from "../../components/Menu";
 import CampsMap from "../../components/CampsMap";
 import styles from "./Camps.module.scss";
 import { SimplePagesContext } from "../../dataProviders";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import find from "lodash/find";
 import get from "lodash/get";
 
@@ -19,6 +20,7 @@ const Camps = () => {
 
   return (
     <div className={styles.campsContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu></Menu>
       {camps.length > 0 && <CampsMap camps={camps}></CampsMap>}
       <div className={styles.bkg}>

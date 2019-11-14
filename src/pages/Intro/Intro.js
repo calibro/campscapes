@@ -3,6 +3,7 @@ import { IntroContext, HomeImagesContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
 import { Carousel, CarouselItem } from "reactstrap";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import IntroPictures from "./IntroPictures";
 import styles from "./Intro.module.scss";
 
@@ -36,6 +37,7 @@ const Intro = () => {
 
   return (
     <div className="w-100 h-100 position-relative">
+      <OnlyDesktop></OnlyDesktop>
       <div className={styles.container}>
         <div className={styles.top}>
           {introSteps && introSteps.length > 0 && (

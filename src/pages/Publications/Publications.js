@@ -3,6 +3,7 @@ import { SimplePagesContext } from "../../dataProviders";
 import Menu from "../../components/Menu";
 import get from "lodash/get";
 import find from "lodash/find";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Publications.module.scss";
 
 const Publications = () => {
@@ -15,6 +16,7 @@ const Publications = () => {
 
   return (
     <div className={styles.publicationsContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu></Menu>
       <div className="container">
         <div className="row align-items-baseline">

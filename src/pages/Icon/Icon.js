@@ -7,6 +7,7 @@ import sortBy from "lodash/sortBy";
 import findIndex from "lodash/findIndex";
 import { MdClose, MdArrowBack, MdArrowForward, MdAdd } from "react-icons/md";
 import FileViewer from "../../components/FileViewer";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Icon.module.scss";
 
 export default function Icon({ match, location }) {
@@ -59,6 +60,7 @@ export default function Icon({ match, location }) {
 
   return (
     <div className={styles.iconContainer}>
+      <OnlyDesktop></OnlyDesktop>
       {icon && (
         <div className="container h-100 d-flex flex-column">
           <div className="row">

@@ -22,6 +22,7 @@ import Menu from "../../components/Menu";
 import TimelineIconsCamp from "../../components/TimelineIconsCamp";
 import TimelineAxis from "../../components/TimelineAxis";
 import DdLayers from "../../components/DdLayers";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Camp.module.scss";
 
 const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
@@ -241,6 +242,7 @@ const Camp = ({ match }) => {
 
   return (
     <div className={styles.campContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu></Menu>
       {camp && (
         <React.Fragment>
