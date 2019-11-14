@@ -12,6 +12,15 @@
   }
 }
 
+.metadata {
+  text-transform: uppercase;
+  color: var(--red-cs);
+  font-weight: normal;
+  margin-bottom: 0px;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+}
+
 .stickyAxis {
   z-index: 2;
   position: sticky;

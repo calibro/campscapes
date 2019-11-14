@@ -62,7 +62,10 @@ const Icons = () => {
           </div>
         </div>
         <div className={`row ${styles.stickyAxis}`}>
-          <div className="col-9 offset-3">
+          <div className="col-3 d-flex align-items-center">
+            <h6 className={styles.metadata}>memories timeline</h6>
+          </div>
+          <div className="col-9">
             {camps.length > 0 && (
               <TimelineAxis scale={timelineScale}></TimelineAxis>
             )}
