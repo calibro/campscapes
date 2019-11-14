@@ -94,8 +94,11 @@ const CampsMap = ({ camps, history }) => {
           symbolLayout={{
             "text-field": "{title}",
             "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-            "text-offset": [0, 0.6],
-            "text-anchor": "top"
+            "text-offset": [0, 0.9],
+            "text-variable-anchor": ["top", "bottom", "left", "right"],
+            "text-radial-offset": 0.9,
+            "text-justify": "auto",
+            "text-size": 12
           }}
           circleOnMouseMove={e => {
             geojsonOnMouseMove("pointer", e.target, e.features);
@@ -104,17 +107,6 @@ const CampsMap = ({ camps, history }) => {
             geojsonOnMouseLeave("", e.target);
           }}
           circleOnClick={e => {
-            if (e.features.length > 0) {
-              geojsonOnClick(e.features[0].properties.siteName);
-            }
-          }}
-          symbolOnMouseMove={e => {
-            geojsonOnMouseMove("pointer", e.target, e.features);
-          }}
-          symbolOnMouseLeave={e => {
-            geojsonOnMouseLeave("", e.target);
-          }}
-          symbolOnClick={e => {
             if (e.features.length > 0) {
               geojsonOnClick(e.features[0].properties.siteName);
             }

@@ -10,4 +10,26 @@
   p {
     font-size: 1.25rem;
   }
+
+  ul {
+    padding: 0px;
+    margin-top: 25px;
+    list-style-type: none;
+
+    li {
+      padding: 10px 0;
+      font-family: "Inter", sans-serif;
+      border-top: 1px solid white;
+      font-size: 1.125rem;
+
+      a {
+        color: var(--red-cs);
+        text-transform: uppercase;
+      }
+    }
+
+    li:last-of-type {
+      border-bottom: 1px solid white;
+    }
+  }
 }

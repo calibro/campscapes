@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
-import { IntroContext } from "../../dataProviders";
+import { IntroContext, HomeImagesContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
 import { Carousel, CarouselItem } from "reactstrap";
+import IntroPictures from "./IntroPictures";
 import styles from "./Intro.module.scss";
 
 const Intro = () => {
   const introSteps = useContext(IntroContext);
+  const introImages = useContext(HomeImagesContext);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -94,6 +97,9 @@ const Intro = () => {
         <div className={styles.skip}>
           <Link to="/home">Skip</Link>
         </div>
+      </div>
+      <div className={styles.introPictures}>
+        <IntroPictures pictures={introImages} />
       </div>
     </div>
   );

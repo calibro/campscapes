@@ -5,9 +5,9 @@ import {
   StoryItemReference
 } from "./StoryItemTypes";
 
-const StoryItem = ({ attachment, slug }) => {
+const StoryItem = ({ attachment, slug, index }) => {
   const item = attachment.item;
-  const item_type = item.item_type;
+  const item_type = item ? item.item_type : null;
 
   const renderSwitch = item_type => {
     switch (item_type) {
@@ -16,6 +16,7 @@ const StoryItem = ({ attachment, slug }) => {
           <StoryItemResource
             attachment={attachment}
             slug={slug}
+            index={index}
           ></StoryItemResource>
         );
       case "icon":
@@ -23,6 +24,7 @@ const StoryItem = ({ attachment, slug }) => {
           <StoryItemResource
             attachment={attachment}
             slug={slug}
+            index={index}
           ></StoryItemResource>
         );
       case "hyperlink":
@@ -30,6 +32,7 @@ const StoryItem = ({ attachment, slug }) => {
           <StoryItemHyperlink
             attachment={attachment}
             slug={slug}
+            index={index}
           ></StoryItemHyperlink>
         );
       case "reference":
@@ -37,6 +40,7 @@ const StoryItem = ({ attachment, slug }) => {
           <StoryItemReference
             attachment={attachment}
             slug={slug}
+            index={index}
           ></StoryItemReference>
         );
       default:

@@ -5,18 +5,19 @@ import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import find from "lodash/find";
 import omit from "lodash/omit";
+import groupBy from "lodash/groupBy";
 import cloneDeep from "lodash/cloneDeep";
 import get from "lodash/get";
 import { scaleTime, scaleLinear } from "d3-scale";
 import { min, max } from "d3-array";
 import Graph from "graphology";
-import {
-  forceSimulation,
-  forceLink,
-  forceManyBody,
-  forceCenter,
-  forceCollide
-} from "d3-force";
+// import {
+//   forceSimulation,
+//   forceLink,
+//   forceManyBody,
+//   forceCenter,
+//   forceCollide
+// } from "d3-force";
 import CampMap from "../../components/CampMap";
 import Menu from "../../components/Menu";
 import TimelineIconsCamp from "../../components/TimelineIconsCamp";
@@ -45,70 +46,44 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
   }, [annotatedGraph]);
 
   const myConfig = {
-    automaticRearrangeAfterDropNode: true,
-    collapsible: false,
-    directed: false,
-    focusAnimationDuration: 0.75,
-    focusZoom: 1,
-    height: 400,
-    highlightDegree: 1,
-    highlightOpacity: 1,
-    linkHighlightBehavior: false,
-    maxZoom: 8,
-    minZoom: 0.1,
-    nodeHighlightBehavior: false,
-    panAndZoom: false,
-    staticGraph: false,
-    staticGraphWithDragAndDrop: false,
-    width: 800,
-    d3: {
-      alphaTarget: 0.05,
-      gravity: -100,
-      linkLength: 100,
-      linkStrength: 1
-    },
+    nodeHighlightBehavior: true,
+    height: height,
+    width: width,
+    minZoom: 1,
+    maxZoom: 1,
     node: {
-      color: "#d3d3d3",
-      fontColor: "black",
-      fontSize: 8,
-      fontWeight: "normal",
-      highlightColor: "SAME",
-      highlightFontSize: 8,
-      highlightFontWeight: "normal",
-      highlightStrokeColor: "SAME",
-      highlightStrokeWidth: "SAME",
-      labelProperty: "id",
-      mouseCursor: "pointer",
-      opacity: 1,
-      renderLabel: true,
-      size: 200,
-      strokeColor: "none",
-      strokeWidth: 1.5,
-      svg: "",
-      symbolType: "circle"
+      fontSize: 17,
+      highlightFontSize: 17,
+      size: 700,
+      labelProperty: node => node.data.title,
+      fontColor: "red"
     },
     link: {
-      color: "#d3d3d3",
-      fontColor: "black",
-      fontSize: 8,
-      fontWeight: "normal",
-      highlightColor: "#d3d3d3",
-      highlightFontSize: 8,
-      highlightFontWeight: "normal",
-      labelProperty: "label",
-      mouseCursor: "pointer",
-      opacity: 1,
-      renderLabel: false,
-      semanticStrokeWidth: false,
-      strokeWidth: 1.5
+      highlightColor: "lightblue"
+    },
+    d3: {
+      // gravity: -200
     }
   };
   console.log("annotatedGraph", annotatedGraph);
+
+  const links = useMemo(() => {
+    const bySt = groupBy(
+      annotatedGraph.links,
+      item => `${item.source}_${item.target}`
+    );
+
+    return Object.values(bySt).map(k => ({
+      ...k[0],
+      value: k.length
+    }));
+  }, [annotatedGraph.links]);
+
   return (
     annotatedGraph && (
       <D3Graph
         id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-        data={cloneDeep({ nodes: annotatedGraph.nodes, links: [] })}
+        data={cloneDeep({ nodes: annotatedGraph.nodes, links })}
         config={myConfig}
         // onClickNode={onClickNode}
         // onRightClickNode={onRightClickNode}
@@ -230,13 +205,17 @@ const Camp = ({ match }) => {
   }, [camps, params.name]);
 
   const timelineDomainMin = useMemo(() => {
-    return min(camp ? camp.relations.icon : [], icon =>
-      min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
-    );
+    if (camp && camp.relations.icon) {
+      return min(camp.relations.icon, icon =>
+        min([new Date(icon.data.startDate), new Date(camp.data.inceptionDate)])
+      );
+    } else {
+      return null;
+    }
   }, [camp]);
 
   const vectorLayers = useMemo(() => {
-    if (camp) {
+    if (camp && camp.relations.geolayer_vector) {
       return camp.relations.geolayer_vector
         .filter(l => {
           return l.data.startDate && l.data.files && l.data.files.length > 0;
@@ -248,11 +227,13 @@ const Camp = ({ match }) => {
             year: startDate.getFullYear()
           };
         });
+    } else {
+      return [];
     }
   }, [camp]);
 
   const rasterLayers = useMemo(() => {
-    if (camp) {
+    if (camp && camp.relations.geolayer_raster) {
       return camp.relations.geolayer_raster
         .filter(l => {
           return (
@@ -270,6 +251,8 @@ const Camp = ({ match }) => {
             year: startDate.getFullYear()
           };
         });
+    } else {
+      return [];
     }
   }, [camp]);
 
@@ -331,15 +314,17 @@ const Camp = ({ match }) => {
               rasterLayers={rasterLayers}
               opacity={opacity}
             ></CampMap>
-            <div className="container">
-              <div className="row">
-                <div className="col-auto">
-                  <h1 className={styles.title}>
-                    <Link to="/camps">
-                      <MdArrowBack color="white" size="2rem"></MdArrowBack>
-                    </Link>{" "}
-                    {camp.data.siteName}
-                  </h1>
+            <div className={styles.titleWrapper}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-auto">
+                    <h1 className={styles.title}>
+                      <Link to="/camps">
+                        <MdArrowBack color="white" size="2rem"></MdArrowBack>
+                      </Link>{" "}
+                      {camp.data.siteName}
+                    </h1>
+                  </div>
                 </div>
               </div>
             </div>
@@ -420,9 +405,11 @@ const Camp = ({ match }) => {
                   <div className={styles.metadata}>
                     <h6>about the camp</h6>
                     <div className={styles.descriptionContainer}>
-                      <p className={styles.description}>
-                        {camp.data.description}
-                      </p>
+                      <div className="overflow-auto">
+                        <p className={styles.description}>
+                          {camp.data.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

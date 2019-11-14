@@ -64,6 +64,7 @@ export default function Item({ match, location }) {
                       item={item.data.files[0]}
                       zoom
                       alt={item.data.title}
+                      fullHeight
                     ></FileViewer>
                   </div>
                 </div>

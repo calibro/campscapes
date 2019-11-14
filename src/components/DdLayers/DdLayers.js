@@ -26,6 +26,7 @@ const DdLayers = ({ layers, setYear, year }) => {
           onClick={() => {
             setYear("none");
           }}
+          className={styles.dropdownItem}
         >
           none
         </DropdownItem>
@@ -36,6 +37,7 @@ const DdLayers = ({ layers, setYear, year }) => {
               onClick={() => {
                 setYear(l.year);
               }}
+              className={styles.dropdownItem}
             >
               {l.year}
             </DropdownItem>

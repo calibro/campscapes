@@ -1,13 +1,24 @@
 .campsContainer {
   height: 100%;
   position: relative;
-  padding-top: calc(var(--menu-height) + 15px);
+  padding-top: calc(var(--menu-height));
   color: white;
   h1 {
     font-weight: normal;
   }
 
   p {
-    font-size: 1.25rem;
+    font-size: 0.875rem;
   }
+}
+
+.bkg {
+  padding-top: 15px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  position: relative;
+  pointer-events: none;
 }

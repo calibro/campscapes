@@ -5,6 +5,7 @@ import PdfViewer from "../PdfViewer";
 import FallbackPreview from "../FallbackPreview";
 import AudioPlayer from "../AudioPlayer";
 import MarkdownViewer from "../MarkdownViewer";
+import Cite from "citation-js";
 import styles from "./FileViewer.module.scss";
 import { proxyDevUrl } from "../../utils";
 
@@ -39,14 +40,7 @@ export const DriverPdf = ({ item, zoom, alt }) => {
 };
 
 export const DriverAudio = ({ item }) => {
-  return (
-    <div>
-      <AudioPlayer
-        audioFile={proxyDevUrl(item.file_urls.original)}
-        // title={}
-      />
-    </div>
-  );
+  return <AudioPlayer audioFile={proxyDevUrl(item.file_urls.original)} />;
 };
 
 export const DriverVideo = ({ item }) => {
@@ -63,13 +57,11 @@ export const DriverVideo = ({ item }) => {
   );
 };
 
-export const DriverMarkdown = ({ item }) => {
-  console.log("DriverMarkdown", item);
+export const DriverMarkdown = ({ item, fullHeight }) => {
   return (
-    <div className={styles.playerWrapper}>
-      <MarkdownViewer
-        url={proxyDevUrl(item.file_urls.original)}
-      ></MarkdownViewer>
-    </div>
+    <MarkdownViewer
+      url={proxyDevUrl(item.file_urls.original)}
+      fullHeight={fullHeight}
+    ></MarkdownViewer>
   );
 };

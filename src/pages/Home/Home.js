@@ -53,6 +53,12 @@ const Home = () => {
               <p className={styles.about}>
                 <Link to={`/about`}>About the project</Link>
               </p>
+              <p className={styles.about}>
+                <Link to={`/publications`}>Publications</Link>
+              </p>
+              <p className={styles.about}>
+                <Link to={`/educational`}>Educational</Link>
+              </p>
             </div>
           </div>
         </div>
