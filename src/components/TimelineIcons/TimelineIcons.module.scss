@@ -1,4 +1,7 @@
 $icons-width: 56px;
+:export {
+  iconsWidth: $icons-width;
+}
 
 .name {
   text-transform: capitalize;
@@ -10,6 +13,8 @@ $icons-width: 56px;
   }
   margin-bottom: 20px;
   margin-top: 15px;
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 
 .metadata {
@@ -27,7 +32,6 @@ $icons-width: 56px;
   display: flex;
   margin-top: 10px;
   margin-bottom: 10px;
-  transform: translateX(-$icons-width/2);
 }
 
 .iconImage {
@@ -56,6 +60,7 @@ $icons-width: 56px;
 
 .iconTitle {
   margin-left: 10px;
+  margin-right: 10px;
   min-width: 0;
   display: flex;
   flex-direction: column;

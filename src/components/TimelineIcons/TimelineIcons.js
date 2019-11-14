@@ -4,6 +4,8 @@ import TimelineStripes from "../../components/TimelineStripes";
 import FallbackPreview from "../../components/FallbackPreview";
 import styles from "./TimelineIcons.module.scss";
 
+const LABEL_LIMIT = 75;
+
 const TimelineIcons = ({ camp, scale, location }) => {
   const icons = camp.relations.icon
     .sort((a, b) => {
@@ -17,12 +19,31 @@ const TimelineIcons = ({ camp, scale, location }) => {
       return d;
     });
 
+  const makeIconContainerStyle = startDate => {
+    if (scale(startDate) > LABEL_LIMIT) {
+      const translateX = `calc(${styles.iconsWidth} / 2)`;
+      console.log(translateX);
+      return {
+        marginRight: `calc(100% - ${scale(startDate)}%)`,
+        transform: `translateX(calc(${styles.iconsWidth} / 2))`,
+        justifyContent: "flex-end",
+        textAlign: "right"
+      };
+    } else {
+      return {
+        marginLeft: `${scale(startDate)}%`,
+        transform: `translateX(calc(-${styles.iconsWidth} / 2))`,
+        textAlign: "left"
+      };
+    }
+  };
+
   return (
     <div className="row">
       <div className="col-12 col-md-3">
-        <h1 className={styles.name}>
+        <h2 className={styles.name}>
           <Link to={`/camps/${camp.data.siteName}`}>{camp.data.siteName}</Link>
-        </h1>
+        </h2>
         <div className={styles.metadata}>
           <h6>country</h6>
           <p>{camp.data.country}</p>
@@ -43,9 +64,15 @@ const TimelineIcons = ({ camp, scale, location }) => {
             <div className="w-100 position-relative" key={icon.id}>
               <div
                 className={styles.iconContainer}
-                style={{ marginLeft: `${scale(icon.data.startDate)}%` }}
+                style={makeIconContainerStyle(icon.data.startDate)}
               >
-                <div className={styles.iconImage}>
+                <div
+                  className={`${
+                    scale(icon.data.startDate) > LABEL_LIMIT
+                      ? "order-1"
+                      : "order-0"
+                  } ${styles.iconImage}`}
+                >
                   {icon.data.files[0].file_urls.square_thumbnail ? (
                     <img
                       className={styles.image}
@@ -62,7 +89,13 @@ const TimelineIcons = ({ camp, scale, location }) => {
                     </div>
                   )}
                 </div>
-                <div className={styles.iconTitle}>
+                <div
+                  className={`${
+                    scale(icon.data.startDate) > LABEL_LIMIT
+                      ? "order-0"
+                      : "order-1"
+                  } ${styles.iconTitle}`}
+                >
                   <p className={styles.desc}>
                     <Link
                       to={{
