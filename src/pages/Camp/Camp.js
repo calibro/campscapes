@@ -132,11 +132,7 @@ const Camp = ({ match }) => {
 
   const { params } = match;
   const [selectedIcon, setSelectedIcon] = useState(null);
-  // const [selectedIconMapPosition, setSelectedIconMapPosition] = useState(null);
-  // const [
-  //   selectedIconTimelinePosition,
-  //   setSelectedIconTimelinePosition
-  // ] = useState(null);
+  const [selectedIconFromMap, setSelectedIconFromMap] = useState(null);
 
   const [yearVector, setYearVector] = useState("none");
   const [yearRaster, setYearRaster] = useState("none");
@@ -252,6 +248,7 @@ const Camp = ({ match }) => {
             <CampMap
               camp={camp}
               selectedIcon={selectedIcon}
+              setSelectedIcon={setSelectedIcon}
               yearRaster={yearRaster}
               yearVector={yearVector}
               vectorLayers={vectorLayers}
@@ -332,6 +329,7 @@ const Camp = ({ match }) => {
               <TimelineIconsCamp
                 camp={camp}
                 scale={timelineScale}
+                selectedIcon={selectedIcon}
                 setSelectedIcon={setSelectedIcon}
               ></TimelineIconsCamp>
               <div className="row">

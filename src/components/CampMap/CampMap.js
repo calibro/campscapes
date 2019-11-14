@@ -4,7 +4,9 @@ import ReactMapboxGl, {
   MapContext,
   Popup,
   ZoomControl,
-  RotationControl
+  RotationControl,
+  Layer,
+  Source
 } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import { MdClose } from "react-icons/md";
@@ -22,6 +24,7 @@ const Map = ReactMapboxGl({
 const CampMap = ({
   camp,
   selectedIcon,
+  setSelectedIcon,
   yearRaster,
   yearVector,
   vectorLayers,
@@ -44,6 +47,11 @@ const CampMap = ({
   }, [camp]);
 
   const geojsonFeatures = featureCollection(iconsFeatures);
+  const GEOJSON_SOURCE_OPTIONS = {
+    type: "geojson",
+    data: geojsonFeatures
+  };
+
   const campCenter = [camp.data.longitude, camp.data.latitude];
 
   const [overFeature, setOverFeature] = useState(false);
@@ -86,10 +94,35 @@ const CampMap = ({
     setOverFeature(false);
   };
 
+  const iconOnMouseMove = (cursor, map, features) => {
+    map.getCanvas().style.cursor = cursor;
+    if (features.length > 0) {
+      const icon = camp.relations.icon.filter(
+        d => d.id === features[0].properties.id
+      );
+      setSelectedIcon({ icon: icon[0] });
+    }
+  };
+
+  const mouseLeaveListener = e => {
+    e.target.getCanvas().style.cursor = "";
+    setSelectedIcon(null);
+  };
+
   useEffect(() => {
-    if (selectedIcon && mapInstance) {
-      setCenter([selectedIcon.data.longitude, selectedIcon.data.latitude]);
-      setZoom([18]);
+    if (
+      selectedIcon &&
+      selectedIcon.icon.data.longitude &&
+      selectedIcon.icon.data.latitude &&
+      mapInstance
+    ) {
+      if (selectedIcon.zoom) {
+        setCenter([
+          selectedIcon.icon.data.longitude,
+          selectedIcon.icon.data.latitude
+        ]);
+        setZoom([selectedIcon.zoom]);
+      }
     }
   }, [selectedIcon, mapInstance]);
 
@@ -172,6 +205,7 @@ const CampMap = ({
       }
     }
   }, [mapInstance, yearRaster, rasterLayers]);
+
   return (
     <div className={styles.mapContainer}>
       <Map
@@ -186,6 +220,7 @@ const CampMap = ({
       >
         <MapContext.Consumer>
           {map => {
+            map.on("mouseleave", "icons-layer", mouseLeaveListener);
             setMapInstance(map);
           }}
         </MapContext.Consumer>
@@ -232,15 +267,21 @@ const CampMap = ({
               data={geojsonFeatures}
             ></GeoJSONLayer>
 
-            <GeoJSONLayer
-              circleLayout={{ visibility: "visible" }}
-              circlePaint={{
+            <Source id="source_id" geoJsonSource={GEOJSON_SOURCE_OPTIONS} />
+            <Layer
+              type="circle"
+              id="icons-layer"
+              sourceId="source_id"
+              layout={{ visibility: "visible" }}
+              paint={{
                 "circle-color": "white",
                 "circle-radius": 6,
                 "circle-stroke-width": 1
               }}
-              data={geojsonFeatures}
-            ></GeoJSONLayer>
+              onMouseMove={e => {
+                iconOnMouseMove("pointer", e.target, e.features);
+              }}
+            />
           </React.Fragment>
         )}
         {overFeature && (
@@ -250,6 +291,7 @@ const CampMap = ({
                 color="black"
                 size="1.2rem"
                 onClick={closePopup}
+                style={{ cursor: "pointer" }}
               ></MdClose>
             </div>
             <div className={styles.tableContainer}>
