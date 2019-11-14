@@ -49,23 +49,26 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
     nodeHighlightBehavior: true,
     height: height,
     width: width,
-    minZoom: 1,
-    maxZoom: 1,
+    // minZoom: 1,
+    // maxZoom: 1,
     node: {
       fontSize: 17,
       highlightFontSize: 17,
-      size: 700,
-      labelProperty: node => node.data.title,
+      // size: 700,
+      labelProperty: node =>
+        node.data.itemType === "story" ? node.data.title : undefined,
       fontColor: "red"
     },
     link: {
-      highlightColor: "lightblue"
+      highlightColor: "red",
+      semanticStrokeWidth: true
     },
     d3: {
-      // gravity: -200
+      gravity: -40,
+      linkLength: 100,
+      linkStrength: 0.6
     }
   };
-  console.log("annotatedGraph", annotatedGraph);
 
   const links = useMemo(() => {
     const bySt = groupBy(
@@ -78,6 +81,15 @@ const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
       value: k.length
     }));
   }, [annotatedGraph.links]);
+
+  const nodes = useMemo(() => {
+    return annotatedGraph.nodes.map(node => ({
+      ...node,
+      size: node.degree
+    }));
+  }, [annotatedGraph.nodes]);
+
+  console.log("annotatedGraph", annotatedGraph.nodes, links);
 
   return (
     annotatedGraph && (
