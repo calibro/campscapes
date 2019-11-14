@@ -2,11 +2,14 @@ import React, { useState, useEffect, useMemo } from "react";
 import ReactMapboxGl, {
   GeoJSONLayer,
   MapContext,
-  Popup
+  Popup,
+  ZoomControl,
+  RotationControl
 } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import { MdClose } from "react-icons/md";
 import { proxyDevUrl } from "../../utils";
+import ExtrusionButton from "../ExtrusionButton";
 import styles from "./CampMap.module.scss";
 
 const ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -46,6 +49,7 @@ const CampMap = ({
   const [overFeature, setOverFeature] = useState(false);
   const [center, setCenter] = useState(campCenter);
   const [zoom, setZoom] = useState([14]);
+  const [pitch, setPitch] = useState([0]);
   const [mapInstance, setMapInstance] = useState(null);
 
   const geojsonOnMouseMove = (cursor, map, features) => {
@@ -178,13 +182,16 @@ const CampMap = ({
         }}
         center={center}
         zoom={zoom}
+        pitch={pitch}
       >
         <MapContext.Consumer>
           {map => {
             setMapInstance(map);
           }}
         </MapContext.Consumer>
-
+        <ZoomControl style={{ top: 75 }} />
+        <RotationControl style={{ top: 130 }}></RotationControl>
+        <ExtrusionButton pitch={pitch} setPitch={setPitch}></ExtrusionButton>
         {vectorLayers &&
           vectorLayers.length > 0 &&
           vectorLayers.map((layer, i) => {
