@@ -2,11 +2,16 @@ import React, { useState, useEffect, useMemo } from "react";
 import ReactMapboxGl, {
   GeoJSONLayer,
   MapContext,
-  Popup
+  Popup,
+  ZoomControl,
+  RotationControl,
+  Layer,
+  Source
 } from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import { MdClose } from "react-icons/md";
 import { proxyDevUrl } from "../../utils";
+import ExtrusionButton from "../ExtrusionButton";
 import styles from "./CampMap.module.scss";
 
 const ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -19,6 +24,7 @@ const Map = ReactMapboxGl({
 const CampMap = ({
   camp,
   selectedIcon,
+  setSelectedIcon,
   yearRaster,
   yearVector,
   vectorLayers,
@@ -41,11 +47,17 @@ const CampMap = ({
   }, [camp]);
 
   const geojsonFeatures = featureCollection(iconsFeatures);
+  const GEOJSON_SOURCE_OPTIONS = {
+    type: "geojson",
+    data: geojsonFeatures
+  };
+
   const campCenter = [camp.data.longitude, camp.data.latitude];
 
   const [overFeature, setOverFeature] = useState(false);
   const [center, setCenter] = useState(campCenter);
   const [zoom, setZoom] = useState([14]);
+  const [pitch, setPitch] = useState([0]);
   const [mapInstance, setMapInstance] = useState(null);
 
   const geojsonOnMouseMove = (cursor, map, features) => {
@@ -82,10 +94,35 @@ const CampMap = ({
     setOverFeature(false);
   };
 
+  const iconOnMouseMove = (cursor, map, features) => {
+    map.getCanvas().style.cursor = cursor;
+    if (features.length > 0) {
+      const icon = camp.relations.icon.filter(
+        d => d.id === features[0].properties.id
+      );
+      setSelectedIcon({ icon: icon[0] });
+    }
+  };
+
+  const mouseLeaveListener = e => {
+    e.target.getCanvas().style.cursor = "";
+    setSelectedIcon(null);
+  };
+
   useEffect(() => {
-    if (selectedIcon && mapInstance) {
-      setCenter([selectedIcon.data.longitude, selectedIcon.data.latitude]);
-      setZoom([18]);
+    if (
+      selectedIcon &&
+      selectedIcon.icon.data.longitude &&
+      selectedIcon.icon.data.latitude &&
+      mapInstance
+    ) {
+      if (selectedIcon.zoom) {
+        setCenter([
+          selectedIcon.icon.data.longitude,
+          selectedIcon.icon.data.latitude
+        ]);
+        setZoom([selectedIcon.zoom]);
+      }
     }
   }, [selectedIcon, mapInstance]);
 
@@ -168,6 +205,7 @@ const CampMap = ({
       }
     }
   }, [mapInstance, yearRaster, rasterLayers]);
+
   return (
     <div className={styles.mapContainer}>
       <Map
@@ -178,13 +216,17 @@ const CampMap = ({
         }}
         center={center}
         zoom={zoom}
+        pitch={pitch}
       >
         <MapContext.Consumer>
           {map => {
+            map.on("mouseleave", "icons-layer", mouseLeaveListener);
             setMapInstance(map);
           }}
         </MapContext.Consumer>
-
+        <ZoomControl style={{ top: 75 }} />
+        <RotationControl style={{ top: 130 }}></RotationControl>
+        <ExtrusionButton pitch={pitch} setPitch={setPitch}></ExtrusionButton>
         {vectorLayers &&
           vectorLayers.length > 0 &&
           vectorLayers.map((layer, i) => {
@@ -225,15 +267,21 @@ const CampMap = ({
               data={geojsonFeatures}
             ></GeoJSONLayer>
 
-            <GeoJSONLayer
-              circleLayout={{ visibility: "visible" }}
-              circlePaint={{
+            <Source id="source_id" geoJsonSource={GEOJSON_SOURCE_OPTIONS} />
+            <Layer
+              type="circle"
+              id="icons-layer"
+              sourceId="source_id"
+              layout={{ visibility: "visible" }}
+              paint={{
                 "circle-color": "white",
                 "circle-radius": 6,
                 "circle-stroke-width": 1
               }}
-              data={geojsonFeatures}
-            ></GeoJSONLayer>
+              onMouseMove={e => {
+                iconOnMouseMove("pointer", e.target, e.features);
+              }}
+            />
           </React.Fragment>
         )}
         {overFeature && (
@@ -243,6 +291,7 @@ const CampMap = ({
                 color="black"
                 size="1.2rem"
                 onClick={closePopup}
+                style={{ cursor: "pointer" }}
               ></MdClose>
             </div>
             <div className={styles.tableContainer}>

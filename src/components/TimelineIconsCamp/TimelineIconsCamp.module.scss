@@ -11,6 +11,8 @@ $icons-width: 56px;
 .iconContainer {
   display: flex;
   transform: translateX(-$icons-width/2);
+  opacity: 1;
+  transition: opacity var(--transition);
 }
 
 .iconImage {
@@ -35,13 +37,7 @@ $icons-width: 56px;
   align-items: center;
   justify-content: center;
   background-color: white;
-  transition: border-radius var(--transition);
   border: 1px solid black;
-}
-
-.image:hover,
-.itemFallback:hover {
-  border-radius: 0%;
 }
 
 .iconTitle {

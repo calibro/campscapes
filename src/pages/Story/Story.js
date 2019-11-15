@@ -10,6 +10,7 @@ import useDimensions from "react-use-dimensions";
 import Menu from "../../components/Menu";
 import useUrlParam from "../../hooks/useUrlParam";
 import StoryItem from "../../components/StoryItem";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Story.module.scss";
 
 const StoryParagraph = React.forwardRef(
@@ -155,6 +156,7 @@ const Story = ({ match, location, history }) => {
 
   return (
     <div className={styles.storyContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu light></Menu>
 
       {story && (
@@ -167,8 +169,13 @@ const Story = ({ match, location, history }) => {
                     <Link to={`/camps/${story.camp.data.siteName}`}>
                       {story.camp.data.title}
                     </Link>
-                    {story.creator && (
-                      <span> - authors: story.creator.join(", ")</span>
+                    {story.creator.length > 0 && (
+                      <span className={styles.authorsCont}>
+                        {" • "}
+                        <span className={styles.authorsLabel}>
+                          authors
+                        </span>: {story.creator.join(", ")}
+                      </span>
                     )}
                   </h6>
                   <h2>

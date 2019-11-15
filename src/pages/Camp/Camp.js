@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState, useEffect, useRef } from "react";
 import useDimensions from "react-use-dimensions";
 import { CampsContext } from "../../dataProviders";
 import { Link } from "react-router-dom";
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack, MdLayers } from "react-icons/md";
 import find from "lodash/find";
 import omit from "lodash/omit";
 import groupBy from "lodash/groupBy";
@@ -23,6 +23,7 @@ import Menu from "../../components/Menu";
 import TimelineIconsCamp from "../../components/TimelineIconsCamp";
 import TimelineAxis from "../../components/TimelineAxis";
 import DdLayers from "../../components/DdLayers";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Camp.module.scss";
 import { Graph as D3Graph } from "react-d3-graph";
 
@@ -200,11 +201,7 @@ const Camp = ({ match }) => {
 
   const { params } = match;
   const [selectedIcon, setSelectedIcon] = useState(null);
-  // const [selectedIconMapPosition, setSelectedIconMapPosition] = useState(null);
-  // const [
-  //   selectedIconTimelinePosition,
-  //   setSelectedIconTimelinePosition
-  // ] = useState(null);
+  const [selectedIconFromMap, setSelectedIconFromMap] = useState(null);
 
   const [yearVector, setYearVector] = useState("none");
   const [yearRaster, setYearRaster] = useState("none");
@@ -313,6 +310,7 @@ const Camp = ({ match }) => {
 
   return (
     <div className={styles.campContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu></Menu>
       {camp && (
         <React.Fragment>
@@ -320,6 +318,7 @@ const Camp = ({ match }) => {
             <CampMap
               camp={camp}
               selectedIcon={selectedIcon}
+              setSelectedIcon={setSelectedIcon}
               yearRaster={yearRaster}
               yearVector={yearVector}
               vectorLayers={vectorLayers}
@@ -342,6 +341,12 @@ const Camp = ({ match }) => {
             </div>
           </div>
           <div className={styles.ddContainer}>
+            <div className={styles.vertLogo}>
+              <MdLayers
+                style={{ color: "var(--red-cs)" }}
+                size="20px"
+              ></MdLayers>
+            </div>
             <div className="container">
               <div className="row">
                 {vectorLayers.length > 0 && (
@@ -387,10 +392,14 @@ const Camp = ({ match }) => {
             </div>
           </div>
           <div className={styles.iconsContainer}>
+            <div className={styles.vertLabel}>
+              <h6>icons</h6>
+            </div>
             <div className="container">
               <TimelineIconsCamp
                 camp={camp}
                 scale={timelineScale}
+                selectedIcon={selectedIcon}
                 setSelectedIcon={setSelectedIcon}
               ></TimelineIconsCamp>
               <div className="row">

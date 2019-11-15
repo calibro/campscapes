@@ -1,6 +1,10 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import ReactMapboxGl, { GeoJSONLayer } from "react-mapbox-gl";
+import ReactMapboxGl, {
+  GeoJSONLayer,
+  ZoomControl,
+  RotationControl
+} from "react-mapbox-gl";
 import { point, featureCollection } from "@turf/helpers";
 import Bbox from "@turf/bbox";
 import styles from "./CampsMap.module.scss";
@@ -66,6 +70,8 @@ const CampsMap = ({ camps, history }) => {
         fitBounds={[[bbox[0], bbox[1]], [bbox[2], bbox[3]]]}
         fitBoundsOptions={{ padding: 100 }}
       >
+        <ZoomControl style={{ top: 75 }} />
+        <RotationControl style={{ top: 130 }}></RotationControl>
         <GeoJSONLayer
           data={geojson}
           circlePaint={{

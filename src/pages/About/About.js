@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from "react";
 import { SimplePagesContext } from "../../dataProviders";
 import Menu from "../../components/Menu";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import get from "lodash/get";
 import find from "lodash/find";
 import styles from "./About.module.scss";
@@ -15,6 +16,7 @@ const About = () => {
 
   return (
     <div className={styles.aboutContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <Menu></Menu>
       <div className="container">
         <div className="row align-items-baseline">

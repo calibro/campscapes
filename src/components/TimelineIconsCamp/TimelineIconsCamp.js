@@ -4,7 +4,13 @@ import TimelineStripes from "../../components/TimelineStripes";
 import FallbackPreview from "../../components/FallbackPreview";
 import styles from "./TimelineIconsCamp.module.scss";
 
-const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
+const TimelineIcons = ({
+  camp,
+  scale,
+  setSelectedIcon,
+  selectedIcon,
+  location
+}) => {
   const icons = useMemo(() => {
     if (camp && camp.relations.icon) {
       return camp.relations.icon
@@ -48,10 +54,14 @@ const TimelineIcons = ({ camp, scale, setSelectedIcon, location }) => {
                 >
                   <div
                     className={styles.iconContainer}
+                    style={{
+                      opacity:
+                        selectedIcon && icon.id !== selectedIcon.icon.id
+                          ? 0.25
+                          : 1
+                    }}
                     onMouseOver={e => {
-                      if (icon.data.latitude && icon.data.longitude) {
-                        setSelectedIcon(icon);
-                      }
+                      setSelectedIcon({ icon: icon, zoom: 18 });
                     }}
                     onMouseOut={() => setSelectedIcon(null)}
                   >

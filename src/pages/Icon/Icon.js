@@ -7,6 +7,7 @@ import sortBy from "lodash/sortBy";
 import findIndex from "lodash/findIndex";
 import { MdClose, MdArrowBack, MdArrowForward, MdAdd } from "react-icons/md";
 import FileViewer from "../../components/FileViewer";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Icon.module.scss";
 
 export default function Icon({ match, location }) {
@@ -59,13 +60,18 @@ export default function Icon({ match, location }) {
 
   return (
     <div className={styles.iconContainer}>
+      <OnlyDesktop></OnlyDesktop>
       {icon && (
         <div className="container h-100 d-flex flex-column">
           <div className="row">
             <div className="col-10 offset-1">
               <h6 className={styles.subtitle}>
-                {camp && camp.data.title} -{" "}
-                {new Date(icon.data.startDate).getFullYear()}
+                {camp && (
+                  <Link to={`/camps/${camp.data.siteName}`}>
+                    {camp.data.title}
+                  </Link>
+                )}{" "}
+                - {new Date(icon.data.startDate).getFullYear()}
               </h6>
               <h1 className={styles.title}> {icon.data.timelineLabel}</h1>
             </div>
@@ -105,33 +111,42 @@ export default function Icon({ match, location }) {
                 <h6 className={styles.subtitle}>{icon.data.title}</h6>
               </div>
               <div className={styles.descriptionContainer}>
-                <p className={styles.description}>{icon.data.description}</p>
+                <div className="overflow-auto">
+                  <p className={styles.description}>{icon.data.description}</p>
+                </div>
               </div>
               {icon.linkedPages.length > 0 && (
                 <div className={styles.storylinesContainer}>
                   <h6 className={styles.metadata}>related storylines</h6>
-                  {icon.linkedPages.map((page, i) => (
-                    <div key={i} className="mb-2">
-                      <Link
-                        to={{
-                          pathname: `/stories/${page.exhibitSlug}`,
-                          search: `paragraph=${page.paragraph}`,
-                          state: {
-                            from: {
-                              pathname: location.pathname,
-                              search: location.search
+                  {icon.linkedPages
+                    .filter(d => d.exhibitSlug !== "intro--do-not-remove-")
+                    .map((page, i) => (
+                      <div key={i} className="mb-2">
+                        <Link
+                          to={{
+                            pathname: `/stories/${page.exhibitSlug}`,
+                            search: `paragraph=${page.paragraph}`,
+                            state: {
+                              from: {
+                                pathname: location.pathname,
+                                search: location.search
+                              }
                             }
-                          }
-                        }}
-                        className={`${styles.link} d-flex align-items-center`}
-                      >
-                        <div>
-                          <MdAdd size="1.5rem" className={styles.plus}></MdAdd>
-                        </div>
-                        <p className={styles.storyTitle}>{page.exhibitTitle}</p>
-                      </Link>
-                    </div>
-                  ))}
+                          }}
+                          className={`${styles.link} d-flex align-items-center`}
+                        >
+                          <div>
+                            <MdAdd
+                              size="1.5rem"
+                              className={styles.plus}
+                            ></MdAdd>
+                          </div>
+                          <p className={styles.storyTitle}>
+                            {page.exhibitTitle}
+                          </p>
+                        </Link>
+                      </div>
+                    ))}
                 </div>
               )}
             </div>

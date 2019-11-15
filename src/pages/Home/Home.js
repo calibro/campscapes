@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Home.module.scss";
 
 const Home = () => {
   return (
     <div className={styles.homeContainer}>
+      <OnlyDesktop></OnlyDesktop>
       <div className={styles.titleContainer}>
         <div className="container">
           <div className="row">

@@ -13,7 +13,12 @@ const Citation = ({ bibTeX }) => {
     template: "citation-apa",
     lang: "en-US"
   });
-  return <p dangerouslySetInnerHTML={{ __html: citationHtml }}></p>;
+  return (
+    <div
+      className="pl-1"
+      dangerouslySetInnerHTML={{ __html: citationHtml }}
+    ></div>
+  );
 };
 
 const LinkedPages = withRouter(({ linkedPages, location }) => {
@@ -56,6 +61,9 @@ const LinkedPages = withRouter(({ linkedPages, location }) => {
               }}
               className={`${styles.linkStory} d-flex align-items-center`}
             >
+              <div>
+                <MdAdd size="1rem" className={styles.plus}></MdAdd>
+              </div>
               <p className={styles.storyTitle}>{page.exhibitTitle}</p>
             </Link>
           </div>

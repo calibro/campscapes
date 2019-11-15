@@ -4,6 +4,7 @@ import { MdClose, MdAdd } from "react-icons/md";
 import { Link } from "react-router-dom";
 import find from "lodash/find";
 import FileViewer from "../../components/FileViewer";
+import OnlyDesktop from "../../components/OnlyDesktop";
 import styles from "./Item.module.scss";
 
 const ItemDate = ({ item }) => {
@@ -38,6 +39,7 @@ export default function Item({ match, location }) {
 
   return (
     <div className={styles.itemContainer}>
+      <OnlyDesktop></OnlyDesktop>
       {item && (
         <React.Fragment>
           <div className={styles.titleContainer}>
@@ -92,12 +94,6 @@ export default function Item({ match, location }) {
                     <p>{item.data.copyright}</p>
                   </div>
                 )}
-              </div>
-              <div className="col-4">
-                <h6 className={styles.metadata}>description</h6>
-                <p>{item.data.description}</p>
-              </div>
-              <div className="col-4">
                 {item.linkedPages.length > 0 && (
                   <div>
                     <h6 className={styles.metadata}>related storylines</h6>
@@ -130,6 +126,10 @@ export default function Item({ match, location }) {
                     ))}
                   </div>
                 )}
+              </div>
+              <div className="col-8">
+                <h6 className={styles.metadata}>description</h6>
+                <p>{item.data.description}</p>
               </div>
             </div>
           </div>
