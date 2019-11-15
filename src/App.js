@@ -50,12 +50,12 @@ function App() {
           render={() => (
             <SimplePagesProvider>
               <IntroProvider loadOn={["/"]}>
-                <HomeImagesProvider loadOn={["/"]}>
+                <HomeImagesProvider loadOn={["/", "/home"]}>
                   <Route exact path="/" component={Intro} />
+                  <Route exact path="/home" component={Home} />
                 </HomeImagesProvider>
               </IntroProvider>
 
-              <Route exact path="/home" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/publications" component={Publications} />
               <Route exact path="/educational" component={Educational} />
