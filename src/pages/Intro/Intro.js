@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdArrowForward } from "react-icons/md";
 import { Carousel, CarouselItem } from "reactstrap";
 import OnlyDesktop from "../../components/OnlyDesktop";
-import IntroPictures from "./IntroPictures";
+import IntroPictures from "../../components/IntroPictures";
 import styles from "./Intro.module.scss";
 
 const Intro = () => {
@@ -37,6 +37,13 @@ const Intro = () => {
 
   return (
     <div className="w-100 h-100 position-relative">
+      {introImages.length > 0 && introSteps.length > 0 && (
+        <IntroPictures
+          pictures={introImages}
+          index={activeIndex}
+          steps={introSteps.length + 1}
+        />
+      )}
       <OnlyDesktop></OnlyDesktop>
       <div className={styles.container}>
         <div className={styles.top}>
@@ -99,9 +106,6 @@ const Intro = () => {
         <div className={styles.skip}>
           <Link to="/home">Skip</Link>
         </div>
-      </div>
-      <div className={styles.introPictures}>
-        <IntroPictures pictures={introImages} />
       </div>
     </div>
   );
