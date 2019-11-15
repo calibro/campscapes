@@ -11,197 +11,20 @@ import get from "lodash/get";
 import { scaleTime, scaleLinear } from "d3-scale";
 import { min, max } from "d3-array";
 import Graph from "graphology";
-// import {
-//   forceSimulation,
-//   forceLink,
-//   forceManyBody,
-//   forceCenter,
-//   forceCollide
-// } from "d3-force";
 import CampMap from "../../components/CampMap";
 import Menu from "../../components/Menu";
 import TimelineIconsCamp from "../../components/TimelineIconsCamp";
 import TimelineAxis from "../../components/TimelineAxis";
 import DdLayers from "../../components/DdLayers";
 import OnlyDesktop from "../../components/OnlyDesktop";
+import CampNetwork from "../../components/CampNetwork";
 import styles from "./Camp.module.scss";
-import { Graph as D3Graph } from "react-d3-graph";
-
-const CampNet = ({ height = 600, width = 600, annotatedGraph }) => {
-  const [hoverNode, setHoverNode] = useState(null);
-  const [nodesAndLinks, setNodesAndLinks] = useState({});
-
-  const nodeScale = useMemo(() => {
-    if (!annotatedGraph.nodes) {
-      return;
-    }
-    const degrees = annotatedGraph.nodes
-      .filter(item => item.data.itemType !== "story")
-      .map(item => item.degree);
-    const minDegree = min(degrees);
-    const maxDegree = max(degrees);
-
-    return scaleLinear()
-      .domain([minDegree, maxDegree])
-      .range([6, 12]);
-  }, [annotatedGraph]);
-
-  const myConfig = {
-    nodeHighlightBehavior: true,
-    height: height,
-    width: width,
-    // minZoom: 1,
-    // maxZoom: 1,
-    node: {
-      fontSize: 17,
-      highlightFontSize: 17,
-      // size: 700,
-      labelProperty: node =>
-        node.data.itemType === "story" ? node.data.title : undefined,
-      fontColor: "red"
-    },
-    link: {
-      highlightColor: "red",
-      semanticStrokeWidth: true
-    },
-    d3: {
-      gravity: -40,
-      linkLength: 100,
-      linkStrength: 0.6
-    }
-  };
-
-  const links = useMemo(() => {
-    const bySt = groupBy(
-      annotatedGraph.links,
-      item => `${item.source}_${item.target}`
-    );
-
-    return Object.values(bySt).map(k => ({
-      ...k[0],
-      value: k.length
-    }));
-  }, [annotatedGraph.links]);
-
-  const nodes = useMemo(() => {
-    return annotatedGraph.nodes.map(node => ({
-      ...node,
-      size: node.degree
-    }));
-  }, [annotatedGraph.nodes]);
-
-  console.log("annotatedGraph", annotatedGraph.nodes, links);
-
-  return (
-    annotatedGraph && (
-      <D3Graph
-        id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-        data={cloneDeep({ nodes: annotatedGraph.nodes, links })}
-        config={myConfig}
-        // onClickNode={onClickNode}
-        // onRightClickNode={onRightClickNode}
-        // onClickGraph={onClickGraph}
-        // onClickLink={onClickLink}
-        // onRightClickLink={onRightClickLink}
-        // onMouseOverNode={onMouseOverNode}
-        // onMouseOutNode={onMouseOutNode}
-        // onMouseOverLink={onMouseOverLink}
-        // onMouseOutLink={onMouseOutLink}
-        // onNodePositionChange={onNodePositionChange}
-      />
-    )
-  );
-
-  // const simulation = useRef(null);
-
-  // useEffect(() => {
-  //   if (simulation.current) {
-  //     simulation.current.stop();
-  //   }
-  //   const outGraph = cloneDeep(annotatedGraph);
-  //   if (!outGraph.nodes || !outGraph.links) {
-  //     return;
-  //   }
-
-  //   // Custom force to put all nodes in a box
-  //   function boxingForce() {
-  //     outGraph.nodes.forEach(node => {
-  //       node.x = max([min([node.x, width - 30]), 30]);
-  //       node.y = max([min([node.y, height - 30]), 30]);
-  //     });
-  //   }
-
-  //   simulation.current = forceSimulation(outGraph.nodes)
-  //     .force(
-  //       "charge",
-  //       forceManyBody().strength(-30)
-  //       // .distanceMax(120)
-  //     )
-  //     .force("link", forceLink(outGraph.links).id(d => d.id))
-  //     .force(
-  //       "collide",
-  //       forceCollide(node =>
-  //         get(node, "data.itemType") === "story"
-  //           ? 40
-  //           : nodeScale(node.degree) * 4
-  //       ).iterations(3)
-  //     )
-  //     .force("center", forceCenter(width / 2, height / 2))
-  //     .force("box", boxingForce)
-  //     .on("tick", () => {
-  //       const { links, nodes } = outGraph;
-  //       setNodesAndLinks({ nodes, links });
-  //     });
-  // }, [annotatedGraph, height, nodeScale, width]);
-
-  // return (
-  //   <svg height={height} width={width}>
-  //     {nodesAndLinks.nodes && (
-  //       <>
-  //         {nodesAndLinks.links.map((link, i) => (
-  //           <line
-  //             key={i}
-  //             x1={link.source.x}
-  //             y1={link.source.y}
-  //             x2={link.target.x}
-  //             y2={link.target.y}
-  //             stroke="#fff"
-  //           ></line>
-  //         ))}
-  //         {nodesAndLinks.nodes.map(node => (
-  //           <g key={node.id}>
-  //             <circle
-  //               onMouseEnter={() => {
-  //                 setHoverNode(node.id);
-  //               }}
-  //               cx={node.x}
-  //               cy={node.y}
-  //               r={
-  //                 get(node, "data.itemType") === "story"
-  //                   ? "4"
-  //                   : nodeScale(node.degree)
-  //               }
-  //               style={{
-  //                 fill: node.data.itemType === "story" ? "#c82727" : "#fff"
-  //               }}
-  //             ></circle>
-  //             {/* <text fill="#fff" x={node.x} y={node.y}>
-  //           {node.id}
-  //         </text> */}
-  //           </g>
-  //         ))}
-  //       </>
-  //     )}
-  //   </svg>
-  // );
-};
 
 const Camp = ({ match }) => {
   const camps = useContext(CampsContext);
 
   const { params } = match;
   const [selectedIcon, setSelectedIcon] = useState(null);
-  const [selectedIconFromMap, setSelectedIconFromMap] = useState(null);
 
   const [yearVector, setYearVector] = useState("none");
   const [yearRaster, setYearRaster] = useState("none");
@@ -278,7 +101,7 @@ const Camp = ({ match }) => {
     });
 
     graph.import({
-      attributes: { name: "a graph" },
+      attributes: { name: "camp graph" },
       nodes: nodes,
       edges: cloneDeep(camp.storiesNetwork.links)
     });
@@ -293,12 +116,12 @@ const Camp = ({ match }) => {
       return {
         id: +node,
         data: campGraph.getNodeAttributes(node),
-        degree: campGraph.degree(node),
+        inDegree: campGraph.inDegree(node),
         neighbors: campGraph.neighbors(node)
       };
     });
     const links = cloneDeep(camp.storiesNetwork.links);
-
+    //console.log({ nodes, links });
     return { nodes, links };
   }, [camp, campGraph]);
 
@@ -437,16 +260,15 @@ const Camp = ({ match }) => {
               </div>
             </div>
           </div>
-          <div className="text-center container">
-            <div className={styles.networkContainer} ref={ref}>
-              {annotatedGraph && (
-                <CampNet
-                  width={width}
-                  height={700}
-                  annotatedGraph={annotatedGraph}
-                ></CampNet>
-              )}
-            </div>
+
+          <div className={styles.networkContainer} ref={ref}>
+            {annotatedGraph && width && height && (
+              <CampNetwork
+                annotatedGraph={annotatedGraph}
+                width={width}
+                height={height}
+              ></CampNetwork>
+            )}
           </div>
         </React.Fragment>
       )}
