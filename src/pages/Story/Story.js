@@ -166,16 +166,10 @@ const Story = ({ match, location, history }) => {
               <div className="row">
                 <div className="col-12">
                   <h6 className={styles.campLink}>
-                    <Link to={`/camps/${story.camp.data.siteName}`}>
-                      {story.camp.data.title}
-                    </Link>
-                    {story.creator.length > 0 && (
-                      <span className={styles.authorsCont}>
-                        {" • "}
-                        <span className={styles.authorsLabel}>
-                          authors
-                        </span>: {story.creator.join(", ")}
-                      </span>
+                    {story.camp && (
+                      <Link to={`/camps/${story.camp.data.siteName}`}>
+                        {story.camp.data.title}
+                      </Link>
                     )}
                   </h6>
                   <h2>
@@ -201,6 +195,12 @@ const Story = ({ match, location, history }) => {
                             {tag}
                           </Link>
                         ))}
+                    </div>
+                  )}
+                  {story.creator.length > 0 && (
+                    <div className={styles.authorsCont}>
+                      <span className={styles.authorsLabel}>authors</span>{" "}
+                      {story.creator.join(", ")}
                     </div>
                   )}
                 </div>
