@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { HomeImagesContext } from "../../dataProviders";
 import OnlyDesktop from "../../components/OnlyDesktop";
+import IntroPictures from "../../components/IntroPictures";
 import styles from "./Home.module.scss";
 
 const Home = () => {
+  const introImages = useContext(HomeImagesContext);
+
   return (
     <div className={styles.homeContainer}>
       <OnlyDesktop></OnlyDesktop>
+      {introImages.length > 0 && (
+        <IntroPictures pictures={introImages} index={0} steps={1} />
+      )}
       <div className={styles.titleContainer}>
         <div className="container">
           <div className="row">

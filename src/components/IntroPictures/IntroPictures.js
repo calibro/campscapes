@@ -1,8 +1,7 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import classNames from "classnames";
-import { useSpring, useTransition, animated } from "react-spring";
-import { chunk, shuffle, sampleSize, random, range } from "lodash";
-import { UncontrolledTooltip } from "reactstrap";
+import { useSpring, animated } from "react-spring";
+import { chunk, shuffle, sampleSize, random } from "lodash";
 import styles from "./IntroPictures.module.scss";
 
 const MAX_LAYOUTS = 5;
