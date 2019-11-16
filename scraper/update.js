@@ -10,6 +10,7 @@ const tail = require("lodash/tail");
 const flatten = require("lodash/flatten");
 const findIndex = require("lodash/findIndex");
 const find = require("lodash/find");
+const uniq = require("lodash/uniq");
 
 const CAMPSCAPES_DATA_DIRNAME = "campscapes-data";
 
@@ -216,7 +217,7 @@ async function main(options) {
     }, [])
     return {
       ...story,
-      creator: creator,
+      creator: uniq(creator),
     }
   })
   
