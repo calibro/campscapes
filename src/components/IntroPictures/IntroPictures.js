@@ -4,8 +4,8 @@ import { useSpring, animated } from "react-spring";
 import { chunk, shuffle, sampleSize, random } from "lodash";
 import styles from "./IntroPictures.module.scss";
 
-const MAX_LAYOUTS = 5;
-const PICTURES_PER_LAYOUT = 9;
+const MAX_LAYOUTS = 4;
+const PICTURES_PER_LAYOUT = 12;
 const CALC = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
 const TRANSITION = (x, y, indexPicture) => {
   return `translate3d(${x / (50 / (indexPicture + 1))}px,${y /
@@ -25,8 +25,11 @@ const IntroPictures = ({ pictures, index, steps }) => {
       const out = stepsArray.map((step, i) => {
         const layout = i + 1 > MAX_LAYOUTS ? random(1, 5) : i + 1;
         let stepPictures = picturesChunk[i] ? picturesChunk[i] : [];
-        while (stepPictures.length < 9) {
-          const newPictures = sampleSize(pictures, 9 - stepPictures.length);
+        while (stepPictures.length < PICTURES_PER_LAYOUT) {
+          const newPictures = sampleSize(
+            pictures,
+            PICTURES_PER_LAYOUT - stepPictures.length
+          );
           stepPictures = stepPictures.concat(newPictures);
         }
         return { layout: layout, pictures: shuffle(stepPictures) };
@@ -54,7 +57,7 @@ const IntroPictures = ({ pictures, index, steps }) => {
                 {grid.pictures.map((picture, indexPicture) => {
                   return (
                     <div
-                      key={picture.id}
+                      key={picture.id + "_" + indexPicture}
                       className={classNames(styles["grid__item"], {
                         [styles.open]: i === index,
                         [styles.out]: i > index
