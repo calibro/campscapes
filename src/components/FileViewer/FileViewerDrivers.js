@@ -12,16 +12,10 @@ import { proxyDevUrl } from "../../utils";
 export const DriverImage = ({ item, zoom, alt }) => {
   return zoom ? (
     <ZoomAndPanMedia src={item.file_urls.original}></ZoomAndPanMedia>
+  ) : item.file_urls.fullsize ? (
+    <img className={styles.image} src={item.file_urls.fullsize} alt={alt} />
   ) : (
-    <img
-      className={styles.image}
-      src={
-        item.file_urls.fullsize
-          ? item.file_urls.fullsize
-          : item.file_urls.original
-      }
-      alt={alt}
-    />
+    <FallbackPreview mimetype={item.mime_type} size="3rem"></FallbackPreview>
   );
 };
 
