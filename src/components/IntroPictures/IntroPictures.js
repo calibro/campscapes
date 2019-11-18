@@ -70,7 +70,7 @@ const IntroPictures = ({ pictures, index, steps }) => {
                         }}
                       >
                         <p className={styles.pictureTitle}>
-                          {picture.original_filename}
+                          {picture.item.data.title}
                         </p>
                       </animated.div>
                     </div>
