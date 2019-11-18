@@ -270,12 +270,13 @@ async function main(options) {
           get(currentPage, "page_blocks", []).forEach(pageBlock => {
             pageBlock.attachments.forEach(attach => {
               if (attach.item) {
+                
                 if (!nodesById[attach.item.id]) {
                   nodesById[attach.item.id] = {
                     id: attach.item.id,
                     itemType: attach.item.item_type,
                     title: attach.item.data.title,
-                    fileUrls: get(attach.item, "data.files[0].fileUrls")
+                    fileUrls: get(attach.item, "data.files[0].file_urls")
                   };
                 }
                 links.push({
