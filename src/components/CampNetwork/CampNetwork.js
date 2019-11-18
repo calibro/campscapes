@@ -9,12 +9,69 @@ import {
   ForceGraphNode,
   ForceGraphLink
 } from "react-vis-force";
+import { MdZoomIn, MdZoomOut, MdYoutubeSearchedFor } from "react-icons/md";
 import { ZoomContainer } from "reactochart";
 import NodeRenderer from "./NodeRenderer";
 import styles from "./CampNetwork.module.scss";
 
+function getNewZoomProps(
+  newZoomScale,
+  oldZoomScale,
+  oldZoomX,
+  oldZoomY,
+  width,
+  height
+) {
+  return {
+    zoomX: width / 2 - (newZoomScale / oldZoomScale) * (width / 2 - oldZoomX),
+    zoomY: height / 2 - (newZoomScale / oldZoomScale) * (height / 2 - oldZoomY),
+    zoomScale: newZoomScale
+  };
+}
+
 const CampNetwork = ({ annotatedGraph, width, height }) => {
   const [nodeHover, setNodeHover] = useState(null);
+  const [zoomTransform, setZoomTransform] = useState({ k: 1, x: 0, y: 0 });
+  const [zoomX, setZoomX] = useState(0);
+  const [zoomY, setZoomY] = useState(0);
+  const [zoomScale, setZoomScale] = useState(1);
+
+  const handleZoom = nextZoomTransform => {
+    if (!nextZoomTransform) return;
+    setZoomX(nextZoomTransform.x);
+    setZoomY(nextZoomTransform.y);
+    setZoomScale(nextZoomTransform.k);
+  };
+  const handleClickZoomIn = () => {
+    const newZoomScale = zoomScale * 1.25;
+    const newZoomProps = getNewZoomProps(
+      newZoomScale,
+      zoomScale,
+      zoomX,
+      zoomY,
+      width,
+      height
+    );
+    console.log(newZoomScale, newZoomProps);
+    setZoomX(newZoomProps.x);
+    setZoomY(newZoomProps.y);
+    setZoomScale(newZoomProps.k);
+  };
+
+  const handleClickZoomOut = () => {
+    const newZoomScale = zoomScale / 1.25;
+    const newZoomProps = getNewZoomProps(
+      newZoomScale,
+      zoomScale,
+      zoomX,
+      zoomY,
+      width,
+      height
+    );
+    setZoomX(newZoomProps.x);
+    setZoomY(newZoomProps.y);
+    setZoomScale(newZoomProps.k);
+  };
 
   const setOpacityLink = link => {
     const neighbors = nodeHover.neighbors.map(d => {
@@ -80,67 +137,78 @@ const CampNetwork = ({ annotatedGraph, width, height }) => {
     return sortBy(formattedNodes, [d => d.data.itemType]);
   }, [annotatedGraph.nodes, nodeScale]);
 
-  //console.log(nodes, links, width, height);
   return (
     nodes &&
     links &&
     height &&
     width && (
-      <ZoomContainer width={width} height={height}>
-        <ForceGraph
-          simulationOptions={{
-            strength: {
-              charge: -150
-            },
-            animate: true,
-            height: height,
-            width: width,
-            radiusMargin: 10
-          }}
-        >
-          {/*{nodes.map(node => {
-            return (
-              <CustomNode
-                key={node.id}
-                node={node}
-                fill={nodeHover && nodeHover.id === node.id ? "red" : "white"}
-                onMouseOver={() => {
-                  console.log(node);
-                  setNodeHover(node);
-                }}
-                onMouseOut={() => {
-                  setNodeHover(null);
-                }}
-              />
-            );
-          })}*/}
-          {nodes.map(node => {
-            return (
-              <NodeRenderer
-                key={node.id}
-                node={node}
-                fill={"#101012"}
-                onMouseOver={() => {
-                  setNodeHover(node);
-                }}
-                onMouseOut={() => {
-                  setNodeHover(null);
-                }}
-                opacity={nodeHover ? setOpacityNode(node) : 1}
-              />
-            );
-          })}
-          {links.map(link => {
-            return (
-              <ForceGraphLink
-                key={link.source + link.target}
-                link={link}
-                opacity={nodeHover ? setOpacityLink(link) : 0}
-              />
-            );
-          })}
-        </ForceGraph>
-      </ZoomContainer>
+      <React.Fragment>
+        <div className={styles.zoomControls}>
+          <div className="btn-group-vertical" role="group">
+            <button
+              type="button"
+              className="btn btn-light"
+              onClick={() => {
+                handleClickZoomOut();
+              }}
+            >
+              <MdZoomOut size="1.4rem"></MdZoomOut>
+            </button>
+            <button type="button" className="btn btn-light">
+              <MdYoutubeSearchedFor size="1.4rem"></MdYoutubeSearchedFor>
+            </button>
+            <button
+              type="button"
+              className="btn btn-light"
+              onClick={() => {
+                handleClickZoomIn();
+              }}
+            >
+              <MdZoomIn size="1.4rem"></MdZoomIn>
+            </button>
+          </div>
+        </div>
+        <ZoomContainer width={width} height={height}>
+          <ForceGraph
+            simulationOptions={{
+              strength: {
+                charge: -150
+              },
+              animate: true,
+              height: height,
+              width: width,
+              radiusMargin: 10
+            }}
+            className={styles.svgNetwork}
+          >
+            {nodes.map(node => {
+              return (
+                <NodeRenderer
+                  key={node.id}
+                  node={node}
+                  fill={"#101012"}
+                  onMouseOver={() => {
+                    setNodeHover(node);
+                  }}
+                  onMouseOut={() => {
+                    setNodeHover(null);
+                  }}
+                  opacity={nodeHover ? setOpacityNode(node) : 1}
+                />
+              );
+            })}
+            {links.map(link => {
+              return (
+                <ForceGraphLink
+                  key={link.source + link.target}
+                  link={link}
+                  opacity={nodeHover ? setOpacityLink(link) : 0}
+                />
+              );
+            })}
+          </ForceGraph>
+        </ZoomContainer>
+      </React.Fragment>
     )
   );
 };

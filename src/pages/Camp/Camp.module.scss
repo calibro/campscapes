@@ -121,4 +121,6 @@
 .networkContainer {
   width: 100%;
   height: calc(100vh - var(--menu-height));
+  display: flex;
+  flex-direction: column;
 }
