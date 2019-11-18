@@ -1,0 +1,41 @@
+version: "3.1"
+
+services:
+  frontend:
+    image: registry.inmagik.com/campscapes/scraper_frontend
+    restart: always
+    networks: 
+      - web
+      - default
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.main.frontend.auth.basic=matteo:$$apr1$$Evw7IJwc$$TaVBVSswzg8nPuH1fU2Bh0"
+      - "traefik.enable=true"
+      - "traefik.main.frontend.entryPoints=https"
+      - "traefik.main.frontend.rule=Host:campscapes.inmagik.com"
+      - "traefik.main.port=80"
+      - "traefik.main.protocol=http"
+    
+  scraper:
+    image: registry.inmagik.com/campscapes/scraper-node
+    restart: always
+    environment:
+      - HOST=platform.campscapes.org
+      - USER=campsftp
+      - PASSWD=Nngr51*5
+    networks:
+      - web
+      - default
+    command: "node index.js /scraper/commands.yml"
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.main.frontend.auth.basic=matteo:$$apr1$$Evw7IJwc$$TaVBVSswzg8nPuH1fU2Bh0"
+      - "traefik.enable=true"
+      - "traefik.main.frontend.entryPoints=https"
+      - "traefik.main.frontend.rule=Host:campscapes.inmagik.com;Path:/ws"
+      - "traefik.main.port=3000"
+      - "traefik.main.protocol=ws"
+
+networks: 
+  web:
+    external: true
