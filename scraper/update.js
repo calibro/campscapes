@@ -201,7 +201,17 @@ async function main(options) {
       homeImages = flatten(pageBlocks.map(b => get(b, 'attachments', [])))
     }
   }
-  homeImages = homeImages.map(homeImage => get(homeImage, "file")).filter(item => !!item)
+  homeImages = homeImages.map(homeImage => {
+    const file = get(homeImage, "file")
+    const item = get(homeImage, "item")
+    if(!file){
+      return null
+    }
+    return {
+      ...file,
+      item
+    }
+  }).filter(item => !!item)
   fs.writeFileSync(homeImagesFilename, JSON.stringify(homeImages));
   
   // stories writing
