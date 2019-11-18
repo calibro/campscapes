@@ -121,7 +121,6 @@ const Camp = ({ match }) => {
       };
     });
     const links = cloneDeep(camp.storiesNetwork.links);
-    //console.log({ nodes, links });
     return { nodes, links };
   }, [camp, campGraph]);
 
@@ -261,31 +260,33 @@ const Camp = ({ match }) => {
             </div>
           </div>
 
-          <div className={styles.networkContainer}>
-            <div className="flex-grow-0 flex-shrink-0">
-              <div className="container">
-                <div className="row">
-                  <div className="col-12 pt-2">
-                    <div className={styles.metadata}>
-                      <h6>stories network</h6>
+          {annotatedGraph && annotatedGraph.nodes.length > 0 && (
+            <div className={styles.networkContainer}>
+              <div className="flex-grow-0 flex-shrink-0">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-12 pt-2">
+                      <div className={styles.metadata}>
+                        <h6>stories network</h6>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div
+                className="flex-grow-1 flex-shrink-1 position-relative"
+                ref={ref}
+              >
+                {width && height && (
+                  <CampNetwork
+                    annotatedGraph={annotatedGraph}
+                    width={width}
+                    height={height}
+                  ></CampNetwork>
+                )}
+              </div>
             </div>
-            <div
-              className="flex-grow-1 flex-shrink-1 position-relative"
-              ref={ref}
-            >
-              {annotatedGraph && width && height && (
-                <CampNetwork
-                  annotatedGraph={annotatedGraph}
-                  width={width}
-                  height={height}
-                ></CampNetwork>
-              )}
-            </div>
-          </div>
+          )}
         </React.Fragment>
       )}
     </div>

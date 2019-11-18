@@ -113,7 +113,7 @@ const CustomNodeStory = props => {
           fill={"#101012"}
         ></rect>
         <Text
-          style={{ fill: "white" }}
+          style={{ fill: "white", fontFamily: "'Inter', sans-serif" }}
           width={200}
           x={radius + radius / 2 + 5}
           y={radius}
