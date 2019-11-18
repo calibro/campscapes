@@ -22,7 +22,6 @@ const TimelineIcons = ({ camp, scale, location }) => {
   const makeIconContainerStyle = startDate => {
     if (scale(startDate) > LABEL_LIMIT) {
       const translateX = `calc(${styles.iconsWidth} / 2)`;
-      console.log(translateX);
       return {
         marginRight: `calc(100% - ${scale(startDate)}%)`,
         transform: `translateX(calc(${styles.iconsWidth} / 2))`,
