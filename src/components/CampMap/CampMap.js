@@ -240,8 +240,8 @@ const CampMap = ({
                 fillExtrusionPaint={{
                   "fill-extrusion-height": [
                     "case",
-                    ["boolean", ["has", "Height"], true],
-                    ["get", "Height"],
+                    ["boolean", ["has", "height"], true],
+                    ["get", "height"],
                     3
                   ],
                   "fill-extrusion-opacity": 0.8,
