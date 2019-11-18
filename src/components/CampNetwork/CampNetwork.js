@@ -44,6 +44,9 @@ const CampNetwork = ({ annotatedGraph, width, height }) => {
   };
   const handleClickZoomIn = () => {
     const newZoomScale = zoomScale * 1.25;
+    if (newZoomScale > 8) {
+      return;
+    }
     const newZoomProps = getNewZoomProps(
       newZoomScale,
       zoomScale,
@@ -52,14 +55,16 @@ const CampNetwork = ({ annotatedGraph, width, height }) => {
       width,
       height
     );
-    console.log(newZoomScale, newZoomProps);
-    setZoomX(newZoomProps.x);
-    setZoomY(newZoomProps.y);
-    setZoomScale(newZoomProps.k);
+    setZoomX(newZoomProps.zoomX);
+    setZoomY(newZoomProps.zoomY);
+    setZoomScale(newZoomProps.zoomScale);
   };
 
   const handleClickZoomOut = () => {
     const newZoomScale = zoomScale / 1.25;
+    if (newZoomScale < 0.5) {
+      return;
+    }
     const newZoomProps = getNewZoomProps(
       newZoomScale,
       zoomScale,
@@ -68,9 +73,15 @@ const CampNetwork = ({ annotatedGraph, width, height }) => {
       width,
       height
     );
-    setZoomX(newZoomProps.x);
-    setZoomY(newZoomProps.y);
-    setZoomScale(newZoomProps.k);
+    setZoomX(newZoomProps.zoomX);
+    setZoomY(newZoomProps.zoomY);
+    setZoomScale(newZoomProps.zoomScale);
+  };
+
+  const handleClickZoomReset = () => {
+    setZoomX(0);
+    setZoomY(0);
+    setZoomScale(1);
   };
 
   const setOpacityLink = link => {
@@ -105,7 +116,7 @@ const CampNetwork = ({ annotatedGraph, width, height }) => {
 
     return scaleSqrt()
       .domain([minDegree, maxDegree])
-      .range([5, 20]);
+      .range([10, 30]);
   }, [annotatedGraph]);
 
   const links = useMemo(() => {
@@ -154,7 +165,13 @@ const CampNetwork = ({ annotatedGraph, width, height }) => {
             >
               <MdZoomOut size="1.4rem"></MdZoomOut>
             </button>
-            <button type="button" className="btn btn-light">
+            <button
+              type="button"
+              className="btn btn-light"
+              onClick={() => {
+                handleClickZoomReset();
+              }}
+            >
               <MdYoutubeSearchedFor size="1.4rem"></MdYoutubeSearchedFor>
             </button>
             <button
@@ -168,11 +185,20 @@ const CampNetwork = ({ annotatedGraph, width, height }) => {
             </button>
           </div>
         </div>
-        <ZoomContainer width={width} height={height}>
+        <ZoomContainer
+          width={width}
+          height={height}
+          onZoom={handleZoom}
+          controlled={true}
+          zoomX={zoomX}
+          zoomY={zoomY}
+          zoomScale={zoomScale}
+          disableMouseWheelZoom={true}
+        >
           <ForceGraph
             simulationOptions={{
               strength: {
-                charge: -150
+                charge: -200
               },
               animate: true,
               height: height,

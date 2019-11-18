@@ -9,11 +9,23 @@ import {
   MdVideoLibrary,
   MdNote
 } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import useDimensions from "react-use-dimensions";
 import { Text } from "@vx/text";
 
-const CustomNodeResource = props => {
-  const { node, className, cx, cy, fill, ...spreadable } = props;
+const CustomNodeResource = withRouter(props => {
+  const {
+    node,
+    className,
+    cx,
+    cy,
+    fill,
+    location,
+    history,
+    match,
+    staticContext,
+    ...spreadable
+  } = props;
   const { radius = 5 } = node;
   const translateX = cx ? cx - radius : 0;
   const translateY = cy ? cy - radius : 0;
@@ -40,34 +52,48 @@ const CustomNodeResource = props => {
           </pattern>
         </defs>
       )}
-
-      <circle
-        className={`rv-force__node ${className}`}
-        cx={cx}
-        cy={cy}
-        r={radius}
-        fill={thumbnail ? `url(#${node.id})` : "white"}
-        {...spreadable}
-      />
-      {!thumbnail && (
-        <g transform={`translate(${translateX},${translateY})`}>
-          <MdImage
-            size={radius * 1.5 + "px"}
-            style={{ color: "black", pointerEvents: "none" }}
-            x={radius - (radius * 1.5) / 2}
-            y={radius - (radius * 1.5) / 2}
-          ></MdImage>
-        </g>
-      )}
+      <Link
+        to={{
+          pathname: `/items/${node.id.replace("node_", "")}`,
+          state: {
+            from: {
+              pathname: location.pathname,
+              search: location.search
+            }
+          }
+        }}
+      >
+        <circle
+          className={`rv-force__node ${className}`}
+          cx={cx}
+          cy={cy}
+          r={radius}
+          fill={thumbnail ? `url(#${node.id})` : "white"}
+          {...spreadable}
+        />
+        {!thumbnail && (
+          <g transform={`translate(${translateX},${translateY})`}>
+            <MdImage
+              size={radius * 1.5 + "px"}
+              style={{ color: "black", pointerEvents: "none" }}
+              x={radius - (radius * 1.5) / 2}
+              y={radius - (radius * 1.5) / 2}
+            ></MdImage>
+          </g>
+        )}
+      </Link>
     </React.Fragment>
   );
-};
+});
 
 const CustomNodeStory = props => {
   const { node, className, cx, cy, fill, ...spreadable } = props;
   const { radius = 5 } = node;
   const translateX = cx ? cx - radius : 0;
   const translateY = cy ? cy - radius : 0;
+  const padding = 2;
+  const [ref, { height, width }] = useDimensions({ liveMeasure: false });
+
   return (
     <g
       {...spreadable}
@@ -79,12 +105,20 @@ const CustomNodeStory = props => {
         style={{ color: "var(--red-cs)" }}
       ></MdAdd>
       <Link to={`/stories/${node.data.slug}`}>
+        <rect
+          x={radius + radius / 2}
+          y={-padding * 2}
+          width={width ? width : 0}
+          height={height ? height + padding * 2 : 0}
+          fill={"#101012"}
+        ></rect>
         <Text
           style={{ fill: "white" }}
           width={200}
           x={radius + radius / 2 + 5}
           y={radius}
           verticalAnchor="middle"
+          innerRef={ref}
         >
           {node.data.title}
         </Text>
