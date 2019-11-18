@@ -13,7 +13,7 @@ import { ZoomContainer } from "reactochart";
 import NodeRenderer from "./NodeRenderer";
 import styles from "./CampNetwork.module.scss";
 
-const CampNetworkUber = ({ annotatedGraph, width, height }) => {
+const CampNetwork = ({ annotatedGraph, width, height }) => {
   const [nodeHover, setNodeHover] = useState(null);
 
   const setOpacityLink = link => {
@@ -145,4 +145,4 @@ const CampNetworkUber = ({ annotatedGraph, width, height }) => {
   );
 };
 
-export default CampNetworkUber;
+export default CampNetwork;

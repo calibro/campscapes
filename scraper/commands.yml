@@ -1,0 +1,4 @@
+port: 3000
+scripts:
+  scrape:
+    command: /scraper/do_scrape.sh

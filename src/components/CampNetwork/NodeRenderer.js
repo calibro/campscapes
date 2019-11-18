@@ -15,33 +15,50 @@ import { Text } from "@vx/text";
 const CustomNodeResource = props => {
   const { node, className, cx, cy, fill, ...spreadable } = props;
   const { radius = 5 } = node;
+  const translateX = cx ? cx - radius : 0;
+  const translateY = cy ? cy - radius : 0;
+  const thumbnail =
+    node.data.fileUrls && node.data.fileUrls.square_thumbnail
+      ? node.data.fileUrls.square_thumbnail
+      : null;
   return (
     <React.Fragment>
-      <defs>
-        <pattern
-          id={node.id}
-          width="100%"
-          height="100%"
-          patternContentUnits="objectBoundingBox"
-        >
-          <image
-            href={
-              "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/7d11cb102441828236d52b34c5cc5b66.jpg"
-            }
-            preserveAspectRatio="xMidYMin slice"
-            width="1"
-            height="1"
-          ></image>
-        </pattern>
-      </defs>
+      {thumbnail && (
+        <defs>
+          <pattern
+            id={node.id}
+            width="100%"
+            height="100%"
+            patternContentUnits="objectBoundingBox"
+          >
+            <image
+              href={thumbnail}
+              preserveAspectRatio="xMidYMin slice"
+              width="1"
+              height="1"
+            ></image>
+          </pattern>
+        </defs>
+      )}
+
       <circle
         className={`rv-force__node ${className}`}
         cx={cx}
         cy={cy}
         r={radius}
-        fill={`url(#${node.id})`}
+        fill={thumbnail ? `url(#${node.id})` : "white"}
         {...spreadable}
       />
+      {!thumbnail && (
+        <g transform={`translate(${translateX},${translateY})`}>
+          <MdImage
+            size={radius * 1.5 + "px"}
+            style={{ color: "black", pointerEvents: "none" }}
+            x={radius - (radius * 1.5) / 2}
+            y={radius - (radius * 1.5) / 2}
+          ></MdImage>
+        </g>
+      )}
     </React.Fragment>
   );
 };

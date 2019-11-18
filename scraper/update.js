@@ -10,6 +10,7 @@ const tail = require("lodash/tail");
 const flatten = require("lodash/flatten");
 const findIndex = require("lodash/findIndex");
 const find = require("lodash/find");
+const uniq = require("lodash/uniq");
 
 const CAMPSCAPES_DATA_DIRNAME = "campscapes-data";
 
@@ -200,7 +201,17 @@ async function main(options) {
       homeImages = flatten(pageBlocks.map(b => get(b, 'attachments', [])))
     }
   }
-  homeImages = homeImages.map(homeImage => get(homeImage, "file")).filter(item => !!item)
+  homeImages = homeImages.map(homeImage => {
+    const file = get(homeImage, "file")
+    const item = get(homeImage, "item")
+    if(!file){
+      return null
+    }
+    return {
+      ...file,
+      item
+    }
+  }).filter(item => !!item)
   fs.writeFileSync(homeImagesFilename, JSON.stringify(homeImages));
   
   // stories writing
@@ -216,7 +227,7 @@ async function main(options) {
     }, [])
     return {
       ...story,
-      creator: creator,
+      creator: uniq(creator),
     }
   })
   
@@ -259,12 +270,13 @@ async function main(options) {
           get(currentPage, "page_blocks", []).forEach(pageBlock => {
             pageBlock.attachments.forEach(attach => {
               if (attach.item) {
+                
                 if (!nodesById[attach.item.id]) {
                   nodesById[attach.item.id] = {
                     id: attach.item.id,
                     itemType: attach.item.item_type,
                     title: attach.item.data.title,
-                    fileUrls: get(attach.item, "data.files[0].fileUrls")
+                    fileUrls: get(attach.item, "data.files[0].file_urls")
                   };
                 }
                 links.push({

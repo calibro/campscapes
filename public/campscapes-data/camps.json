@@ -1814,412 +1814,904 @@
         {
           "id": 1831,
           "itemType": "resource",
-          "title": "Gezin vluchtelingen"
+          "title": "Gezin vluchtelingen",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ba3b96f506de57363ad3c228f06c91fd.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/ba3b96f506de57363ad3c228f06c91fd.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/ba3b96f506de57363ad3c228f06c91fd.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/ba3b96f506de57363ad3c228f06c91fd.jpg"
+          }
         },
         {
           "id": 1839,
           "itemType": "resource",
-          "title": "Reactions to 1938-1939"
+          "title": "Reactions to 1938-1939",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/720927ca1534ba985493f35c9be32a81.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1849,
           "itemType": "resource",
-          "title": "Margules’ stay in the Netherlands"
+          "title": "Margules’ stay in the Netherlands",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/1b757a5286383de11cd984ffac36ff48.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1850,
           "itemType": "resource",
-          "title": "Article detailing the restrictive legal conditions for refugees in 1938"
+          "title": "Article detailing the restrictive legal conditions for refugees in 1938",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/e92f9a1441d69369f7c36ec127b46505.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1851,
           "itemType": "resource",
-          "title": "Arrests of refugees 1938"
+          "title": "Arrests of refugees 1938",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8840035a3b684410f1d1a8638ed51da3.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1852,
           "itemType": "resource",
-          "title": "Rise of unemployment in 1938 "
+          "title": "Rise of unemployment in 1938 ",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/da209ef1b3a54669a4afe2a5ded813a1.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1853,
           "itemType": "resource",
-          "title": "Reports on individuals dying in camp Westerbork"
+          "title": "Reports on individuals dying in camp Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/96930f50ebe3744248ff028b705402df.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/96930f50ebe3744248ff028b705402df.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/96930f50ebe3744248ff028b705402df.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/96930f50ebe3744248ff028b705402df.jpg"
+          }
         },
         {
           "id": 1855,
           "itemType": "resource",
-          "title": "Moluccans with \"orange blood\""
+          "title": "Moluccans with \"orange blood\"",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8a56c91372289bdfd5acb9e6587fc323.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1856,
           "itemType": "resource",
-          "title": "Provinciale Drentsche en Asser Courant arrival Dutch Indos"
+          "title": "Provinciale Drentsche en Asser Courant arrival Dutch Indos",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/148e2b46e35b8b11e68afbee7b0e88e5.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1857,
           "itemType": "resource",
-          "title": "The responsibility for the Moluccans in Indonesia"
+          "title": "The responsibility for the Moluccans in Indonesia",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/b1700a886da8c91f8202d00a3dbc7900.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1858,
           "itemType": "resource",
-          "title": "Opening darnkbarheid Monument   "
+          "title": "Opening darnkbarheid Monument   ",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/d58f7aa3b8f9bedaba4ba26570f5b528.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1859,
           "itemType": "resource",
-          "title": "The \"sad\"  beginning of life in Schattenberg"
+          "title": "The \"sad\"  beginning of life in Schattenberg",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/315a891cc0ad30532cbe780497699eaf.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1860,
           "itemType": "resource",
-          "title": "1966-19-01 we zijn KNIL militairen"
+          "title": "1966-19-01 we zijn KNIL militairen",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/742eae1e8d9ff8286ee7964ea2d194f0.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1861,
           "itemType": "resource",
-          "title": "The role of the Dutch government in the Moluccan crisis"
+          "title": "The role of the Dutch government in the Moluccan crisis",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/c2f801a7cff2095372544fd640206677.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1864,
           "itemType": "resource",
-          "title": "Conflict in Schattenberg"
+          "title": "Conflict in Schattenberg",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/4509c8a7ae13855c83d15a2bd3a64cb3.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/4509c8a7ae13855c83d15a2bd3a64cb3.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/4509c8a7ae13855c83d15a2bd3a64cb3.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/4509c8a7ae13855c83d15a2bd3a64cb3.jpg"
+          }
         },
         {
           "id": 1866,
           "itemType": "resource",
-          "title": "The still of the \"Jewish girl\" from the deportation trains"
+          "title": "The still of the \"Jewish girl\" from the deportation trains",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/0f7464cb3c2446daf5fdbf28932bdc61.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1868,
           "itemType": "resource",
-          "title": "The beginnings of the integration in Schattenberg"
+          "title": "The beginnings of the integration in Schattenberg",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/a3f0ed1728686c70c634aa65b6e11d39.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1870,
           "itemType": "resource",
-          "title": "The Jewish community financed Westerbork"
+          "title": "The Jewish community financed Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/4a6f456a44e6407f205f2d142dc205e9.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1871,
           "itemType": "resource",
-          "title": "Obligations for sending a package"
+          "title": "Obligations for sending a package",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ab1d1d8f8cd3063d9760a9bc64d65749.JPG",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1875,
           "itemType": "resource",
-          "title": "Nazi propaganda piece on the need to isolate the Jewish population in the Netherlands"
+          "title": "Nazi propaganda piece on the need to isolate the Jewish population in the Netherlands",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/18681f1faf5a9753b875af33d29150c3.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1879,
           "itemType": "resource",
-          "title": "Communication between the Statsbosbeheer and the Raad voor Arbeid concerning the use of \"unemployed\" for the construction of the refugee camp \"Hooghalen\""
+          "title": "Communication between the Statsbosbeheer and the Raad voor Arbeid concerning the use of \"unemployed\" for the construction of the refugee camp \"Hooghalen\"",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/865238f8ade6fc61a6452c46f1fd68cc.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1882,
           "itemType": "resource",
-          "title": "Refugees are not welcome"
+          "title": "Refugees are not welcome",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/184b7aeda49fb2c5419c11e59661d1c0.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1886,
           "itemType": "resource",
-          "title": "Margules starts a new life in the USA"
+          "title": "Margules starts a new life in the USA",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ebabb4ddcd3cf724605852280e8bd317.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1887,
           "itemType": "resource",
-          "title": "Heijplaat island in Rotterdam harbour, 2016."
+          "title": "Heijplaat island in Rotterdam harbour, 2016.",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/d7d357160f15dda5e253f6117284d25d.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/d7d357160f15dda5e253f6117284d25d.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/d7d357160f15dda5e253f6117284d25d.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/d7d357160f15dda5e253f6117284d25d.jpg"
+          }
         },
         {
           "id": 1899,
           "itemType": "resource",
-          "title": "Funeral in Schattenberg"
+          "title": "Funeral in Schattenberg",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/6a1e092f3f857efbc1f05a18edb0b47b.png",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/6a1e092f3f857efbc1f05a18edb0b47b.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/6a1e092f3f857efbc1f05a18edb0b47b.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/6a1e092f3f857efbc1f05a18edb0b47b.jpg"
+          }
         },
         {
           "id": 1901,
           "itemType": "resource",
-          "title": "A poll shows at least 40% of Dutch society is sympathetic to the Moluccan cause"
+          "title": "A poll shows at least 40% of Dutch society is sympathetic to the Moluccan cause",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/55a03fd3e3bce92db38ca4871ede926c.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/55a03fd3e3bce92db38ca4871ede926c.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/55a03fd3e3bce92db38ca4871ede926c.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/55a03fd3e3bce92db38ca4871ede926c.jpg"
+          }
         },
         {
           "id": 1902,
           "itemType": "resource",
-          "title": "Autobiography bep Turksma"
+          "title": "Autobiography bep Turksma",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/6cc1fabe89cd32dbaeca9f63ab5674f7.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/6cc1fabe89cd32dbaeca9f63ab5674f7.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/6cc1fabe89cd32dbaeca9f63ab5674f7.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/6cc1fabe89cd32dbaeca9f63ab5674f7.jpg"
+          }
         },
         {
           "id": 1903,
           "itemType": "resource",
-          "title": "BS"
+          "title": "BS",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/2a8e21c3abd859cf6b465cc544a9f0c4.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/2a8e21c3abd859cf6b465cc544a9f0c4.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/2a8e21c3abd859cf6b465cc544a9f0c4.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/2a8e21c3abd859cf6b465cc544a9f0c4.jpg"
+          }
         },
         {
           "id": 1906,
           "itemType": "resource",
-          "title": "Those around work for the building of the camp"
+          "title": "Those around work for the building of the camp",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ca5359fec7429e1a56ad7198b94c194d.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1907,
           "itemType": "resource",
-          "title": "Regelen"
+          "title": "Regelen",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/96fa1e321b0d3e83ce0ba037fa105965.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1908,
           "itemType": "resource",
-          "title": "Capelle and unpaid duty"
+          "title": "Capelle and unpaid duty",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/9a7f214ecd131a26e2bb9c2d3803e507.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1910,
           "itemType": "resource",
-          "title": "David Cohen, Joodse Raad on Westerbork"
+          "title": "David Cohen, Joodse Raad on Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/e6d155c03e3f14adf1d8a3debdd2445f.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/e6d155c03e3f14adf1d8a3debdd2445f.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/e6d155c03e3f14adf1d8a3debdd2445f.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/e6d155c03e3f14adf1d8a3debdd2445f.jpg"
+          }
         },
         {
           "id": 1913,
           "itemType": "resource",
-          "title": "The Moluccan community is upset over the show of power"
+          "title": "The Moluccan community is upset over the show of power",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/e530f417b9a674b6f80da448cb45150e.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/e530f417b9a674b6f80da448cb45150e.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/e530f417b9a674b6f80da448cb45150e.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/e530f417b9a674b6f80da448cb45150e.jpg"
+          }
         },
         {
           "id": 1916,
           "itemType": "resource",
-          "title": "The 102,000 stones"
+          "title": "The 102,000 stones",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/dc73ab60d8a4fa903b54ed48643ae294.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1919,
           "itemType": "resource",
-          "title": "Article about the selective memory of decolonization to blame for the Moluccan crisis, by JJ de Jong"
+          "title": "Article about the selective memory of decolonization to blame for the Moluccan crisis, by JJ de Jong",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/221a76753c08f7c6a1a92b5b79f9fe21.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/221a76753c08f7c6a1a92b5b79f9fe21.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/221a76753c08f7c6a1a92b5b79f9fe21.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/221a76753c08f7c6a1a92b5b79f9fe21.jpg"
+          }
         },
         {
           "id": 1924,
           "itemType": "resource",
-          "title": "Evian"
+          "title": "Evian",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/f166f4a09d9ded096ea9ce74d83801a3.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1930,
           "itemType": "resource",
-          "title": "Dining room Gemmeker story"
+          "title": "Dining room Gemmeker story",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/98f203cc5f979c751dacee48845724dd.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/98f203cc5f979c751dacee48845724dd.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/98f203cc5f979c751dacee48845724dd.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/98f203cc5f979c751dacee48845724dd.jpg"
+          }
         },
         {
           "id": 1932,
           "itemType": "resource",
-          "title": "Grune Polizei in Westerbork"
+          "title": "Grune Polizei in Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/86cbced5f9c061abc8217b7bb009dceb.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/86cbced5f9c061abc8217b7bb009dceb.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/86cbced5f9c061abc8217b7bb009dceb.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/86cbced5f9c061abc8217b7bb009dceb.jpg"
+          }
         },
         {
           "id": 1934,
           "itemType": "resource",
-          "title": "Arrested collaborators, summer 1945."
+          "title": "Arrested collaborators, summer 1945.",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/6743728995be3bad0dc6bb24df7668fb.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1936,
           "itemType": "resource",
-          "title": "“My first camp” Heijplaat, 1939"
+          "title": "“My first camp” Heijplaat, 1939",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/cc70d60295ee55cb39cc96bb336c40e0.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1937,
           "itemType": "resource",
-          "title": "Hans Margules’ family in Berlin, 1923."
+          "title": "Hans Margules’ family in Berlin, 1923.",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/c9b389365d83260d4bd3a2f078d82b4c.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1940,
           "itemType": "resource",
-          "title": "Article about refugee deportations, 1938"
+          "title": "Article about refugee deportations, 1938",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/5be57489ea050753f19ba229a38f60a4.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/5be57489ea050753f19ba229a38f60a4.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/5be57489ea050753f19ba229a38f60a4.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/5be57489ea050753f19ba229a38f60a4.jpg"
+          }
         },
         {
           "id": 1941,
           "itemType": "resource",
-          "title": "Hans Margules’ alien’s passport, 1940"
+          "title": "Hans Margules’ alien’s passport, 1940",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/af2459d10d0403324efa88b5a1a04f6f.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1951,
           "itemType": "resource",
-          "title": "Margules on guilt, 2012"
+          "title": "Margules on guilt, 2012",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/074a0261c8738af357fde30fa1ae5905.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1952,
           "itemType": "resource",
-          "title": "Article about identification of Settela, 1994"
+          "title": "Article about identification of Settela, 1994",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/4621b46c5621d41a76db3a50c5156be6.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/4621b46c5621d41a76db3a50c5156be6.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/4621b46c5621d41a76db3a50c5156be6.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/4621b46c5621d41a76db3a50c5156be6.jpg"
+          }
         },
         {
           "id": 1963,
           "itemType": "resource",
-          "title": "Indos in comparison to Moluccans"
+          "title": "Indos in comparison to Moluccans",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/43fdf0b12d8f68bcb37f1a553e6d5d7b.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1967,
           "itemType": "resource",
-          "title": "in 1968, during an interview, he proclaims his innocence"
+          "title": "in 1968, during an interview, he proclaims his innocence",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/16495f20eb242ea572e8646d75fb7006.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1968,
           "itemType": "resource",
-          "title": "Interview W. Stertzenbach about Westerbork"
+          "title": "Interview W. Stertzenbach about Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/4025a3da6f1c86c0d3000dce6f08bad8.mp3",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1972,
           "itemType": "resource",
-          "title": "Camp Heijplaat, 1939."
+          "title": "Camp Heijplaat, 1939.",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/a59c0d514c4a49b3d8022ef88912f29c.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/a59c0d514c4a49b3d8022ef88912f29c.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/a59c0d514c4a49b3d8022ef88912f29c.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/a59c0d514c4a49b3d8022ef88912f29c.jpg"
+          }
         },
         {
           "id": 1976,
           "itemType": "resource",
-          "title": "A piece about the politics in the Netherlands and in Indonesia that led to the Moluccan issue"
+          "title": "A piece about the politics in the Netherlands and in Indonesia that led to the Moluccan issue",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ed603807a607fd84b12ad4560686643f.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/ed603807a607fd84b12ad4560686643f.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/ed603807a607fd84b12ad4560686643f.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/ed603807a607fd84b12ad4560686643f.jpg"
+          }
         },
         {
           "id": 1989,
           "itemType": "resource",
-          "title": "Philip Mechanicus’ account on daily life in Westerbork, 3 June/14 August, 1943."
+          "title": "Philip Mechanicus’ account on daily life in Westerbork, 3 June/14 August, 1943.",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/7dd3f2c6a983b1bee6774cd96670a31d.md",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 1990,
           "itemType": "resource",
-          "title": "Philip Mechanicus on the German-Dutch conflict in the camp"
+          "title": "Philip Mechanicus on the German-Dutch conflict in the camp",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/cf854c5df43aaf7fcf1cf123c307a481.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/cf854c5df43aaf7fcf1cf123c307a481.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/cf854c5df43aaf7fcf1cf123c307a481.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/cf854c5df43aaf7fcf1cf123c307a481.jpg"
+          }
         },
         {
           "id": 1992,
           "itemType": "resource",
-          "title": "Illegal leaflet"
+          "title": "Illegal leaflet",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/d243fba7311b2203260ff72c121623e5.jpeg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/d243fba7311b2203260ff72c121623e5.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/d243fba7311b2203260ff72c121623e5.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/d243fba7311b2203260ff72c121623e5.jpg"
+          }
         },
         {
           "id": 2000,
           "itemType": "resource",
-          "title": "Oosteinde Jewish resistance"
+          "title": "Oosteinde Jewish resistance",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/1f9160b3887e33e5cce4118537d623a5.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2002,
           "itemType": "resource",
-          "title": "Etty Hillesum man over the house "
+          "title": "Etty Hillesum man over the house ",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/946faa11ab4f85cb95903f65890e8b6a.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2006,
           "itemType": "resource",
-          "title": "Red Cross Card Settela Steinbach, 1946"
+          "title": "Red Cross Card Settela Steinbach, 1946",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/c34324a9213f326453616de1c927619a.JPG",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/c34324a9213f326453616de1c927619a.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/c34324a9213f326453616de1c927619a.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/c34324a9213f326453616de1c927619a.jpg"
+          }
         },
         {
           "id": 2007,
           "itemType": "resource",
-          "title": "Refugee law"
+          "title": "Refugee law",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/9794c0e1a584dcd1bfc0339111dd2d54.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2008,
           "itemType": "resource",
-          "title": "Het Spel van Weinreb"
+          "title": "Het Spel van Weinreb",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8154b529537b2940c54aa1c7a1bc1372.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2010,
           "itemType": "resource",
-          "title": "Resistance in 1941"
+          "title": "Resistance in 1941",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/aded4d06471d48c22c9eac9381beff59.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2027,
           "itemType": "resource",
-          "title": "Roma caravans"
+          "title": "Roma caravans",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/02238caa04270dfb7a7666aa060c633c.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/02238caa04270dfb7a7666aa060c633c.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/02238caa04270dfb7a7666aa060c633c.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/02238caa04270dfb7a7666aa060c633c.jpg"
+          }
         },
         {
           "id": 2030,
           "itemType": "resource",
-          "title": "Arrived on  the Kota Inten boat"
+          "title": "Arrived on  the Kota Inten boat",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/821c926d5208c944d359df8756a8bcbd.md",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2034,
           "itemType": "resource",
-          "title": "In Istanbul, solidarity with the Moluccans"
+          "title": "In Istanbul, solidarity with the Moluccans",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/cb853e625448df9e37a2b68074badfc9.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/cb853e625448df9e37a2b68074badfc9.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/cb853e625448df9e37a2b68074badfc9.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/cb853e625448df9e37a2b68074badfc9.jpg"
+          }
         },
         {
           "id": 2036,
           "itemType": "resource",
-          "title": "Better SS than communist"
+          "title": "Better SS than communist",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/a4c280748e6483817d154e04e5146b22.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/a4c280748e6483817d154e04e5146b22.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/a4c280748e6483817d154e04e5146b22.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/a4c280748e6483817d154e04e5146b22.jpg"
+          }
         },
         {
           "id": 2038,
           "itemType": "resource",
-          "title": "Speck Obreen retires"
+          "title": "Speck Obreen retires",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/9cf62929c79c4ae8afe37656e6398434.png",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2039,
           "itemType": "resource",
-          "title": "Speck Obreen"
+          "title": "Speck Obreen",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8043c142b2cac9d4aa0aea61985e834d.JPG",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2042,
           "itemType": "resource",
-          "title": "Stilte"
+          "title": "Stilte",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/5bc170d7fd0a767256db06c7d5faee80.jpeg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/5bc170d7fd0a767256db06c7d5faee80.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/5bc170d7fd0a767256db06c7d5faee80.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/5bc170d7fd0a767256db06c7d5faee80.jpg"
+          }
         },
         {
           "id": 2043,
           "itemType": "resource",
-          "title": "Description of the obligations of the teritoriaal bevelhebber"
+          "title": "Description of the obligations of the teritoriaal bevelhebber",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/3191c0a979db5ee19fd2675c167cfa90.PDF",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/3191c0a979db5ee19fd2675c167cfa90.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/3191c0a979db5ee19fd2675c167cfa90.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/3191c0a979db5ee19fd2675c167cfa90.jpg"
+          }
         },
         {
           "id": 2048,
           "itemType": "resource",
-          "title": " Transport arriving"
+          "title": " Transport arriving",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/f7218c8273cd86c34043a87bd70cfabe.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/f7218c8273cd86c34043a87bd70cfabe.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/f7218c8273cd86c34043a87bd70cfabe.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/f7218c8273cd86c34043a87bd70cfabe.jpg"
+          }
         },
         {
           "id": 2050,
           "itemType": "resource",
-          "title": "Unemployment higher than ever"
+          "title": "Unemployment higher than ever",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/b2b72f64ea8c2d77947cb44f0f46df21.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2052,
           "itemType": "resource",
-          "title": "Conflict commemoration between \"antifascist\" and KNIL veterans"
+          "title": "Conflict commemoration between \"antifascist\" and KNIL veterans",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/a2fb2bca1e25d911951118785b7aceba.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/a2fb2bca1e25d911951118785b7aceba.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/a2fb2bca1e25d911951118785b7aceba.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/a2fb2bca1e25d911951118785b7aceba.jpg"
+          }
         },
         {
           "id": 2053,
           "itemType": "resource",
-          "title": "Official verdict on the new trial on the actions of the Dutch government during the 1977 train hijacking"
+          "title": "Official verdict on the new trial on the actions of the Dutch government during the 1977 train hijacking",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ddb1f3f3353e91ab7a1a355618a81767.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/ddb1f3f3353e91ab7a1a355618a81767.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/ddb1f3f3353e91ab7a1a355618a81767.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/ddb1f3f3353e91ab7a1a355618a81767.jpg"
+          }
         },
         {
           "id": 2054,
           "itemType": "resource",
-          "title": "Amsterdam Police"
+          "title": "Amsterdam Police",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/bdd0143caa7ccc8480efd26ca3254b76.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/bdd0143caa7ccc8480efd26ca3254b76.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/bdd0143caa7ccc8480efd26ca3254b76.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/bdd0143caa7ccc8480efd26ca3254b76.jpg"
+          }
         },
         {
           "id": 2055,
           "itemType": "resource",
-          "title": "The silenced refugee history of Westerbork"
+          "title": "The silenced refugee history of Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/5bdb2fb7f357eea6e275f2ac1b0d752e.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2059,
           "itemType": "resource",
-          "title": "Werkampen in Drenthe"
+          "title": "Werkampen in Drenthe",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/3be4cc5ed116ec1faf2ed47114bfaaa8.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/3be4cc5ed116ec1faf2ed47114bfaaa8.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/3be4cc5ed116ec1faf2ed47114bfaaa8.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/3be4cc5ed116ec1faf2ed47114bfaaa8.jpg"
+          }
         },
         {
           "id": 2060,
           "itemType": "resource",
-          "title": "Werner, Klara Schabrod, Henny Dreyfuss 1961"
+          "title": "Werner, Klara Schabrod, Henny Dreyfuss 1961",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/5130754b80179a15d555ab6788912aa9.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2063,
           "itemType": "resource",
-          "title": "Zwarte Piet"
+          "title": "Zwarte Piet",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/0b46ca6f8a3bc778fb902be64e2829f1.jpeg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/0b46ca6f8a3bc778fb902be64e2829f1.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/0b46ca6f8a3bc778fb902be64e2829f1.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/0b46ca6f8a3bc778fb902be64e2829f1.jpg"
+          }
         },
         {
           "id": 2066,
           "itemType": "resource",
-          "title": "Article by survivor Werner Sterzenbach"
+          "title": "Article by survivor Werner Sterzenbach",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/792f0e7f513028cf09c391b4b7981874.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2067,
           "itemType": "resource",
-          "title": "Brief uit gevangenis"
+          "title": "Brief uit gevangenis",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/9cea395ba3544dde455947d4b6b10487.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/9cea395ba3544dde455947d4b6b10487.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/9cea395ba3544dde455947d4b6b10487.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/9cea395ba3544dde455947d4b6b10487.jpg"
+          }
         },
         {
           "id": 2069,
           "itemType": "resource",
-          "title": "Complaint asking to start the juridical investigation "
+          "title": "Complaint asking to start the juridical investigation ",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/9f40ad9b1a5efa2db0a4fff54ddec63f.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2070,
           "itemType": "resource",
-          "title": "Decision about pursuing a number of arrests"
+          "title": "Decision about pursuing a number of arrests",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ff6fdffb715429fcb5277025116cc084.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2078,
           "itemType": "resource",
-          "title": "Location efforts postwar, the Red Cross repositories"
+          "title": "Location efforts postwar, the Red Cross repositories",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/33fb15f6532ba3dc187ae15923cd38aa.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2082,
           "itemType": "resource",
-          "title": "Testimony of a priviledged inmate"
+          "title": "Testimony of a priviledged inmate",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/56967c7122da0dcfe6a3bdefcc999af9.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2083,
@@ -2229,22 +2721,46 @@
         {
           "id": 2085,
           "itemType": "resource",
-          "title": "Voorzitter Assen city hall discusses the Schattenberg woonoord in the former camp "
+          "title": "Voorzitter Assen city hall discusses the Schattenberg woonoord in the former camp ",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ea5981a182f92b49047976abb30902c2.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2099,
           "itemType": "icon",
-          "title": "The “Commander House” in Westerbork, the Netherlands"
+          "title": "The “Commander House” in Westerbork, the Netherlands",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/2c01c5e0acc86a00093ae3762078f32e.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/2c01c5e0acc86a00093ae3762078f32e.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/2c01c5e0acc86a00093ae3762078f32e.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/2c01c5e0acc86a00093ae3762078f32e.jpg"
+          }
         },
         {
           "id": 2101,
           "itemType": "resource",
-          "title": "Report of the NIOD concerning the activities of the Friedrich Weinreb (original title:”Rapport door het Rijksinstituut voor Oorlogsdocumentatie uitgebracht aan de Minister van Justitie inzake de activiteiten van drs. F. Weinreb), by D. Giltay Veth and A.J. van der Leeuw, 1976"
+          "title": "Report of the NIOD concerning the activities of the Friedrich Weinreb (original title:”Rapport door het Rijksinstituut voor Oorlogsdocumentatie uitgebracht aan de Minister van Justitie inzake de activiteiten van drs. F. Weinreb), by D. Giltay Veth and A.J. van der Leeuw, 1976",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/2c3b907101ec42d70797c06cf782f08e.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/2c3b907101ec42d70797c06cf782f08e.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/2c3b907101ec42d70797c06cf782f08e.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/2c3b907101ec42d70797c06cf782f08e.jpg"
+          }
         },
         {
           "id": 2102,
           "itemType": "icon",
-          "title": "A diary"
+          "title": "A diary",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/7d11cb102441828236d52b34c5cc5b66.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/7d11cb102441828236d52b34c5cc5b66.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/7d11cb102441828236d52b34c5cc5b66.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/7d11cb102441828236d52b34c5cc5b66.jpg"
+          }
         },
         {
           "id": 2105,
@@ -2434,42 +2950,90 @@
         {
           "id": 2155,
           "itemType": "resource",
-          "title": "Historian Leo de Jong TV show 1960s"
+          "title": "Historian Leo de Jong TV show 1960s",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ecc90afa7ee6ba5660f7e86a36f4189c.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2157,
           "itemType": "resource",
-          "title": "Footage and report of arrival"
+          "title": "Footage and report of arrival",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/acaf9ef6859f2f46ba0b66ff7eedf740.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2159,
           "itemType": "resource",
-          "title": "Westerbork film (produced by Rudolf Breslauer)"
+          "title": "Westerbork film (produced by Rudolf Breslauer)",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/2d387f7527e912f02a3c55195fff61b7.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2161,
           "itemType": "resource",
-          "title": "Live report on the train hijacking"
+          "title": "Live report on the train hijacking",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/162ebac0a3bdd6b8bd298c806c1e59c8.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2162,
           "itemType": "resource",
-          "title": "Rauter trial"
+          "title": "Rauter trial",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/7a5fe9fbcda8b6e4993c99d8dfa9abef.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2163,
           "itemType": "resource",
-          "title": "Daily life Schattenberg"
+          "title": "Daily life Schattenberg",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8b70ddd4ea1c36f03a27c329ff870754.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2164,
           "itemType": "icon",
-          "title": "Commemoration KNIL in Schattenberg"
+          "title": "Commemoration KNIL in Schattenberg",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/59872dfc070658e8e3cf4c07d6a3ff54.mp4",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2165,
           "itemType": "resource",
-          "title": "NS in the camp"
+          "title": "NS in the camp",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/b1fb086623fa7f80acc5a9a30a92c59a.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2166,
@@ -2494,12 +3058,24 @@
         {
           "id": 2173,
           "itemType": "resource",
-          "title": "Refugees building the camp"
+          "title": "Refugees building the camp",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/cdec7f2e8cbffb90e23ed8d32a2bee36.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2175,
           "itemType": "resource",
-          "title": "Article about refugee deportations, 1938"
+          "title": "Article about refugee deportations, 1938",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/0c96656dd6c9c8520b3c97e75913459e.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2176,
@@ -2509,7 +3085,13 @@
         {
           "id": 2177,
           "itemType": "resource",
-          "title": "A new book on the Jewish work colony of Wieringermeer"
+          "title": "A new book on the Jewish work colony of Wieringermeer",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/7542be8de21c4b42dfa5292d559185c3.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2178,
@@ -2529,7 +3111,13 @@
         {
           "id": 2188,
           "itemType": "resource",
-          "title": "Map of trains in the region of Westerbork"
+          "title": "Map of trains in the region of Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/421a376e542af62863c1a9468a488142.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2190,
@@ -2538,17 +3126,35 @@
         {
           "id": 2191,
           "itemType": "resource",
-          "title": "The decision through which Westerbork changes regime, from the Ministry of Internal Affairs, now to the Ministry of Justice, "
+          "title": "The decision through which Westerbork changes regime, from the Ministry of Internal Affairs, now to the Ministry of Justice, ",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/4bf14ce07f01310919f29cb13fdda4ec.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/4bf14ce07f01310919f29cb13fdda4ec.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/4bf14ce07f01310919f29cb13fdda4ec.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/4bf14ce07f01310919f29cb13fdda4ec.jpg"
+          }
         },
         {
           "id": 2193,
           "itemType": "resource",
-          "title": "OD - Ordungsdient, internal camp police in Westerbork"
+          "title": "OD - Ordungsdient, internal camp police in Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/084ad12d0b0a0bd6eed08ba530055564.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/084ad12d0b0a0bd6eed08ba530055564.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/084ad12d0b0a0bd6eed08ba530055564.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/084ad12d0b0a0bd6eed08ba530055564.jpg"
+          }
         },
         {
           "id": 2194,
           "itemType": "resource",
-          "title": "Policemen come to pick up Jews and send to Westerbork"
+          "title": "Policemen come to pick up Jews and send to Westerbork",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/beab22df475b4b80fcea23e331fa3717.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2195,
@@ -2558,12 +3164,24 @@
         {
           "id": 2198,
           "itemType": "resource",
-          "title": "Notice of disappearance to the Red Cross"
+          "title": "Notice of disappearance to the Red Cross",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/0385fffff4b54b44ca61ecd344ba3e54.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2199,
           "itemType": "resource",
-          "title": "Binnenlandse Strijdkrachten"
+          "title": "Binnenlandse Strijdkrachten",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/4d8d18f4311b9a75b3c8887090296628.jpg",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/4d8d18f4311b9a75b3c8887090296628.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/4d8d18f4311b9a75b3c8887090296628.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/4d8d18f4311b9a75b3c8887090296628.jpg"
+          }
         }
       ]
     }
@@ -3001,7 +3619,7 @@
           "public": false,
           "featured": false,
           "added": "2019-11-08T12:20:46+00:00",
-          "modified": "2019-11-08T12:22:32+00:00",
+          "modified": "2019-11-15T20:46:09+00:00",
           "item_type": "geolayer_vector",
           "collection": null,
           "owner": {
@@ -3010,7 +3628,7 @@
             "resource": "users"
           },
           "files": {
-            "count": 0,
+            "count": 1,
             "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2262",
             "resource": "files"
           },
@@ -3027,7 +3645,37 @@
             "creator": ["SPECS group"],
             "provenance": "2018-08 through 2019-09 reconstruction and 3D modelling. 2019-10-3 and onward deployment in V/AR app\r\n2019-10 through 2019-11 creation of footprint map version (this vector file), 2019-11 and onward deployment on Accessing Campscapes platform.",
             "copyright": "(c) SPECS group",
-            "files": []
+            "files": [
+              {
+                "id": 927,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/927",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/293e80011b626cde5305971cda53090d.geojson",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-15T20:46:09+00:00",
+                "modified": "2019-11-15T20:46:09+00:00",
+                "filename": "293e80011b626cde5305971cda53090d.geojson",
+                "authentication": "d0bb01c19f5a38628ac50b3770a532da",
+                "has_derivative_image": false,
+                "mime_type": "text/plain",
+                "order": null,
+                "original_filename": "Jasenovac_Brickworks_camp_(v2019-11-15).geojson",
+                "size": 42594,
+                "stored": true,
+                "type_os": "UTF-8 Unicode text, with very long lines",
+                "metadata": [],
+                "item": {
+                  "id": 2262,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2262",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
           },
           "linkedPages": []
         }
@@ -3121,23 +3769,53 @@
         },
         {
           "id": 2229,
-          "title": "Part of the Stara Gradiška complex in 2017 © Centre of Archaeology"
+          "title": "Part of the Stara Gradiška complex in 2017 © Centre of Archaeology",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/0c508fedf1b1f137c39be363ae23ac33.JPG",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2230,
-          "title": "One of the rooms within the camp hospital “Hotel Gagro” in 2017 © Centre of Archaeology"
+          "title": "One of the rooms within the camp hospital “Hotel Gagro” in 2017 © Centre of Archaeology",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8089ec307eed0063fe2cc57177efa4ad.JPG",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2232,
-          "title": "A drone survey being carried out at Stara Gradiška © Centre of Archaeology"
+          "title": "A drone survey being carried out at Stara Gradiška © Centre of Archaeology",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/881f1399e66d6db11429259f1c86ab16.JPG",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2233,
-          "title": "A scene from the 3D model of Stara Gradiška © ScanLAB Projects"
+          "title": "A scene from the 3D model of Stara Gradiška © ScanLAB Projects",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/a86f2cb3975d90e2611b1a4d9ce9c417.png",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2234,
-          "title": "A scene from the 3D model of Stara Gradiška showing the exterior of the camp hospital © ScanLAB Projects"
+          "title": "A scene from the 3D model of Stara Gradiška showing the exterior of the camp hospital © ScanLAB Projects",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/15b692359580f0512a942800e5ae6be2.png",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2235,
@@ -3147,47 +3825,101 @@
         {
           "id": 2249,
           "itemType": "resource",
-          "title": "children at the Tower of Stara Gradiska"
+          "title": "children at the Tower of Stara Gradiska",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/adba5c5eec73935ac6d064d320ddb40d.tif",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2250,
           "itemType": "reference",
-          "title": "Ilija Jakovljevic - a victim of two totalitarianisms"
+          "title": "Ilija Jakovljevic - a victim of two totalitarianisms",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/9d6f652e54fdc51f3f5e2b7103521446.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/9d6f652e54fdc51f3f5e2b7103521446.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/9d6f652e54fdc51f3f5e2b7103521446.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/9d6f652e54fdc51f3f5e2b7103521446.jpg"
+          }
         },
         {
           "id": 2251,
           "itemType": "reference",
-          "title": "penitentiary camp Stara Gradiska 1945-1990"
+          "title": "penitentiary camp Stara Gradiska 1945-1990",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/276ab55c3af00850136518b4db44b51d.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/276ab55c3af00850136518b4db44b51d.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/276ab55c3af00850136518b4db44b51d.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/276ab55c3af00850136518b4db44b51d.jpg"
+          }
         },
         {
           "id": 2252,
           "itemType": "reference",
-          "title": "Memory of the priest Ivo Dilber imprisoned in 1945 communist period in Stara Gradiska"
+          "title": "Memory of the priest Ivo Dilber imprisoned in 1945 communist period in Stara Gradiska",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/a9366f85831e0970356951cb5d451f14.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/a9366f85831e0970356951cb5d451f14.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/a9366f85831e0970356951cb5d451f14.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/a9366f85831e0970356951cb5d451f14.jpg"
+          }
         },
         {
           "id": 2254,
           "itemType": "reference",
-          "title": "Stjepan Razum interview (revisionism - Jasenovac Ustaše camp diminshed, communist camp put forward)"
+          "title": "Stjepan Razum interview (revisionism - Jasenovac Ustaše camp diminshed, communist camp put forward)",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ff07ee7eef18dc36038f765a27de475a.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/ff07ee7eef18dc36038f765a27de475a.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/ff07ee7eef18dc36038f765a27de475a.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/ff07ee7eef18dc36038f765a27de475a.jpg"
+          }
         },
         {
           "id": 2255,
           "itemType": "reference",
-          "title": "Stara Gradiska prison in 1990ies"
+          "title": "Stara Gradiska prison in 1990s",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/14ed67b43b356cd2e1a84dfe26a1b2f2.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/14ed67b43b356cd2e1a84dfe26a1b2f2.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/14ed67b43b356cd2e1a84dfe26a1b2f2.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/14ed67b43b356cd2e1a84dfe26a1b2f2.jpg"
+          }
         },
         {
           "id": 2256,
           "itemType": "resource",
-          "title": "Racial law - Ustaše proclaimed a concentration camp Feb 1942"
+          "title": "Racial law - Ustaše proclaimed a concentration camp Feb 1942",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/eab8de3ab8a41b993c6b7d7846cfb601.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2257,
           "itemType": "resource",
-          "title": "Ilija Jakovljević, Konclogor na Savi (memoarska proza), 1999\r\nIlija Jakovljevic, Concentration camp on river Sava (memoir on Stara Gradiska), 1999"
+          "title": "Ilija Jakovljević, Konclogor na Savi (memoarska proza), 1999\r\nIlija Jakovljevic, Concentration camp on river Sava (memoir on Stara Gradiska), 1999",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/b6c4a72f14dc43ee879a8fe81c459652.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         },
         {
           "id": 2263,
           "itemType": "resource",
-          "title": "digital exhibition 2019 (in relation to Stara Gradiska)"
+          "title": "digital exhibition 2019 (in relation to Stara Gradiska)",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/210aff776ca55ba64794df0513276c2a.pdf",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
         }
       ]
     }
@@ -3388,8 +4120,8 @@
     "tags": [],
     "extended_resources": {
       "exhibit_pages": {
-        "count": 0,
-        "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages?item=2212",
+        "id": 256,
+        "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/256",
         "resource": "exhibit_pages"
       }
     },
@@ -3403,7 +4135,14 @@
       "description": "The Castuera camp, located in southwest Spain, is one of the nearly two hundred concentration camps that existed during the civil war (1936-1939) and the dictatorship of General Francisco Franco (1939-1975). This camp serves as an example of how the concealed and recent traumatic past in Spain has mobilized the claims of victims’ groups, activists, historical memory associations, political parties and academics for the implementation of an official memory and memorialization politics that recognizes and addresses the experience of victims of Francoist violence.\r\nIn March 1939, before the imminent end of the war, the rebel Francoist army used two battalions of republican workers (POW) for the construction of the camp. The camp functioned for one year, between March 1939 and 1940. Its main functions were the classification, reeducation and elimination of those considered the enemies of the new regime after the coup d’état against the legitimate government of the Second Republic (1931-1939) on 17 July 1936. It has been estimated that between 15,000 to 20,000 prisoners went through the camp, which included civilians and militaries from different regions of the country. \r\nInside the Camp, detainees were segregated into different barracks. Political personalities shared the space with left-wing trade union leaders, republican council officials, army officers and members of guerrilla groups, among others. Many of them were executed as part of the political cleansing carried out by the new authorities. All traces of them were lost in the concentration camp. The inmates that survived were often (re)integrated into the social fabric of the so-called “New Spain” through forced labor and a process of “re-education.” Thousands of them embarked on a journey, which, in the best-case scenario, took them to other concentration camps, prisons or forced labour camps. These repressive centres utilized a technology of pain to realize their aims of humiliation and punishment. Starvation, illness, epidemics and torture characterized the living conditions in the camps and prisons. \r\nIn January 1940, a small group of inmates escaped from the camp and arrived in France. Far from the fate they expected, they were once again turned into prisoners, detained in a different concentration camp and forced to integrate the Foreign Legion or workers’ battalions. Other half-million Spaniards who fled to France trying to escape from Franco's repression suffered the same fate. Nearly 14,000 Spanish refugees died due to the extreme conditions of the French camps. From here, more than 9,000 prisoners were sent to Nazi concentration camps, and approximately 5,500 died throughout Europe. \r\nThe infrastructure of the camp in Castuera was dismantled at the beginning of April 1940. After it ceased to operate, the camp fell into oblivion, undergoing a similar process to those who endured its violence during the dictatorship. With the “pact of forgetting” and the Amnesty Law of 1977 the silence over the episodes that took place at the site continued throughout part of the current democratic period. In 2004, the screening of the documentary “The nightmare of Castuera” to a primetime television audience marked a turning point in the visibility of the camp. From this moment, the Association for the Memory of Castuera Concentration Camp has led the most important actions connected to the memory and recognition of the camp and the victims of Francoist repression in the area. In 2009, after high pressure from the civil society and academics, the privately own land of the camp received the most important heritage protection classification in Spain as Site of Cultural Interest. Despite its new official categorization, the area continues to be used for extensive stockbreeding today.\r\nArchaeological investigations undertaken at the site between 2010 and 2012 and the exhumations of two mass graves that contained the corpses of prisoners from the camp have revealed important information about the functioning of the site and the repressive processes suffered by prisoners. In January 2019, a new law was approved for the recognition of the victims and the implementation of a specific memory politics in the region of Extremadura. However, despite these new developments, the place remains invisible in the space where it exists, unfathomed in the collective memory of society still today. The camp in Castuera, as it is the case for all of Franco’s concentration camps, still awaits the creation of a documentation centre intended to interpret and disseminate the history and memory of the repression exerted inside and outside its fences.",
       "files": []
     },
-    "linkedPages": [],
+    "linkedPages": [
+      {
+        "paragraph": 0,
+        "exhibitId": 49,
+        "exhibitSlug": "unearthing-the-hidden-past-in-",
+        "exhibitTitle": "Unearthing the hidden past in Castuera concentration camp"
+      }
+    ],
     "relations": {
       "geolayer_vector": [
         {
@@ -3412,7 +4151,7 @@
           "public": false,
           "featured": false,
           "added": "2019-11-08T10:40:05+00:00",
-          "modified": "2019-11-08T17:16:35+00:00",
+          "modified": "2019-11-15T20:44:36+00:00",
           "item_type": "geolayer_vector",
           "collection": null,
           "owner": {
@@ -3421,7 +4160,7 @@
             "resource": "users"
           },
           "files": {
-            "count": 2,
+            "count": 1,
             "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2260",
             "resource": "files"
           },
@@ -3442,52 +4181,23 @@
             "endDate": "1940-03",
             "files": [
               {
-                "id": 893,
-                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/893",
+                "id": 926,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/926",
                 "file_urls": {
-                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/edd27ac3c248fe735d2d301ef7c13674.geojson",
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/e5dc133d866497f1ad05ffe1f392a412.geojson",
                   "fullsize": null,
                   "thumbnail": null,
                   "square_thumbnail": null
                 },
-                "added": "2019-11-08T17:16:35+00:00",
-                "modified": "2019-11-08T17:16:35+00:00",
-                "filename": "edd27ac3c248fe735d2d301ef7c13674.geojson",
-                "authentication": "739dd709121adbfff651bc48d192fed3",
+                "added": "2019-11-15T20:44:36+00:00",
+                "modified": "2019-11-15T20:44:36+00:00",
+                "filename": "e5dc133d866497f1ad05ffe1f392a412.geojson",
+                "authentication": "e2f88a000a0b454aac277cde3180680f",
                 "has_derivative_image": false,
                 "mime_type": "text/plain",
                 "order": null,
-                "original_filename": "Castuera areas.geojson",
-                "size": 2457,
-                "stored": true,
-                "type_os": "ASCII text, with very long lines",
-                "metadata": [],
-                "item": {
-                  "id": 2260,
-                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2260",
-                  "resource": "items"
-                },
-                "element_texts": [],
-                "extended_resources": []
-              },
-              {
-                "id": 894,
-                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/894",
-                "file_urls": {
-                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/fab5f2e4cf5f6c9b6f4c8661fe1572ac.geojson",
-                  "fullsize": null,
-                  "thumbnail": null,
-                  "square_thumbnail": null
-                },
-                "added": "2019-11-08T17:16:35+00:00",
-                "modified": "2019-11-08T17:16:35+00:00",
-                "filename": "fab5f2e4cf5f6c9b6f4c8661fe1572ac.geojson",
-                "authentication": "1dafcee85a6284e33258470fc4f4a26b",
-                "has_derivative_image": false,
-                "mime_type": "text/plain",
-                "order": null,
-                "original_filename": "Castuera structures.geojson",
-                "size": 33372,
+                "original_filename": "Castuera_camp_(v2019-11-15).geojson",
+                "size": 42025,
                 "stored": true,
                 "type_os": "ASCII text, with very long lines",
                 "metadata": [],
@@ -3511,7 +4221,7 @@
           "public": false,
           "featured": false,
           "added": "2019-11-08T11:00:49+00:00",
-          "modified": "2019-11-11T13:36:22+00:00",
+          "modified": "2019-11-15T19:32:41+00:00",
           "item_type": "geolayer_raster",
           "collection": null,
           "owner": {
@@ -3537,39 +4247,48 @@
             "creator": ["USA air reconnaissance", " 1945"],
             "provenance": "2019-09 Cropped digital copy shared by L. Muñoz Encinar",
             "startDate": "1945",
-            "boundingbox": "[38.725439848205667, -5.521858287266859],[38.725440788785257, -5.512186690791364],[38.720187462314819, -5.512184274811371],[38.720184702833492, -5.521868681161299]",
+            "boundingbox": "[-5.521858287266859, 38.725439848205667],[-5.512186690791364, 38.725440788785257],[-5.512184274811371, 38.720187462314819],[-5.521868681161299, 38.720184702833492]",
             "copyright": "National Geographic Institute. Spanish National Center for Geographic Information. Ministry of Public Works and Transport. Government of Spain",
             "files": [
               {
-                "id": 895,
-                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/895",
+                "id": 923,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/923",
                 "file_urls": {
-                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/6e96c6f029bc80b8904dd76c729489d0.tif",
-                  "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/6e96c6f029bc80b8904dd76c729489d0.jpg",
-                  "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/6e96c6f029bc80b8904dd76c729489d0.jpg",
-                  "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/6e96c6f029bc80b8904dd76c729489d0.jpg"
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/087adeb76b1e0fb2597f7e62508e79ae.png",
+                  "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/087adeb76b1e0fb2597f7e62508e79ae.jpg",
+                  "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/087adeb76b1e0fb2597f7e62508e79ae.jpg",
+                  "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/087adeb76b1e0fb2597f7e62508e79ae.jpg"
                 },
-                "added": "2019-11-08T17:17:09+00:00",
-                "modified": "2019-11-11T13:36:23+00:00",
-                "filename": "6e96c6f029bc80b8904dd76c729489d0.tif",
-                "authentication": "765ffb5c8d2605de1d682c105a09bd53",
+                "added": "2019-11-15T19:31:33+00:00",
+                "modified": "2019-11-15T19:32:41+00:00",
+                "filename": "087adeb76b1e0fb2597f7e62508e79ae.png",
+                "authentication": "0aac20579344aefda38f35539eb45661",
                 "has_derivative_image": true,
-                "mime_type": "image/tiff",
+                "mime_type": "image/png",
                 "order": null,
-                "original_filename": "1945_Picture_American_flight_Castuera_Camp_modified.tif",
-                "size": 3003624,
+                "original_filename": "1945_Picture_American_flight_Castuera_Camp_modified_Revised.png",
+                "size": 944326,
                 "stored": true,
-                "type_os": "TIFF image data, little-endian",
+                "type_os": "PNG image data, 1199 x 834, 8-bit/color RGBA, non-interlaced",
                 "metadata": {
-                  "mime_type": "image/tiff",
+                  "mime_type": "image/png",
                   "video": {
-                    "dataformat": "tiff",
-                    "lossless": true,
+                    "dataformat": "png",
+                    "lossless": false,
                     "resolution_x": 1199,
                     "resolution_y": 834,
-                    "bits_per_sample": 24,
-                    "codec": "Uncompressed",
-                    "compression_ratio": 1.0012420422294
+                    "bits_per_sample": 32,
+                    "compression_ratio": 0.23608952704392
+                  },
+                  "comments": {
+                    "XML:com.adobe.xmp": [
+                      "<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"XMP Core 5.4.0\">\n   <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n      <rdf:Description rdf:about=\"\"\n            xmlns:tiff=\"http://ns.adobe.com/tiff/1.0/\">\n         <tiff:Compression>1</tiff:Compression>\n         <tiff:PhotometricInterpretation>2</tiff:PhotometricInterpretation>\n         <tiff:Orientation>1</tiff:Orientation>\n      </rdf:Description>\n   </rdf:RDF>\n</x:xmpmeta>"
+                    ]
+                  },
+                  "comments_html": {
+                    "XML:com.adobe.xmp": [
+                      "&lt;x:xmpmeta xmlns:x=&quot;adobe:ns:meta/&quot; x:xmptk=&quot;XMP Core 5.4.0&quot;&gt;&#10;   &lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;&#10;      &lt;rdf:Description rdf:about=&quot;&quot;&#10;            xmlns:tiff=&quot;http://ns.adobe.com/tiff/1.0/&quot;&gt;&#10;         &lt;tiff:Compression&gt;1&lt;/tiff:Compression&gt;&#10;         &lt;tiff:PhotometricInterpretation&gt;2&lt;/tiff:PhotometricInterpretation&gt;&#10;         &lt;tiff:Orientation&gt;1&lt;/tiff:Orientation&gt;&#10;      &lt;/rdf:Description&gt;&#10;   &lt;/rdf:RDF&gt;&#10;&lt;/x:xmpmeta&gt;"
+                    ]
                   }
                 },
                 "item": {
@@ -3585,12 +4304,1167 @@
           "linkedPages": []
         }
       ],
-      "undefined": [null]
+      "resource": [
+        {
+          "id": 2267,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2267",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-12T20:58:46+00:00",
+          "modified": "2019-11-14T17:12:16+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2267",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "id": 251,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/251",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Una larga marcha. De la represión franquista a los campos de refugiados en Francia",
+            "creator": ["Garrido", " Albino"],
+            "description": "Memories of Albino Garrido, prisoner who escaped from Castuera concentration camp in January 1940 and arrived in France",
+            "startDate": "2013/02/01",
+            "year": "2013",
+            "files": [
+              {
+                "id": 908,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/908",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8392a942724762c29d5a09406d3b9f69.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-14T17:10:39+00:00",
+                "modified": "2019-11-14T17:12:16+00:00",
+                "filename": "8392a942724762c29d5a09406d3b9f69.jpg",
+                "authentication": "cf0b2a1421b5864a0542062aae961a39",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Garrido, A. 2013 Una larga marcha. De la represión franquista a los campos.jpg",
+                "size": 3073961,
+                "stored": true,
+                "type_os": "JPEG image data, JFIF standard 1.02",
+                "metadata": 0,
+                "item": {
+                  "id": 2267,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2267",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 6,
+              "exhibitId": 48,
+              "exhibitSlug": "entertainment-at-sites-of-mass",
+              "exhibitTitle": "Entertainment at Sites of Mass Violence"
+            }
+          ]
+        },
+        {
+          "id": 2288,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2288",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-14T17:37:09+00:00",
+          "modified": "2019-11-14T17:56:06+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2288",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "id": 252,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/252",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Bottle of wine documented inside a mass grave containing bodies of victims of Castuera concentration camp",
+            "creator": ["Laura Muñoz-Encinar"],
+            "description": "Bottle of wine documented inside a mass grave exhumed at the town’s municipal cemetery, containing bodies of victims of Castuera concentration camp.",
+            "startDate": "30/03/1936",
+            "endDate": "30/03/1940",
+            "year": "2011",
+            "copyright": "©Laura Muñoz-Encinar",
+            "files": [
+              {
+                "id": 910,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/910",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ea18f977d7ab46af69471d87464464b3.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-14T17:39:03+00:00",
+                "modified": "2019-11-14T17:56:06+00:00",
+                "filename": "ea18f977d7ab46af69471d87464464b3.jpg",
+                "authentication": "e70fb05829eaef94e3939ca4b55010f6",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Bottle of wine documented inside the Mass Grave 1 Castuera.jpg",
+                "size": 1473196,
+                "stored": true,
+                "type_os": "JPEG image data, JFIF standard 1.02",
+                "metadata": 0,
+                "item": {
+                  "id": 2288,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2288",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 7,
+              "exhibitId": 48,
+              "exhibitSlug": "entertainment-at-sites-of-mass",
+              "exhibitTitle": "Entertainment at Sites of Mass Violence"
+            }
+          ]
+        },
+        {
+          "id": 2289,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2289",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-14T17:46:06+00:00",
+          "modified": "2019-11-14T17:54:59+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2289",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "count": 2,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages?item=2289",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Two prisoners from the Castuera concentration camp  documented in a mass grave exhumed at the town’s municipal cemetery",
+            "creator": ["Laura Muñoz-Encinar"],
+            "description": "Two prisoners from the Castuera concentration camp tied in pairs by their wrists and elbows documented in a mass grave exhumed at the town’s municipal cemetery.  ",
+            "startDate": "30/03/1936",
+            "endDate": "30/03/1940",
+            "year": "2011",
+            "copyright": "© Laura Muñoz-Encinar",
+            "files": [
+              {
+                "id": 911,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/911",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/7681087a61c12989f6b74079cec5f9c3.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-14T17:46:06+00:00",
+                "modified": "2019-11-14T17:54:59+00:00",
+                "filename": "7681087a61c12989f6b74079cec5f9c3.jpg",
+                "authentication": "79dee03b7abdefaa9da279e8c091cb57",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Two prisoners from Castuera concentration camp tied in pairs.jpg",
+                "size": 4848780,
+                "stored": true,
+                "type_os": "JPEG image data, EXIF standard 2.21",
+                "metadata": {
+                  "mime_type": "image/jpeg",
+                  "video": {
+                    "dataformat": "jpg",
+                    "lossless": false,
+                    "bits_per_sample": 24,
+                    "pixel_aspect_ratio": 1,
+                    "resolution_x": 3872,
+                    "resolution_y": 2592,
+                    "compression_ratio": 0.16104263914396
+                  },
+                  "jpg": {
+                    "exif": {
+                      "FILE": {
+                        "FileName": "7681087a61c12989f6b74079cec5f9c3.jpg",
+                        "FileDateTime": 1573753566,
+                        "FileSize": 4848780,
+                        "FileType": 2,
+                        "MimeType": "image/jpeg",
+                        "SectionsFound": "ANY_TAG, IFD0, THUMBNAIL, EXIF, INTEROP"
+                      },
+                      "COMPUTED": {
+                        "html": "width=\"3872\" height=\"2592\"",
+                        "Height": 2592,
+                        "Width": 3872,
+                        "IsColor": 1,
+                        "ByteOrderMotorola": 1,
+                        "ApertureFNumber": "f/5.6",
+                        "UserComment": " ",
+                        "UserCommentEncoding": "ASCII",
+                        "Thumbnail.FileType": 2,
+                        "Thumbnail.MimeType": "image/jpeg"
+                      },
+                      "IFD0": {
+                        "Make": "NIKON CORPORATION",
+                        "Model": "NIKON D60",
+                        "Orientation": 1,
+                        "XResolution": 300,
+                        "YResolution": 300,
+                        "ResolutionUnit": 2,
+                        "Software": "Ver.1.01 ",
+                        "DateTime": "2011:09:16 13:08:24",
+                        "YCbCrPositioning": 2,
+                        "Exif_IFD_Pointer": 216
+                      },
+                      "THUMBNAIL": {
+                        "Compression": 6,
+                        "XResolution": 300,
+                        "YResolution": 300,
+                        "ResolutionUnit": 2,
+                        "JPEGInterchangeFormat": 29276,
+                        "JPEGInterchangeFormatLength": 9100,
+                        "YCbCrPositioning": 2
+                      },
+                      "EXIF": {
+                        "ExposureTime": 0.016666666666667,
+                        "FNumber": 5.6,
+                        "ExposureProgram": 0,
+                        "ISOSpeedRatings": 200,
+                        "ExifVersion": 221,
+                        "DateTimeOriginal": "2011:09:16 13:08:24",
+                        "DateTimeDigitized": "2011:09:16 13:08:24",
+                        "ComponentsConfiguration": "\u0001\u0002\u0003\u0000",
+                        "CompressedBitsPerPixel": 4,
+                        "ExposureBiasValue": 0,
+                        "MaxApertureValue": 5,
+                        "MeteringMode": 5,
+                        "LightSource": 0,
+                        "Flash": 16,
+                        "FocalLength": 55,
+                        "MakerNote": "Nikon",
+                        "UserComment": "ASCII\u0000\u0000\u0000 \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+                        "SubSecTime": 60,
+                        "SubSecTimeOriginal": 60,
+                        "SubSecTimeDigitized": 60,
+                        "FlashPixVersion": 100,
+                        "ColorSpace": 1,
+                        "ExifImageWidth": 3872,
+                        "ExifImageLength": 2592,
+                        "InteroperabilityOffset": 29138,
+                        "SensingMethod": 2,
+                        "FileSource": "\u0003",
+                        "SceneType": "\u0001",
+                        "CFAPattern": "\u0000\u0002\u0000\u0002\u0001\u0002\u0000\u0001",
+                        "CustomRendered": 0,
+                        "ExposureMode": 0,
+                        "WhiteBalance": 0,
+                        "DigitalZoomRatio": 1,
+                        "FocalLengthIn35mmFilm": 82,
+                        "SceneCaptureType": 0,
+                        "GainControl": 0,
+                        "Contrast": 0,
+                        "Saturation": 0,
+                        "Sharpness": 0,
+                        "SubjectDistanceRange": 0
+                      },
+                      "INTEROP": {
+                        "InterOperabilityIndex": "R98",
+                        "InterOperabilityVersion": "0100"
+                      }
+                    }
+                  }
+                },
+                "item": {
+                  "id": 2289,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2289",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 7,
+              "exhibitId": 48,
+              "exhibitSlug": "entertainment-at-sites-of-mass",
+              "exhibitTitle": "Entertainment at Sites of Mass Violence"
+            },
+            {
+              "paragraph": 5,
+              "exhibitId": 49,
+              "exhibitSlug": "unearthing-the-hidden-past-in-",
+              "exhibitTitle": "Unearthing the hidden past in Castuera concentration camp"
+            }
+          ]
+        },
+        {
+          "id": 2288,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2288",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-14T17:37:09+00:00",
+          "modified": "2019-11-14T17:56:06+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2288",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "id": 252,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/252",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Bottle of wine documented inside a mass grave containing bodies of victims of Castuera concentration camp",
+            "creator": ["Laura Muñoz-Encinar"],
+            "description": "Bottle of wine documented inside a mass grave exhumed at the town’s municipal cemetery, containing bodies of victims of Castuera concentration camp.",
+            "startDate": "30/03/1936",
+            "endDate": "30/03/1940",
+            "year": "2011",
+            "copyright": "©Laura Muñoz-Encinar",
+            "files": [
+              {
+                "id": 910,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/910",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/ea18f977d7ab46af69471d87464464b3.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-14T17:39:03+00:00",
+                "modified": "2019-11-14T17:56:06+00:00",
+                "filename": "ea18f977d7ab46af69471d87464464b3.jpg",
+                "authentication": "e70fb05829eaef94e3939ca4b55010f6",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Bottle of wine documented inside the Mass Grave 1 Castuera.jpg",
+                "size": 1473196,
+                "stored": true,
+                "type_os": "JPEG image data, JFIF standard 1.02",
+                "metadata": 0,
+                "item": {
+                  "id": 2288,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2288",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 7,
+              "exhibitId": 48,
+              "exhibitSlug": "entertainment-at-sites-of-mass",
+              "exhibitTitle": "Entertainment at Sites of Mass Violence"
+            }
+          ]
+        },
+        {
+          "id": 2290,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2290",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-15T14:17:04+00:00",
+          "modified": "2019-11-15T14:27:09+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2290",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "id": 257,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/257",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Location of the mass graves inside the town’s municipal cemetery",
+            "creator": ["Laura Muñoz-Encinar"],
+            "description": "Map of the town’s municipal cemetery with the areas in which the mass graves containing the bodies of victims of Francoist extrajudicial repression were located.",
+            "startDate": "01/01/2011",
+            "endDate": "31/01/2011",
+            "year": "2011",
+            "copyright": "© Laura Muñoz-Encinar",
+            "files": [
+              {
+                "id": 912,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/912",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/beb0544e2f30e1825e4fdf2dffd6269b.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-15T14:17:04+00:00",
+                "modified": "2019-11-15T14:27:09+00:00",
+                "filename": "beb0544e2f30e1825e4fdf2dffd6269b.jpg",
+                "authentication": "fce1d37a881b7adb1601b333305d7a05",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Location of the mass graves inside the town’s municipal cemetery.jpg",
+                "size": 1741210,
+                "stored": true,
+                "type_os": "JPEG image data, EXIF standard",
+                "metadata": {
+                  "mime_type": "image/jpeg",
+                  "video": {
+                    "dataformat": "jpg",
+                    "lossless": false,
+                    "bits_per_sample": 24,
+                    "pixel_aspect_ratio": 1,
+                    "resolution_x": 5006,
+                    "resolution_y": 3713,
+                    "compression_ratio": 0.031225838088467
+                  },
+                  "jpg": {
+                    "exif": {
+                      "FILE": {
+                        "FileName": "beb0544e2f30e1825e4fdf2dffd6269b.jpg",
+                        "FileDateTime": 1573827423,
+                        "FileSize": 1741210,
+                        "FileType": 2,
+                        "MimeType": "image/jpeg",
+                        "SectionsFound": "ANY_TAG, IFD0, THUMBNAIL, EXIF"
+                      },
+                      "COMPUTED": {
+                        "html": "width=\"5006\" height=\"3713\"",
+                        "Height": 3713,
+                        "Width": 5006,
+                        "IsColor": 0,
+                        "ByteOrderMotorola": 1,
+                        "Thumbnail.FileType": 2,
+                        "Thumbnail.MimeType": "image/jpeg"
+                      },
+                      "IFD0": {
+                        "Orientation": 1,
+                        "XResolution": 500,
+                        "YResolution": 500,
+                        "ResolutionUnit": 2,
+                        "Software": "Adobe Photoshop 7.0",
+                        "DateTime": "2012:04:13 17:34:15",
+                        "Exif_IFD_Pointer": 156
+                      },
+                      "THUMBNAIL": {
+                        "Compression": 6,
+                        "XResolution": 72,
+                        "YResolution": 72,
+                        "ResolutionUnit": 2,
+                        "JPEGInterchangeFormat": 294,
+                        "JPEGInterchangeFormatLength": 10568
+                      },
+                      "EXIF": {
+                        "ColorSpace": 65535,
+                        "ExifImageWidth": 5006,
+                        "ExifImageLength": 3713
+                      }
+                    }
+                  }
+                },
+                "item": {
+                  "id": 2290,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2290",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 1,
+              "exhibitId": 49,
+              "exhibitSlug": "unearthing-the-hidden-past-in-",
+              "exhibitTitle": "Unearthing the hidden past in Castuera concentration camp"
+            }
+          ]
+        },
+        {
+          "id": 2291,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2291",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-15T14:19:47+00:00",
+          "modified": "2019-11-15T14:19:47+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2291",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "id": 257,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/257",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Mass Grave 1 located inside the municipal cemetery of Castuera",
+            "creator": ["Laura Muñoz-Encinar"],
+            "description": "Mass grave containing the bodies of victims of Castuera concentration camp exhumed inside the town’s municipal cemetery",
+            "startDate": "30/03/1936",
+            "endDate": "30/03/1940",
+            "year": "2011",
+            "copyright": "© Laura Muñoz-Encinar",
+            "files": [
+              {
+                "id": 913,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/913",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/24f8f919214ba7bac50c9b67e3b30672.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-15T14:19:47+00:00",
+                "modified": "2019-11-15T14:19:47+00:00",
+                "filename": "24f8f919214ba7bac50c9b67e3b30672.jpg",
+                "authentication": "1fc90f06fab72941bcd4d6206534bb48",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Mass Grave 1 located inside the municipal cemetery of Castuera.jpg",
+                "size": 4744617,
+                "stored": true,
+                "type_os": "JPEG image data, EXIF standard",
+                "metadata": {
+                  "mime_type": "image/jpeg",
+                  "video": {
+                    "dataformat": "jpg",
+                    "lossless": false,
+                    "bits_per_sample": 24,
+                    "pixel_aspect_ratio": 1,
+                    "resolution_x": 2592,
+                    "resolution_y": 3872,
+                    "compression_ratio": 0.15758307108331
+                  },
+                  "jpg": {
+                    "exif": {
+                      "FILE": {
+                        "FileName": "24f8f919214ba7bac50c9b67e3b30672.jpg",
+                        "FileDateTime": 1573827587,
+                        "FileSize": 4744617,
+                        "FileType": 2,
+                        "MimeType": "image/jpeg",
+                        "SectionsFound": "ANY_TAG, IFD0, THUMBNAIL, EXIF"
+                      },
+                      "COMPUTED": {
+                        "html": "width=\"2592\" height=\"3872\"",
+                        "Height": 3872,
+                        "Width": 2592,
+                        "IsColor": 1,
+                        "ByteOrderMotorola": 0,
+                        "ApertureFNumber": "f/4.0",
+                        "UserComment": " ",
+                        "UserCommentEncoding": "ASCII",
+                        "Thumbnail.FileType": 2,
+                        "Thumbnail.MimeType": "image/jpeg"
+                      },
+                      "IFD0": {
+                        "Make": "NIKON CORPORATION",
+                        "Model": "NIKON D60",
+                        "XResolution": 300,
+                        "YResolution": 300,
+                        "ResolutionUnit": 2,
+                        "Software": "Ver.1.01 ",
+                        "DateTime": "2011:09:14 09:22:51",
+                        "YCbCrPositioning": 2,
+                        "Exif_IFD_Pointer": 336,
+                        "CustomRendered": 0,
+                        "ExposureMode": 0,
+                        "WhiteBalance": 0,
+                        "DigitalZoomRatio": 1,
+                        "FocalLengthIn35mmFilm": 27,
+                        "SceneCaptureType": 0,
+                        "GainControl": 0,
+                        "Contrast": 0,
+                        "Saturation": 0,
+                        "Sharpness": 0,
+                        "SubjectDistanceRange": 0
+                      },
+                      "THUMBNAIL": {
+                        "Compression": 6,
+                        "XResolution": 300,
+                        "YResolution": 300,
+                        "ResolutionUnit": 2,
+                        "JPEGInterchangeFormat": 28864,
+                        "JPEGInterchangeFormatLength": 8876,
+                        "YCbCrPositioning": 2
+                      },
+                      "EXIF": {
+                        "ExposureTime": 0.016666666666667,
+                        "FNumber": 4,
+                        "ExposureProgram": 0,
+                        "ISOSpeedRatings": 200,
+                        "ExifVersion": 221,
+                        "DateTimeOriginal": "2011:09:14 09:22:51",
+                        "DateTimeDigitized": "2011:09:14 09:22:51",
+                        "ComponentsConfiguration": "\u0001\u0002\u0003\u0000",
+                        "CompressedBitsPerPixel": 4,
+                        "ExposureBiasValue": 0,
+                        "MaxApertureValue": 3.6,
+                        "MeteringMode": 5,
+                        "LightSource": 0,
+                        "Flash": 16,
+                        "FocalLength": 18,
+                        "MakerNote": "Nikon",
+                        "UserComment": "ASCII\u0000\u0000\u0000 \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+                        "SubSecTime": 70,
+                        "SubSecTimeOriginal": 70,
+                        "SubSecTimeDigitized": 70,
+                        "FlashPixVersion": 100,
+                        "ColorSpace": 1,
+                        "ExifImageWidth": 2592,
+                        "ExifImageLength": 3872,
+                        "SensingMethod": 2,
+                        "FileSource": "\u0003",
+                        "SceneType": "\u0001",
+                        "CFAPattern": "\u0000\u0002\u0000\u0002\u0001\u0002\u0000\u0001"
+                      }
+                    }
+                  }
+                },
+                "item": {
+                  "id": 2291,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2291",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 1,
+              "exhibitId": 49,
+              "exhibitSlug": "unearthing-the-hidden-past-in-",
+              "exhibitTitle": "Unearthing the hidden past in Castuera concentration camp"
+            }
+          ]
+        },
+        {
+          "id": 2296,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2296",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-15T14:39:28+00:00",
+          "modified": "2019-11-15T14:39:28+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2296",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "id": 260,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/260",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Drawing of Mass Grave 1 located inside the municipal cemetery of Castuera",
+            "creator": ["Laura Muñoz-Encinar"],
+            "description": "Drawing with the distribution of bodies inside Mass Grave 1, Castuera",
+            "startDate": "01/07/2011",
+            "year": "2011",
+            "copyright": "© Laura Muñoz-Encinar",
+            "files": [
+              {
+                "id": 917,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/917",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8d1b05b8c1adddbecdcf1f94533de2f0.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-15T14:39:29+00:00",
+                "modified": "2019-11-15T14:39:30+00:00",
+                "filename": "8d1b05b8c1adddbecdcf1f94533de2f0.jpg",
+                "authentication": "1e830eae0e0e6046e1747f7cb7bb5e8d",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Drawing of Mass Grave 1 located inside the municipal cemetery of Castuera.jpg",
+                "size": 1610813,
+                "stored": true,
+                "type_os": "JPEG image data, EXIF standard",
+                "metadata": {
+                  "mime_type": "image/jpeg",
+                  "video": {
+                    "dataformat": "jpg",
+                    "lossless": false,
+                    "bits_per_sample": 24,
+                    "pixel_aspect_ratio": 1,
+                    "resolution_x": 3005,
+                    "resolution_y": 956,
+                    "compression_ratio": 0.18690525089518
+                  },
+                  "jpg": {
+                    "exif": {
+                      "FILE": {
+                        "FileName": "8d1b05b8c1adddbecdcf1f94533de2f0.jpg",
+                        "FileDateTime": 1573828768,
+                        "FileSize": 1610813,
+                        "FileType": 2,
+                        "MimeType": "image/jpeg",
+                        "SectionsFound": "ANY_TAG, IFD0, THUMBNAIL, EXIF"
+                      },
+                      "COMPUTED": {
+                        "html": "width=\"3005\" height=\"956\"",
+                        "Height": 956,
+                        "Width": 3005,
+                        "IsColor": 0,
+                        "ByteOrderMotorola": 1,
+                        "Thumbnail.FileType": 2,
+                        "Thumbnail.MimeType": "image/jpeg"
+                      },
+                      "IFD0": {
+                        "Orientation": 1,
+                        "XResolution": 300,
+                        "YResolution": 300,
+                        "ResolutionUnit": 2,
+                        "Software": "Adobe Photoshop 7.0",
+                        "DateTime": "2014:11:22 14:12:44",
+                        "Exif_IFD_Pointer": 156
+                      },
+                      "THUMBNAIL": {
+                        "Compression": 6,
+                        "XResolution": 72,
+                        "YResolution": 72,
+                        "ResolutionUnit": 2,
+                        "JPEGInterchangeFormat": 294,
+                        "JPEGInterchangeFormatLength": 4952
+                      },
+                      "EXIF": {
+                        "ColorSpace": 65535,
+                        "ExifImageWidth": 3005,
+                        "ExifImageLength": 956
+                      }
+                    }
+                  }
+                },
+                "item": {
+                  "id": 2296,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2296",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 4,
+              "exhibitId": 49,
+              "exhibitSlug": "unearthing-the-hidden-past-in-",
+              "exhibitTitle": "Unearthing the hidden past in Castuera concentration camp"
+            }
+          ]
+        },
+        {
+          "id": 2300,
+          "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2300",
+          "public": false,
+          "featured": false,
+          "added": "2019-11-15T14:48:26+00:00",
+          "modified": "2019-11-15T14:48:26+00:00",
+          "item_type": "resource",
+          "collection": null,
+          "owner": {
+            "id": 29,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/users/29",
+            "resource": "users"
+          },
+          "files": {
+            "count": 1,
+            "url": "http://www.dbportal.ic-access.specs-lab.com/api/files?item=2300",
+            "resource": "files"
+          },
+          "tags": [],
+          "extended_resources": {
+            "exhibit_pages": {
+              "id": 263,
+              "url": "http://www.dbportal.ic-access.specs-lab.com/api/exhibit_pages/263",
+              "resource": "exhibit_pages"
+            }
+          },
+          "data": {
+            "title": "Memorial to the victims of Franco’s repression in Castuera",
+            "description": "Memorial built inside the town’s municipal cemetery to inhume the remains recovered from the mass graves. The memorial contains five large slabs listing the names of 250 victims of Franco’s repression. The list includes the names of the victims executed after the occupation of the town and the names of inmates of the concentration camp and the local prison. The function of the memorial is to provide a dignified burial space for the corpses of the unknown victims of Castuera, and to carve the names of the missing, in order to create a common and symbolic space for mourning and commemoration",
+            "year": "2017",
+            "files": [
+              {
+                "id": 921,
+                "url": "http://www.dbportal.ic-access.specs-lab.com/api/files/921",
+                "file_urls": {
+                  "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/91475e0ad76c595a1df89da0659b1fba.jpg",
+                  "fullsize": null,
+                  "thumbnail": null,
+                  "square_thumbnail": null
+                },
+                "added": "2019-11-15T14:48:26+00:00",
+                "modified": "2019-11-15T14:48:26+00:00",
+                "filename": "91475e0ad76c595a1df89da0659b1fba.jpg",
+                "authentication": "a036c84e67547e5e8ead3eb5435433f7",
+                "has_derivative_image": false,
+                "mime_type": "image/jpeg",
+                "order": null,
+                "original_filename": "Memorial to the victims of Franco’s repression in Castuera.jpg",
+                "size": 179594,
+                "stored": true,
+                "type_os": "JPEG image data, JFIF standard 1.01",
+                "metadata": {
+                  "mime_type": "image/jpeg",
+                  "video": {
+                    "dataformat": "jpg",
+                    "lossless": false,
+                    "bits_per_sample": 24,
+                    "pixel_aspect_ratio": 1,
+                    "resolution_x": 792,
+                    "resolution_y": 1056,
+                    "compression_ratio": 0.071578314712784
+                  }
+                },
+                "item": {
+                  "id": 2300,
+                  "url": "http://www.dbportal.ic-access.specs-lab.com/api/items/2300",
+                  "resource": "items"
+                },
+                "element_texts": [],
+                "extended_resources": []
+              }
+            ]
+          },
+          "linkedPages": [
+            {
+              "paragraph": 7,
+              "exhibitId": 49,
+              "exhibitSlug": "unearthing-the-hidden-past-in-",
+              "exhibitTitle": "Unearthing the hidden past in Castuera concentration camp"
+            }
+          ]
+        }
+      ]
     },
     "subjectsRelations": {},
     "storiesNetwork": {
-      "links": [],
-      "nodes": []
+      "links": [
+        {
+          "source": 49,
+          "target": 2290,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2291,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2292,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2293,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2302,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2294,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2295,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2296,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2289,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2297,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2298,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2299,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2283,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2300,
+          "paragraph": 1
+        },
+        {
+          "source": 49,
+          "target": 2301,
+          "paragraph": 1
+        }
+      ],
+      "nodes": [
+        {
+          "id": 49,
+          "slug": "unearthing-the-hidden-past-in-",
+          "title": "Unearthing the hidden past in Castuera concentration camp",
+          "itemType": "story"
+        },
+        {
+          "id": 2283,
+          "itemType": "reference",
+          "title": "Muñoz-Encinar, L., “Exhumación en el cementerio de Castuera. Campaña 2011”, en Muñoz-Encinar, L., Ayán Vila, X. M., López-Rodríguez, A. D. (eds.). 2013. De la ocultación de las fosas a las exhumaciones. La represión en el entorno del Campo de Concentración de Castuera. Santiago de Compostela, Incipit-CSIC/AMECADEC. pp. 62-115"
+        },
+        {
+          "id": 2289,
+          "itemType": "resource",
+          "title": "Two prisoners from the Castuera concentration camp  documented in a mass grave exhumed at the town’s municipal cemetery",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/7681087a61c12989f6b74079cec5f9c3.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2290,
+          "itemType": "resource",
+          "title": "Location of the mass graves inside the town’s municipal cemetery",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/beb0544e2f30e1825e4fdf2dffd6269b.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2291,
+          "itemType": "resource",
+          "title": "Mass Grave 1 located inside the municipal cemetery of Castuera",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/24f8f919214ba7bac50c9b67e3b30672.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2292,
+          "itemType": "resource",
+          "title": "Law 52/2007 of Historical Memory",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/9ea2e0309be6fbd1843b49ed03325b23.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/9ea2e0309be6fbd1843b49ed03325b23.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/9ea2e0309be6fbd1843b49ed03325b23.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/9ea2e0309be6fbd1843b49ed03325b23.jpg"
+          }
+        },
+        {
+          "id": 2293,
+          "itemType": "resource",
+          "title": "Official visit to the exhumations in 2011",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/599f392e242ab381afe1eaff0e99e6e8.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2294,
+          "itemType": "reference",
+          "title": "Fosas comunes de la Guerra Civil en el siglo XXI: antecedentes, interdisciplinariedad y legislación"
+        },
+        {
+          "id": 2295,
+          "itemType": "resource",
+          "title": "Official document of War Declaration Decrees",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/4ed463759c6102bb40e5db3b5930062a.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/4ed463759c6102bb40e5db3b5930062a.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/4ed463759c6102bb40e5db3b5930062a.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/4ed463759c6102bb40e5db3b5930062a.jpg"
+          }
+        },
+        {
+          "id": 2296,
+          "itemType": "resource",
+          "title": "Drawing of Mass Grave 1 located inside the municipal cemetery of Castuera",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/8d1b05b8c1adddbecdcf1f94533de2f0.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2297,
+          "itemType": "resource",
+          "title": "Materiality from the mass graves",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/7ddf16e322a5d6ec4e75a7803a2495c4.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2298,
+          "itemType": "resource",
+          "title": "Materiality from the mass graves connected to life inside the concentration camp",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/efc6cdac00781f59cfa1c4f5d7f44dd6.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2299,
+          "itemType": "resource",
+          "title": "Protocol for the exhumation of mass graves containing the bodies of victims of the Spanish Civil War and the dictatorship",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/b4851784f313d7719e8eb458e07377cb.pdf",
+            "fullsize": "http://www.dbportal.ic-access.specs-lab.com/files/fullsize/b4851784f313d7719e8eb458e07377cb.jpg",
+            "thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/thumbnails/b4851784f313d7719e8eb458e07377cb.jpg",
+            "square_thumbnail": "http://www.dbportal.ic-access.specs-lab.com/files/square_thumbnails/b4851784f313d7719e8eb458e07377cb.jpg"
+          }
+        },
+        {
+          "id": 2300,
+          "itemType": "resource",
+          "title": "Memorial to the victims of Franco’s repression in Castuera",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/91475e0ad76c595a1df89da0659b1fba.jpg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2301,
+          "itemType": "resource",
+          "title": "Castuera concentration camp",
+          "fileUrls": {
+            "original": "http://www.dbportal.ic-access.specs-lab.com/files/original/a071d77a434a720f971f9aa2b55cfa81.jpeg",
+            "fullsize": null,
+            "thumbnail": null,
+            "square_thumbnail": null
+          }
+        },
+        {
+          "id": 2302,
+          "itemType": "hyperlink",
+          "title": "Producing History in Spanish Civil War Exhumations. From the Archive to the Grave"
+        }
+      ]
     }
   }
 ]
