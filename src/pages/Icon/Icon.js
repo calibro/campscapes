@@ -85,7 +85,10 @@ export default function Icon({ match, location }) {
             <div className="col-1 d-flex align-items-center">
               {prevNextIcons.prevIcon && (
                 <Link
-                  to={`/icons/${prevNextIcons.prevIcon.id}`}
+                  to={{
+                    pathname: `/icons/${prevNextIcons.prevIcon.id}`,
+                    state: location.state
+                  }}
                   className={styles.circleButton}
                 >
                   <MdArrowBack size="1.5rem"></MdArrowBack>
@@ -153,7 +156,10 @@ export default function Icon({ match, location }) {
             <div className="col-1 d-flex align-items-center">
               {prevNextIcons.nextIcon && (
                 <Link
-                  to={`/icons/${prevNextIcons.nextIcon.id}`}
+                  to={{
+                    pathname: `/icons/${prevNextIcons.nextIcon.id}`,
+                    state: location.state
+                  }}
                   className={styles.circleButton}
                 >
                   <MdArrowForward size="1.5rem"></MdArrowForward>

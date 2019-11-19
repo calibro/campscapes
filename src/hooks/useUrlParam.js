@@ -1,4 +1,40 @@
-import useRouterQueryParam from "magik-react-hooks/useRouterQueryParam";
+// import useRouterQueryParam from "magik-react-hooks/useRouterQueryParam";
+import { useCallback } from "react";
+import useRouter from "magik-react-hooks/useRouter";
+import useQueryParam from "magik-react-hooks/useQueryParam";
+
+function useRouterQueryParam(
+  name,
+  defaultValue,
+  qpEncoder = false,
+  options = {}
+) {
+  const { location, history } = useRouter();
+
+  const setSearchStr = useCallback(
+    (nextQueryString, historyMethod = "push") => {
+      const url = `${location.pathname}?${nextQueryString}`;
+      const newLocation = {
+        pathname: `${location.pathname}`,
+        search: `${nextQueryString}`,
+        state: location.state
+      };
+      history[historyMethod](newLocation);
+    },
+    [location.pathname, history]
+  );
+
+  const proxied = useQueryParam(
+    location.search,
+    setSearchStr,
+    name,
+    defaultValue,
+    qpEncoder,
+    options
+  );
+
+  return proxied;
+}
 
 function isFunction(functionToCheck) {
   return (
