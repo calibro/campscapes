@@ -30,6 +30,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-hammerjs": "^1.0.1",
+    "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
     "react-lines-ellipsis": "^0.14.1",
     "react-mapbox-gl": "^4.6.0",

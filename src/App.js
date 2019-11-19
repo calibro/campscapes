@@ -24,6 +24,7 @@ import About from "./pages/About";
 import Publications from "./pages/Publications";
 import Educational from "./pages/Educational";
 import NotFound from "./pages/NotFound";
+import { Helmet } from "react-helmet";
 
 const APP_PATHS = [
   "/",
@@ -43,6 +44,11 @@ const APP_PATHS = [
 function App() {
   return (
     <Router>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Campscapes</title>
+        <link rel="canonical" href="https://platform.campscapes.org" />
+      </Helmet>
       <Switch>
         <Route
           exact

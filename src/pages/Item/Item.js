@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import find from "lodash/find";
 import FileViewer from "../../components/FileViewer";
 import OnlyDesktop from "../../components/OnlyDesktop";
+import { Helmet } from "react-helmet";
 import styles from "./Item.module.scss";
 
 const ItemDate = ({ item }) => {
@@ -42,6 +43,9 @@ export default function Item({ match, location }) {
       <OnlyDesktop></OnlyDesktop>
       {item && (
         <React.Fragment>
+          <Helmet>
+            <title>{item.data.title}</title>
+          </Helmet>
           <div className={styles.titleContainer}>
             <div className="container">
               <div className="row">

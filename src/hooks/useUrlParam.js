@@ -17,7 +17,7 @@ function useRouterQueryParam(
       const newLocation = {
         pathname: `${location.pathname}`,
         search: `${nextQueryString}`,
-        state: location.state
+        state: { ...location.state }
       };
       history[historyMethod](newLocation);
     },

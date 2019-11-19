@@ -11,6 +11,7 @@ import Menu from "../../components/Menu";
 import useUrlParam from "../../hooks/useUrlParam";
 import StoryItem from "../../components/StoryItem";
 import OnlyDesktop from "../../components/OnlyDesktop";
+import { Helmet } from "react-helmet";
 import styles from "./Story.module.scss";
 
 const StoryParagraph = React.forwardRef(
@@ -161,6 +162,9 @@ const Story = ({ match, location, history }) => {
 
       {story && (
         <React.Fragment>
+          <Helmet>
+            <title>{story.title}</title>
+          </Helmet>
           <div className={styles.titleContainer}>
             <div className="container">
               <div className="row">
