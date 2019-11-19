@@ -9,7 +9,7 @@ import {
   MdVideoLibrary,
   MdNote
 } from "react-icons/md";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useLocation } from "react-router-dom";
 import useDimensions from "react-use-dimensions";
 import { Text } from "@vx/text";
 
@@ -93,6 +93,7 @@ const CustomNodeStory = props => {
   const translateY = cy ? cy - radius : 0;
   const padding = 2;
   const [ref, { height, width }] = useDimensions({ liveMeasure: false });
+  let location = useLocation();
 
   return (
     <g
@@ -104,7 +105,17 @@ const CustomNodeStory = props => {
         size={radius * 2 + "px"}
         style={{ color: "var(--red-cs)" }}
       ></MdAdd>
-      <Link to={`/stories/${node.data.slug}`}>
+      <Link
+        to={{
+          pathname: `/stories/${node.data.slug}`,
+          state: {
+            from: {
+              pathname: location.pathname,
+              search: location.search
+            }
+          }
+        }}
+      >
         <rect
           x={radius + radius / 2}
           y={-padding * 2}
