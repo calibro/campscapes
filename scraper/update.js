@@ -17,7 +17,7 @@ const CAMPSCAPES_DATA_DIRNAME = "campscapes-data";
 async function main(options) {
   console.log("# Campscapes data parser");
 
-  console.log("main", options);
+  console.log("Options:", options);
 
   const targetDir = path.resolve(
     path.join(options.targetDir, CAMPSCAPES_DATA_DIRNAME)
@@ -54,6 +54,7 @@ async function main(options) {
       query: { per_page: options.perPage },
       greedy: true
     });
+    allItems = await api.addFilesToItems(allItems)
     fs.writeFileSync(allItemsFilename, JSON.stringify(allItems));
   }
 
@@ -320,9 +321,7 @@ if (require.main === module) {
       "-d, --dir <directory>",
       `Output directory. A subdir "${CAMPSCAPES_DATA_DIRNAME}" will be created if not exisiting`
     )
-    .option("--no-something", "Skip something")
     .option('--pagesize <number>', 'Items per page', myParseInt)
-    .option("--example <dir>", "Example param.")
     .option("--no-items", "use existing items")
     .parse(process.argv);
 
@@ -337,12 +336,11 @@ if (require.main === module) {
     console.error(colors.red("Please specify a valid report directory."));
     process.exit(1);
   }
-
+  
   main(
     {
       targetDir,
       downloadItems: program.items,
-      something: program.something,
       perPage: program.pagesize || 50,
     },
     console,

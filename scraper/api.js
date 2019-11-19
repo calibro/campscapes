@@ -6,6 +6,8 @@ const get = require('lodash/get')
 const keyBy = require('lodash/keyBy')
 const groupBy = require('lodash/groupBy')
 const camelcase = require('camelcase')
+const chunk = require('lodash/chunk')
+const head = require('lodash/head')
 // `http://www.dbportal.ic-access.specs-lab.com/api/items?key=dd9451bfd7f887f996e82d88677336abd9c910ab`
 
 
@@ -38,17 +40,45 @@ async function simplifyItem(item){
       data[name] = value
     }
   });
-
-  if(item.files){
-    data.files = await getUrlFromApiResponse(item.files.url)
-  }
-
+  
   return {
     ...item,
     element_texts: undefined,
     item_type: get(item, 'item_type.name'),
     data
   }
+}
+
+
+async function addFilesToItems(items){
+
+  const itemsGroups = chunk(items, 10)
+  let out = []
+  for (const [idx, itemGroup] of itemsGroups.entries()) {
+    console.log(`Getting files for items ${idx*10}-${(idx+1)*10} of ${items.length}`)
+    const g = await Promise.all(itemGroup.map(async function(item){
+      if(item.files){
+        item.data.files = await getUrlFromApiResponse(item.files.url)
+        
+      }
+      return item
+    }))
+    // console.log("g", g)
+    out = out.concat(g)
+    
+  }
+  return out
+
+  //# NOT-CHUNKED VERSION
+  // for (const [idx, item] of items.entries()) {
+  //   console.log("idx", idx)
+  //   if(item.files){
+  //     item.data.files = await getUrlFromApiResponse(item.files.url)
+  //     console.log("W!", item.data.files)
+  //   }
+  // }
+  return items
+
 }
 
 
@@ -311,6 +341,7 @@ module.exports.getItemsGreedy = greedyAPIMaker(getItems)
 module.exports.getTags = getTags
 module.exports.getItemRelations = getItemRelations
 
+module.exports.addFilesToItems = addFilesToItems
 module.exports.enrichWithRelations = enrichWithRelations
 module.exports.addPageAttachments = addPageAttachments
 
