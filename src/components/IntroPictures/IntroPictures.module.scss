@@ -40,7 +40,6 @@
   position: relative;
   transform: translateX(-100%);
   pointer-events: none;
-  filter: blur(1px);
   transition: opacity 3s ease-in-out, transform 1.5s ease-in-out,
     filter var(--transition);
   z-index: 1;
@@ -48,7 +47,6 @@
 
 .grid__item:hover {
   opacity: 1 !important;
-  filter: blur(0);
   z-index: 2;
 }
 

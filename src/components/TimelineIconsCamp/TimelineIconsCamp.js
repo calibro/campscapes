@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { Link, withRouter } from "react-router-dom";
+import classNames from "classnames";
 import TimelineStripes from "../../components/TimelineStripes";
 import FallbackPreview from "../../components/FallbackPreview";
 import styles from "./TimelineIconsCamp.module.scss";
@@ -42,7 +43,10 @@ const TimelineIcons = ({
           {icons.map(icon => {
             return (
               <div
-                className="position-absolute"
+                className={classNames(styles.iconTranslate, {
+                  [styles.iconTranslateHover]:
+                    selectedIcon && icon.id !== selectedIcon.icon.id
+                })}
                 key={icon.id}
                 style={{ left: `${scale(icon.data.startDate)}%` }}
               >
