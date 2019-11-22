@@ -40,14 +40,14 @@ const TimelineIcons = ({
             className={styles.inceptionLine}
             style={{ left: `${scale(camp.data.inceptionDate)}%` }}
           ></div>
-          {icons.map(icon => {
+          {icons.map((icon, i) => {
             return (
               <div
                 className={classNames(styles.iconTranslate, {
                   [styles.iconTranslateHover]:
-                    selectedIcon && icon.id !== selectedIcon.icon.id
+                    selectedIcon && icon.id === selectedIcon.icon.id
                 })}
-                key={icon.id}
+                key={icon.id + "_" + i}
                 style={{ left: `${scale(icon.data.startDate)}%` }}
               >
                 <Link
