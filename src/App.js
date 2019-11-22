@@ -25,6 +25,8 @@ import Publications from "./pages/Publications";
 import Educational from "./pages/Educational";
 import NotFound from "./pages/NotFound";
 import { Helmet } from "react-helmet";
+import ReactGA from "react-ga";
+import { createBrowserHistory } from "history";
 
 const APP_PATHS = [
   "/",
@@ -41,9 +43,15 @@ const APP_PATHS = [
   "/stories/:slug"
 ];
 
+const history = createBrowserHistory();
+
+history.listen(location => {
+  ReactGA.pageview(location.pathname + location.hash + location.search);
+});
+
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Campscapes</title>
