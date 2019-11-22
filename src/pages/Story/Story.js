@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdArrowBack, MdAddCircle } from "react-icons/md";
 import { StoriesContext } from "../../dataProviders";
+import { Helmet } from "react-helmet";
 import find from "lodash/find";
 import get from "lodash/get";
 import sortBy from "lodash/sortBy";
@@ -11,7 +12,6 @@ import Menu from "../../components/Menu";
 import useUrlParam from "../../hooks/useUrlParam";
 import StoryItem from "../../components/StoryItem";
 import OnlyDesktop from "../../components/OnlyDesktop";
-import { Helmet } from "react-helmet";
 import styles from "./Story.module.scss";
 
 const StoryParagraph = React.forwardRef(

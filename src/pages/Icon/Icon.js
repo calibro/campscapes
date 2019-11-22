@@ -1,5 +1,6 @@
 import React, { useContext, useMemo } from "react";
 import { IconsContext, CampsContext } from "../../dataProviders";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import find from "lodash/find";
 import get from "lodash/get";
@@ -61,6 +62,12 @@ export default function Icon({ match, location }) {
   return (
     <div className={styles.iconContainer}>
       <OnlyDesktop></OnlyDesktop>
+      {icon && (
+        <Helmet>
+          <title>{icon.data.title}</title>
+        </Helmet>
+      )}
+
       {icon && (
         <div className="container h-100 d-flex flex-column">
           <div className="row">

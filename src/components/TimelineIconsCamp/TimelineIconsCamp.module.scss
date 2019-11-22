@@ -8,6 +8,15 @@ $icons-width: 56px;
   align-items: center;
 }
 
+.iconTranslate {
+  position: absolute;
+  z-index: 1;
+}
+
+.iconTranslateHover {
+  z-index: 2;
+}
+
 .iconContainer {
   display: flex;
   transform: translateX(-$icons-width/2);

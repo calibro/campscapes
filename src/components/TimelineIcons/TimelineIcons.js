@@ -56,11 +56,11 @@ const TimelineIcons = ({ camp, scale, location }) => {
         <TimelineStripes scale={scale}></TimelineStripes>
         <div
           className={styles.inceptionLine}
-          style={{ left: `${scale(camp.data.inceptionDate)}%` }}
+          style={{ left: `${scale(new Date(camp.data.inceptionDate))}%` }}
         ></div>
-        {icons.map(icon => {
+        {icons.map((icon, i) => {
           return (
-            <div className="w-100 position-relative" key={icon.id}>
+            <div className="w-100 position-relative" key={icon.id + "_" + i}>
               <div
                 className={styles.iconContainer}
                 style={makeIconContainerStyle(icon.data.startDate)}

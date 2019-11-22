@@ -162,75 +162,81 @@ const Camp = ({ match }) => {
               </div>
             </div>
           </div>
-          <div className={styles.ddContainer}>
-            <div className={styles.vertLogo}>
-              <MdLayers
-                style={{ color: "var(--red-cs)" }}
-                size="20px"
-              ></MdLayers>
-            </div>
-            <div className="container">
-              <div className="row">
-                {vectorLayers.length > 0 && (
-                  <div className="col-auto">
-                    <div className={styles.dropdown}>
-                      <span className={styles.dropdownLabel}>
-                        Buildings footprints
-                      </span>
-                      <DdLayers
-                        year={yearVector}
-                        setYear={setYearVector}
-                        layers={vectorLayers}
-                      ></DdLayers>
-                    </div>
-                  </div>
-                )}
-                {rasterLayers.length > 0 && (
-                  <div className="col-auto">
-                    <div className={styles.dropdown}>
-                      <span className={styles.dropdownLabel}>Aerial view</span>
-                      <DdLayers
-                        year={yearRaster}
-                        setYear={setYearRaster}
-                        layers={rasterLayers}
-                      ></DdLayers>
-                      {yearRaster !== "none" && (
-                        <div className="d-flex align-items-center ml-3">
-                          <span className="mr-3">opacity</span>
-                          <input
-                            onChange={handleOnOpacityChange}
-                            value={opacity}
-                            type="range"
-                            min={0}
-                            max={1}
-                            step={0.1}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
+          {(vectorLayers.length > 0 || rasterLayers.length > 0) && (
+            <div className={styles.ddContainer}>
+              <div className={styles.vertLogo}>
+                <MdLayers
+                  style={{ color: "var(--red-cs)" }}
+                  size="20px"
+                ></MdLayers>
               </div>
-            </div>
-          </div>
-          <div className={styles.iconsContainer}>
-            <div className={styles.vertLabel}>
-              <h6>icons</h6>
-            </div>
-            <div className="container">
-              <TimelineIconsCamp
-                camp={camp}
-                scale={timelineScale}
-                selectedIcon={selectedIcon}
-                setSelectedIcon={setSelectedIcon}
-              ></TimelineIconsCamp>
-              <div className="row">
-                <div className="col-12">
-                  <TimelineAxis scale={timelineScale}></TimelineAxis>
+              <div className="container">
+                <div className="row">
+                  {vectorLayers.length > 0 && (
+                    <div className="col-auto">
+                      <div className={styles.dropdown}>
+                        <span className={styles.dropdownLabel}>
+                          Buildings footprints
+                        </span>
+                        <DdLayers
+                          year={yearVector}
+                          setYear={setYearVector}
+                          layers={vectorLayers}
+                        ></DdLayers>
+                      </div>
+                    </div>
+                  )}
+                  {rasterLayers.length > 0 && (
+                    <div className="col-auto">
+                      <div className={styles.dropdown}>
+                        <span className={styles.dropdownLabel}>
+                          Aerial view
+                        </span>
+                        <DdLayers
+                          year={yearRaster}
+                          setYear={setYearRaster}
+                          layers={rasterLayers}
+                        ></DdLayers>
+                        {yearRaster !== "none" && (
+                          <div className="d-flex align-items-center ml-3">
+                            <span className="mr-3">opacity</span>
+                            <input
+                              onChange={handleOnOpacityChange}
+                              value={opacity}
+                              type="range"
+                              min={0}
+                              max={1}
+                              step={0.1}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-          </div>
+          )}
+          {camp.relations.icon && (
+            <div className={styles.iconsContainer}>
+              <div className={styles.vertLabel}>
+                <h6>icons</h6>
+              </div>
+              <div className="container">
+                <TimelineIconsCamp
+                  camp={camp}
+                  scale={timelineScale}
+                  selectedIcon={selectedIcon}
+                  setSelectedIcon={setSelectedIcon}
+                ></TimelineIconsCamp>
+                <div className="row">
+                  <div className="col-12">
+                    <TimelineAxis scale={timelineScale}></TimelineAxis>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <div className={styles.infoContainer}>
             <div className="container">
               <div className="row">

@@ -24,6 +24,6 @@
 .stickyAxis {
   z-index: 2;
   position: sticky;
-  top: 0;
+  top: var(--menu-height);
   background-color: var(--dark-cs);
 }

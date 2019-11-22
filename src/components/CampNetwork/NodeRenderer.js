@@ -116,20 +116,20 @@ const CustomNodeStory = props => {
           }
         }}
       >
-        <rect
-          x={radius + radius / 2}
-          y={-padding * 2}
-          width={width ? width : 0}
-          height={height ? height + padding * 2 : 0}
-          fill={"#101012"}
-        ></rect>
         <Text
-          style={{ fill: "white", fontFamily: "'Inter', sans-serif" }}
+          style={{
+            fill: "white",
+            fontFamily: "'Inter', sans-serif",
+            paintOrder: "stroke",
+            stroke: "#000000",
+            strokeWidth: 1,
+            strokeLinecap: "butt",
+            strokeLinejoin: "miter"
+          }}
           width={200}
           x={radius + radius / 2 + 5}
           y={radius}
           verticalAnchor="middle"
-          innerRef={ref}
         >
           {node.data.title}
         </Text>
