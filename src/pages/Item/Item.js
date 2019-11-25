@@ -106,7 +106,7 @@ export default function Item({ match, location }) {
                         <Link
                           to={{
                             pathname: `/stories/${page.exhibitSlug}`,
-                            search: `paragraph=${page.paragraph}`,
+                            search: `paragraph=${page.paragraph}&itemId=${item.id}`,
                             state: {
                               from: {
                                 pathname: location.pathname,

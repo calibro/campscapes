@@ -5,7 +5,7 @@ import {
   StoryItemReference
 } from "./StoryItemTypes";
 
-const StoryItem = ({ attachment, slug, index }) => {
+const StoryItem = ({ attachment, slug, index }, ref) => {
   const item = attachment.item;
   const item_type = item ? item.item_type : null;
 
@@ -14,6 +14,7 @@ const StoryItem = ({ attachment, slug, index }) => {
       case "resource":
         return (
           <StoryItemResource
+            ref={ref}
             attachment={attachment}
             slug={slug}
             index={index}
@@ -22,6 +23,7 @@ const StoryItem = ({ attachment, slug, index }) => {
       case "icon":
         return (
           <StoryItemResource
+            ref={ref}
             attachment={attachment}
             slug={slug}
             index={index}
@@ -30,6 +32,7 @@ const StoryItem = ({ attachment, slug, index }) => {
       case "hyperlink":
         return (
           <StoryItemHyperlink
+            ref={ref}
             attachment={attachment}
             slug={slug}
             index={index}
@@ -38,16 +41,17 @@ const StoryItem = ({ attachment, slug, index }) => {
       case "reference":
         return (
           <StoryItemReference
+            ref={ref}
             attachment={attachment}
             slug={slug}
             index={index}
           ></StoryItemReference>
         );
       default:
-        return <div>Missing item type {item_type}</div>;
+        return <div ref={ref}>Missing item type {item_type}</div>;
     }
   };
   return renderSwitch(item_type);
 };
 
-export default StoryItem;
+export default React.forwardRef(StoryItem);

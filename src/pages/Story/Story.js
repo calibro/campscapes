@@ -5,6 +5,7 @@ import { StoriesContext } from "../../dataProviders";
 import { Helmet } from "react-helmet";
 import find from "lodash/find";
 import get from "lodash/get";
+import omit from "lodash/omit";
 import sortBy from "lodash/sortBy";
 import { Waypoint } from "react-waypoint";
 import useDimensions from "react-use-dimensions";
@@ -147,13 +148,66 @@ const Story = ({ match, location, history }) => {
       : "/themes";
   }, [location.state]);
 
+  const validateCurrentItem = x => {
+    return (
+      currentAttachments &&
+      currentAttachments.map(i => i.item.id).indexOf(x) !== -1
+    );
+  };
+  const [currentItem, setCurrentItem] = useUrlParam(
+    // param name in url
+    "itemId",
+    // default value
+    "",
+    // encoding currentItem to url: index + 1
+    x => x,
+    // decoding currentItem from url : item query parameter
+    x => (isNaN(+x) ? null : +x),
+    // query-string stringify options
+    {},
+    // validation function to get param from url. if not valid it's set to default value
+    validateCurrentItem
+  );
+
   //reset items section scroll after paragraph change
   useEffect(() => {
-    if (itemsContainerRef.current) {
-      //itemsContainerRef.current.scrollTo(0);
-      itemsContainerRef.current.scrollTo(0, 0);
+    if (itemsContainerRef.current && !currentItem) {
+      itemsContainerRef.current.scrollTo({ top: 0 });
     }
-  }, [currentParagraph]);
+  }, [currentParagraph, currentItem]);
+
+  let attachmentsRef = useRef({});
+  // useEffect(() => {
+  //   attachmentsRef.current = {}
+
+  // }, [location.pathname]);
+
+  useEffect(() => {
+    if (currentItem) {
+      if (!attachmentsRef.current[currentItem]) {
+        return;
+      }
+      const node = attachmentsRef.current[currentItem];
+
+      // this is needed to ensure all image are loaded before scrolling.
+      // otherwise we risk to scroll to a wrong heigt (calculated without images)
+      const images = itemsContainerRef.current.querySelectorAll("img");
+      let loaded = 0;
+      const scrollIt = () => {
+        itemsContainerRef.current.scrollTo({
+          top: node.offsetTop
+        });
+      };
+      images.forEach(img => {
+        img.onload = function() {
+          loaded += 1;
+          if (loaded === images.length) {
+            scrollIt();
+          }
+        };
+      });
+    }
+  }, [currentItem, Object.keys(attachmentsRef.current)]);
 
   return (
     <div className={styles.storyContainer}>
@@ -279,12 +333,18 @@ const Story = ({ match, location, history }) => {
                   {currentAttachments &&
                     currentAttachments.length > 0 &&
                     currentAttachments.map((attachment, i) => (
-                      <StoryItem
+                      <div
                         key={i}
-                        index={i + 1}
-                        attachment={attachment}
-                        slug={params.slug}
-                      />
+                        ref={node =>
+                          (attachmentsRef.current[attachment.item.id] = node)
+                        }
+                      >
+                        <StoryItem
+                          index={i + 1}
+                          attachment={attachment}
+                          slug={params.slug}
+                        />
+                      </div>
                     ))}
                 </div>
               </div>
