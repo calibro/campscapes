@@ -21,7 +21,7 @@ const Citation = ({ bibTeX }) => {
   );
 };
 
-const LinkedPages = withRouter(({ linkedPages, location }) => {
+const LinkedPages = withRouter(({ linkedPages, item, location }) => {
   const [open, setOpen] = useState(false);
   return (
     <React.Fragment>
@@ -51,7 +51,7 @@ const LinkedPages = withRouter(({ linkedPages, location }) => {
             <Link
               to={{
                 pathname: `/stories/${page.exhibitSlug}`,
-                search: `paragraph=${page.paragraph}`,
+                search: `paragraph=${page.paragraph}&itemId=${item.id}`,
                 state: {
                   from: {
                     pathname: location.pathname,
@@ -119,7 +119,10 @@ export const StoryItemResource = withRouter(
           </div>
           <div className={styles.linkedPages}>
             {attachment.item && linkedPages.length > 0 && (
-              <LinkedPages linkedPages={linkedPages}></LinkedPages>
+              <LinkedPages
+                linkedPages={linkedPages}
+                item={attachment.item}
+              ></LinkedPages>
             )}
           </div>
         </div>
@@ -154,7 +157,10 @@ export const StoryItemHyperlink = ({ attachment, slug, index }) => {
         </div>
         <div className={styles.linkedPages}>
           {attachment.item && linkedPages.length > 0 && (
-            <LinkedPages linkedPages={linkedPages}></LinkedPages>
+            <LinkedPages
+              linkedPages={linkedPages}
+              item={attachment.item}
+            ></LinkedPages>
           )}
         </div>
       </div>
@@ -211,7 +217,10 @@ export const StoryItemReference = ({ attachment, slug, index }) => {
         </div>
         <div className={styles.linkedPages}>
           {attachment.item && linkedPages.length > 0 && (
-            <LinkedPages linkedPages={linkedPages}></LinkedPages>
+            <LinkedPages
+              linkedPages={linkedPages}
+              item={attachment.item}
+            ></LinkedPages>
           )}
         </div>
       </div>

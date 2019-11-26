@@ -135,7 +135,7 @@ export default function Icon({ match, location }) {
                         <Link
                           to={{
                             pathname: `/stories/${page.exhibitSlug}`,
-                            search: `paragraph=${page.paragraph}`,
+                            search: `paragraph=${page.paragraph}&itemId=${icon.id}`,
                             state: {
                               from: {
                                 pathname: location.pathname,
