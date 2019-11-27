@@ -245,7 +245,7 @@ const CampMap = ({
                     3
                   ],
                   "fill-extrusion-opacity": 0.8,
-                  "fill-extrusion-color": "#c82727"
+                  "fill-extrusion-color": "#009ee3"
                 }}
                 fillExtrusionOnClick={geojsonOnClick}
                 fillExtrusionOnMouseMove={e => {

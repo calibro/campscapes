@@ -28,7 +28,7 @@ class AudioPlayer extends React.Component {
             cursorWidth: 10,
             cursorColor: "rgba(0,0,0,0.2)",
             hideScrollbar: true,
-            progressColor: "#c82727",
+            progressColor: "#009ee3",
             responsive: true,
             waveColor: "#D1D6DA"
           }}

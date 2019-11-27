@@ -54,7 +54,7 @@
   justify-content: center;
   opacity: 0;
   cursor: pointer;
-  animation: fillingHtml 1s linear 10s forwards;
+  animation: fillingHtml 1s linear 2s forwards;
   pointer-events: all;
 }
 
@@ -75,7 +75,7 @@
     text-decoration: underline;
   }
 
-  animation: fillingHtml 1s linear 10s forwards;
+  animation: fillingHtml 1s linear 2s forwards;
 }
 
 .svg {
@@ -92,7 +92,7 @@
   stroke-width: 2px;
   fill-opacity: 0;
   fill: var(--red-cs);
-  animation: dash 20s linear forwards, filling 1s linear 9s forwards;
+  animation: dash 10s linear forwards, filling 1s linear 9s forwards;
 }
 
 @keyframes dash {
