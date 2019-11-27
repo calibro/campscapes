@@ -24,3 +24,4 @@ yarn-error.log*
 
 .env
 docker-compose.yml
+public/campscapes-data

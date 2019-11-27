@@ -23,9 +23,11 @@ const ThemesCircles = ({ themes = [], setSelected, selected }) => {
   }, [height, width]);
 
   const packedThemes = useMemo(() => {
-    const root = hierarchy({ name: "root", children: themes }).sum(
-      d => d.stories && d.stories.length
-    );
+    const root = hierarchy({ name: "root", children: themes })
+      .sum(d => d.stories && d.stories.length)
+      .sort((a, b) => {
+        return a.data.name.length - b.data.name.length;
+      });
     return packGenerator(root)
       .descendants()
       .filter(node => node.depth === 1 && node.r);
